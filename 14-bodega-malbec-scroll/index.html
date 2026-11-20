@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiencia Malbec Editorial · Artesanía Digital Mendocina</title>
+  <meta name="description" content="Artesanía digital mendocina en San Rafael: páginas web desde $100.000, packs de lanzamiento con redes y sistemas de gestión a medida." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --velvet: #14070B;
+      --velvet-soft: #1E0B11;
+      --velvet-card: #240E15;
+      --gold: #E5C185;
+      --gold-dim: rgba(229, 193, 133, 0.24);
+      --bone: #F7F1E5;
+      --bone-muted: rgba(247, 241, 229, 0.74);
+      --crimson: #7F1D2C;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--velvet);
+      color: var(--bone);
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.12;
+    }
+
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--crimson), var(--gold));
+      z-index: 60;
+      transition: width 0.08s linear;
+    }
+
+    /* Header */
+    .masthead {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(20, 7, 11, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gold-dim);
+      padding: 15px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .masthead-brand {
+      text-decoration: none;
+      color: var(--bone);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .masthead-brand strong {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.38rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .masthead-brand span {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+
+    .masthead-nav {
+      display: none;
+      gap: 24px;
+      font-size: 0.84rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--bone-muted);
+    }
+
+    .masthead-nav a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .masthead-nav a:hover {
+      color: var(--gold);
+    }
+
+    .btn-champagne {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--velvet);
+      font-weight: 700;
+      font-size: 0.84rem;
+      text-decoration: none;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .btn-champagne:hover {
+      background: #F0D29F;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.18s ease;
+    }
+
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: var(--velvet);
+    }
+
+    /* Split-Screen Editorial Scrollytelling */
+    .editorial-split {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .sticky-media {
+      position: relative;
+      height: 54vh;
+      min-height: 360px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--gold-dim);
+    }
+
+    .sticky-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.03);
+      transition: transform 0.4s ease-out;
+      will-change: transform;
+    }
+
+    .media-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 7, 11, 0.22) 0%, rgba(20, 7, 11, 0.12) 45%, rgba(20, 7, 11, 0.86) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 26px;
+    }
+
+    .media-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 14px;
+      border-top: 1px solid var(--gold-dim);
+      padding-top: 14px;
+    }
+
+    .media-caption span {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+    }
+
+    .media-caption strong {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.45rem;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--bone);
+    }
+
+    .vintage-pill {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-dim);
+      background: rgba(20, 7, 11, 0.72);
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* Scrolling Editorial Column */
+    .story-column {
+      padding: 44px 24px 72px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .issue-tag {
+      display: inline-block;
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .story-intro h1 {
+      font-size: clamp(2.35rem, 5.2vw, 3.8rem);
+      margin-bottom: 18px;
+      color: var(--bone);
+    }
+
+    .story-intro h1 em {
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .story-intro p {
+      color: var(--bone-muted);
+      font-size: 1.03rem;
+      margin-bottom: 28px;
+    }
+
+    /* Animated SVG Wine Wave Divider */
+    .wine-divider {
+      width: 100%;
+      height: 36px;
+      margin: 44px 0;
+      overflow: hidden;
+    }
+
+    .wine-divider path {
+      stroke-dasharray: 420;
+      stroke-dashoffset: 0;
+      animation: waveFlow 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes waveFlow {
+      0% { transform: translateX(-18px); }
+      100% { transform: translateX(18px); }
+    }
+
+    /* Cosechas */
+    .cosecha {
+      padding: 12px 0;
+      opacity: 0.42;
+      transform: translateY(14px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .cosecha.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cosecha-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 3.1rem;
+      line-height: 1;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .cosecha-label {
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .cosecha h2 {
+      font-size: clamp(1.75rem, 3.4vw, 2.45rem);
+      margin-bottom: 12px;
+    }
+
+    .cosecha p {
+      color: var(--bone-muted);
+      margin-bottom: 18px;
+      font-size: 0.97rem;
+    }
+
+    .cosecha-notes {
+      background: var(--velvet-card);
+      border: 1px solid var(--gold-dim);
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: grid;
+      gap: 9px;
+      font-size: 0.9rem;
+    }
+
+    .cosecha-notes div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px dashed rgba(229, 193, 133, 0.16);
+      padding-bottom: 8px;
+    }
+
+    .cosecha-notes div:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .cosecha-notes span {
+      color: var(--bone-muted);
+    }
+
+    .cosecha-notes strong {
+      color: var(--gold);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* Interactive Cata de Prototipos */
+    .cata-box {
+      background: linear-gradient(160deg, var(--velvet-card) 0%, #19080E 100%);
+      border: 1px solid var(--gold-dim);
+      border-radius: 18px;
+      padding: 26px;
+    }
+
+    .cata-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 20px;
+    }
+
+    .cata-btn {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-dim);
+      background: transparent;
+      color: var(--bone-muted);
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .cata-btn.active,
+    .cata-btn:hover {
+      background: var(--gold);
+      color: var(--velvet);
+      border-color: var(--gold);
+    }
+
+    .cata-card {
+      background: rgba(20, 7, 11, 0.62);
+      border: 1px solid rgba(229, 193, 133, 0.2);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .cata-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .cata-card h3 {
+      font-size: 1.45rem;
+      color: var(--gold);
+    }
+
+    .cata-price {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--bone);
+      background: var(--crimson);
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .cata-card p {
+      font-size: 0.92rem;
+      color: var(--bone-muted);
+      margin-bottom: 14px;
+    }
+
+    .cata-bullets {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+      font-size: 0.87rem;
+      margin-bottom: 18px;
+    }
+
+    .cata-bullets li::before {
+      content: "✦ ";
+      color: var(--gold);
+    }
+
+    /* Concierge Footer Block */
+    .concierge {
+      margin-top: 48px;
+      padding: 32px 24px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #2C0E18 0%, #17070C 100%);
+      border: 1px solid var(--gold-dim);
+      text-align: center;
+    }
+
+    .concierge h2 {
+      font-size: clamp(1.7rem, 3.2vw, 2.25rem);
+      margin-bottom: 10px;
+    }
+
+    .concierge p {
+      color: var(--bone-muted);
+      font-size: 0.95rem;
+      max-width: 480px;
+      margin: 0 auto 22px;
+    }
+
+    .concierge-links {
+      margin-top: 18px;
+      font-size: 0.84rem;
+      color: var(--bone-muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 18px;
+    }
+
+    .concierge-links a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    @media (min-width: 960px) {
+      .masthead-nav {
+        display: flex;
+      }
+
+      .editorial-split {
+        grid-template-columns: 46% 54%;
+        align-items: start;
+      }
+
+      .sticky-media {
+        position: sticky;
+        top: 67px;
+        height: calc(100vh - 67px);
+        border-bottom: none;
+        border-right: 1px solid var(--gold-dim);
+      }
+
+      .story-column {
+        padding: 68px 52px 96px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="masthead">
+    <a href="#" class="masthead-brand">
+      <strong>Artesanía Digital Mendocina</strong>
+      <span>José Román · San Rafael</span>
+    </a>
+
+    <nav class="masthead-nav" aria-label="Cosechas">
+      <a href="#cosecha-01">01 Web</a>
+      <a href="#cosecha-02">02 Redes</a>
+      <a href="#cosecha-03">03 Gestión</a>
+      <a href="#cata">Cata</a>
+    </nav>
+
+    <a class="btn-champagne" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20Artesan%C3%ADa%20Digital%20Mendocina%20y%20quiero%20pedir%20mi%20prototipo%20gratis." target="_blank" rel="noopener noreferrer">
+      WhatsApp Concierge
+    </a>
+  </header>
+
+  <main class="editorial-split">
+    <!-- Sticky Left Malbec Visual -->
+    <aside class="sticky-media" aria-label="Fotografía editorial Malbec">
+      <img id="malbecImg" src="../assets/malbec-editorial.jpg" alt="Copa de Malbec mendocino sirviéndose sobre piedra oscura" />
+      <div class="media-overlay">
+        <div class="media-caption">
+          <div>
+            <span id="stageKicker">Edición San Rafael · 2026</span>
+            <strong id="stageCaption">Diseño con cuerpo, oficio y raíz local</strong>
+          </div>
+          <span class="vintage-pill" id="stagePill">01 / 03</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Scrolling Right Editorial Story -->
+    <div class="story-column">
+      <section class="story-intro">
+        <span class="issue-tag">Edición Especial · San Rafael, Mendoza</span>
+        <h1>El buen diseño web, como un buen <em>Malbec</em>, se nota al primer contacto.</h1>
+        <p>
+          En lugar de venderte humo ni plantillas genéricas, te mostramos prototipos reales y gratuitos de tu propio negocio antes de empezar. Trato directo en San Rafael, valores claros en pesos y soporte real por 6 meses.
+        </p>
+        <a class="btn-champagne" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20negocio%20en%20San%20Rafael." target="_blank" rel="noopener noreferrer">
+          Pedí tus prototipos gratis
+        </a>
+      </section>
+
+      <svg class="wine-divider" viewBox="0 0 600 36" fill="none" aria-hidden="true">
+        <path d="M0 18 Q75 4 150 18 T300 18 T450 18 T600 18" stroke="#E5C185" stroke-width="1.2" opacity="0.55"/>
+        <path d="M0 24 Q75 10 150 24 T300 24 T450 24 T600 24" stroke="#7F1D2C" stroke-width="1.5" opacity="0.7"/>
+      </svg>
+
+      <!-- COSECHA 01 -->
+      <article id="cosecha-01" class="cosecha is-visible" data-stage="01" data-kicker="Cosecha 01 · Presencia Web" data-caption="Tu negocio con presencia impecable desde $100.000">
+        <span class="cosecha-num">01</span>
+        <span class="cosecha-label">Cosecha 01 · Presencia Web</span>
+        <h2>Web Presentación a medida desde $100.000</h2>
+        <p>
+          Ideal para bodegas, gastronomía, comercios, cabañas y profesionales de San Rafael. Una página veloz, pensada para abrir perfecto en el celular y derivar consultas directo a tu WhatsApp.
+        </p>
+        <div class="cosecha-notes">
+          <div><span>Inversión base</span><strong>Desde $100.000 ARS</strong></div>
+          <div><span>Antes de pagar</span><strong>Prototipos gratis para elegir</strong></div>
+          <div><span>Acompañamiento</span><strong>6 meses de soporte incluidos</strong></div>
+        </div>
+      </article>
+
+      <svg class="wine-divider" viewBox="0 0 600 36" fill="none" aria-hidden="true">
+        <path d="M0 18 Q75 32 150 18 T300 18 T450 18 T600 18" stroke="#E5C185" stroke-width="1.2" opacity="0.55"/>
+      </svg>
+
+      <!-- COSECHA 02 -->
+      <article id="cosecha-02" class="cosecha" data-stage="02" data-kicker="Cosecha 02 · Lanzamiento" data-caption="Web + 6 publicaciones de inauguración en redes">
+        <span class="cosecha-num">02</span>
+        <span class="cosecha-label">Cosecha 02 · Pack Inauguración</span>
+        <h2>Web + 6 Posts para Instagram y Facebook</h2>
+        <p>
+          Cuando abrís o renovás tu local, la primera semana define todo. Entregamos tu página web junto con 6 placas diseñadas y sus textos listos para anunciar apertura, promos y ubicación con una imagen coherente.
+        </p>
+        <div class="cosecha-notes">
+          <div><span>Contenido inicial</span><strong>6 posts listos para publicar</strong></div>
+          <div><span>Estética</span><strong>Unificada con tu web y local</strong></div>
+          <div><span>Objetivo</span><strong>Traer consultas desde el día uno</strong></div>
+        </div>
+      </article>
+
+      <svg class="wine-divider" viewBox="0 0 600 36" fill="none" aria-hidden="true">
+        <path d="M0 18 Q75 4 150 18 T300 18 T450 18 T600 18" stroke="#E5C185" stroke-width="1.2" opacity="0.55"/>
+      </svg>
+
+      <!-- COSECHA 03 -->
+      <article id="cosecha-03" class="cosecha" data-stage="03" data-kicker="Cosecha 03 · Ingeniería Real" data-caption="Sistemas de gestión hechos para tu forma de trabajar">
+        <span class="cosecha-num">03</span>
+        <span class="cosecha-label">Cosecha 03 · Ingeniería &amp; Gestión</span>
+        <h2>Sistemas de Gestión a medida</h2>
+        <p>
+          Detrás del diseño hay ingeniería en sistemas real. Si necesitás controlar stock por estantería, caja diaria, pedidos por WhatsApp o agenda de clientes, construimos tu propia herramienta sin alquileres mensuales en dólares.
+        </p>
+        <div class="cosecha-notes">
+          <div><span>Módulos</span><strong>Stock, caja, pedidos y clientes</strong></div>
+          <div><span>Propiedad</span><strong>Sin licencias caras en dólares</strong></div>
+          <div><span>Soporte</span><strong>Cara a cara en San Rafael</strong></div>
+        </div>
+      </article>
+
+      <svg class="wine-divider" viewBox="0 0 600 36" fill="none" aria-hidden="true">
+        <path d="M0 18 Q75 32 150 18 T300 18 T450 18 T600 18" stroke="#E5C185" stroke-width="1.2" opacity="0.55"/>
+      </svg>
+
+      <!-- INTERACTIVE CATA DE PROTOTIPOS -->
+      <section id="cata" class="cata-box">
+        <span class="cosecha-label">Cata de Prototipos · Elegí tu rubro</span>
+        <h2>Probá qué incluiría tu muestra gratis</h2>
+        <div class="cata-tabs" role="tablist" aria-label="Rubros de cata">
+          <button type="button" class="cata-btn active" data-cata="bodega">Bodega / Turismo</button>
+          <button type="button" class="cata-btn" data-cata="gastro">Gastronomía</button>
+          <button type="button" class="cata-btn" data-cata="comercio">Comercio / Depósito</button>
+        </div>
+
+        <div class="cata-card" aria-live="polite">
+          <div class="cata-card-top">
+            <h3 id="cataTitle">Reserva Bodega &amp; Turismo</h3>
+            <span class="cata-price" id="cataPrice">Desde $100.000</span>
+          </div>
+          <p id="cataDesc">Ideal para fincas, vinotecas, cabañas y agencias del Atuel o Valle Grande que reciben turistas todo el año.</p>
+          <ul class="cata-bullets" id="cataBullets">
+            <li>Galería editorial y ficha de experiencias o vinos</li>
+            <li>Botón de reserva directa por WhatsApp sin comisiones</li>
+            <li>Mapa de cómo llegar y horarios actualizados</li>
+          </ul>
+          <a id="cataWaBtn" class="btn-outline-gold" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20emprendimiento%20de%20Bodega%20o%20Turismo." target="_blank" rel="noopener noreferrer">
+            Pedir prototipo de este rubro →
+          </a>
+        </div>
+      </section>
+
+      <!-- CONCIERGE -->
+      <section class="concierge">
+        <span class="cosecha-label">Contacto directo</span>
+        <h2>Te armamos tu muestra sin compromiso</h2>
+        <p>Escribinos por WhatsApp, contanos qué hace tu negocio en San Rafael y en pocos días ves cómo queda en tu celular.</p>
+        <a class="btn-champagne" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20coordinar%20un%20prototipo%20gratis%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
+          Hablar con José · +54 9 260 405-9284
+        </a>
+        <div class="concierge-links">
+          <span><strong>José Román Fredrin</strong></span>
+          <span>San Rafael, Mendoza</span>
+          <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const progressBar = document.getElementById('scrollProgress');
+      const malbecImg = document.getElementById('malbecImg');
+      const stageKicker = document.getElementById('stageKicker');
+      const stageCaption = document.getElementById('stageCaption');
+      const stagePill = document.getElementById('stagePill');
+      const cosechas = Array.from(document.querySelectorAll('.cosecha'));
+
+      function onScroll() {
+        const scrollTop = window.scrollY;
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const pct = Math.min(100, Math.max(0, (scrollTop / maxScroll) * 100));
+        progressBar.style.width = pct.toFixed(1) + '%';
+
+        const scale = 1.03 + (pct / 100) * 0.11;
+        malbecImg.style.transform = 'scale(' + scale.toFixed(3) + ')';
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              stageKicker.textContent = entry.target.dataset.kicker;
+              stageCaption.textContent = entry.target.dataset.caption;
+              stagePill.textContent = entry.target.dataset.stage + ' / 03';
+            }
+          });
+        },
+        { threshold: 0.45 }
+      );
+      cosechas.forEach((el) => observer.observe(el));
+
+      // Interactive Cata de Prototipos
+      const CATAS = {
+        bodega: {
+          title: 'Reserva Bodega & Turismo',
+          price: 'Desde $100.000',
+          desc: 'Ideal para fincas, vinotecas, cabañas y agencias del Atuel o Valle Grande que reciben turistas todo el año.',
+          bullets: [
+            'Galería editorial y ficha de experiencias o vinos',
+            'Botón de reserva directa por WhatsApp sin comisiones',
+            'Mapa de cómo llegar y horarios actualizados'
+          ],
+          wa: 'Hola José, quiero pedir un prototipo gratis para mi emprendimiento de Bodega o Turismo.'
+        },
+        gastro: {
+          title: 'Carta Viva Gastronomía',
+          price: 'Desde $100.000',
+          desc: 'Pensado para parrillas, restaurantes, cafeterías y heladerías que quieren mostrar su carta clara en el celular.',
+          bullets: [
+            'Carta filtrable por categorías y precios fáciles de actualizar',
+            'Reserva de mesa o pedido para retirar por WhatsApp',
+            'Opción de sumar 6 posts de lanzamiento para redes'
+          ],
+          wa: 'Hola José, quiero pedir un prototipo gratis para mi local gastronómico en San Rafael.'
+        },
+        comercio: {
+          title: 'Comercio, Autoservicio y Stock',
+          price: 'Web + Gestión',
+          desc: 'Para supermercados, ferreterías y depósitos que equipan su local y quieren vender online y ordenar su stock.',
+          bullets: [
+            'Catálogo con carrito directo a WhatsApp sin comisiones',
+            '6 placas de inauguración para Instagram y Facebook',
+            'Módulo opcional de stock por estantería y caja diaria'
+          ],
+          wa: 'Hola José, quiero pedir un prototipo gratis para mi comercio o depósito en San Rafael.'
+        }
+      };
+
+      const cataBtns = document.querySelectorAll('.cata-btn');
+      const cataTitle = document.getElementById('cataTitle');
+      const cataPrice = document.getElementById('cataPrice');
+      const cataDesc = document.getElementById('cataDesc');
+      const cataBullets = document.getElementById('cataBullets');
+      const cataWaBtn = document.getElementById('cataWaBtn');
+
+      cataBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const item = CATAS[btn.dataset.cata];
+          cataBtns.forEach((b) => b.classList.toggle('active', b === btn));
+          cataTitle.textContent = item.title;
+          cataPrice.textContent = item.price;
+          cataDesc.textContent = item.desc;
+          cataBullets.innerHTML = item.bullets.map((b) => '<li>' + b + '</li>').join('');
+          cataWaBtn.setAttribute(
+            'href',
+            'https://wa.me/5492604059284?text=' + encodeURIComponent(item.wa)
+          );
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

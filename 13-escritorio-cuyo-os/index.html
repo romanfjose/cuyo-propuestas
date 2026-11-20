@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CuyoOS v2.0 — Escritorio Interactivo de José Román | San Rafael</title>
+  <meta name="description" content="CuyoOS: escritorio interactivo de José Román Fredrin en San Rafael, Mendoza. Probá stock de estanterías, calculadora de combos, radio mendocina y WhatsApp directo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #F5F1E8;
+      --paper: #FFFDF8;
+      --ink: #1C1917;
+      --muted: #57534E;
+      --border: #1C1917;
+      --coral: #D95D39;
+      --sage: #2F6F5E;
+      --amber: #D99B26;
+      --shadow: 5px 5px 0 rgba(28, 25, 23, 0.52);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--ink);
+      background: #1B2028;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .desktop {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(180deg, rgba(16, 18, 26, 0.28) 0%, rgba(16, 18, 26, 0.14) 55%, rgba(16, 18, 26, 0.42) 100%),
+        url('../assets/andes-wallpaper.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Menu Bar */
+    .menubar {
+      height: 38px;
+      background: rgba(245, 241, 232, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      z-index: 200;
+      font-size: 0.82rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .menu-left, .menu-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .os-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.9rem;
+    }
+
+    .os-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--coral);
+      border: 1.5px solid var(--ink);
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .menu-btn:hover {
+      background: rgba(28, 25, 23, 0.08);
+    }
+
+    .clock-pill {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .wa-top-link {
+      background: var(--sage);
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 5px;
+      border: 1.5px solid var(--ink);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    /* Workspace area */
+    .workspace {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* Desktop Icons */
+    .desktop-icons {
+      position: absolute;
+      top: 18px;
+      left: 16px;
+      display: grid;
+      gap: 14px;
+      z-index: 10;
+    }
+
+    .desk-icon {
+      width: 92px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 6px;
+      border-radius: 8px;
+      transition: background-color 0.14s ease;
+    }
+
+    .desk-icon:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--cream);
+      border: 2px solid var(--ink);
+      box-shadow: 3px 3px 0 rgba(28, 25, 23, 0.55);
+      display: grid;
+      place-items: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+
+    .icon-box.c-coral { background: #FDE8E1; color: var(--coral); }
+    .icon-box.c-sage { background: #E3F2ED; color: var(--sage); }
+    .icon-box.c-amber { background: #FEF3C7; color: #92400E; }
+
+    .icon-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: rgba(28, 25, 23, 0.76);
+      padding: 2px 6px;
+      border-radius: 4px;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+
+    /* App Windows */
+    .win {
+      position: absolute;
+      background: var(--paper);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-width: 300px;
+      max-width: calc(100vw - 24px);
+      max-height: calc(100% - 92px);
+    }
+
+    .win.hidden {
+      display: none;
+    }
+
+    .win-bar {
+      height: 36px;
+      background: var(--cream);
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      cursor: grab;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .win-bar:active {
+      cursor: grabbing;
+    }
+
+    .win-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .win-controls {
+      display: flex;
+      gap: 6px;
+    }
+
+    .win-ctrl {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      border: 1.5px solid var(--ink);
+      background: #FFFFFF;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+    }
+
+    .win-ctrl.close:hover {
+      background: var(--coral);
+      color: #FFFFFF;
+    }
+
+    .win-ctrl.min:hover {
+      background: var(--amber);
+    }
+
+    .win-body {
+      padding: 16px;
+      overflow-y: auto;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    /* App specifics */
+    .btn-os {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 7px;
+      border: 2px solid var(--ink);
+      background: var(--coral);
+      color: #FFFFFF;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+
+    .btn-os:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--ink);
+    }
+
+    .btn-os.sage { background: var(--sage); }
+    .btn-os.cream { background: var(--cream); color: var(--ink); }
+
+    .txt-mono {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      background: var(--cream);
+      border: 1px solid #D6CFC2;
+      padding: 12px;
+      border-radius: 6px;
+      margin: 10px 0 14px;
+    }
+
+    /* Stock App */
+    .rack-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1.5px solid #D6CFC2;
+      border-radius: 7px;
+      margin-bottom: 8px;
+      background: #FFFFFF;
+    }
+
+    .rack-row.low {
+      border-color: var(--coral);
+      background: #FFF5F2;
+    }
+
+    .rack-meta strong {
+      display: block;
+      font-size: 0.85rem;
+    }
+
+    .rack-meta small {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .qty-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 5px;
+      border: 1.5px solid var(--ink);
+      background: var(--cream);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Calc App */
+    .calc-opt {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1.5px solid #D6CFC2;
+      border-radius: 7px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .calc-opt input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--coral);
+    }
+
+    .calc-total {
+      background: var(--ink);
+      color: var(--cream);
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin: 12px 0;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .calc-total strong {
+      font-size: 1.25rem;
+      color: #FBBF24;
+    }
+
+    /* Chat App */
+    .chat-bubble {
+      background: var(--cream);
+      border: 1.5px solid var(--ink);
+      border-radius: 10px 10px 10px 2px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .chip {
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1.5px solid var(--ink);
+      background: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .chip:hover {
+      background: var(--cream);
+    }
+
+    .chat-input {
+      width: 100%;
+      padding: 9px 11px;
+      border: 1.5px solid var(--ink);
+      border-radius: 7px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+
+    /* Radio App */
+    .radio-screen {
+      background: #1C1917;
+      color: #FDE68A;
+      border-radius: 8px;
+      padding: 14px;
+      font-family: 'IBM Plex Mono', monospace;
+      margin-bottom: 12px;
+    }
+
+    .eq-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      height: 36px;
+      margin-top: 10px;
+    }
+
+    .eq-bar {
+      flex: 1;
+      background: var(--coral);
+      height: 6px;
+      border-radius: 2px;
+      transition: height 0.18s ease;
+    }
+
+    /* Bottom Dock */
+    .dock-wrap {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 190;
+      max-width: calc(100vw - 16px);
+    }
+
+    .dock {
+      background: rgba(245, 241, 232, 0.94);
+      backdrop-filter: blur(8px);
+      border: 2px solid var(--ink);
+      border-radius: 14px;
+      padding: 6px 10px;
+      display: flex;
+      gap: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      overflow-x: auto;
+    }
+
+    .dock-item {
+      border: 1.5px solid var(--ink);
+      background: #FFFFFF;
+      border-radius: 9px;
+      padding: 7px 11px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      color: var(--ink);
+      position: relative;
+    }
+
+    .dock-item.open::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    @media (max-width: 767px) {
+      .desktop-icons {
+        display: none;
+      }
+      .menu-hide-sm {
+        display: none;
+      }
+      .win {
+        left: 12px !important;
+        top: 12px !important;
+        width: calc(100vw - 24px) !important;
+        max-height: calc(100% - 86px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="desktop">
+    <header class="menubar">
+      <div class="menu-left">
+        <span class="os-logo"><span class="os-dot"></span>CuyoOS v2.0</span>
+        <button type="button" class="menu-btn menu-hide-sm" id="tileAllBtn">Ordenar ventanas</button>
+        <button type="button" class="menu-btn menu-hide-sm" id="openWelcomeBtn">Acerca de José</button>
+      </div>
+      <div class="menu-right">
+        <span class="clock-pill" id="srClock">--:-- · San Rafael</span>
+        <a class="wa-top-link" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20estoy%20probando%20CuyoOS%20y%20quiero%20hablar%20sobre%20una%20web%20para%20mi%20negocio." target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </header>
+
+    <main class="workspace" id="workspace">
+      <!-- Desktop Icons -->
+      <div class="desktop-icons" aria-label="Accesos directos del escritorio">
+        <button type="button" class="desk-icon" data-open="win-welcome">
+          <span class="icon-box">TXT</span>
+          <span class="icon-label">Bienvenido.txt</span>
+        </button>
+        <button type="button" class="desk-icon" data-open="win-stock">
+          <span class="icon-box c-amber">STK</span>
+          <span class="icon-label">Estanterias_Stock.app</span>
+        </button>
+        <button type="button" class="desk-icon" data-open="win-calc">
+          <span class="icon-box c-coral">100K</span>
+          <span class="icon-label">Combo_100k.calc</span>
+        </button>
+        <button type="button" class="desk-icon" data-open="win-chat">
+          <span class="icon-box c-sage">WSP</span>
+          <span class="icon-label">WhatsApp_Jose.chat</span>
+        </button>
+        <button type="button" class="desk-icon" data-open="win-radio">
+          <span class="icon-box">FM</span>
+          <span class="icon-label">Radio_Mendoza.fm</span>
+        </button>
+      </div>
+
+      <!-- Window 1: Bienvenido.txt -->
+      <section class="win" id="win-welcome" style="left:130px; top:24px; width:400px; z-index:25;">
+        <div class="win-bar" data-drag="win-welcome">
+          <span class="win-title">Bienvenido.txt — San Rafael, MZA</span>
+          <div class="win-controls">
+            <button type="button" class="win-ctrl min" data-min="win-welcome" aria-label="Minimizar">_</button>
+            <button type="button" class="win-ctrl close" data-close="win-welcome" aria-label="Cerrar">×</button>
+          </div>
+        </div>
+        <div class="win-body">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.2rem;margin-bottom:8px;">Hola, bienvenido a CuyoOS.</h2>
+          <p>Soy <strong>José Román Fredrin</strong>, desarrollador en San Rafael, Mendoza. Este escritorio interactivo es una muestra real de lo que construimos cuando salimos de las plantillas aburridas.</p>
+          <div class="txt-mono">
+            • Prototipos reales GRATIS antes de pagar.<br />
+            • Web Producto desde $100.000 (pago único).<br />
+            • 6 meses con hasta 20 cambios/mes incluidos.<br />
+            • Ingeniería real: crecemos a stock y gestión.
+          </div>
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:12px;">Abrí cualquier app desde el dock de abajo o arrastrá las ventanas. Probá <strong>Radio_Mendoza.fm</strong> con sonido real.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button type="button" class="btn-os" data-open="win-calc">Abrir Combo_100k.calc</button>
+            <button type="button" class="btn-os cream" data-open="win-stock">Ver Stock</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Window 2: Estanterias_Stock.app -->
+      <section class="win" id="win-stock" style="left:555px; top:30px; width:410px; z-index:24;">
+        <div class="win-bar" data-drag="win-stock">
+          <span class="win-title">Estanterias_Stock.app — Depósito SR</span>
+          <div class="win-controls">
+            <button type="button" class="win-ctrl min" data-min="win-stock" aria-label="Minimizar">_</button>
+            <button type="button" class="win-ctrl close" data-close="win-stock" aria-label="Cerrar">×</button>
+          </div>
+        </div>
+        <div class="win-body">
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:10px;">Control en vivo por estantería. Tocá <strong>-</strong> o <strong>+</strong> para simular ventas y ver alertas de reposición:</p>
+          <div id="rackList"></div>
+          <a id="stockWaLink" class="btn-os sage" style="width:100%;margin-top:8px;" href="https://wa.me/5492604059284" target="_blank" rel="noopener">
+            Enviar alerta de reposición por WhatsApp
+          </a>
+        </div>
+      </section>
+
+      <!-- Window 3: Combo_100k.calc -->
+      <section class="win hidden" id="win-calc" style="left:210px; top:76px; width:390px; z-index:23;">
+        <div class="win-bar" data-drag="win-calc">
+          <span class="win-title">Combo_100k.calc — Armá tu Pack</span>
+          <div class="win-controls">
+            <button type="button" class="win-ctrl min" data-min="win-calc" aria-label="Minimizar">_</button>
+            <button type="button" class="win-ctrl close" data-close="win-calc" aria-label="Cerrar">×</button>
+          </div>
+        </div>
+        <div class="win-body">
+          <label class="calc-opt">
+            <span><strong>Web Producto Base</strong><br /><small style="color:var(--muted);">Online + WhatsApp + 6 meses cambios</small></span>
+            <span style="display:flex;align-items:center;gap:8px;font-weight:700;">$100.000 <input type="checkbox" checked disabled data-val="100000" data-name="Web Producto" /></span>
+          </label>
+          <label class="calc-opt">
+            <span><strong>Pack 6 Posts Inauguración</strong><br /><small style="color:var(--muted);">Instagram + Facebook listos</small></span>
+            <span style="display:flex;align-items:center;gap:8px;font-weight:700;">+$45.000 <input type="checkbox" class="calc-check" data-val="45000" data-name="6 Posts Inauguración" /></span>
+          </label>
+          <label class="calc-opt">
+            <span><strong>Catálogo + Pedido WhatsApp</strong><br /><small style="color:var(--muted);">Ideal ferreterías y mayoristas</small></span>
+            <span style="display:flex;align-items:center;gap:8px;font-weight:700;">+$60.000 <input type="checkbox" class="calc-check" data-val="60000" data-name="Catálogo Mayorista" /></span>
+          </label>
+          <label class="calc-opt">
+            <span><strong>Módulo Stock por Estantería</strong><br /><small style="color:var(--muted);">Panel operativo a medida</small></span>
+            <span style="display:flex;align-items:center;gap:8px;font-weight:700;">+$90.000 <input type="checkbox" class="calc-check" data-val="90000" data-name="Módulo Stock" /></span>
+          </label>
+
+          <div class="calc-total">
+            <span>INVERSIÓN ÚNICA</span>
+            <strong id="calcTotalVal">$100.000</strong>
+          </div>
+          <a id="calcWaBtn" class="btn-os" style="width:100%;" href="https://wa.me/5492604059284" target="_blank" rel="noopener">
+            Pedir prototipos gratis con este combo
+          </a>
+        </div>
+      </section>
+
+      <!-- Window 4: WhatsApp_Jose.chat -->
+      <section class="win hidden" id="win-chat" style="left:360px; top:110px; width:360px; z-index:22;">
+        <div class="win-bar" data-drag="win-chat">
+          <span class="win-title">WhatsApp_Jose.chat — En línea</span>
+          <div class="win-controls">
+            <button type="button" class="win-ctrl min" data-min="win-chat" aria-label="Minimizar">_</button>
+            <button type="button" class="win-ctrl close" data-close="win-chat" aria-label="Cerrar">×</button>
+          </div>
+        </div>
+        <div class="win-body">
+          <div class="chat-bubble">
+            <strong>José Román Fredrin</strong><br />
+            ¡Hola! Contame de qué es tu negocio en San Rafael y te mando 3 prototipos gratis para que elijas sin compromiso.
+          </div>
+          <div class="chip-row" id="chatChips">
+            <button type="button" class="chip" data-msg="Hola José, quiero ver 3 prototipos gratis para mi comercio en San Rafael.">3 prototipos gratis</button>
+            <button type="button" class="chip" data-msg="Hola José, me interesa el Pack Inauguración (Web + 6 Posts).">Web + 6 Posts</button>
+            <button type="button" class="chip" data-msg="Hola José, necesito un sistema de stock y catálogo para mi negocio.">Stock / Gestión</button>
+          </div>
+          <input id="chatText" class="chat-input" type="text" placeholder="Escribí tu mensaje acá..." value="Hola José, vi CuyoOS y quiero pedir prototipos gratis para mi negocio." />
+          <a id="chatSendBtn" class="btn-os sage" style="width:100%;" href="https://wa.me/5492604059284" target="_blank" rel="noopener">
+            Abrir en WhatsApp (+54 9 260 405-9284)
+          </a>
+          <p style="font-size:0.75rem;color:var(--muted);margin-top:8px;text-align:center;">Email: <a href="mailto:romanfjose@gmail.com" style="color:var(--ink);font-weight:600;">romanfjose@gmail.com</a></p>
+        </div>
+      </section>
+
+      <!-- Window 5: Radio_Mendoza.fm -->
+      <section class="win hidden" id="win-radio" style="left:590px; top:275px; width:340px; z-index:21;">
+        <div class="win-bar" data-drag="win-radio">
+          <span class="win-title">Radio_Mendoza.fm — Synth</span>
+          <div class="win-controls">
+            <button type="button" class="win-ctrl min" data-min="win-radio" aria-label="Minimizar">_</button>
+            <button type="button" class="win-ctrl close" data-close="win-radio" aria-label="Cerrar">×</button>
+          </div>
+        </div>
+        <div class="win-body">
+          <div class="radio-screen">
+            <div style="display:flex;justify-content:space-between;font-size:0.74rem;opacity:0.8;">
+              <span>FM 98.7 · SAN RAFAEL</span>
+              <span id="radioStatus">PAUSA</span>
+            </div>
+            <div id="radioTrack" style="font-size:0.9rem;font-weight:600;margin-top:4px;">Atardecer en los Andes (Ambient)</div>
+            <div class="eq-bars" id="eqBars">
+              <span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span>
+              <span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span>
+              <span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:10px;">
+            <button type="button" id="radioPlayBtn" class="btn-os" style="flex:1;">▶ Reproducir</button>
+            <button type="button" id="radioModeBtn" class="btn-os cream">Cambiar clima</button>
+          </div>
+          <label style="display:flex;align-items:center;gap:10px;font-size:0.78rem;font-weight:600;">
+            Volumen
+            <input id="radioVol" type="range" min="0.02" max="0.25" step="0.01" value="0.10" style="flex:1;accent-color:var(--coral);" />
+          </label>
+        </div>
+      </section>
+
+      <!-- Bottom Dock -->
+      <div class="dock-wrap">
+        <nav class="dock" aria-label="Barra de aplicaciones CuyoOS">
+          <button type="button" class="dock-item open" data-open="win-welcome">Bienvenido.txt</button>
+          <button type="button" class="dock-item open" data-open="win-stock">Stock.app</button>
+          <button type="button" class="dock-item" data-open="win-calc">Combo_100k</button>
+          <button type="button" class="dock-item" data-open="win-chat">WhatsApp</button>
+          <button type="button" class="dock-item" data-open="win-radio">Radio.fm</button>
+        </nav>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      let topZ = 30;
+      const windows = document.querySelectorAll('.win');
+      const dockItems = document.querySelectorAll('.dock-item');
+
+      function updateClock() {
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        document.getElementById('srClock').textContent = hh + ':' + mm + ' · San Rafael';
+      }
+      updateClock();
+      setInterval(updateClock, 15000);
+
+      function syncDock() {
+        dockItems.forEach(function (item) {
+          const id = item.getAttribute('data-open');
+          const el = document.getElementById(id);
+          if (el && !el.classList.contains('hidden')) {
+            item.classList.add('open');
+          } else {
+            item.classList.remove('open');
+          }
+        });
+      }
+
+      function focusWindow(win) {
+        topZ += 1;
+        win.style.zIndex = String(topZ);
+      }
+
+      function openWindow(id) {
+        const win = document.getElementById(id);
+        if (!win) return;
+        if (window.innerWidth < 768) {
+          windows.forEach(function (w) { w.classList.add('hidden'); });
+        }
+        win.classList.remove('hidden');
+        focusWindow(win);
+        syncDock();
+      }
+
+      document.querySelectorAll('[data-open]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openWindow(btn.getAttribute('data-open'));
+        });
+      });
+
+      document.querySelectorAll('[data-close], [data-min]').forEach(function (btn) {
+        btn.addEventListener('click', function (ev) {
+          ev.stopPropagation();
+          const id = btn.getAttribute('data-close') || btn.getAttribute('data-min');
+          const win = document.getElementById(id);
+          if (win) win.classList.add('hidden');
+          syncDock();
+        });
+      });
+
+      windows.forEach(function (win) {
+        win.addEventListener('mousedown', function () { focusWindow(win); });
+      });
+
+      // Dragging for desktop
+      let activeDrag = null;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      document.querySelectorAll('.win-bar').forEach(function (bar) {
+        bar.addEventListener('mousedown', function (ev) {
+          if (window.innerWidth < 768) return;
+          if (ev.target.closest('.win-ctrl')) return;
+          const id = bar.getAttribute('data-drag');
+          const win = document.getElementById(id);
+          if (!win) return;
+          focusWindow(win);
+          activeDrag = win;
+          const rect = win.getBoundingClientRect();
+          offsetX = ev.clientX - rect.left;
+          offsetY = ev.clientY - rect.top;
+        });
+      });
+
+      document.addEventListener('mousemove', function (ev) {
+        if (!activeDrag) return;
+        const ws = document.getElementById('workspace').getBoundingClientRect();
+        let nextLeft = ev.clientX - ws.left - offsetX;
+        let nextTop = ev.clientY - ws.top - offsetY;
+        nextLeft = Math.max(0, Math.min(nextLeft, ws.width - 140));
+        nextTop = Math.max(0, Math.min(nextTop, ws.height - 80));
+        activeDrag.style.left = nextLeft + 'px';
+        activeDrag.style.top = nextTop + 'px';
+      });
+
+      document.addEventListener('mouseup', function () {
+        activeDrag = null;
+      });
+
+      document.getElementById('tileAllBtn').addEventListener('click', function () {
+        const positions = [
+          { id: 'win-welcome', left: 130, top: 20 },
+          { id: 'win-stock', left: 550, top: 20 },
+          { id: 'win-calc', left: 160, top: 250 },
+          { id: 'win-radio', left: 580, top: 270 }
+        ];
+        positions.forEach(function (p) {
+          const el = document.getElementById(p.id);
+          if (el) {
+            el.classList.remove('hidden');
+            el.style.left = p.left + 'px';
+            el.style.top = p.top + 'px';
+            focusWindow(el);
+          }
+        });
+        syncDock();
+      });
+
+      document.getElementById('openWelcomeBtn').addEventListener('click', function () {
+        openWindow('win-welcome');
+      });
+
+      // App 2: Stock
+      const racks = [
+        { code: 'GÓNDOLA A1', name: 'Aceite Girasol 1.5L (Pack)', qty: 6, min: 5 },
+        { code: 'RACK B2', name: 'Estantería Metálica 90x40', qty: 2, min: 3 },
+        { code: 'DEPÓSITO C3', name: 'Yerba Mate 1kg Tradicional', qty: 11, min: 6 },
+        { code: 'PUNTERA D1', name: 'Vino Malbec San Rafael x6', qty: 4, min: 4 }
+      ];
+
+      function renderRacks() {
+        const container = document.getElementById('rackList');
+        const lows = [];
+        container.innerHTML = racks.map(function (r, idx) {
+          const isLow = r.qty <= r.min;
+          if (isLow) lows.push(r.code + ' ' + r.name + ' (quedan ' + r.qty + ')');
+          return (
+            '<div class="rack-row ' + (isLow ? 'low' : '') + '">' +
+              '<div class="rack-meta">' +
+                '<strong>' + r.name + '</strong>' +
+                '<small>' + r.code + (isLow ? ' · REPONER' : ' · OK') + '</small>' +
+              '</div>' +
+              '<div class="qty-box">' +
+                '<button type="button" class="qty-btn" data-ridx="' + idx + '" data-delta="-1">−</button>' +
+                '<strong style="min-width:22px;text-align:center;">' + r.qty + '</strong>' +
+                '<button type="button" class="qty-btn" data-ridx="' + idx + '" data-delta="1">+</button>' +
+              '</div>' +
+            '</div>'
+          );
+        }).join('');
+
+        const msg = lows.length
+          ? 'Hola José, probé Estanterias_Stock.app en CuyoOS (alertas: ' + lows.join(', ') + '). Quiero algo así para mi depósito.'
+          : 'Hola José, probé Estanterias_Stock.app en CuyoOS y quiero un sistema de stock para mi negocio.';
+        document.getElementById('stockWaLink').href = 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg);
+      }
+
+      document.getElementById('rackList').addEventListener('click', function (ev) {
+        const btn = ev.target.closest('.qty-btn');
+        if (!btn) return;
+        const idx = Number(btn.getAttribute('data-ridx'));
+        const delta = Number(btn.getAttribute('data-delta'));
+        racks[idx].qty = Math.max(0, racks[idx].qty + delta);
+        renderRacks();
+      });
+      renderRacks();
+
+      // App 3: Calc
+      function updateCalc() {
+        let total = 100000;
+        const names = ['Web Producto'];
+        document.querySelectorAll('.calc-check').forEach(function (chk) {
+          if (chk.checked) {
+            total += Number(chk.getAttribute('data-val'));
+            names.push(chk.getAttribute('data-name'));
+          }
+        });
+        document.getElementById('calcTotalVal').textContent = '$' + total.toLocaleString('es-AR');
+        const msg = 'Hola José, armé este combo en CuyoOS: ' + names.join(' + ') + ' (Total estimado: $' + total.toLocaleString('es-AR') + '). Quiero ver prototipos gratis.';
+        document.getElementById('calcWaBtn').href = 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg);
+      }
+      document.querySelectorAll('.calc-check').forEach(function (chk) {
+        chk.addEventListener('change', updateCalc);
+      });
+      updateCalc();
+
+      // App 4: Chat
+      const chatText = document.getElementById('chatText');
+      const chatSendBtn = document.getElementById('chatSendBtn');
+      function updateChatHref() {
+        const val = chatText.value.trim() || 'Hola José, te escribo desde CuyoOS.';
+        chatSendBtn.href = 'https://wa.me/5492604059284?text=' + encodeURIComponent(val);
+      }
+      chatText.addEventListener('input', updateChatHref);
+      document.querySelectorAll('#chatChips .chip').forEach(function (c) {
+        c.addEventListener('click', function () {
+          chatText.value = c.getAttribute('data-msg');
+          updateChatHref();
+        });
+      });
+      updateChatHref();
+
+      // App 5: Web Audio Ambient Chord Synth
+      let audioCtx = null;
+      let masterGain = null;
+      let isPlaying = false;
+      let chordTimer = null;
+      let eqTimer = null;
+      let chordIdx = 0;
+      let modeIdx = 0;
+
+      const MODES = [
+        {
+          title: 'Atardecer en los Andes (Ambient)',
+          chords: [
+            [261.63, 329.63, 392.00, 493.88],
+            [220.00, 261.63, 329.63, 392.00],
+            [174.61, 220.00, 261.63, 329.63],
+            [196.00, 246.94, 293.66, 392.00]
+          ]
+        },
+        {
+          title: 'Brisa de Bodega (Warm Pad)',
+          chords: [
+            [293.66, 369.99, 440.00, 554.37],
+            [246.94, 293.66, 369.99, 440.00],
+            [196.00, 246.94, 293.66, 369.99],
+            [220.00, 277.18, 329.63, 440.00]
+          ]
+        }
+      ];
+
+      function playChord() {
+        if (!audioCtx || !masterGain || !isPlaying) return;
+        const freqs = MODES[modeIdx].chords[chordIdx % MODES[modeIdx].chords.length];
+        chordIdx += 1;
+        const now = audioCtx.currentTime;
+        freqs.forEach(function (f) {
+          const osc = audioCtx.createOscillator();
+          const filt = audioCtx.createBiquadFilter();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, now);
+          filt.type = 'lowpass';
+          filt.frequency.setValueAtTime(680, now);
+          gain.gain.setValueAtTime(0.0001, now);
+          gain.gain.linearRampToValueAtTime(0.22, now + 0.9);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.6);
+          osc.connect(filt);
+          filt.connect(gain);
+          gain.connect(masterGain);
+          osc.start(now);
+          osc.stop(now + 3.7);
+        });
+      }
+
+      const eqBars = document.querySelectorAll('#eqBars .eq-bar');
+      function startRadio() {
+        const AudioCtor = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtor) return;
+        if (!audioCtx) {
+          audioCtx = new AudioCtor();
+          masterGain = audioCtx.createGain();
+          masterGain.gain.value = Number(document.getElementById('radioVol').value);
+          masterGain.connect(audioCtx.destination);
+        }
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        isPlaying = true;
+        document.getElementById('radioPlayBtn').textContent = '⏸ Pausar';
+        document.getElementById('radioStatus').textContent = 'AL AIRE';
+        playChord();
+        chordTimer = setInterval(playChord, 3400);
+        eqTimer = setInterval(function () {
+          eqBars.forEach(function (b) {
+            b.style.height = (6 + Math.floor(Math.random() * 28)) + 'px';
+          });
+        }, 220);
+      }
+
+      function stopRadio() {
+        isPlaying = false;
+        clearInterval(chordTimer);
+        clearInterval(eqTimer);
+        document.getElementById('radioPlayBtn').textContent = '▶ Reproducir';
+        document.getElementById('radioStatus').textContent = 'PAUSA';
+        eqBars.forEach(function (b) { b.style.height = '6px'; });
+      }
+
+      document.getElementById('radioPlayBtn').addEventListener('click', function () {
+        if (isPlaying) stopRadio();
+        else startRadio();
+      });
+
+      document.getElementById('radioModeBtn').addEventListener('click', function () {
+        modeIdx = (modeIdx + 1) % MODES.length;
+        document.getElementById('radioTrack').textContent = MODES[modeIdx].title;
+        if (isPlaying) playChord();
+      });
+
+      document.getElementById('radioVol').addEventListener('input', function (ev) {
+        if (masterGain) masterGain.gain.value = Number(ev.target.value);
+      });
+
+      if (window.innerWidth < 768) {
+        windows.forEach(function (w) { w.classList.add('hidden'); });
+        document.getElementById('win-welcome').classList.remove('hidden');
+      }
+      syncDock();
+    })();
+  </script>
+</body>
+</html>

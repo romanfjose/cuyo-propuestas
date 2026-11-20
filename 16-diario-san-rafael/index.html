@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Heraldo Digital de San Rafael — Edición Especial Web & Comercio</title>
+  <meta name="description" content="Edición impresa digital de San Rafael, Mendoza. Descubrí cómo comercios locales estrenan web en días con prototipos gratis y recortá tu cupón." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #F4EFE6;
+      --paper-card: #FAF6EE;
+      --ink: #171513;
+      --ink-soft: #433E38;
+      --crimson: #8B1E1E;
+      --rule: #2A2622;
+      --rule-light: #C8BFB0;
+      --max-w: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .sheet {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 20px 20px 64px;
+    }
+
+    /* Masthead */
+    .masthead {
+      text-align: center;
+      padding-bottom: 14px;
+      border-bottom: 3px double var(--rule);
+      margin-bottom: 24px;
+    }
+
+    .mast-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 14px;
+    }
+
+    .mast-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.1rem, 6.2vw, 4.35rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+      margin-bottom: 8px;
+    }
+
+    .mast-sub {
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      margin-bottom: 12px;
+    }
+
+    .mast-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-top: 1px solid var(--rule);
+      padding-top: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .mast-meta a {
+      color: var(--crimson);
+      text-decoration: underline;
+    }
+
+    /* Broadsheet Grid */
+    .front-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .lead-story {
+      border-bottom: 1px solid var(--rule-light);
+      padding-bottom: 24px;
+    }
+
+    .kicker {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--crimson);
+      margin-bottom: 8px;
+    }
+
+    .lead-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.85rem, 4.2vw, 2.95rem);
+      font-weight: 800;
+      line-height: 1.08;
+      margin-bottom: 12px;
+    }
+
+    .lead-deck {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    .engraving-frame {
+      border: 1px solid var(--rule);
+      padding: 6px;
+      background: var(--paper-card);
+      margin-bottom: 18px;
+    }
+
+    .engraving-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: contrast(1.04) sepia(0.1);
+    }
+
+    .engraving-caption {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.73rem;
+      color: var(--ink-soft);
+      padding: 8px 4px 2px;
+      border-top: 1px solid var(--rule-light);
+      margin-top: 6px;
+    }
+
+    .byline {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+      color: var(--ink-soft);
+    }
+
+    .article-cols {
+      display: grid;
+      gap: 18px;
+      font-size: 0.94rem;
+    }
+
+    .dropcap::first-letter {
+      float: left;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3.7rem;
+      line-height: 0.82;
+      font-weight: 900;
+      padding: 4px 10px 0 0;
+      color: var(--crimson);
+    }
+
+    .pull-quote {
+      margin: 16px 0;
+      padding: 14px 16px;
+      border-top: 2px solid var(--rule);
+      border-bottom: 2px solid var(--rule);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.18rem;
+      line-height: 1.35;
+      color: var(--crimson);
+      text-align: center;
+    }
+
+    /* Clasificados Sidebar */
+    .classifieds {
+      background: var(--paper-card);
+      border: 1px solid var(--rule);
+      padding: 18px;
+    }
+
+    .class-head {
+      text-align: center;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--rule);
+      margin-bottom: 14px;
+    }
+
+    .ad-box {
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--rule);
+    }
+
+    .ad-box:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .ad-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 4px;
+    }
+
+    .ad-price {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .ad-copy {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .ad-cta {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--ink);
+      border-bottom: 1.5px solid var(--crimson);
+    }
+
+    /* Cutout Coupon */
+    .coupon-section {
+      margin-top: 32px;
+      position: relative;
+    }
+
+    .scissors-line {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+
+    .coupon-box {
+      position: relative;
+      background: var(--paper-card);
+      border: 2.5px dashed var(--rule);
+      padding: 26px 24px;
+      display: grid;
+      gap: 20px;
+      overflow: hidden;
+    }
+
+    .coupon-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.5rem, 3.2vw, 2.15rem);
+      font-weight: 900;
+      line-height: 1.12;
+      margin-bottom: 6px;
+    }
+
+    .coupon-sub {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .coupon-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field-label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .ink-input {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1.5px solid var(--rule);
+      background: #FFFFFF;
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+
+    .btn-press {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border: 2px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+    }
+
+    .btn-press:hover {
+      background: var(--crimson);
+      border-color: var(--crimson);
+    }
+
+    .btn-crimson {
+      background: var(--crimson);
+      border-color: var(--crimson);
+      color: #FFFFFF;
+    }
+
+    /* Animated Red Rubber Stamp */
+    .stamp {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      border: 4px solid var(--crimson);
+      color: var(--crimson);
+      padding: 8px 14px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transform: rotate(-9deg) scale(1.7);
+      opacity: 0;
+      pointer-events: none;
+      background: rgba(250, 246, 238, 0.9);
+      transition: transform 0.24s cubic-bezier(0.2, 0.9, 0.3, 1.15), opacity 0.2s ease;
+    }
+
+    .stamp.stamped {
+      opacity: 0.92;
+      transform: rotate(-9deg) scale(1);
+    }
+
+    .stamp strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .stamp small {
+      font-size: 0.68rem;
+    }
+
+    .coupon-result {
+      display: none;
+      margin-top: 8px;
+      padding: 14px;
+      border: 1.5px solid var(--crimson);
+      background: #FDF4F2;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+    }
+
+    .coupon-result.show {
+      display: block;
+    }
+
+    footer {
+      margin-top: 38px;
+      padding-top: 16px;
+      border-top: 3px double var(--rule);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--ink-soft);
+    }
+
+    @media (min-width: 820px) {
+      .front-grid {
+        grid-template-columns: 1.85fr 1fr;
+        align-items: start;
+      }
+      .lead-story {
+        border-bottom: none;
+        border-right: 1px solid var(--rule-light);
+        padding-right: 26px;
+        padding-bottom: 0;
+      }
+      .article-cols {
+        grid-template-columns: 1fr 1fr;
+      }
+      .coupon-box {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="masthead">
+      <div class="mast-top">
+        <span>AÑO I — N° 01 — SAN RAFAEL, MENDOZA</span>
+        <span id="editionDate">EDICIÓN ESPECIAL DE COMERCIO</span>
+        <span>PROTOTIPOS SIN CARGO</span>
+      </div>
+      <h1 class="mast-title">EL HERALDO DIGITAL DE SAN RAFAEL</h1>
+      <p class="mast-sub">Crónica de comercio local, ingeniería web y herramientas reales para negocios mendocinos</p>
+      <div class="mast-meta">
+        <span>Director Técnico: José Román Fredrin</span>
+        <span>Consultas directas: <a href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20le%C3%AD%20El%20Heraldo%20Digital%20de%20San%20Rafael%20y%20quiero%20consultar%20por%20mi%20negocio." target="_blank" rel="noopener">+54 9 260 405-9284</a> · <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a></span>
+      </div>
+    </header>
+
+    <main>
+      <div class="front-grid">
+        <article class="lead-story">
+          <div class="kicker">Actualidad Comercial · San Rafael</div>
+          <h2 class="lead-headline">Comercios locales estrenan web profesional en días y sin pagar abonos eternos</h2>
+          <p class="lead-deck">Con un sistema de prototipos gratuitos antes de contratar, dueños de autoservicios, ferreterías y locales de San Rafael ya ven su página funcionando en el celular antes de invertir un peso.</p>
+
+          <figure class="engraving-frame">
+            <img src="../assets/san-rafael-diario.jpg" alt="Ilustración clásica de comercios y avenidas de San Rafael, Mendoza" />
+            <figcaption class="engraving-caption">ILUSTRACIÓN DE PORTADA — El pulso comercial de San Rafael se renueva combinando atención presencial con presencia digital clara.</figcaption>
+          </figure>
+
+          <div class="byline">Por Redacción Comercial · San Rafael, Mendoza</div>
+
+          <div class="article-cols">
+            <div>
+              <p class="dropcap">Durante años, tener una buena página web en el sur mendocino significó elegir entre dos extremos incómodos: pagar presupuestos de agencia difíciles de sostener mes a mes, o conformarse con plantillas genéricas que no reflejan la calidad real del local.</p>
+              <p style="margin-top:12px;">Frente a ese escenario, <strong>José Román Fredrin</strong> lanzó un formato pensado como producto cerrado: primero se muestran prototipos reales adaptados al rubro del comerciante —totalmente gratis— y recién si convencen se avanza con la publicación conectada a WhatsApp.</p>
+            </div>
+            <div>
+              <p>El paquete base arranca en <strong>$100.000 pago único</strong> e incluye los primeros seis meses con hasta veinte cambios mensuales sin cargo, ideal para actualizar precios, fotos de estanterías y ofertas de temporada.</p>
+              <blockquote class="pull-quote">“Primero lo ves funcionando en tu teléfono. Si no te convence, nos damos la mano y no pagás nada.”</blockquote>
+              <p>Además, al estar respaldado por desarrollo de software real, cualquier comercio puede escalar mañana hacia catálogos mayoristas, control de stock o sistemas internos de gestión sobre la misma base.</p>
+            </div>
+          </div>
+        </article>
+
+        <aside class="classifieds" aria-label="Clasificados de servicios">
+          <h2 class="class-head">Clasificados</h2>
+
+          <div class="ad-box">
+            <div class="ad-title">01 · Web Producto</div>
+            <div class="ad-price">$100.000 (Pago Único)</div>
+            <p class="ad-copy">Web veloz para celular, mapa de Google, botón a WhatsApp y 6 meses con hasta 20 cambios/mes incluidos. Mes 7 a 24 sin ataduras.</p>
+            <a class="ad-cta" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20el%20clasificado%20de%20Web%20Producto%20(%24100.000)%20en%20El%20Heraldo." target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+          </div>
+
+          <div class="ad-box">
+            <div class="ad-title">02 · Pack Inauguración</div>
+            <div class="ad-price">Web + 6 Posts Redes</div>
+            <p class="ad-copy">Ideal si abrís o renovás tu local con nuevas estanterías. Salís al aire con tu página web + 6 publicaciones listas para Instagram y Facebook.</p>
+            <a class="ad-cta" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20interesa%20el%20Pack%20Inauguraci%C3%B3n%20Web%20%2B%206%20Posts." target="_blank" rel="noopener">Pedir muestra →</a>
+          </div>
+
+          <div class="ad-box">
+            <div class="ad-title">03 · Gestión y Depósito</div>
+            <div class="ad-price">Sistemas a Medida</div>
+            <p class="ad-copy">Catálogos mayoristas con pedido por WhatsApp, control de stock por estantería y herramientas internas para distribuidoras y corralones.</p>
+            <a class="ad-cta" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20consultar%20por%20un%20sistema%20de%20gesti%C3%B3n%20o%20cat%C3%A1logo%20a%20medida." target="_blank" rel="noopener">Solicitar reunión →</a>
+          </div>
+
+          <div class="ad-box">
+            <div class="ad-title">Contacto Directo</div>
+            <p class="ad-copy"><strong>José Román Fredrin</strong><br />WhatsApp: +54 9 260 405-9284<br />Email: romanfjose@gmail.com<br />San Rafael, Mendoza.</p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Interactive Cutout Coupon -->
+      <section class="coupon-section" aria-label="Cupón recortable para 3 prototipos gratis">
+        <div class="scissors-line">✂ RECORTAR POR LA LÍNEA DE PUNTOS · VÁLIDO EN SAN RAFAEL Y CUYO</div>
+        <div class="coupon-box">
+          <div class="stamp" id="rubberStamp" aria-hidden="true">
+            <strong>APROBADO</strong>
+            <small>SIN CARGO · SAN RAFAEL</small>
+          </div>
+
+          <div>
+            <div class="kicker">Cupón Recortable · Sin Compromiso</div>
+            <h2 class="coupon-title">Pedí 3 Prototipos Gratis para Tu Negocio</h2>
+            <p class="coupon-sub">Completá el nombre de tu comercio y tocá <strong>"Sellar Cupón"</strong>. Te enviamos 3 propuestas reales funcionando para que elijas con total libertad.</p>
+            <div id="couponResult" class="coupon-result" aria-live="polite"></div>
+          </div>
+
+          <form class="coupon-form" id="couponForm">
+            <div>
+              <label class="field-label" for="bizName">Nombre de tu negocio</label>
+              <input id="bizName" class="ink-input" type="text" placeholder="Ej: Ferretería del Sur / Autoservicio Mitre" required />
+            </div>
+            <div>
+              <label class="field-label" for="bizRubro">Rubro o actividad</label>
+              <input id="bizRubro" class="ink-input" type="text" placeholder="Ej: Autoservicio, Corralón, Parrilla, Bodega..." />
+            </div>
+            <button type="submit" class="btn-press">Sellar Cupón Ahora</button>
+            <a id="redeemWaBtn" class="btn-press btn-crimson" style="display:none;" href="https://wa.me/5492604059284" target="_blank" rel="noopener">
+              Canjear Cupón por WhatsApp →
+            </a>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>EL HERALDO DIGITAL DE SAN RAFAEL · Editado por José Román Fredrin</span>
+      <span>San Rafael, Mendoza · +54 9 260 405-9284 · romanfjose@gmail.com</span>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const months = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+      const d = new Date();
+      document.getElementById('editionDate').textContent =
+        d.getDate() + ' DE ' + months[d.getMonth()] + ' DE ' + d.getFullYear();
+
+      const form = document.getElementById('couponForm');
+      const bizNameInput = document.getElementById('bizName');
+      const bizRubroInput = document.getElementById('bizRubro');
+      const rubberStamp = document.getElementById('rubberStamp');
+      const couponResult = document.getElementById('couponResult');
+      const redeemWaBtn = document.getElementById('redeemWaBtn');
+
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        const biz = bizNameInput.value.trim();
+        if (!biz) return;
+        const rubro = bizRubroInput.value.trim() || 'Comercio local';
+
+        rubberStamp.classList.remove('stamped');
+        void rubberStamp.offsetWidth;
+        rubberStamp.classList.add('stamped');
+
+        const code = 'HERALDO-' + String(Math.floor(100 + Math.random() * 900));
+        couponResult.innerHTML =
+          '<strong>CUPÓN SELLADO (' + code + ')</strong><br />' +
+          'Titular: ' + biz + ' (' + rubro + ')<br />' +
+          'Beneficio: 3 prototipos web reales sin cargo. Tocá el botón rojo para canjearlo por WhatsApp.';
+        couponResult.classList.add('show');
+
+        const msg =
+          'Hola José! Sellé el cupón (' + code + ') en El Heraldo Digital de San Rafael. ' +
+          'Mi negocio es "' + biz + '" (Rubro: ' + rubro + '). Quiero pedir mis 3 prototipos gratis.';
+        redeemWaBtn.href = 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg);
+        redeemWaBtn.style.display = 'inline-flex';
+      });
+    })();
+  </script>
+</body>
+</html>

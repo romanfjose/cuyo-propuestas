@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Depósito &amp; Estanterías 3D · Arquitectura Comercial + Gestión</title>
+  <meta name="description" content="Equipá tu local con estanterías industriales y conectalo con tu web y sistema de stock por pasillo en San Rafael, Mendoza." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bp: #0B1220;
+      --bp-panel: #101A2E;
+      --bp-card: #132038;
+      --grid-line: rgba(148, 163, 184, 0.1);
+      --border: rgba(148, 163, 184, 0.22);
+      --amber: #F59E0B;
+      --amber-deep: #D97706;
+      --amber-soft: rgba(245, 158, 11, 0.14);
+      --ink: #F8FAFC;
+      --muted: #94A3B8;
+      --green: #34D399;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bp);
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 36px 36px;
+      color: var(--ink);
+      line-height: 1.52;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .bp-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 18, 32, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .brand-box {
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid var(--amber);
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      color: var(--amber);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 0.98rem;
+      line-height: 1.1;
+    }
+
+    .brand span {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav-links a:hover {
+      color: var(--amber);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+
+    .btn-amber {
+      background: var(--amber);
+      color: #0B1220;
+    }
+
+    .btn-amber:hover {
+      background: #FBBF24;
+      transform: translateY(-1px);
+    }
+
+    .btn-wire {
+      background: rgba(16, 26, 46, 0.72);
+      color: var(--ink);
+      border-color: var(--border);
+    }
+
+    .btn-wire:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    /* Full-Bleed Architectural Hero */
+    .arch-hero {
+      position: relative;
+      min-height: 76vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 56px 0 44px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      background-image: url('../assets/estanterias-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: contrast(1.06) brightness(0.72);
+      z-index: 0;
+    }
+
+    .hero-blueprint-tint {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(11, 18, 32, 0.52) 0%, rgba(11, 18, 32, 0.45) 38%, rgba(11, 18, 32, 0.96) 100%),
+        linear-gradient(90deg, rgba(11, 18, 32, 0.84) 0%, rgba(11, 18, 32, 0.35) 60%, rgba(11, 18, 32, 0.72) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 26px;
+      align-items: end;
+    }
+
+    .spec-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      color: var(--amber);
+      background: rgba(11, 18, 32, 0.76);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 5px 11px;
+      border-radius: 5px;
+      margin-bottom: 14px;
+    }
+
+    .arch-hero h1 {
+      font-size: clamp(2.1rem, 4.8vw, 3.55rem);
+      line-height: 1.08;
+      max-width: 720px;
+      margin-bottom: 14px;
+    }
+
+    .arch-hero h1 span {
+      color: var(--amber);
+    }
+
+    .arch-hero p {
+      max-width: 600px;
+      color: #CBD5E1;
+      font-size: 1.02rem;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .callout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      background: rgba(11, 18, 32, 0.82);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .callout-cell span {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .callout-cell strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.94rem;
+      color: var(--amber);
+    }
+
+    /* Interactive 3D Rack Configurator */
+    .section {
+      padding: 56px 0;
+    }
+
+    .section-head {
+      margin-bottom: 24px;
+      max-width: 720px;
+    }
+
+    .section-head .mono {
+      font-size: 0.76rem;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+      margin-bottom: 8px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .builder-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .viewport-card {
+      background: var(--bp-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .viewport-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .viewport-bar strong {
+      color: var(--amber);
+    }
+
+    .canvas-wrap {
+      position: relative;
+      width: 100%;
+      height: 410px;
+      cursor: grab;
+      touch-action: pan-y;
+    }
+
+    .canvas-wrap:active {
+      cursor: grabbing;
+    }
+
+    #rackCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .angle-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      background: rgba(11, 18, 32, 0.65);
+    }
+
+    .angle-slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 200px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .angle-slider-wrap input[type="range"] {
+      flex: 1;
+      accent-color: var(--amber);
+    }
+
+    /* Controls & Live Stock Readout */
+    .control-panel {
+      background: var(--bp-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .ctrl-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ctrl-label strong {
+      display: block;
+      font-size: 0.94rem;
+    }
+
+    .ctrl-label span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    .stepper {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      background: var(--bp-card);
+      color: var(--ink);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .step-btn:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .step-val {
+      min-width: 28px;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--amber);
+    }
+
+    .stock-readout {
+      background: #080E1A;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 10px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .readout-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: var(--amber);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--green);
+    }
+
+    .live-dot::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .metric-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 7px;
+      padding: 9px 10px;
+    }
+
+    .metric-box span {
+      display: block;
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+
+    .metric-box strong {
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+
+    .sku-feed {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      font-size: 0.73rem;
+      color: #CBD5E1;
+      border-top: 1px dashed rgba(148, 163, 184, 0.22);
+      padding-top: 10px;
+    }
+
+    .sku-feed li {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .sku-ok { color: var(--green); }
+    .sku-low { color: var(--amber); }
+
+    /* Dual Alliance Strip */
+    .alliance-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .alliance-card {
+      background: var(--bp-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .alliance-card .mono {
+      font-size: 0.74rem;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .alliance-card h3 {
+      font-size: 1.28rem;
+      margin-bottom: 8px;
+    }
+
+    .alliance-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* Footer */
+    .bp-footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-inner a {
+      color: var(--amber);
+      text-decoration: none;
+    }
+
+    @media (min-width: 860px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .hero-content {
+        grid-template-columns: 1.25fr 0.75fr;
+      }
+
+      .builder-grid {
+        grid-template-columns: 1.35fr 0.85fr;
+      }
+
+      .alliance-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="bp-header">
+    <div class="container header-inner">
+      <a href="#" class="brand">
+        <span class="brand-box">3D</span>
+        <div>
+          <strong>Estanterías + Sistema Digital</strong>
+          <span>SAN RAFAEL · MENDOZA</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación">
+        <a href="#simulador">SIMULADOR 3D</a>
+        <a href="#alianza">EQUIPAMIENTO + WEB</a>
+        <a href="#contacto">CONTACTO</a>
+      </nav>
+
+      <a class="btn btn-amber" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20el%20simulador%20de%20Estanter%C3%ADas%203D%20y%20quiero%20consultar%20por%20web%20y%20sistema%20de%20stock%20para%20mi%20local." target="_blank" rel="noopener noreferrer">
+        WhatsApp Directo
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="arch-hero">
+      <div class="hero-photo" aria-hidden="true"></div>
+      <div class="hero-blueprint-tint" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <div>
+          <span class="spec-tag">PLANO COMERCIAL 01 // SAN RAFAEL, MENDOZA</span>
+          <h1>Armás tus estanterías. <span>Nosotros conectamos tu web y tu stock.</span></h1>
+          <p>
+            Pensado para supermercados, autoservicios, ferreterías y depósitos de Cuyo. Combinamos equipamiento físico con página web desde $100.000, catálogo por WhatsApp y control real por pasillo.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-amber" href="#simulador">Abrir Simulador 3D de Racks</a>
+            <a class="btn btn-wire" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20comercio%20en%20San%20Rafael." target="_blank" rel="noopener noreferrer">
+              Pedir prototipo gratis
+            </a>
+          </div>
+        </div>
+
+        <div class="callout-grid" aria-label="Especificaciones clave">
+          <div class="callout-cell">
+            <span>Web Base</span>
+            <strong>$100.000</strong>
+          </div>
+          <div class="callout-cell">
+            <span>Soporte</span>
+            <strong>6 MESES</strong>
+          </div>
+          <div class="callout-cell">
+            <span>Stock</span>
+            <strong>POR PASILLO</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="simulador" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="mono">// CONFIGURADOR INTERACTIVO 3D</span>
+          <h2>Probá tu módulo de estanterías y su lectura de stock en vivo</h2>
+          <p>Sumá cuerpos, niveles y cajas. Arrastrá sobre el plano o mové el ángulo para rotar el rack en 3D y mirá cómo el sistema registra la capacidad y reposición en tiempo real.</p>
+        </div>
+
+        <div class="builder-grid">
+          <div class="viewport-card">
+            <div class="viewport-bar">
+              <span>VISTA ISOMÉTRICA // <strong id="viewSpec">2 CUERPOS · 4 NIVELES</strong></span>
+              <span>ARRASTRÁ PARA ROTAR</span>
+            </div>
+
+            <div class="canvas-wrap" id="canvasWrap">
+              <canvas id="rackCanvas"></canvas>
+            </div>
+
+            <div class="angle-controls">
+              <label class="angle-slider-wrap">
+                <span>ÁNGULO <strong id="angleVal" style="color: var(--amber);">32°</strong></span>
+                <input type="range" id="angleSlider" min="-65" max="65" value="32" />
+              </label>
+              <button type="button" class="btn btn-wire" id="autoSpinBtn" style="padding: 7px 12px; font-size: 0.78rem;">
+                Rotar automático
+              </button>
+            </div>
+          </div>
+
+          <aside class="control-panel">
+            <div class="ctrl-row">
+              <div class="ctrl-label">
+                <strong>Cuerpos / Módulos</strong>
+                <span>Ancho 1.80 m c/u</span>
+              </div>
+              <div class="stepper">
+                <button type="button" class="step-btn" data-action="bays-minus" aria-label="Quitar cuerpo">−</button>
+                <span class="step-val" id="baysVal">2</span>
+                <button type="button" class="step-btn" data-action="bays-plus" aria-label="Agregar cuerpo">+</button>
+              </div>
+            </div>
+
+            <div class="ctrl-row">
+              <div class="ctrl-label">
+                <strong>Niveles de Estante</strong>
+                <span>Carga media/pesada</span>
+              </div>
+              <div class="stepper">
+                <button type="button" class="step-btn" data-action="levels-minus" aria-label="Quitar nivel">−</button>
+                <span class="step-val" id="levelsVal">4</span>
+                <button type="button" class="step-btn" data-action="levels-plus" aria-label="Agregar nivel">+</button>
+              </div>
+            </div>
+
+            <div class="ctrl-row">
+              <div class="ctrl-label">
+                <strong>Cajas Cargadas</strong>
+                <span>Simulación de ocupación</span>
+              </div>
+              <div class="stepper">
+                <button type="button" class="step-btn" data-action="boxes-minus" aria-label="Quitar cajas">−</button>
+                <span class="step-val" id="boxesVal">14</span>
+                <button type="button" class="step-btn" data-action="boxes-plus" aria-label="Agregar cajas">+</button>
+              </div>
+            </div>
+
+            <div class="stock-readout" aria-live="polite">
+              <div class="readout-head">
+                <span>Sistema de Stock · Pasillo A</span>
+                <span class="live-dot">EN LÍNEA</span>
+              </div>
+              <div class="metrics-grid">
+                <div class="metric-box">
+                  <span>CAPACIDAD MÁX.</span>
+                  <strong id="maxCapVal">24 cajas</strong>
+                </div>
+                <div class="metric-box">
+                  <span>OCUPACIÓN</span>
+                  <strong id="occVal">58%</strong>
+                </div>
+                <div class="metric-box">
+                  <span>LARGO TOTAL</span>
+                  <strong id="lenVal">3.6 m</strong>
+                </div>
+                <div class="metric-box">
+                  <span>CARGA EST.</span>
+                  <strong id="loadVal">1.440 kg</strong>
+                </div>
+              </div>
+              <ul class="sku-feed" id="skuFeed"></ul>
+            </div>
+
+            <a id="waRackBtn" class="btn btn-amber" href="#" target="_blank" rel="noopener noreferrer" style="width: 100%;">
+              Cotizar este local + Web/Stock por WhatsApp
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="alianza" class="section" style="padding-top: 12px;">
+      <div class="container">
+        <div class="alliance-grid">
+          <article class="alliance-card">
+            <span class="mono">01 // LOCAL FÍSICO</span>
+            <h3>Listo para abrir sin perder semanas</h3>
+            <p>Mientras terminás de armar góndolas y estanterías, dejamos lista tu página web, tu mapa en Google y tus 6 placas de inauguración.</p>
+          </article>
+          <article class="alliance-card">
+            <span class="mono">02 // VENTAS DIRECTAS</span>
+            <h3>Catálogo conectado a tu WhatsApp</h3>
+            <p>Tus clientes ven ofertas y productos desde el celular y te mandan el pedido armado, sin pagar comisiones de aplicaciones.</p>
+          </article>
+          <article class="alliance-card">
+            <span class="mono">03 // CONTROL REAL</span>
+            <h3>Stock por estantería y pasillo</h3>
+            <p>Ingeniería de software a medida en San Rafael: sabés exactamente qué falta reponer en cada cuerpo antes de quedarte sin mercadería.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto" class="bp-footer">
+    <div class="container footer-inner">
+      <span>JOSÉ ROMÁN FREDRIN // SAN RAFAEL, MENDOZA</span>
+      <span>
+        WHATSAPP: <a href="https://wa.me/5492604059284" target="_blank" rel="noopener noreferrer">+54 9 260 405-9284</a> ·
+        EMAIL: <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById('rackCanvas');
+      const wrap = document.getElementById('canvasWrap');
+      const ctx = canvas.getContext('2d');
+
+      const state = {
+        bays: 2,
+        levels: 4,
+        boxes: 14,
+        angleDeg: 32,
+        autoSpin: false,
+        dragging: false,
+        lastX: 0
+      };
+
+      const baysVal = document.getElementById('baysVal');
+      const levelsVal = document.getElementById('levelsVal');
+      const boxesVal = document.getElementById('boxesVal');
+      const angleSlider = document.getElementById('angleSlider');
+      const angleVal = document.getElementById('angleVal');
+      const autoSpinBtn = document.getElementById('autoSpinBtn');
+      const viewSpec = document.getElementById('viewSpec');
+      const maxCapVal = document.getElementById('maxCapVal');
+      const occVal = document.getElementById('occVal');
+      const lenVal = document.getElementById('lenVal');
+      const loadVal = document.getElementById('loadVal');
+      const skuFeed = document.getElementById('skuFeed');
+      const waRackBtn = document.getElementById('waRackBtn');
+
+      function maxBoxes() {
+        return state.bays * state.levels * 3;
+      }
+
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = wrap.getBoundingClientRect();
+        canvas.width = Math.max(300, Math.floor(rect.width * dpr));
+        canvas.height = Math.max(300, Math.floor(rect.height * dpr));
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function project(x, y, z, yaw, pitch, cx, cy, scale) {
+        const cosY = Math.cos(yaw);
+        const sinY = Math.sin(yaw);
+        const x1 = x * cosY - z * sinY;
+        const z1 = x * sinY + z * cosY;
+
+        const cosP = Math.cos(pitch);
+        const sinP = Math.sin(pitch);
+        const y2 = y * cosP - z1 * sinP;
+        const z2 = y * sinP + z1 * cosP;
+
+        const persp = 620 / (620 + z2);
+        return {
+          x: cx + x1 * scale * persp,
+          y: cy - y2 * scale * persp,
+          z: z2
+        };
+      }
+
+      function drawPoly(pts, fill, stroke) {
+        ctx.beginPath();
+        ctx.moveTo(pts[0].x, pts[0].y);
+        for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+        ctx.closePath();
+        if (fill) {
+          ctx.fillStyle = fill;
+          ctx.fill();
+        }
+        if (stroke) {
+          ctx.strokeStyle = stroke;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+
+      function makePrismFaces(x0, y0, z0, dx, dy, dz, colors, proj) {
+        const v = [
+          proj(x0, y0, z0),
+          proj(x0 + dx, y0, z0),
+          proj(x0 + dx, y0 + dy, z0),
+          proj(x0, y0 + dy, z0),
+          proj(x0, y0, z0 + dz),
+          proj(x0 + dx, y0, z0 + dz),
+          proj(x0 + dx, y0 + dy, z0 + dz),
+          proj(x0, y0 + dy, z0 + dz)
+        ];
+        const faces = [
+          { pts: [v[3], v[2], v[6], v[7]], fill: colors.top, stroke: colors.stroke },
+          { pts: [v[0], v[1], v[2], v[3]], fill: colors.front, stroke: colors.stroke },
+          { pts: [v[4], v[5], v[6], v[7]], fill: colors.back || colors.front, stroke: colors.stroke },
+          { pts: [v[1], v[5], v[6], v[2]], fill: colors.side, stroke: colors.stroke },
+          { pts: [v[0], v[4], v[7], v[3]], fill: colors.side, stroke: colors.stroke }
+        ];
+        faces.forEach((f) => {
+          f.depth = (f.pts[0].z + f.pts[1].z + f.pts[2].z + f.pts[3].z) / 4;
+        });
+        return faces;
+      }
+
+      function renderScene() {
+        const w = wrap.clientWidth;
+        const h = wrap.clientHeight;
+        ctx.clearRect(0, 0, w, h);
+
+        // Subtle blueprint grid inside canvas
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.08)';
+        ctx.lineWidth = 1;
+        for (let gx = 0; gx < w; gx += 28) {
+          ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, h); ctx.stroke();
+        }
+        for (let gy = 0; gy < h; gy += 28) {
+          ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(w, gy); ctx.stroke();
+        }
+
+        const yaw = (state.angleDeg * Math.PI) / 180;
+        const pitch = 0.34;
+        const bayW = 92;
+        const depth = 46;
+        const levelH = 42;
+        const totalW = state.bays * bayW;
+        const totalH = state.levels * levelH + 14;
+        const scale = Math.min(w / (totalW + 170), h / (totalH + 130), 1.35);
+        const cx = w / 2;
+        const cy = h / 2 + totalH * scale * 0.36;
+
+        const proj = (x, y, z) => project(x - totalW / 2, y, z - depth / 2, yaw, pitch, cx, cy, scale);
+
+        // Floor shadow plate
+        const floorPts = [
+          proj(-18, 0, -18),
+          proj(totalW + 18, 0, -18),
+          proj(totalW + 18, 0, depth + 18),
+          proj(-18, 0, depth + 18)
+        ];
+        drawPoly(floorPts, 'rgba(245, 158, 11, 0.06)', 'rgba(245, 158, 11, 0.24)');
+
+        const drawList = [];
+
+        // Uprights (steel dark posts)
+        const postColors = { top: '#64748B', front: '#334155', side: '#1E293B', stroke: 'rgba(248,250,252,0.18)' };
+        for (let b = 0; b <= state.bays; b++) {
+          const px = b * bayW;
+          drawList.push(...makePrismFaces(px - 2.5, 0, 0, 5, totalH, 5, postColors, proj));
+          drawList.push(...makePrismFaces(px - 2.5, 0, depth - 5, 5, totalH, 5, postColors, proj));
+        }
+
+        // Shelves & boxes
+        const shelfColors = { top: '#475569', front: '#F59E0B', back: '#D97706', side: '#B45309', stroke: 'rgba(11,18,32,0.4)' };
+        const boxPalette = [
+          { top: '#FCD34D', front: '#D97706', side: '#92400E', stroke: 'rgba(11,18,32,0.45)' },
+          { top: '#E2E8F0', front: '#94A3B8', side: '#475569', stroke: 'rgba(11,18,32,0.45)' },
+          { top: '#FDBA74', front: '#EA580C', side: '#9A3412', stroke: 'rgba(11,18,32,0.45)' }
+        ];
+
+        let placed = 0;
+        for (let l = 0; l < state.levels; l++) {
+          const sy = l * levelH + 8;
+          for (let b = 0; b < state.bays; b++) {
+            const bx = b * bayW + 2.5;
+            drawList.push(...makePrismFaces(bx, sy, 1, bayW - 5, 5, depth - 2, shelfColors, proj));
+
+            for (let slot = 0; slot < 3; slot++) {
+              if (placed < state.boxes) {
+                const cxPos = bx + 6 + slot * 27;
+                const boxH = 22 + ((b + l + slot) % 2) * 5;
+                const col = boxPalette[(b + l + slot) % boxPalette.length];
+                drawList.push(...makePrismFaces(cxPos, sy + 5, 6, 23, boxH, depth - 12, col, proj));
+                placed++;
+              }
+            }
+          }
+        }
+
+        // Painter's algorithm sort (back to front)
+        drawList.sort((a, b) => b.depth - a.depth);
+        for (let i = 0; i < drawList.length; i++) {
+          const f = drawList[i];
+          drawPoly(f.pts, f.fill, f.stroke);
+        }
+      }
+
+      function updateUI() {
+        const cap = maxBoxes();
+        if (state.boxes > cap) state.boxes = cap;
+        if (state.boxes < 0) state.boxes = 0;
+
+        baysVal.textContent = state.bays;
+        levelsVal.textContent = state.levels;
+        boxesVal.textContent = state.boxes;
+        angleVal.textContent = Math.round(state.angleDeg) + '°';
+        angleSlider.value = Math.round(state.angleDeg);
+
+        const occ = Math.round((state.boxes / cap) * 100);
+        const lengthM = (state.bays * 1.8).toFixed(1);
+        const loadKg = (state.bays * state.levels * 180).toLocaleString('es-AR');
+
+        viewSpec.textContent = state.bays + (state.bays === 1 ? ' CUERPO' : ' CUERPOS') + ' · ' + state.levels + ' NIVELES';
+        maxCapVal.textContent = cap + ' cajas';
+        occVal.textContent = occ + '%';
+        lenVal.textContent = lengthM + ' m';
+        loadVal.textContent = loadKg + ' kg';
+
+        const rows = [];
+        for (let b = 1; b <= state.bays; b++) {
+          const bayCap = state.levels * 3;
+          const bayBoxes = Math.max(0, Math.min(bayCap, state.boxes - (b - 1) * bayCap));
+          const low = bayBoxes < Math.ceil(bayCap * 0.35);
+          rows.push(
+            '<li><span>CUERPO A-0' + b + ' (' + bayBoxes + '/' + bayCap + ' cajas)</span>' +
+            '<span class="' + (low ? 'sku-low' : 'sku-ok') + '">' + (low ? 'REPONER' : 'OK') + '</span></li>'
+          );
+        }
+        skuFeed.innerHTML = rows.join('');
+
+        const msg =
+          'Hola José! Probé el simulador de Estanterías 3D (' +
+          state.bays + ' cuerpos, ' + state.levels + ' niveles, ' + lengthM + ' m). ' +
+          'Quiero consultar por equipamiento, página web y sistema de stock para mi local en San Rafael.';
+        waRackBtn.setAttribute('href', 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg));
+
+        renderScene();
+      }
+
+      document.querySelectorAll('.step-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const a = btn.dataset.action;
+          if (a === 'bays-plus' && state.bays < 4) state.bays++;
+          if (a === 'bays-minus' && state.bays > 1) state.bays--;
+          if (a === 'levels-plus' && state.levels < 5) state.levels++;
+          if (a === 'levels-minus' && state.levels > 2) state.levels--;
+          if (a === 'boxes-plus') state.boxes = Math.min(maxBoxes(), state.boxes + 3);
+          if (a === 'boxes-minus') state.boxes = Math.max(0, state.boxes - 3);
+          updateUI();
+        });
+      });
+
+      angleSlider.addEventListener('input', () => {
+        state.autoSpin = false;
+        autoSpinBtn.textContent = 'Rotar automático';
+        state.angleDeg = Number(angleSlider.value);
+        updateUI();
+      });
+
+      autoSpinBtn.addEventListener('click', () => {
+        state.autoSpin = !state.autoSpin;
+        autoSpinBtn.textContent = state.autoSpin ? 'Pausar rotación' : 'Rotar automático';
+      });
+
+      wrap.addEventListener('pointerdown', (e) => {
+        state.dragging = true;
+        state.autoSpin = false;
+        autoSpinBtn.textContent = 'Rotar automático';
+        state.lastX = e.clientX;
+      });
+      window.addEventListener('pointermove', (e) => {
+        if (!state.dragging) return;
+        const dx = e.clientX - state.lastX;
+        state.lastX = e.clientX;
+        state.angleDeg = Math.max(-65, Math.min(65, state.angleDeg + dx * 0.45));
+        updateUI();
+      });
+      window.addEventListener('pointerup', () => {
+        state.dragging = false;
+      });
+
+      let spinDir = 1;
+      function loop() {
+        if (state.autoSpin) {
+          state.angleDeg += 0.35 * spinDir;
+          if (state.angleDeg >= 55) spinDir = -1;
+          if (state.angleDeg <= -55) spinDir = 1;
+          angleVal.textContent = Math.round(state.angleDeg) + '°';
+          angleSlider.value = Math.round(state.angleDeg);
+          renderScene();
+        }
+        requestAnimationFrame(loop);
+      }
+
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        renderScene();
+      });
+
+      resizeCanvas();
+      updateUI();
+      loop();
+    })();
+  </script>
+</body>
+</html>

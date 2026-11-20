@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fuego & Oficio — Parrilla y Vinos en San Rafael, Mendoza</title>
+  <meta name="description" content="Experiencia gastronómica a las brasas de quebracho y Malbecs del Atuel en San Rafael, Mendoza. Muestra de ingeniería web atmosférica por José Román." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #120D0A;
+      --surface: #1B130F;
+      --surface-elev: #241914;
+      --border: rgba(217, 160, 91, 0.24);
+      --ink: #F5EDE4;
+      --muted: #C2B3A3;
+      --ember: #E85D2A;
+      --ember-hover: #C9491C;
+      --gold: #D9A05B;
+      --max-w: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+      padding-bottom: 84px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    /* Atmospheric Full-Bleed Hero */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      background-image:
+        linear-gradient(180deg, rgba(18, 13, 10, 0.62) 0%, rgba(18, 13, 10, 0.35) 45%, rgba(18, 13, 10, 0.96) 100%),
+        url('../assets/parrilla-fuego.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    #emberCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-nav {
+      position: relative;
+      z-index: 5;
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .brand span {
+      color: var(--gold);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-link {
+      display: none;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .nav-link:hover {
+      color: var(--gold);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 4px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background-color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .btn-ember {
+      background: var(--ember);
+      color: #FFFFFF;
+    }
+
+    .btn-ember:hover {
+      background: var(--ember-hover);
+    }
+
+    .btn-gold-outline {
+      background: rgba(18, 13, 10, 0.55);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-gold-outline:hover {
+      background: rgba(217, 160, 91, 0.14);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      padding: 56px 0 64px;
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 0.98;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #E2D5C8;
+      max-width: 560px;
+      margin-bottom: 28px;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* Tasting Menu Section */
+    section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 38px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+      line-height: 1.08;
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+
+    .menu-tab {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+    }
+
+    .menu-tab.active {
+      background: var(--gold);
+      color: var(--bg);
+      border-color: var(--gold);
+    }
+
+    .menu-grid {
+      display: grid;
+      gap: 18px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .dish-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .dish-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.48rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 5px;
+    }
+
+    .dish-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .dish-price {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* Info Strip */
+    .info-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .info-box h3 {
+      font-size: 1.45rem;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .info-box p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Reservation Drawer */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 5, 4, 0.72);
+      backdrop-filter: blur(4px);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+    }
+
+    .drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 420px;
+      height: 100%;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      z-index: 100;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    .drawer-close {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--ink);
+      width: 34px;
+      height: 34px;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      padding: 11px 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.92rem;
+    }
+
+    .reserve-confirm {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid var(--gold);
+      background: rgba(217, 160, 91, 0.1);
+      border-radius: 6px;
+      font-size: 0.86rem;
+    }
+
+    .reserve-confirm.show {
+      display: block;
+    }
+
+    /* Floating Studio Bar */
+    .studio-bar {
+      position: fixed;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 960px;
+      background: rgba(27, 19, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      padding: 11px 16px;
+      z-index: 80;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+    }
+
+    .studio-bar-text {
+      font-size: 0.84rem;
+      color: var(--ink);
+    }
+
+    .studio-bar-text strong {
+      color: var(--gold);
+    }
+
+    .studio-bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-link {
+        display: inline-block;
+      }
+      .menu-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .info-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+    <div class="container hero-nav">
+      <a href="#" class="brand">Fuego <span>&amp;</span> Oficio</a>
+      <div class="nav-actions">
+        <a class="nav-link" href="#carta">La Carta</a>
+        <a class="nav-link" href="#horarios">Horarios</a>
+        <button type="button" class="btn btn-gold-outline" id="openDrawerNav">Reservar mesa</button>
+      </div>
+    </div>
+
+    <div class="container hero-content">
+      <div class="eyebrow">San Rafael, Mendoza · Parrilla al Quebracho</div>
+      <h1>Brasas lentas, <em>Malbec</em> del Atuel y mesa sin apuro.</h1>
+      <p class="hero-sub">
+        Cortes argentinos madurados a fuego vivo de quebracho colorado, empanadas al horno de barro y una cava curada de bodegas sanrafaelinas.
+      </p>
+      <div class="hero-btns">
+        <button type="button" class="btn btn-ember" id="openDrawerHero">Reservar mesa hoy</button>
+        <a class="btn btn-gold-outline" href="#carta">Explorar la carta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="carta">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Cocina de Fuego</div>
+          <h2>Carta de Estación</h2>
+          <p>Elegí una sección para recorrer nuestros cortes a las brasas, vinos locales y postres clásicos.</p>
+        </div>
+
+        <div class="menu-tabs" id="menuTabs" role="tablist" aria-label="Secciones de la carta">
+          <button type="button" class="menu-tab active" data-tab="fuegos">Fuegos</button>
+          <button type="button" class="menu-tab" data-tab="malbecs">Malbecs del Atuel</button>
+          <button type="button" class="menu-tab" data-tab="postres">Postres</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid"></div>
+      </div>
+    </section>
+
+    <section id="horarios" class="info-strip">
+      <div class="container info-grid">
+        <div class="info-box">
+          <h3>Horarios</h3>
+          <p>Martes a Domingo<br />Mediodías 12:00 a 15:30 · Noches 20:00 a 00:30</p>
+        </div>
+        <div class="info-box">
+          <h3>Ubicación</h3>
+          <p>San Rafael, Mendoza<br />Salón climatizado y Patio de Fuegos</p>
+        </div>
+        <div class="info-box">
+          <h3>Reservas y Estudio</h3>
+          <p>WhatsApp: +54 9 260 405-9284<br />romanfjose@gmail.com</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Reservation Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="reserveDrawer" aria-label="Reservar mesa">
+    <div>
+      <div class="drawer-head">
+        <h2 style="font-size:1.8rem;">Reservar Mesa</h2>
+        <button type="button" class="drawer-close" id="closeDrawerBtn" aria-label="Cerrar panel">×</button>
+      </div>
+
+      <form id="reserveForm">
+        <div class="field">
+          <label for="resName">Tu nombre</label>
+          <input id="resName" type="text" placeholder="Ej: Martín Morales" required />
+        </div>
+        <div class="field">
+          <label for="resGuests">Cantidad de personas</label>
+          <select id="resGuests">
+            <option value="2 personas">2 personas</option>
+            <option value="4 personas" selected>4 personas</option>
+            <option value="6 personas">6 personas</option>
+            <option value="8+ personas (Mesa larga)">8+ personas (Mesa larga)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="resShift">Turno preferido</label>
+          <select id="resShift">
+            <option value="Almuerzo (13:00 hs)">Almuerzo (13:00 hs)</option>
+            <option value="Cena Primer Turno (20:30 hs)" selected>Cena Primer Turno (20:30 hs)</option>
+            <option value="Cena Segundo Turno (22:00 hs)">Cena Segundo Turno (22:00 hs)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="resZone">Sector</label>
+          <select id="resZone">
+            <option value="Patio de Fuegos">Patio de Fuegos</option>
+            <option value="Salón Principal">Salón Principal</option>
+            <option value="Barra de la Parrilla">Barra de la Parrilla</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-ember" style="width:100%;">Confirmar solicitud</button>
+      </form>
+
+      <div class="reserve-confirm" id="reserveConfirm" aria-live="polite"></div>
+    </div>
+    <p style="font-size:0.78rem;color:var(--muted);margin-top:20px;">
+      Demo gastronómica creada por <strong>José Román Fredrin</strong> en San Rafael, Mendoza.
+    </p>
+  </aside>
+
+  <!-- Floating Studio Bar -->
+  <div class="studio-bar" role="region" aria-label="Contacto Estudio José Román">
+    <div class="studio-bar-text">
+      ¿Querés una web de este nivel para tu negocio en San Rafael? <strong>Pedí 3 prototipos gratis con José Román</strong>
+    </div>
+    <div class="studio-bar-actions">
+      <a class="btn btn-ember" style="padding:8px 14px;font-size:0.76rem;" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20la%20demo%20Fuego%20%26%20Oficio%20y%20quiero%20pedir%203%20prototipos%20gratis%20para%20mi%20negocio%20en%20San%20Rafael." target="_blank" rel="noopener">
+        WhatsApp →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // 1. Quebracho rising embers canvas
+      const canvas = document.getElementById('emberCanvas');
+      const ctx = canvas.getContext('2d');
+      let embers = [];
+      let w = 0;
+      let h = 0;
+
+      function resizeCanvas() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+
+      function createEmber(randomY) {
+        return {
+          x: Math.random() * w,
+          y: randomY ? Math.random() * h : h + 10 + Math.random() * 40,
+          r: 1.1 + Math.random() * 2.4,
+          vy: 0.45 + Math.random() * 1.15,
+          vx: (Math.random() - 0.5) * 0.4,
+          phase: Math.random() * Math.PI * 2,
+          alpha: 0.35 + Math.random() * 0.65,
+          hue: 16 + Math.floor(Math.random() * 24)
+        };
+      }
+
+      function initEmbers() {
+        resizeCanvas();
+        embers = [];
+        const count = Math.min(75, Math.max(30, Math.floor(w / 18)));
+        for (let i = 0; i < count; i += 1) {
+          embers.push(createEmber(true));
+        }
+      }
+
+      function animateEmbers() {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < embers.length; i += 1) {
+          const e = embers[i];
+          e.y -= e.vy;
+          e.phase += 0.03;
+          e.x += e.vx + Math.sin(e.phase) * 0.35;
+          const fade = Math.max(0, Math.min(1, e.y / (h * 0.85)));
+          const a = e.alpha * fade;
+
+          ctx.beginPath();
+          ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'hsla(' + e.hue + ', 95%, 60%, ' + a.toFixed(2) + ')';
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = 'rgba(232, 93, 42, 0.8)';
+          ctx.fill();
+
+          if (e.y < -12 || e.x < -20 || e.x > w + 20) {
+            embers[i] = createEmber(false);
+          }
+        }
+        requestAnimationFrame(animateEmbers);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      initEmbers();
+      animateEmbers();
+
+      // 2. Tasting menu tabs
+      const MENU = {
+        fuegos: [
+          { title: 'Asado Banderita al Quebracho', desc: 'Costilla fina cocida lentamente a las brasas con sal entrefina y romero.', price: '$24.500' },
+          { title: 'Ojo de Bife Madurado (400g)', desc: 'Sellado a fuego fuerte, manteca de hierbas y papas aplastadas al horno.', price: '$28.900' },
+          { title: 'Entraña Fina con Chimichurri Casero', desc: 'Corte jugoso acompañado de pimientos asados y criolla mendocina.', price: '$26.400' },
+          { title: 'Mollejas de Corazón al Limón', desc: 'Crocantes por fuera, cremosas por dentro, con gajos de limón grillado.', price: '$19.800' }
+        ],
+        malbecs: [
+          { title: 'Malbec Reserva Valle del Atuel', desc: 'Notas de ciruela madura, violetas y paso de 12 meses por roble francés.', price: '$18.500' },
+          { title: 'Gran Malbec Finca Las Paredes', desc: 'Cuerpo intenso, taninos redondos y final largo ideal para carnes rojas.', price: '$26.000' },
+          { title: 'Cabernet Franc de Altura', desc: 'Aromas especiados y frescura mineral, cosecha manual en San Rafael.', price: '$22.400' },
+          { title: 'Copa de Malbec de la Casa', desc: 'Servicio directo de nuestra cava climatizada a temperatura exacta.', price: '$5.800' }
+        ],
+        postres: [
+          { title: 'Flan Casero de Campo', desc: 'Receta tradicional con dulce de leche artesanal y crema batida.', price: '$7.500' },
+          { title: 'Panqueque Quemado al Fuego', desc: 'Relleno de dulce de leche tibio con caramelo crocante hecho en el momento.', price: '$8.900' },
+          { title: 'Vigilante Sanrafaelino', desc: 'Queso pategrás estacionado con dulce de membrillo casero y nueces.', price: '$7.200' },
+          { title: 'Peras al Malbec con Helado', desc: 'Peras de finca reducidas en vino tinto especiado y bocha de americana.', price: '$8.400' }
+        ]
+      };
+
+      const menuGrid = document.getElementById('menuGrid');
+      const menuTabs = document.querySelectorAll('#menuTabs .menu-tab');
+
+      function renderMenu(tabKey) {
+        const list = MENU[tabKey] || MENU.fuegos;
+        menuGrid.innerHTML = list.map(function (item) {
+          return (
+            '<article class="dish-card">' +
+              '<div>' +
+                '<h3 class="dish-title">' + item.title + '</h3>' +
+                '<p class="dish-desc">' + item.desc + '</p>' +
+              '</div>' +
+              '<span class="dish-price">' + item.price + '</span>' +
+            '</article>'
+          );
+        }).join('');
+      }
+
+      menuTabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          menuTabs.forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          renderMenu(tab.getAttribute('data-tab'));
+        });
+      });
+      renderMenu('fuegos');
+
+      // 3. Reservation Drawer
+      const drawer = document.getElementById('reserveDrawer');
+      const backdrop = document.getElementById('drawerBackdrop');
+      const reserveForm = document.getElementById('reserveForm');
+      const reserveConfirm = document.getElementById('reserveConfirm');
+
+      function openDrawer() {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+      }
+
+      document.getElementById('openDrawerNav').addEventListener('click', openDrawer);
+      document.getElementById('openDrawerHero').addEventListener('click', openDrawer);
+      document.getElementById('closeDrawerBtn').addEventListener('click', closeDrawer);
+      backdrop.addEventListener('click', closeDrawer);
+
+      reserveForm.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        const name = document.getElementById('resName').value.trim();
+        const guests = document.getElementById('resGuests').value;
+        const shift = document.getElementById('resShift').value;
+        const zone = document.getElementById('resZone').value;
+        const waMsg =
+          'Hola! Quiero confirmar una reserva (demo Fuego & Oficio) a nombre de ' +
+          name + ' para ' + guests + ' — ' + shift + ' en ' + zone + '.';
+
+        reserveConfirm.innerHTML =
+          '<strong>¡Solicitud preparada para ' + name + '!</strong><br />' +
+          guests + ' · ' + shift + ' · ' + zone + '.<br /><br />' +
+          '<a class="btn btn-ember" style="width:100%;" href="https://wa.me/5492604059284?text=' + encodeURIComponent(waMsg) + '" target="_blank" rel="noopener">Enviar por WhatsApp</a>';
+        reserveConfirm.classList.add('show');
+      });
+    })();
+  </script>
+</body>
+</html>

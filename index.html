@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Propuestas Web San Rafael — José &amp; Gabi</title>
-  <meta name="description" content="Catálogo interactivo de 10 propuestas web, redes y sistemas de gestión para comercios de San Rafael y Cuyo." />
+  <meta name="description" content="Catálogo interactivo de 20 propuestas web, experiencias 3D, redes y sistemas de gestión para comercios de San Rafael y Cuyo." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #FAF6F0;
@@ -23,9 +23,9 @@
       --olive-soft: #E8F2EC;
       --gold-soft: #F8F0DF;
       --gold-ink: #7A5413;
-      --radius: 16px;
-      --shadow: 0 2px 10px rgba(31, 36, 33, 0.05);
-      --shadow-hover: 0 10px 26px rgba(31, 36, 33, 0.10);
+      --radius: 18px;
+      --shadow: 0 2px 12px rgba(31, 36, 33, 0.06);
+      --shadow-hover: 0 12px 28px rgba(31, 36, 33, 0.12);
     }
 
     * {
@@ -48,7 +48,7 @@
 
     .container {
       width: 100%;
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 0 16px;
     }
@@ -57,7 +57,7 @@
     .topbar {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 16px 0;
+      padding: 14px 0;
     }
 
     .topbar-inner {
@@ -116,22 +116,37 @@
 
     /* Hero */
     .hero {
-      padding: 28px 0 20px;
+      padding: 24px 0 16px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 10px;
     }
 
     .hero h1 {
       font-family: 'Fraunces', Georgia, serif;
-      font-size: clamp(1.75rem, 5vw, 2.55rem);
-      line-height: 1.15;
+      font-size: clamp(1.75rem, 5vw, 2.65rem);
+      line-height: 1.13;
       letter-spacing: -0.02em;
       color: var(--ink);
       margin-bottom: 10px;
     }
 
     .hero p {
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--muted);
-      max-width: 660px;
+      max-width: 700px;
     }
 
     /* Coffee Summary Card */
@@ -140,8 +155,8 @@
       border: 1px solid var(--border);
       border-left: 4px solid var(--accent);
       border-radius: var(--radius);
-      padding: 18px;
-      margin: 20px 0 24px;
+      padding: 16px 18px;
+      margin: 18px 0 14px;
       box-shadow: var(--shadow);
     }
 
@@ -150,7 +165,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 14px;
       flex-wrap: wrap;
     }
 
@@ -158,7 +172,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -173,17 +187,25 @@
       border: 1px solid var(--border);
       color: var(--ink);
       font-family: inherit;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      padding: 7px 12px;
+      padding: 6px 12px;
       border-radius: 10px;
       cursor: pointer;
+    }
+
+    .coffee-body {
+      margin-top: 14px;
+    }
+
+    .coffee-body.is-collapsed {
+      display: none;
     }
 
     .coffee-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 10px;
     }
 
     .coffee-stat {
@@ -194,36 +216,36 @@
     }
 
     .coffee-stat-label {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: var(--muted);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .coffee-stat-value {
-      font-size: 1.02rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: var(--ink);
       margin-bottom: 2px;
     }
 
     .coffee-stat-note {
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
     .coffee-checklist {
-      margin-top: 14px;
-      padding-top: 14px;
+      margin-top: 12px;
+      padding-top: 12px;
       border-top: 1px dashed var(--border);
       display: grid;
       gap: 8px;
     }
 
     .coffee-checklist-title {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--ink);
     }
@@ -237,26 +259,22 @@
     .check-pill {
       background: var(--olive-soft);
       color: var(--olive);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      padding: 6px 11px;
+      padding: 5px 10px;
       border-radius: 10px;
-    }
-
-    .coffee-body.is-collapsed {
-      display: none;
     }
 
     /* Filter Bar */
     .filter-section {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(250, 246, 240, 0.94);
+      z-index: 25;
+      background: rgba(250, 246, 240, 0.95);
       backdrop-filter: blur(8px);
       padding: 12px 0;
-      border-bottom: 1px solid rgba(229, 219, 208, 0.7);
-      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(229, 219, 208, 0.85);
+      margin-bottom: 24px;
     }
 
     .filter-row {
@@ -286,9 +304,9 @@
       background: var(--surface);
       color: var(--ink);
       font-family: inherit;
-      font-size: 0.86rem;
-      font-weight: 600;
-      padding: 10px 15px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 16px;
       border-radius: 999px;
       cursor: pointer;
       white-space: nowrap;
@@ -313,23 +331,269 @@
       white-space: nowrap;
     }
 
-    /* Cards Grid */
+    /* Wave Sections */
+    .wave-section {
+      margin-bottom: 42px;
+    }
+
+    .wave-section.is-hidden {
+      display: none;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-kicker {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    /* Wave 2 Visual Showcase Grid */
+    .wave2-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .showcase-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: #CBB7A2;
+    }
+
+    .thumb-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--surface-warm);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .showcase-card:hover .thumb-wrap img {
+      transform: scale(1.04);
+    }
+
+    .thumb-overlay-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(31, 36, 33, 0.84);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Graphic Banners for 3D / Mate / Brutalist cards */
+    .graphic-banner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .graphic-3d {
+      background:
+        linear-gradient(135deg, #1E3A5F 0%, #2C5E8A 55%, #D97736 100%);
+      color: #FFFFFF;
+    }
+
+    .graphic-3d::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+      background-size: 26px 26px;
+      transform: perspective(360px) rotateX(48deg) scale(1.5);
+      transform-origin: center bottom;
+      opacity: 0.65;
+    }
+
+    .graphic-mate {
+      background: linear-gradient(135deg, #3A5A40 0%, #588157 52%, #C97A40 100%);
+      color: #FFFDF8;
+    }
+
+    .graphic-mate::before {
+      content: "🧉";
+      position: absolute;
+      right: 18px;
+      top: 14px;
+      font-size: 4.2rem;
+      opacity: 0.24;
+      transform: rotate(-10deg);
+    }
+
+    .graphic-brutal {
+      background: #FFE500;
+      color: #111111;
+      border-bottom: 3px solid #111111;
+    }
+
+    .graphic-brutal::before {
+      content: "CERO HUMO";
+      position: absolute;
+      right: -8px;
+      top: 12px;
+      font-size: 3.1rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: rgba(17, 17, 17, 0.11);
+      line-height: 0.9;
+    }
+
+    .graphic-kicker {
+      position: relative;
+      z-index: 2;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.9;
+      margin-bottom: 4px;
+    }
+
+    .graphic-headline {
+      position: relative;
+      z-index: 2;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .graphic-brutal .graphic-headline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .showcase-body {
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      gap: 14px;
+    }
+
+    .showcase-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .showcase-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid #F0E8DE;
+      gap: 10px;
+    }
+
+    .proto-fit {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .open-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .showcase-card:hover .open-cta,
+    .proto-card:hover .open-cta {
+      color: var(--accent-dark);
+    }
+
+    /* Wave 1 Classic Grid */
     .cards-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 16px;
-      padding-bottom: 40px;
+      gap: 14px;
     }
 
     .proto-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 16px;
+      gap: 14px;
       box-shadow: var(--shadow);
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
       text-decoration: none;
@@ -342,26 +606,22 @@
       border-color: #D2C2B0;
     }
 
-    .proto-card.is-hidden {
-      display: none;
-    }
-
     .card-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .proto-num {
       font-family: 'Fraunces', Georgia, serif;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--accent);
       background: var(--accent-soft);
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 10px;
       display: grid;
       place-items: center;
@@ -376,7 +636,7 @@
     }
 
     .tag {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       padding: 4px 9px;
       border-radius: 999px;
@@ -399,44 +659,15 @@
 
     .proto-title {
       font-family: 'Fraunces', Georgia, serif;
-      font-size: 1.24rem;
+      font-size: 1.15rem;
       line-height: 1.25;
       color: var(--ink);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .proto-desc {
-      font-size: 0.92rem;
+      font-size: 0.89rem;
       color: var(--muted);
-    }
-
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 14px;
-      border-top: 1px solid #F0E8DE;
-      gap: 10px;
-    }
-
-    .proto-fit {
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .open-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent);
-      white-space: nowrap;
-    }
-
-    .proto-card:hover .open-cta {
-      color: var(--accent-dark);
     }
 
     /* Footer */
@@ -445,13 +676,13 @@
       background: var(--surface);
       padding: 24px 0 36px;
       color: var(--muted);
-      font-size: 0.86rem;
+      font-size: 0.85rem;
     }
 
     .footer-inner {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .footer strong {
@@ -468,19 +699,25 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
+      .wave2-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
       .cards-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
+        gap: 16px;
       }
     }
 
-    @media (min-width: 980px) {
+    @media (min-width: 1020px) {
       .hero {
-        padding: 36px 0 22px;
+        padding: 32px 0 18px;
       }
 
-      .cards-grid {
+      .wave2-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
       }
     }
   </style>
@@ -492,7 +729,7 @@
         <div class="brand-mark" aria-hidden="true">JG</div>
         <div class="brand-text">
           <strong>Propuestas Web San Rafael</strong>
-          <span>Alianza José &amp; Gabi · Catálogo en vivo</span>
+          <span>Alianza José &amp; Gabi · 20 demos en vivo</span>
         </div>
       </div>
       <div class="location-pill">San Rafael · Mendoza · Cuyo</div>
@@ -502,17 +739,18 @@
   <main>
     <section class="hero">
       <div class="container">
-        <h1>10 propuestas listas para mostrar en la mesa</h1>
-        <p>Elegí un estilo según el comercio que visitás. Todo pensado para verse claro en el celular, sin vueltas y con foco en vender más y ordenar el negocio.</p>
+        <span class="hero-eyebrow">Catálogo actualizado · Ola 2 + Ola 1</span>
+        <h1>20 propuestas listas para abrir en la mesa</h1>
+        <p>Arrancá arriba con los 10 mundos radicales (cine, 3D, escritorio OS, brasas en vivo y antes/después) o bajá a los 10 clásicos comerciales directos para cerrar rápido.</p>
 
         <!-- Tarjeta resumen para el café -->
         <aside class="coffee-card" aria-label="Resumen para la charla del café">
           <div class="coffee-header">
             <span class="coffee-badge">Resumen para el café</span>
-            <button type="button" class="coffee-toggle" id="coffeeToggle" aria-expanded="true">Ocultar resumen</button>
+            <button type="button" class="coffee-toggle" id="coffeeToggle" aria-expanded="false">Ver resumen del acuerdo</button>
           </div>
 
-          <div class="coffee-body" id="coffeeBody">
+          <div class="coffee-body is-collapsed" id="coffeeBody">
             <div class="coffee-grid">
               <div class="coffee-stat">
                 <div class="coffee-stat-label">Número simple</div>
@@ -547,195 +785,398 @@
     <!-- Filtros -->
     <section class="filter-section" aria-label="Filtrar propuestas">
       <div class="container filter-row">
-        <div class="filters" role="tablist" aria-label="Categorías de prototipos">
-          <button type="button" class="filter-btn is-active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
-          <button type="button" class="filter-btn" data-filter="clientes" role="tab" aria-selected="false">Para mostrar a clientes</button>
-          <button type="button" class="filter-btn" data-filter="gestion" role="tab" aria-selected="false">Venta de Gestión</button>
-          <button type="button" class="filter-btn" data-filter="pack" role="tab" aria-selected="false">Pack Estanterías + Redes</button>
+        <div class="filters" role="tablist" aria-label="Olas de prototipos">
+          <button type="button" class="filter-btn is-active" data-filter="todos" role="tab" aria-selected="true">Todos (20)</button>
+          <button type="button" class="filter-btn" data-filter="ola2" role="tab" aria-selected="false">Ola 2: Radicales &amp; 3D (10)</button>
+          <button type="button" class="filter-btn" data-filter="ola1" role="tab" aria-selected="false">Ola 1: Clásicos (10)</button>
         </div>
-        <div class="result-count" id="resultCount">Mostrando 10 de 10 propuestas</div>
+        <div class="result-count" id="resultCount">Mostrando 20 de 20 propuestas</div>
       </div>
     </section>
 
-    <!-- Grilla de los 10 prototipos -->
-    <section class="container" aria-label="Listado de 10 propuestas">
-      <div class="cards-grid" id="cardsGrid">
-
-        <a class="proto-card" href="./01-san-rafael-directo/" data-tags="clientes">
+    <div class="container">
+      <!-- OLA 2: MUNDOS RADICALES / NIVEL AWWWARDS -->
+      <section class="wave-section" id="wave2Section" data-wave="ola2" aria-label="Ola 2: Mundos Radicales y 3D">
+        <div class="section-head">
           <div>
-            <div class="card-top">
-              <span class="proto-num">01</span>
-              <div class="card-tags">
-                <span class="tag tag-clientes">Para clientes</span>
+            <div class="section-kicker">Ola 2 · Experiencias de Alto Impacto</div>
+            <h2 class="section-title">Mundos Radicales &amp; Nivel Awwwards (11 – 20)</h2>
+          </div>
+          <p class="section-sub">Para dejar con la boca abierta a cualquier dueño de comercio, bodega, parrilla o depósito en los primeros 5 segundos.</p>
+        </div>
+
+        <div class="wave2-grid">
+
+          <a class="showcase-card" href="./11-atuel-cinematico/">
+            <div class="thumb-wrap">
+              <img src="./assets/atuel-hero.jpg" alt="Cañón del Atuel Cinemático" loading="eager" />
+              <span class="thumb-overlay-badge">11 · Cine &amp; Partículas</span>
+            </div>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">11. Cañón del Atuel Cinemático</h3>
+                <p class="showcase-desc">Full-bleed cinema + cursor de mate + partículas doradas.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Impacto visual mendocino</span>
+                <span class="open-cta">Abrir mundo &rarr;</span>
               </div>
             </div>
-            <h2 class="proto-title">San Rafael Directo</h2>
-            <p class="proto-desc">Editorial cálido mendocino, corto y sin vueltas. Pensado para el comerciante que lee rápido desde el celular.</p>
-          </div>
-          <div class="card-footer">
-            <span class="proto-fit">Ideal: presentación rápida general</span>
-            <span class="open-cta">Abrir propuesta &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-        <a class="proto-card" href="./02-comercio-y-estanterias/" data-tags="pack clientes">
-          <div>
-            <div class="card-top">
-              <span class="proto-num">02</span>
-              <div class="card-tags">
-                <span class="tag tag-pack">Estanterías + Redes</span>
+          <a class="showcase-card" href="./12-mundo-3d-san-rafael/">
+            <div class="thumb-wrap">
+              <div class="graphic-banner graphic-3d">
+                <span class="graphic-kicker">Three.js · 3D Interactivo</span>
+                <span class="graphic-headline">Paseo 3D por San Rafael</span>
+              </div>
+              <span class="thumb-overlay-badge">12 · Mundo 3D</span>
+            </div>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">12. Paseo 3D por San Rafael</h3>
+                <p class="showcase-desc">Mundo 3D navegable en Three.js con edificios interactivos.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Recorrido 3D en vivo</span>
+                <span class="open-cta">Abrir mundo &rarr;</span>
               </div>
             </div>
-            <h2 class="proto-title">Tu Local Equipado y Digital</h2>
-            <p class="proto-desc">Alianza Estanterías + Combo de Apertura interactivo. Conecta la entrega física del local con su salida digital.</p>
-          </div>
-          <div class="card-footer">
-            <span class="proto-fit">Ideal: cross-sell directo de Gabi</span>
-            <span class="open-cta">Abrir propuesta &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-        <a class="proto-card" href="./03-vitrina-gastronomica/" data-tags="clientes">
-          <div>
-            <div class="card-top">
-              <span class="proto-num">03</span>
-              <div class="card-tags">
-                <span class="tag tag-clientes">Para clientes</span>
+          <a class="showcase-card" href="./13-escritorio-cuyo-os/">
+            <div class="thumb-wrap">
+              <img src="./assets/andes-wallpaper.jpg" alt="CuyoOS — Escritorio Interactivo" loading="lazy" />
+              <span class="thumb-overlay-badge">13 · Sistema Operativo</span>
+            </div>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">13. CuyoOS — Escritorio Interactivo</h3>
+                <p class="showcase-desc">Sistema operativo con ventanas movibles, stock, radio synth y chat.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Apps y gestión en vivo</span>
+                <span class="open-cta">Abrir mundo &rarr;</span>
               </div>
             </div>
-            <h2 class="proto-title">Vitrina San Rafael</h2>
-            <p class="proto-desc">3 ejemplos interactivos listos para cambiar con un toque: Parrilla, Autoservicio y Bodega.</p>
-          </div>
-          <div class="card-footer">
-            <span class="proto-fit">Ideal: mostrar variedad de rubros</span>
-            <span class="open-cta">Abrir propuesta &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-        <a class="proto-card" href="./04-asistente-real/" data-tags="clientes gestion">
-          <div>
-            <div class="card-top">
-              <span class="proto-num">04</span>
-              <div class="card-tags">
-                <span class="tag tag-clientes">Para clientes</span>
-                <span class="tag tag-gestion">Gestión</span>
+          <a class="showcase-card" href="./14-bodega-malbec-scroll/">
+            <div class="thumb-wrap">
+              <img src="./assets/malbec-editorial.jpg" alt="Experiencia Malbec Editorial" loading="lazy" />
+              <span class="thumb-overlay-badge">14 · Editorial de Lujo</span>
+            </div>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">14. Experiencia Malbec Editorial</h3>
+                <p class="showcase-desc">Lujo mendocino scrollytelling + copa en movimiento.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Bodegas y alta gama</span>
+                <span class="open-cta">Abrir mundo &rarr;</span>
               </div>
             </div>
-            <h2 class="proto-title">Asistente Cotizador Real</h2>
-            <p class="proto-desc">Bot conversacional inteligente paso a paso que pregunta como un vendedor de verdad y arma el pedido para WhatsApp.</p>
-          </div>
-          <div class="card-footer">
-            <span class="proto-fit">Ideal: superar el feedback del bot</span>
-            <span class="open-cta">Abrir propuesta &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-        <a class="proto-card" href="./05-espejo-en-vivo/" data-tags="clientes">
-          <div>
-            <div class="card-top">
-              <span class="proto-num">05</span>
-              <div class="card-tags">
-                <span class="tag tag-clientes">Para clientes</span>
+          <a class="showcase-card" href="./15-arquitectura-estanteria-3d/">
+            <div class="thumb-wrap">
+              <img src="./assets/estanterias-hero.jpg" alt="Depósito y Estanterías 3D" loading="lazy" />
+              <span class="thumb-overlay-badge">15 · Estanterías 3D</span>
+            </div>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">15. Depósito &amp; Estanterías 3D</h3>
+                <p class="showcase-desc">Blueprint arquitectónico + configurador 3D de racks y stock.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Estrella para el canal de Gabi</span>
+                <span class="open-cta">Abrir mundo &rarr;</span>
               </div>
             </div>
-            <h2 class="proto-title">Mirá Tu Web En Vivo</h2>
-            <p class="proto-desc">Generador instantáneo de vista previa para escribir el nombre del local del cliente y mostrárselo armado en el momento.</p>
-          </div>
-          <div class="card-footer">
-            <span class="proto-fit">Ideal: efecto "ver para creer"</span>
-            <span class="open-cta">Abrir propuesta &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-        <a class="proto-card" href="./06-gestion-a-medida/" data-tags="gestion">
-          <div>
-            <div class="card-top">
-              <span class="proto-num">06</span>
-              <div class="card-tags">
-                <span class="tag tag-gestion">Venta de Gestión</span>
+          <a class="showcase-card" href="./16-diario-san-rafael/">
+            <div class="thumb-wrap">
+              <img src="./assets/san-rafael-diario.jpg" alt="El Heraldo de San Rafael" loading="lazy" />
+              <span class="thumb-overlay-badge">16 · Prensa Clásica</span>
+            </div>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">16. El Heraldo de San Rafael</h3>
+                <p class="showcase-desc">Diario impreso clásico con clasificados y cupón sellable.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Confianza local inolvidable</span>
+                <span class="open-cta">Abrir mundo &rarr;</span>
               </div>
             </div>
-            <h2 class="proto-title">Gestión Real a Medida</h2>
-            <p class="proto-desc">Demo interactivo de stock por estantería, caja diaria y alertas de reposición. El diferencial técnico real.</p>
-          </div>
-          <div class="card-footer">
-            <span class="proto-fit">Ideal: autoservicios y depósitos</span>
-            <span class="open-cta">Abrir propuesta &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-        <a class="proto-card" href="./07-pack-producto/" data-tags="pack">
-          <div>
-            <div class="card-top">
-              <span class="proto-num">07</span>
-              <div class="card-tags">
-                <span class="tag tag-pack">Pack Producto</span>
+          <a class="showcase-card" href="./17-mate-y-codigo/">
+            <div class="thumb-wrap">
+              <div class="graphic-banner graphic-mate">
+                <span class="graphic-kicker">Interacción &amp; Física</span>
+                <span class="graphic-headline">Un Mate Con José</span>
+              </div>
+              <span class="thumb-overlay-badge">17 · Mate &amp; Física</span>
+            </div>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">17. Un Mate Con José</h3>
+                <p class="showcase-desc">Cursor de mate con vapor + pava interactiva + tarjetas con física.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Cercanía y oficio artesanal</span>
+                <span class="open-cta">Abrir mundo &rarr;</span>
               </div>
             </div>
-            <h2 class="proto-title">Web Como Producto</h2>
-            <p class="proto-desc">Paquete cerrado y transparente: 6 meses de soporte, hasta 20 cambios por mes y continuidad clara sin letras chicas.</p>
-          </div>
-          <div class="card-footer">
-            <span class="proto-fit">Ideal: cerrar precio sin vueltas</span>
-            <span class="open-cta">Abrir propuesta &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-        <a class="proto-card" href="./08-ferreteria-y-mayorista/" data-tags="clientes gestion">
-          <div>
-            <div class="card-top">
-              <span class="proto-num">08</span>
-              <div class="card-tags">
-                <span class="tag tag-clientes">Para clientes</span>
-                <span class="tag tag-gestion">Gestión</span>
+          <a class="showcase-card" href="./18-brutalismo-industrial/">
+            <div class="thumb-wrap">
+              <div class="graphic-banner graphic-brutal">
+                <span class="graphic-kicker">Póster Cinético · Sin Chamuyo</span>
+                <span class="graphic-headline">CERO HUMO</span>
+              </div>
+              <span class="thumb-overlay-badge">18 · Neo-Brutalismo</span>
+            </div>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">18. CERO HUMO — Neo-Brutalismo</h3>
+                <p class="showcase-desc">Póster cinético amarillo/negro + Detector de Humo comparador.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Anti-agencia directo al hueso</span>
+                <span class="open-cta">Abrir mundo &rarr;</span>
               </div>
             </div>
-            <h2 class="proto-title">Ferreterías y Mayoristas</h2>
-            <p class="proto-desc">Vertical industrial con catálogo rápido por rubro y armado de pedido directo a WhatsApp.</p>
-          </div>
-          <div class="card-footer">
-            <span class="proto-fit">Ideal: ferreterías y corralones</span>
-            <span class="open-cta">Abrir propuesta &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-        <a class="proto-card" href="./09-estudio-jose-roman/" data-tags="clientes gestion">
-          <div>
-            <div class="card-top">
-              <span class="proto-num">09</span>
-              <div class="card-tags">
-                <span class="tag tag-clientes">Para clientes</span>
-                <span class="tag tag-gestion">Gestión</span>
+          <a class="showcase-card" href="./19-parrilla-fuego-vivo/">
+            <div class="thumb-wrap">
+              <img src="./assets/parrilla-fuego.jpg" alt="Fuego y Oficio — Parrilla Viva" loading="lazy" />
+              <span class="thumb-overlay-badge">19 · Brasas en Vivo</span>
+            </div>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">19. Fuego &amp; Oficio — Parrilla Viva</h3>
+                <p class="showcase-desc">Brasas de quebracho animadas en vivo + carta + reservas.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Gastronomía y turismo</span>
+                <span class="open-cta">Abrir mundo &rarr;</span>
               </div>
             </div>
-            <h2 class="proto-title">Estudio José Román</h2>
-            <p class="proto-desc">Marca personal de confianza en San Rafael con respaldo técnico real y respuestas claras a las dudas de siempre.</p>
-          </div>
-          <div class="card-footer">
-            <span class="proto-fit">Ideal: dar respaldo personal</span>
-            <span class="open-cta">Abrir propuesta &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-        <a class="proto-card" href="./10-redes-mas-web/" data-tags="pack">
-          <div>
-            <div class="card-top">
-              <span class="proto-num">10</span>
-              <div class="card-tags">
-                <span class="tag tag-pack">Estanterías + Redes</span>
+          <a class="showcase-card" href="./20-maquina-de-prototipos/">
+            <div class="thumb-wrap">
+              <img src="./assets/san-rafael-diorama.jpg" alt="La Fábrica Crucero" loading="lazy" />
+              <span class="thumb-overlay-badge">20 · Antes / Después</span>
+            </div>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">20. La Fábrica Crucero</h3>
+                <p class="showcase-desc">Cortina arrastrable Antes/Después + palanca de 4 mundos en vivo.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Demostración de velocidad real</span>
+                <span class="open-cta">Abrir mundo &rarr;</span>
               </div>
             </div>
-            <h2 class="proto-title">Pack Inauguración: Web + 6 Posts</h2>
-            <p class="proto-desc">Enfoque comercial listo para lanzar el local, con vista previa de 6 posts de Instagram adaptados por rubro.</p>
-          </div>
-          <div class="card-footer">
-            <span class="proto-fit">Ideal: locales nuevos en apertura</span>
-            <span class="open-cta">Abrir propuesta &rarr;</span>
-          </div>
-        </a>
+          </a>
 
-      </div>
-    </section>
+        </div>
+      </section>
+
+      <!-- OLA 1: CLÁSICOS COMERCIALES -->
+      <section class="wave-section" id="wave1Section" data-wave="ola1" aria-label="Ola 1: Clásicos Comerciales">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Ola 1 · Venta Directa &amp; Paquetes</div>
+            <h2 class="section-title">Clásicos Comerciales (01 – 10)</h2>
+          </div>
+          <p class="section-sub">Formatos claros y probados para mostrar precios cerrados, demos de gestión, combos con estanterías y packs de apertura.</p>
+        </div>
+
+        <div class="cards-grid">
+
+          <a class="proto-card" href="./01-san-rafael-directo/">
+            <div>
+              <div class="card-top">
+                <span class="proto-num">01</span>
+                <div class="card-tags">
+                  <span class="tag tag-clientes">Para clientes</span>
+                </div>
+              </div>
+              <h3 class="proto-title">San Rafael Directo</h3>
+              <p class="proto-desc">Editorial cálido mendocino, corto y sin vueltas. Pensado para el comerciante que lee rápido desde el celular.</p>
+            </div>
+            <div class="card-footer">
+              <span class="proto-fit">Presentación rápida general</span>
+              <span class="open-cta">Abrir propuesta &rarr;</span>
+            </div>
+          </a>
+
+          <a class="proto-card" href="./02-comercio-y-estanterias/">
+            <div>
+              <div class="card-top">
+                <span class="proto-num">02</span>
+                <div class="card-tags">
+                  <span class="tag tag-pack">Estanterías + Redes</span>
+                </div>
+              </div>
+              <h3 class="proto-title">Tu Local Equipado y Digital</h3>
+              <p class="proto-desc">Alianza Estanterías + Combo de Apertura interactivo. Conecta la entrega física del local con su salida digital.</p>
+            </div>
+            <div class="card-footer">
+              <span class="proto-fit">Cross-sell directo de Gabi</span>
+              <span class="open-cta">Abrir propuesta &rarr;</span>
+            </div>
+          </a>
+
+          <a class="proto-card" href="./03-vitrina-gastronomica/">
+            <div>
+              <div class="card-top">
+                <span class="proto-num">03</span>
+                <div class="card-tags">
+                  <span class="tag tag-clientes">Para clientes</span>
+                </div>
+              </div>
+              <h3 class="proto-title">Vitrina San Rafael</h3>
+              <p class="proto-desc">3 ejemplos interactivos listos para cambiar con un toque: Parrilla, Autoservicio y Bodega.</p>
+            </div>
+            <div class="card-footer">
+              <span class="proto-fit">Variedad de rubros locales</span>
+              <span class="open-cta">Abrir propuesta &rarr;</span>
+            </div>
+          </a>
+
+          <a class="proto-card" href="./04-asistente-real/">
+            <div>
+              <div class="card-top">
+                <span class="proto-num">04</span>
+                <div class="card-tags">
+                  <span class="tag tag-clientes">Para clientes</span>
+                  <span class="tag tag-gestion">Gestión</span>
+                </div>
+              </div>
+              <h3 class="proto-title">Asistente Cotizador Real</h3>
+              <p class="proto-desc">Bot conversacional inteligente paso a paso que pregunta como un vendedor de verdad y arma el pedido para WhatsApp.</p>
+            </div>
+            <div class="card-footer">
+              <span class="proto-fit">Bot real que sí cotiza</span>
+              <span class="open-cta">Abrir propuesta &rarr;</span>
+            </div>
+          </a>
+
+          <a class="proto-card" href="./05-espejo-en-vivo/">
+            <div>
+              <div class="card-top">
+                <span class="proto-num">05</span>
+                <div class="card-tags">
+                  <span class="tag tag-clientes">Para clientes</span>
+                </div>
+              </div>
+              <h3 class="proto-title">Mirá Tu Web En Vivo</h3>
+              <p class="proto-desc">Generador instantáneo de vista previa para escribir el nombre del local del cliente y mostrárselo armado en el momento.</p>
+            </div>
+            <div class="card-footer">
+              <span class="proto-fit">Efecto "ver para creer"</span>
+              <span class="open-cta">Abrir propuesta &rarr;</span>
+            </div>
+          </a>
+
+          <a class="proto-card" href="./06-gestion-a-medida/">
+            <div>
+              <div class="card-top">
+                <span class="proto-num">06</span>
+                <div class="card-tags">
+                  <span class="tag tag-gestion">Venta de Gestión</span>
+                </div>
+              </div>
+              <h3 class="proto-title">Gestión Real a Medida</h3>
+              <p class="proto-desc">Demo interactivo de stock por estantería, caja diaria y alertas de reposición. El diferencial técnico real.</p>
+            </div>
+            <div class="card-footer">
+              <span class="proto-fit">Autoservicios y depósitos</span>
+              <span class="open-cta">Abrir propuesta &rarr;</span>
+            </div>
+          </a>
+
+          <a class="proto-card" href="./07-pack-producto/">
+            <div>
+              <div class="card-top">
+                <span class="proto-num">07</span>
+                <div class="card-tags">
+                  <span class="tag tag-pack">Pack Producto</span>
+                </div>
+              </div>
+              <h3 class="proto-title">Web Como Producto</h3>
+              <p class="proto-desc">Paquete cerrado y transparente: 6 meses de soporte, hasta 20 cambios por mes y continuidad clara sin letras chicas.</p>
+            </div>
+            <div class="card-footer">
+              <span class="proto-fit">Cerrar precio sin vueltas</span>
+              <span class="open-cta">Abrir propuesta &rarr;</span>
+            </div>
+          </a>
+
+          <a class="proto-card" href="./08-ferreteria-y-mayorista/">
+            <div>
+              <div class="card-top">
+                <span class="proto-num">08</span>
+                <div class="card-tags">
+                  <span class="tag tag-clientes">Para clientes</span>
+                  <span class="tag tag-gestion">Gestión</span>
+                </div>
+              </div>
+              <h3 class="proto-title">Ferreterías y Mayoristas</h3>
+              <p class="proto-desc">Vertical industrial con catálogo rápido por rubro y armado de pedido directo a WhatsApp.</p>
+            </div>
+            <div class="card-footer">
+              <span class="proto-fit">Ferreterías y corralones</span>
+              <span class="open-cta">Abrir propuesta &rarr;</span>
+            </div>
+          </a>
+
+          <a class="proto-card" href="./09-estudio-jose-roman/">
+            <div>
+              <div class="card-top">
+                <span class="proto-num">09</span>
+                <div class="card-tags">
+                  <span class="tag tag-clientes">Para clientes</span>
+                  <span class="tag tag-gestion">Gestión</span>
+                </div>
+              </div>
+              <h3 class="proto-title">Estudio José Román</h3>
+              <p class="proto-desc">Marca personal de confianza en San Rafael con respaldo técnico real y respuestas claras a las dudas de siempre.</p>
+            </div>
+            <div class="card-footer">
+              <span class="proto-fit">Respaldo técnico personal</span>
+              <span class="open-cta">Abrir propuesta &rarr;</span>
+            </div>
+          </a>
+
+          <a class="proto-card" href="./10-redes-mas-web/">
+            <div>
+              <div class="card-top">
+                <span class="proto-num">10</span>
+                <div class="card-tags">
+                  <span class="tag tag-pack">Estanterías + Redes</span>
+                </div>
+              </div>
+              <h3 class="proto-title">Pack Inauguración: Web + 6 Posts</h3>
+              <p class="proto-desc">Enfoque comercial listo para lanzar el local, con vista previa de 6 posts de Instagram adaptados por rubro.</p>
+            </div>
+            <div class="card-footer">
+              <span class="proto-fit">Locales nuevos en apertura</span>
+              <span class="open-cta">Abrir propuesta &rarr;</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="footer">
@@ -748,24 +1189,21 @@
   <script>
     (function () {
       const filterButtons = document.querySelectorAll('.filter-btn');
-      const cards = document.querySelectorAll('.proto-card');
+      const wave2Section = document.getElementById('wave2Section');
+      const wave1Section = document.getElementById('wave1Section');
       const resultCount = document.getElementById('resultCount');
       const coffeeToggle = document.getElementById('coffeeToggle');
       const coffeeBody = document.getElementById('coffeeBody');
 
       function applyFilter(filterKey) {
-        let visible = 0;
-        cards.forEach((card) => {
-          const tags = (card.getAttribute('data-tags') || '').split(/\s+/);
-          const match = filterKey === 'todos' || tags.includes(filterKey);
-          card.classList.toggle('is-hidden', !match);
-          if (match) visible += 1;
-        });
+        const showWave2 = filterKey === 'todos' || filterKey === 'ola2';
+        const showWave1 = filterKey === 'todos' || filterKey === 'ola1';
 
-        resultCount.textContent =
-          visible === 1
-            ? 'Mostrando 1 de 10 propuestas'
-            : `Mostrando ${visible} de 10 propuestas`;
+        wave2Section.classList.toggle('is-hidden', !showWave2);
+        wave1Section.classList.toggle('is-hidden', !showWave1);
+
+        const visibleCount = (showWave2 ? 10 : 0) + (showWave1 ? 10 : 0);
+        resultCount.textContent = `Mostrando ${visibleCount} de 20 propuestas`;
       }
 
       filterButtons.forEach((btn) => {
@@ -783,7 +1221,7 @@
       coffeeToggle.addEventListener('click', () => {
         const collapsed = coffeeBody.classList.toggle('is-collapsed');
         coffeeToggle.setAttribute('aria-expanded', String(!collapsed));
-        coffeeToggle.textContent = collapsed ? 'Mostrar resumen' : 'Ocultar resumen';
+        coffeeToggle.textContent = collapsed ? 'Ver resumen del acuerdo' : 'Ocultar resumen';
       });
     })();
   </script>

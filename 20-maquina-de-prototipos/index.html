@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Fábrica Crucero — Antes/Después y Palanca de Prototipos en Vivo | San Rafael</title>
+  <meta name="description" content="Compará una plantilla genérica contra una web flagship para San Rafael y mové la palanca de prototipos en vivo por 4 rubros distintos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Cormorant+Garamond:wght@600;700&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F6F3EE;
+      --surface: #FFFFFF;
+      --ink: #18181B;
+      --muted: #52525B;
+      --border: #DDD6CA;
+      --brass: #B8862D;
+      --brass-bright: #E2B857;
+      --terracotta: #C84B31;
+      --max-w: 1140px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.025em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(246, 243, 238, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .nav-inner {
+      height: 66px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.08rem;
+    }
+
+    .brand-badge {
+      background: var(--ink);
+      color: var(--brass-bright);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.12s ease, background-color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background: #A93B24;
+    }
+
+    .btn-ink {
+      background: var(--ink);
+      color: #FFFFFF;
+    }
+
+    /* Hero + Before/After Draggable Curtain */
+    .hero {
+      padding: 42px 0 58px;
+    }
+
+    .hero-head {
+      max-width: 780px;
+      margin-bottom: 26px;
+    }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      line-height: 1.06;
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    /* Draggable Curtain Stage */
+    .compare-stage {
+      position: relative;
+      width: 100%;
+      height: 460px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid var(--ink);
+      box-shadow: 0 20px 44px -18px rgba(24, 24, 27, 0.3);
+      user-select: none;
+      touch-action: pan-y;
+      background: #E5E7EB;
+    }
+
+    /* Right Layer (After: Flagship San Rafael) */
+    .layer-after {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(90deg, rgba(24, 24, 27, 0.78) 0%, rgba(24, 24, 27, 0.45) 55%, rgba(24, 24, 27, 0.22) 100%),
+        url('../assets/san-rafael-diorama.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px;
+    }
+
+    .stage-pill {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 5px 10px;
+      border-radius: 999px;
+      align-self: flex-start;
+    }
+
+    .pill-after {
+      background: var(--brass-bright);
+      color: var(--ink);
+    }
+
+    .after-content {
+      max-width: 520px;
+    }
+
+    .after-content h2 {
+      font-size: clamp(1.65rem, 3.8vw, 2.55rem);
+      line-height: 1.08;
+      margin-bottom: 10px;
+    }
+
+    .after-content p {
+      font-size: 0.96rem;
+      color: #F4F4F5;
+      margin-bottom: 18px;
+    }
+
+    /* Left Layer (Before: Boring Gray Template) */
+    .layer-before {
+      position: absolute;
+      inset: 0;
+      background: #E4E4E7;
+      color: #52525B;
+      clip-path: inset(0 50% 0 0);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px;
+    }
+
+    .pill-before {
+      background: #A1A1AA;
+      color: #FFFFFF;
+    }
+
+    .boring-wireframe {
+      max-width: 480px;
+      background: #F4F4F5;
+      border: 1px solid #D4D4D8;
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .boring-wireframe h3 {
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: #71717A;
+      margin-bottom: 8px;
+    }
+
+    .boring-wireframe p {
+      font-size: 0.88rem;
+      color: #71717A;
+      margin-bottom: 14px;
+    }
+
+    .boring-btn {
+      display: inline-block;
+      background: #A1A1AA;
+      color: #FFFFFF;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      border-radius: 3px;
+    }
+
+    /* Brass Divider & Handle */
+    .curtain-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: linear-gradient(180deg, #FDE68A, var(--brass), #FDE68A);
+      transform: translateX(-50%);
+      z-index: 15;
+      cursor: ew-resize;
+    }
+
+    .brass-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #FDE68A, var(--brass));
+      border: 2.5px solid var(--ink);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      display: grid;
+      place-items: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--ink);
+      cursor: ew-resize;
+    }
+
+    .drag-hint {
+      text-align: center;
+      margin-top: 12px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* Section 2: Multi-World Morph Engine */
+    .morph-section {
+      padding: 64px 0 76px;
+      border-top: 1px solid var(--border);
+    }
+
+    .lever-console {
+      background: var(--ink);
+      color: #FFFFFF;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .lever-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .lever-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--brass-bright);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .world-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+    }
+
+    .world-btn {
+      padding: 12px 14px;
+      border-radius: 9px;
+      border: 1.5px solid #3F3F46;
+      background: #27272A;
+      color: #E4E4E7;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+    }
+
+    .world-btn small {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+
+    .world-btn.active {
+      background: var(--brass-bright);
+      color: var(--ink);
+      border-color: var(--brass-bright);
+    }
+
+    /* Morphing Live Stage */
+    .morph-stage {
+      border-radius: 16px;
+      padding: 32px 26px;
+      border: 2px solid var(--ink);
+      transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+      display: grid;
+      gap: 24px;
+    }
+
+    /* World 1: Bodega */
+    .morph-stage[data-world="bodega"] {
+      background: #FBF7F0;
+      color: #2B1218;
+      border-color: #5E1727;
+    }
+    .morph-stage[data-world="bodega"] .ms-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(2.1rem, 4.4vw, 3.1rem); color: #5E1727; }
+    .morph-stage[data-world="bodega"] .ms-badge { background: #5E1727; color: #FBF7F0; }
+    .morph-stage[data-world="bodega"] .ms-card { background: #FFFFFF; border: 1px solid #E6D9D1; }
+    .morph-stage[data-world="bodega"] .ms-cta { background: #5E1727; color: #FFFFFF; }
+
+    /* World 2: Supermercado & Estanterías */
+    .morph-stage[data-world="super"] {
+      background: #FFFDF7;
+      color: #14281D;
+      border-color: #166534;
+    }
+    .morph-stage[data-world="super"] .ms-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.9rem, 4vw, 2.7rem); color: #166534; }
+    .morph-stage[data-world="super"] .ms-badge { background: #EA580C; color: #FFFFFF; }
+    .morph-stage[data-world="super"] .ms-card { background: #F0FDF4; border: 1px solid #BBF7D0; }
+    .morph-stage[data-world="super"] .ms-cta { background: #EA580C; color: #FFFFFF; }
+
+    /* World 3: Ferretería Industrial */
+    .morph-stage[data-world="ferre"] {
+      background: #1C1917;
+      color: #F5F5F4;
+      border-color: #EAB308;
+    }
+    .morph-stage[data-world="ferre"] .ms-title { font-family: 'Barlow', sans-serif; text-transform: uppercase; font-size: clamp(2rem, 4.2vw, 2.9rem); color: #EAB308; }
+    .morph-stage[data-world="ferre"] .ms-badge { background: #EAB308; color: #1C1917; }
+    .morph-stage[data-world="ferre"] .ms-card { background: #292524; border: 1px solid #44403C; }
+    .morph-stage[data-world="ferre"] .ms-cta { background: #EAB308; color: #1C1917; }
+
+    /* World 4: Turismo Valle Grande */
+    .morph-stage[data-world="turismo"] {
+      background: #F0F9FA;
+      color: #0F2E36;
+      border-color: #0F766E;
+    }
+    .morph-stage[data-world="turismo"] .ms-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.95rem, 4vw, 2.75rem); color: #0F766E; }
+    .morph-stage[data-world="turismo"] .ms-badge { background: #B45309; color: #FFFFFF; }
+    .morph-stage[data-world="turismo"] .ms-card { background: #FFFFFF; border: 1px solid #BAE6FD; }
+    .morph-stage[data-world="turismo"] .ms-cta { background: #0F766E; color: #FFFFFF; }
+
+    .ms-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .ms-title {
+      line-height: 1.08;
+      margin-bottom: 10px;
+    }
+
+    .ms-sub {
+      opacity: 0.86;
+      max-width: 640px;
+      margin-bottom: 18px;
+    }
+
+    .ms-cards {
+      display: grid;
+      gap: 14px;
+    }
+
+    .ms-card {
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .ms-card strong {
+      display: block;
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+    }
+
+    .ms-card span {
+      font-size: 0.86rem;
+      opacity: 0.85;
+    }
+
+    .ms-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid currentColor;
+      border-top-color: rgba(128, 128, 128, 0.25);
+    }
+
+    footer {
+      background: var(--ink);
+      color: #E4E4E7;
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .compare-stage {
+        height: 500px;
+      }
+      .ms-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .morph-stage {
+        padding: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <span class="brand-badge">CRUCERO</span>
+        <span>La Fábrica de Prototipos · SR</span>
+      </a>
+      <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20prob%C3%A9%20La%20F%C3%A1brica%20Crucero%20y%20quiero%20ver%203%20prototipos%20gratis%20para%20mi%20negocio." target="_blank" rel="noopener">
+        Pedir 3 prototipos gratis
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-head">
+          <div class="eyebrow">San Rafael, Mendoza · Comparador Interactivo</div>
+          <h1>Arrastrá la cortina y mirá la diferencia entre una plantilla gris y una web a medida.</h1>
+          <p class="hero-sub">Deslizá la manija de bronce hacia izquierda o derecha para comparar lo que entrega cualquiera frente a lo que diseñamos para tu negocio en San Rafael.</p>
+        </div>
+
+        <div class="compare-stage" id="compareStage" aria-label="Comparador interactivo Antes y Después">
+          <!-- RIGHT / AFTER -->
+          <div class="layer-after">
+            <span class="stage-pill pill-after">Después · Web Flagship San Rafael</span>
+            <div class="after-content">
+              <h2>Tu negocio con presencia local real, rápida y lista para vender.</h2>
+              <p>Identidad propia, fotos reales, horarios claros y pedido directo por WhatsApp en un toque. Prototipos gratis antes de pagar.</p>
+              <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pasar%20mi%20negocio%20al%20nivel%20Flagship%20en%20San%20Rafael." target="_blank" rel="noopener">
+                Quiero este nivel para mi local
+              </a>
+            </div>
+          </div>
+
+          <!-- LEFT / BEFORE -->
+          <div class="layer-before" id="layerBefore">
+            <span class="stage-pill pill-before">Antes · Plantilla Genérica</span>
+            <div class="boring-wireframe">
+              <h3>Empresa S.A. — Bienvenidos</h3>
+              <p>Somos una empresa dedicada a brindar soluciones integrales de excelencia. Completá nuestro formulario de 9 campos y te respondemos en 72 horas hábiles.</p>
+              <span class="boring-btn">Enviar consulta (sin WhatsApp)</span>
+            </div>
+          </div>
+
+          <!-- BRASS DIVIDER -->
+          <div class="curtain-divider" id="curtainDivider">
+            <div class="brass-handle" id="brassHandle" role="slider" aria-label="Deslizador Antes y Después" aria-valuemin="5" aria-valuemax="95" aria-valuenow="50" tabindex="0">◀ ▶</div>
+          </div>
+        </div>
+        <p class="drag-hint">Tip: arrastrá la manija dorada con el mouse o con el dedo en el celular.</p>
+      </div>
+    </section>
+
+    <section class="morph-section" id="palanca">
+      <div class="container">
+        <div class="hero-head">
+          <div class="eyebrow">Motor Multi-Mundo en Vivo</div>
+          <h2 style="font-size:clamp(1.75rem,3.8vw,2.5rem);margin-bottom:8px;">Palanca de Prototipos en Vivo</h2>
+          <p class="hero-sub">Tocá cualquiera de los 4 rubros y mirá cómo toda la web transforma su paleta, tipografía y propuesta comercial al instante.</p>
+        </div>
+
+        <div class="lever-console">
+          <div class="lever-top">
+            <span class="lever-label">⚡ PALANCA DE PROTOTIPOS EN VIVO</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.74rem;color:#A1A1AA;">4 mundos · 1 solo motor</span>
+          </div>
+          <div class="world-buttons" id="worldButtons">
+            <button type="button" class="world-btn active" data-target="bodega">
+              1. Bodega de Autor
+              <small>Editorial · Malbec &amp; Visitas</small>
+            </button>
+            <button type="button" class="world-btn" data-target="super">
+              2. Supermercado &amp; Estanterías
+              <small>Comercio · Ofertas &amp; WhatsApp</small>
+            </button>
+            <button type="button" class="world-btn" data-target="ferre">
+              3. Ferretería Industrial
+              <small>B2B · Catálogo &amp; Mayorista</small>
+            </button>
+            <button type="button" class="world-btn" data-target="turismo">
+              4. Turismo Valle Grande
+              <small>Aventura · Cabañas &amp; Rafting</small>
+            </button>
+          </div>
+        </div>
+
+        <article class="morph-stage" id="morphStage" data-world="bodega" aria-live="polite">
+          <div>
+            <span class="ms-badge" id="msBadge">Bodega Boutique · San Rafael</span>
+            <h3 class="ms-title" id="msTitle">Finca Los Sauces — Degustaciones y Vinos de Altura</h3>
+            <p class="ms-sub" id="msSub">Recorré nuestros viñedos en San Rafael, reservá tu almuerzo entre hileras y llevate cajas directo de bodega por WhatsApp.</p>
+          </div>
+          <div class="ms-cards" id="msCards"></div>
+          <div class="ms-footer">
+            <span id="msFootNote" style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;opacity:0.85;">Prototipo real en vivo · Listo para adaptar a tu marca</span>
+            <a id="msCta" class="btn ms-cta" href="https://wa.me/5492604059284" target="_blank" rel="noopener">
+              Pedir un prototipo de este rubro →
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong style="font-family:'Space Grotesk',sans-serif;font-size:1.15rem;display:block;">José Román Fredrin · Ingeniería Web</strong>
+        <span style="font-size:0.88rem;color:#A1A1AA;">San Rafael, Mendoza · +54 9 260 405-9284 · romanfjose@gmail.com</span>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pedir%203%20prototipos%20gratis%20para%20mi%20negocio." target="_blank" rel="noopener">WhatsApp directo</a>
+        <a class="btn btn-ink" style="border-color:#52525B;" href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // 1. Draggable Before/After Curtain
+      const stage = document.getElementById('compareStage');
+      const layerBefore = document.getElementById('layerBefore');
+      const divider = document.getElementById('curtainDivider');
+      const handle = document.getElementById('brassHandle');
+      let dragging = false;
+      let pct = 50;
+
+      function setSplit(nextPct) {
+        pct = Math.max(5, Math.min(95, nextPct));
+        layerBefore.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+        divider.style.left = pct + '%';
+        handle.setAttribute('aria-valuenow', String(Math.round(pct)));
+      }
+
+      function updateFromClientX(clientX) {
+        const rect = stage.getBoundingClientRect();
+        const rel = ((clientX - rect.left) / rect.width) * 100;
+        setSplit(rel);
+      }
+
+      divider.addEventListener('mousedown', function () { dragging = true; });
+      stage.addEventListener('mousedown', function (ev) {
+        if (ev.target.closest('a')) return;
+        dragging = true;
+        updateFromClientX(ev.clientX);
+      });
+      window.addEventListener('mousemove', function (ev) {
+        if (!dragging) return;
+        updateFromClientX(ev.clientX);
+      });
+      window.addEventListener('mouseup', function () { dragging = false; });
+
+      stage.addEventListener('touchstart', function (ev) {
+        if (ev.target.closest('a')) return;
+        dragging = true;
+        if (ev.touches[0]) updateFromClientX(ev.touches[0].clientX);
+      }, { passive: true });
+
+      window.addEventListener('touchmove', function (ev) {
+        if (!dragging) return;
+        if (ev.touches[0]) updateFromClientX(ev.touches[0].clientX);
+      }, { passive: true });
+
+      window.addEventListener('touchend', function () { dragging = false; });
+
+      handle.addEventListener('keydown', function (ev) {
+        if (ev.key === 'ArrowLeft') setSplit(pct - 5);
+        if (ev.key === 'ArrowRight') setSplit(pct + 5);
+      });
+
+      setSplit(50);
+
+      // 2. Multi-World Morph Engine
+      const WORLDS = {
+        bodega: {
+          name: 'Bodega de Autor',
+          badge: 'Bodega Boutique · San Rafael',
+          title: 'Finca Los Sauces — Degustaciones y Vinos de Altura',
+          sub: 'Recorré nuestros viñedos en San Rafael, reservá tu almuerzo entre hileras y llevate cajas directo de bodega por WhatsApp.',
+          cards: [
+            { t: 'Visita Guiada + 4 Copas', d: 'Recorrido por sala de barricas y degustación de Malbec reserva.' },
+            { t: 'Venta Directa por Caja', d: 'Envíos en el día dentro de San Rafael y despachos a todo el país.' },
+            { t: 'Reservas por WhatsApp', d: 'Confirmación inmediata sin comisiones de intermediarios.' }
+          ]
+        },
+        super: {
+          name: 'Supermercado & Estanterías',
+          badge: 'Autoservicio · Apertura y Ofertas',
+          title: 'Autoservicio El Sol — Góndolas Llenas y Precios Claros',
+          sub: 'Mirá las ofertas semanales desde el celular, pasanos tu lista por WhatsApp y retirá el pedido armado sin hacer fila.',
+          cards: [
+            { t: 'Ofertas de la Semana', d: 'Actualizá precios y combos en minutos con tus 20 cambios mensuales.' },
+            { t: 'Pedido Listo para Retirar', d: 'Tus vecinos mandan la lista por WhatsApp y pasan a buscarla.' },
+            { t: 'Escalable a Control de Stock', d: 'Base preparada para sumar control por estantería y depósito.' }
+          ]
+        },
+        ferre: {
+          name: 'Ferretería Industrial',
+          badge: 'B2B · Corralones y Distribuidoras',
+          title: 'DISTRIBUIDORA CUYO — CATÁLOGO MAYORISTA 24 HS',
+          sub: 'Tus clientes y contratistas filtran por código SKU, arman el pedido con cantidades exactas y te lo mandan prolijo al mostrador.',
+          cards: [
+            { t: 'Buscador por Código SKU', d: 'Herramientas, fijaciones, estanterías metálicas e iluminación industrial.' },
+            { t: 'Pedido Armado por WhatsApp', d: 'Cero confusiones de medidas, cajas cerradas o precios.' },
+            { t: 'Pensado para Crecer', d: 'Sumá listas mayoristas y stock en depósito cuando lo necesites.' }
+          ]
+        },
+        turismo: {
+          name: 'Turismo Valle Grande',
+          badge: 'Turismo Aventura · Cañón del Atuel',
+          title: 'Cabañas & Rafting Valle Grande — Reservá Sin Comisiones',
+          sub: 'Mostrá tus cabañas, excursiones en el río Atuel y disponibilidad real para que el turista te reserve directo por WhatsApp.',
+          cards: [
+            { t: 'Cero Comisión de Portales', d: 'Convertí visitas en reservas directas sin pagar 15% a plataformas.' },
+            { t: 'Excursiones y Packs', d: 'Rafting, catamarán, kayak y estadía presentados en un solo lugar.' },
+            { t: 'Mapa y Ruta Exacta', d: 'Llegada clara por Ruta 173 para turistas de todo el país.' }
+          ]
+        }
+      };
+
+      const morphStage = document.getElementById('morphStage');
+      const msBadge = document.getElementById('msBadge');
+      const msTitle = document.getElementById('msTitle');
+      const msSub = document.getElementById('msSub');
+      const msCards = document.getElementById('msCards');
+      const msCta = document.getElementById('msCta');
+      const worldBtns = document.querySelectorAll('#worldButtons .world-btn');
+
+      function applyWorld(key) {
+        const w = WORLDS[key];
+        if (!w) return;
+        morphStage.setAttribute('data-world', key);
+        msBadge.textContent = w.badge;
+        msTitle.textContent = w.title;
+        msSub.textContent = w.sub;
+        msCards.innerHTML = w.cards.map(function (c) {
+          return '<div class="ms-card"><strong>' + c.t + '</strong><span>' + c.d + '</span></div>';
+        }).join('');
+        const msg = 'Hola José, probé la Palanca de Prototipos en modo "' + w.name + '" y quiero ver 3 prototipos gratis para mi negocio en San Rafael.';
+        msCta.href = 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg);
+      }
+
+      worldBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          worldBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          applyWorld(btn.getAttribute('data-target'));
+        });
+      });
+
+      applyWorld('bodega');
+    })();
+  </script>
+</body>
+</html>

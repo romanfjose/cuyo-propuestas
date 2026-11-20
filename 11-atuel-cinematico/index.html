@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cañón del Atuel Cinemático · Artesanía Web en San Rafael</title>
+  <meta name="description" content="Diseño web y sistemas a medida en San Rafael, Mendoza. Prototipos gratis antes de pagar, desde $100.000, con trato directo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0D0907;
+      --paper: #F7F1E8;
+      --gold: #E4B974;
+      --gold-deep: #C48E44;
+      --terracotta: #B94E2B;
+      --glass: rgba(16, 11, 8, 0.56);
+      --glass-border: rgba(228, 185, 116, 0.28);
+      --muted: rgba(247, 241, 232, 0.78);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      background: var(--ink);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--paper);
+      background: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @media (pointer: fine) and (min-width: 960px) {
+      body {
+        cursor: none;
+      }
+      a, button {
+        cursor: none;
+      }
+    }
+
+    /* Fixed Cinematic Stage */
+    .cinema-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .cinema-bg {
+      position: absolute;
+      inset: -6%;
+      background-image: url('../assets/atuel-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.06);
+      animation: kenBurns 26s ease-in-out infinite alternate;
+      will-change: transform;
+      filter: saturate(1.08) contrast(1.04);
+    }
+
+    @keyframes kenBurns {
+      0% { transform: scale(1.05) translate3d(0, 0, 0); }
+      100% { transform: scale(1.16) translate3d(-1.8%, -1.2%, 0); }
+    }
+
+    .cinema-vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 70% 35%, rgba(228, 185, 116, 0.16) 0%, rgba(13, 9, 7, 0.52) 55%, rgba(10, 7, 5, 0.86) 100%),
+        linear-gradient(180deg, rgba(13, 9, 7, 0.62) 0%, rgba(13, 9, 7, 0.28) 42%, rgba(13, 9, 7, 0.78) 100%);
+      transition: opacity 0.6s ease;
+    }
+
+    #dustCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Custom Mate Cursor (Desktop) */
+    .mate-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 44px;
+      height: 44px;
+      pointer-events: none;
+      z-index: 100;
+      transform: translate3d(-100px, -100px, 0);
+      display: none;
+      filter: drop-shadow(0 6px 14px rgba(228, 185, 116, 0.45));
+      transition: width 0.18s ease, height 0.18s ease;
+    }
+
+    @media (pointer: fine) and (min-width: 960px) {
+      .mate-cursor {
+        display: block;
+      }
+    }
+
+    .mate-cursor.is-hover {
+      transform-origin: center;
+      filter: drop-shadow(0 0 18px rgba(228, 185, 116, 0.85));
+    }
+
+    .steam-line {
+      animation: steamFloat 2.2s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+    .steam-line:nth-child(2) { animation-delay: 0.6s; }
+
+    @keyframes steamFloat {
+      0%, 100% { opacity: 0.25; transform: translateY(0px); }
+      50% { opacity: 0.9; transform: translateY(-3px); }
+    }
+
+    /* Floating Minimal Chrome */
+    .hud-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: linear-gradient(180deg, rgba(13, 9, 7, 0.72) 0%, rgba(13, 9, 7, 0) 100%);
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--paper);
+    }
+
+    .brand-serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-loc {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: none;
+    }
+
+    .hud-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(228, 185, 116, 0.15);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      color: var(--paper);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .hud-cta:hover {
+      background: var(--gold);
+      color: var(--ink);
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    /* Chapter Rail (Right Side) */
+    .chapter-rail {
+      position: fixed;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 40;
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-end;
+    }
+
+    .rail-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: rgba(247, 241, 232, 0.55);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .rail-dot span {
+      opacity: 0;
+      transform: translateX(6px);
+      transition: all 0.2s ease;
+    }
+
+    .rail-dot::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(228, 185, 116, 0.65);
+      background: transparent;
+      transition: all 0.22s ease;
+    }
+
+    .rail-dot.active,
+    .rail-dot:hover {
+      color: var(--gold);
+    }
+
+    .rail-dot.active span,
+    .rail-dot:hover span {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .rail-dot.active::after {
+      background: var(--gold);
+      transform: scale(1.35);
+      box-shadow: 0 0 12px rgba(228, 185, 116, 0.75);
+    }
+
+    /* Snap Chapters */
+    main {
+      position: relative;
+      z-index: 10;
+    }
+
+    .chapter {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      padding: 96px 24px 64px;
+      position: relative;
+    }
+
+    .chapter-inner {
+      width: 100%;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .chapter-num {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .chapter-num::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .display-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(2.65rem, 6.8vw, 5.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      max-width: 820px;
+      margin-bottom: 22px;
+      text-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+    }
+
+    .display-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .chapter-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(2.1rem, 4.8vw, 3.85rem);
+      line-height: 1.06;
+      max-width: 720px;
+      margin-bottom: 18px;
+    }
+
+    .chapter-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .chapter-lead {
+      font-size: clamp(1rem, 1.8vw, 1.16rem);
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.68;
+      margin-bottom: 30px;
+    }
+
+    .actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 28px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.94rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      box-shadow: 0 14px 32px rgba(228, 185, 116, 0.28);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-gold:hover {
+      background: #F0CA8B;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(247, 241, 232, 0.35);
+      background: rgba(13, 9, 7, 0.36);
+      backdrop-filter: blur(8px);
+      color: var(--paper);
+      font-weight: 500;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      background: rgba(228, 185, 116, 0.14);
+    }
+
+    /* Glass Editorial Panels (NOT card grids — bespoke asymmetric plates) */
+    .split-plate {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .atelier-glass {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 28px;
+      max-width: 520px;
+    }
+
+    .price-callout {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgba(247, 241, 232, 0.14);
+    }
+
+    .price-callout strong {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .price-callout span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .atelier-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      font-size: 0.94rem;
+      color: var(--paper);
+    }
+
+    .atelier-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+    }
+
+    .atelier-list li::before {
+      content: "—";
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Chapter 3: Interactive Pillar Selector */
+    .pillars-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .pillar-tab {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(247, 241, 232, 0.25);
+      background: rgba(13, 9, 7, 0.48);
+      backdrop-filter: blur(8px);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pillar-tab.active,
+    .pillar-tab:hover {
+      background: var(--gold);
+      color: var(--ink);
+      border-color: var(--gold);
+    }
+
+    .pillar-stage {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(18px);
+      border-radius: 22px;
+      padding: 30px;
+      max-width: 720px;
+    }
+
+    .pillar-kicker {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .pillar-stage h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.65rem, 3vw, 2.3rem);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .pillar-stage p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 18px;
+    }
+
+    .pillar-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.85rem;
+      color: var(--gold);
+    }
+
+    /* Chapter 4: Concierge */
+    .concierge-box {
+      background: rgba(13, 9, 7, 0.72);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      border-radius: 26px;
+      padding: 36px 28px;
+      max-width: 780px;
+    }
+
+    .concierge-meta {
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(247, 241, 232, 0.14);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 24px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .concierge-meta a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .concierge-meta a:hover {
+      text-decoration: underline;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(247, 241, 232, 0.7);
+      text-decoration: none;
+    }
+
+    .scroll-hint::before {
+      content: "";
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(180deg, var(--gold), transparent);
+    }
+
+    @media (min-width: 820px) {
+      .brand-loc {
+        display: inline;
+      }
+      .chapter-rail {
+        display: flex;
+      }
+      .split-plate {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 44px;
+      }
+      .concierge-box {
+        padding: 48px 44px;
+      }
+      .scroll-hint {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cinema-stage" aria-hidden="true">
+    <div class="cinema-bg" id="cinemaBg"></div>
+    <div class="cinema-vignette"></div>
+    <canvas id="dustCanvas"></canvas>
+  </div>
+
+  <!-- Custom Argentine Mate SVG Cursor (desktop only) -->
+  <div class="mate-cursor" id="mateCursor" aria-hidden="true">
+    <svg viewBox="0 0 48 48" width="44" height="44" fill="none">
+      <path class="steam-line" d="M21 12 C19 9, 23 6, 21 3" stroke="#F7F1E8" stroke-width="1.6" stroke-linecap="round"/>
+      <path class="steam-line" d="M27 11 C25 8, 29 5, 27 2" stroke="#E4B974" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="28" y1="20" x2="38" y2="8" stroke="#E4B974" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="38.5" cy="7.5" r="2" fill="#F7F1E8"/>
+      <ellipse cx="22" cy="19" rx="10" ry="3.2" fill="#5A7A3A" stroke="#E4B974" stroke-width="1.5"/>
+      <path d="M12 19 C11 29, 14 39, 22 40 C30 39, 33 29, 32 19 Z" fill="#6E3B21" stroke="#E4B974" stroke-width="1.6"/>
+      <path d="M13 24 Q22 27 31 24" stroke="#E4B974" stroke-width="1.2" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <header class="hud-header">
+    <a href="#cap-1" class="brand">
+      <span class="brand-serif">José Román</span>
+      <span class="brand-loc">San Rafael · Mendoza</span>
+    </a>
+    <a class="hud-cta" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20la%20experiencia%20Ca%C3%B1%C3%B3n%20del%20Atuel%20y%20quiero%20pedir%20prototipos%20gratis%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
+      Pedir prototipo gratis
+    </a>
+  </header>
+
+  <nav class="chapter-rail" aria-label="Capítulos">
+    <a href="#cap-1" class="rail-dot active" data-cap="cap-1"><span>01 · El Oficio</span></a>
+    <a href="#cap-2" class="rail-dot" data-cap="cap-2"><span>02 · Prototipos Gratis</span></a>
+    <a href="#cap-3" class="rail-dot" data-cap="cap-3"><span>03 · Web, Redes y Gestión</span></a>
+    <a href="#cap-4" class="rail-dot" data-cap="cap-4"><span>04 · Concierge</span></a>
+  </nav>
+
+  <main>
+    <!-- CAPÍTULO 1 -->
+    <section id="cap-1" class="chapter">
+      <div class="chapter-inner">
+        <span class="chapter-num">Capítulo 01 · El Oficio en San Rafael</span>
+        <h1 class="display-title">
+          Tu negocio merece una web con la altura de <em>Mendoza</em>
+        </h1>
+        <p class="chapter-lead">
+          Diseñamos sitios y sistemas a medida para bodegas, gastronomía, turismo, comercios y empresas de San Rafael. Sin plantillas repetidas, sin promesas vacías: trato directo, ingeniería real y presencia que se siente propia.
+        </p>
+        <div class="actions-row">
+          <a class="btn-gold" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20ver%20prototipos%20gratis%20para%20mi%20negocio%20en%20San%20Rafael." target="_blank" rel="noopener noreferrer">
+            Pedí tu prototipo gratis
+          </a>
+          <a class="btn-ghost" href="#cap-2">Recorrer la propuesta ↓</a>
+        </div>
+      </div>
+      <a href="#cap-2" class="scroll-hint">Deslizá para entrar</a>
+    </section>
+
+    <!-- CAPÍTULO 2 -->
+    <section id="cap-2" class="chapter">
+      <div class="chapter-inner split-plate">
+        <div>
+          <span class="chapter-num">Capítulo 02 · Sin Riesgo</span>
+          <h2 class="chapter-title">
+            Primero ves tus prototipos gratis. <em>Después decidís.</em>
+          </h2>
+          <p class="chapter-lead">
+            Nos contás qué hacés por WhatsApp y te armamos propuestas visuales reales con el nombre de tu negocio. Recién cuando una te convence de verdad, la ajustamos a tu gusto y la publicamos.
+          </p>
+          <div class="actions-row">
+            <a class="btn-gold" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20que%20me%20armes%20prototipos%20gratis%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
+              Quiero ver mi negocio online
+            </a>
+          </div>
+        </div>
+
+        <aside class="atelier-glass">
+          <div class="price-callout">
+            <strong>$100.000</strong>
+            <span>Web Presentación<br />desde · pago claro</span>
+          </div>
+          <ul class="atelier-list">
+            <li>Diseño a medida para celular y computadora, listo para Google.</li>
+            <li>Botón directo a tu WhatsApp, horarios y mapa en San Rafael.</li>
+            <li>6 meses de soporte técnico real incluidos, sin cuotas sorpresa.</li>
+            <li>Hablás siempre directo con José Román Fredrin.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CAPÍTULO 3 -->
+    <section id="cap-3" class="chapter">
+      <div class="chapter-inner">
+        <span class="chapter-num">Capítulo 03 · Tres Soluciones Reales</span>
+        <h2 class="chapter-title">
+          Desde tu primera web hasta <em>tu sistema de gestión</em>
+        </h2>
+
+        <div class="pillars-bar" role="tablist" aria-label="Soluciones">
+          <button type="button" class="pillar-tab active" data-pillar="web">01 · Web a Medida</button>
+          <button type="button" class="pillar-tab" data-pillar="redes">02 · Pack Web + 6 Posts Redes</button>
+          <button type="button" class="pillar-tab" data-pillar="gestion">03 · Gestión e Ingeniería Real</button>
+        </div>
+
+        <div class="pillar-stage" id="pillarStage" aria-live="polite">
+          <span class="pillar-kicker" id="pillarKicker">Presencia profesional · Desde $100.000</span>
+          <h3 id="pillarHeading">Tu vidriera abierta las 24 horas</h3>
+          <p id="pillarText">
+            Una página rápida, cuidada y pensada para convertir visitas en mensajes de WhatsApp. Ideal para comercios, bodegas, cabañas, gastronomía y profesionales de San Rafael que quieren diferenciarse de verdad.
+          </p>
+          <div class="pillar-meta" id="pillarMeta">
+            <span>Prototipo sin cargo</span>
+            <span>·</span>
+            <span>6 meses de soporte</span>
+            <span>·</span>
+            <span>Entrega en días</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPÍTULO 4 -->
+    <section id="cap-4" class="chapter">
+      <div class="chapter-inner">
+        <div class="concierge-box">
+          <span class="chapter-num">Capítulo 04 · WhatsApp Concierge</span>
+          <h2 class="chapter-title">
+            Charlemos con un mate de por medio, <em>sin vueltas</em>
+          </h2>
+          <p class="chapter-lead">
+            Mandanos un mensaje contándonos el nombre de tu negocio y tu rubro. Te respondemos hoy mismo y preparamos tus primeros prototipos gratis.
+          </p>
+          <div class="actions-row">
+            <a class="btn-gold" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20te%20escribo%20desde%20San%20Rafael%20para%20charlar%20sobre%20una%20web%20o%20sistema%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
+              Escribir por WhatsApp · +54 9 260 405-9284
+            </a>
+            <a class="btn-ghost" href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
+          </div>
+          <div class="concierge-meta">
+            <span><strong>José Román Fredrin</strong></span>
+            <span>San Rafael, Mendoza</span>
+            <a href="https://wa.me/5492604059284" target="_blank" rel="noopener noreferrer">+54 9 260 405-9284</a>
+            <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      // 1. Golden Sunset Dust Particles Canvas
+      const canvas = document.getElementById('dustCanvas');
+      const ctx = canvas.getContext('2d');
+      let width = 0;
+      let height = 0;
+      let particles = [];
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        const count = Math.min(65, Math.max(26, Math.floor(width / 22)));
+        particles = Array.from({ length: count }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.1 + 0.6,
+          vx: (Math.random() - 0.35) * 0.25,
+          vy: -(Math.random() * 0.28 + 0.08),
+          alpha: Math.random() * 0.55 + 0.2,
+          phase: Math.random() * Math.PI * 2
+        }));
+      }
+
+      function animateDust() {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.phase += 0.015;
+          p.x += p.vx + Math.sin(p.phase) * 0.14;
+          p.y += p.vy;
+
+          if (p.y < -10) {
+            p.y = height + 10;
+            p.x = Math.random() * width;
+          }
+          if (p.x > width + 10) p.x = -10;
+          if (p.x < -10) p.x = width + 10;
+
+          const glow = p.alpha * (0.65 + 0.35 * Math.sin(p.phase * 1.4));
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(236, 198, 134, ' + glow.toFixed(3) + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(animateDust);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      animateDust();
+
+      // 2. Subtle Mouse Parallax + Custom Mate Cursor (Desktop)
+      const bg = document.getElementById('cinemaBg');
+      const mateCursor = document.getElementById('mateCursor');
+      let mouseX = -100;
+      let mouseY = -100;
+      let curX = -100;
+      let curY = -100;
+
+      if (window.matchMedia('(pointer: fine)').matches) {
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          const nx = (e.clientX / window.innerWidth - 0.5) * 14;
+          const ny = (e.clientY / window.innerHeight - 0.5) * 10;
+          bg.style.backgroundPosition = (50 + nx * 0.35) + '% ' + (50 + ny * 0.35) + '%';
+        });
+
+        function followCursor() {
+          curX += (mouseX - curX) * 0.22;
+          curY += (mouseY - curY) * 0.22;
+          mateCursor.style.transform = 'translate3d(' + (curX - 18) + 'px, ' + (curY - 18) + 'px, 0)';
+          requestAnimationFrame(followCursor);
+        }
+        followCursor();
+
+        document.querySelectorAll('a, button').forEach((el) => {
+          el.addEventListener('mouseenter', () => mateCursor.classList.add('is-hover'));
+          el.addEventListener('mouseleave', () => mateCursor.classList.remove('is-hover'));
+        });
+      }
+
+      // 3. Chapter Rail Active State
+      const chapters = document.querySelectorAll('.chapter');
+      const railDots = document.querySelectorAll('.rail-dot');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              railDots.forEach((dot) => {
+                dot.classList.toggle('active', dot.dataset.cap === id);
+              });
+            }
+          });
+        },
+        { threshold: 0.55 }
+      );
+      chapters.forEach((ch) => observer.observe(ch));
+
+      // 4. Interactive Pillar Switcher in Chapter 3
+      const PILLARS = {
+        web: {
+          kicker: 'Presencia profesional · Desde $100.000',
+          heading: 'Tu vidriera abierta las 24 horas',
+          text: 'Una página rápida, cuidada y pensada para convertir visitas en mensajes de WhatsApp. Ideal para comercios, bodegas, cabañas, gastronomía y profesionales de San Rafael que quieren diferenciarse de verdad.',
+          meta: ['Prototipo sin cargo', '6 meses de soporte', 'Entrega en días']
+        },
+        redes: {
+          kicker: 'Lanzamiento integral · Web + 6 Posts',
+          heading: 'Tu local nuevo, listo para mostrarse en todos lados',
+          text: 'Sumamos 6 publicaciones diseñadas para Instagram y Facebook con textos listos para anunciar apertura, ofertas, ubicación y horarios con la misma estética cuidada que tu página web.',
+          meta: ['6 placas diseñadas', 'Textos listos para publicar', 'Estética unificada']
+        },
+        gestion: {
+          kicker: 'Ingeniería en sistemas · A medida',
+          heading: 'Stock, caja, pedidos y control real sin abonos en dólares',
+          text: 'Cuando tu negocio crece, no te quedás atado a plantillas limitadas. Construimos sistemas reales de stock por estantería, control de ventas, turnos o catálogos internos hechos a medida de cómo trabajás.',
+          meta: ['Software propio', 'Escalable', 'Soporte local en San Rafael']
+        }
+      };
+
+      const pillarTabs = document.querySelectorAll('.pillar-tab');
+      const pillarKicker = document.getElementById('pillarKicker');
+      const pillarHeading = document.getElementById('pillarHeading');
+      const pillarText = document.getElementById('pillarText');
+      const pillarMeta = document.getElementById('pillarMeta');
+
+      pillarTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const data = PILLARS[tab.dataset.pillar];
+          pillarTabs.forEach((t) => t.classList.toggle('active', t === tab));
+          pillarKicker.textContent = data.kicker;
+          pillarHeading.textContent = data.heading;
+          pillarText.textContent = data.text;
+          pillarMeta.innerHTML = data.meta.map((item) => '<span>' + item + '</span>').join('<span>·</span>');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
