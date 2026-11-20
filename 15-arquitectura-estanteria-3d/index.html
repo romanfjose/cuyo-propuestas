@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Depósito &amp; Estanterías 3D · Arquitectura Comercial + Gestión</title>
-  <meta name="description" content="Equipá tu local con estanterías industriales y conectalo con tu web y sistema de stock por pasillo en San Rafael, Mendoza." />
+  <title>Estanterías &amp; Depósito 3D · Arquitectura Comercial + Gestión</title>
+  <meta name="description" content="Configurá 4 tipos reales de estanterías industriales en 3D y conectá tu local con página web y sistema de stock por pasillo en San Rafael, Mendoza." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -13,10 +13,9 @@
       --bp: #0B1220;
       --bp-panel: #101A2E;
       --bp-card: #132038;
-      --grid-line: rgba(148, 163, 184, 0.1);
+      --grid-line: rgba(148, 163, 184, 0.09);
       --border: rgba(148, 163, 184, 0.22);
       --amber: #F59E0B;
-      --amber-deep: #D97706;
       --amber-soft: rgba(245, 158, 11, 0.14);
       --ink: #F8FAFC;
       --muted: #94A3B8;
@@ -61,7 +60,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(11, 18, 32, 0.9);
+      background: rgba(11, 18, 32, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
@@ -162,10 +161,10 @@
       color: var(--amber);
     }
 
-    /* Full-Bleed Architectural Hero */
+    /* Architectural Hero */
     .arch-hero {
       position: relative;
-      min-height: 76vh;
+      min-height: 70vh;
       display: flex;
       align-items: flex-end;
       padding: 56px 0 44px;
@@ -188,7 +187,7 @@
       inset: 0;
       background:
         linear-gradient(180deg, rgba(11, 18, 32, 0.52) 0%, rgba(11, 18, 32, 0.45) 38%, rgba(11, 18, 32, 0.96) 100%),
-        linear-gradient(90deg, rgba(11, 18, 32, 0.84) 0%, rgba(11, 18, 32, 0.35) 60%, rgba(11, 18, 32, 0.72) 100%);
+        linear-gradient(90deg, rgba(11, 18, 32, 0.86) 0%, rgba(11, 18, 32, 0.35) 60%, rgba(11, 18, 32, 0.72) 100%);
       z-index: 1;
     }
 
@@ -208,7 +207,7 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.74rem;
       color: var(--amber);
-      background: rgba(11, 18, 32, 0.76);
+      background: rgba(11, 18, 32, 0.78);
       border: 1px solid rgba(245, 158, 11, 0.4);
       padding: 5px 11px;
       border-radius: 5px;
@@ -216,7 +215,7 @@
     }
 
     .arch-hero h1 {
-      font-size: clamp(2.1rem, 4.8vw, 3.55rem);
+      font-size: clamp(2.1rem, 4.8vw, 3.5rem);
       line-height: 1.08;
       max-width: 720px;
       margin-bottom: 14px;
@@ -243,7 +242,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      background: rgba(11, 18, 32, 0.82);
+      background: rgba(11, 18, 32, 0.84);
       border: 1px solid var(--border);
       backdrop-filter: blur(10px);
       border-radius: 10px;
@@ -264,14 +263,14 @@
       color: var(--amber);
     }
 
-    /* Interactive 3D Rack Configurator */
+    /* Configurator Section */
     .section {
-      padding: 56px 0;
+      padding: 54px 0;
     }
 
     .section-head {
-      margin-bottom: 24px;
-      max-width: 720px;
+      margin-bottom: 22px;
+      max-width: 760px;
     }
 
     .section-head .mono {
@@ -291,6 +290,56 @@
     .section-head p {
       color: var(--muted);
       font-size: 0.96rem;
+    }
+
+    /* 4 Rack Type Architectural Tabs */
+    .rack-type-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .rack-tab {
+      text-align: left;
+      background: var(--bp-panel);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 15px;
+      color: var(--ink);
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+
+    .rack-tab:hover {
+      border-color: rgba(245, 158, 11, 0.55);
+    }
+
+    .rack-tab.active {
+      background: var(--amber-soft);
+      border-color: var(--amber);
+    }
+
+    .rack-tab .tab-code {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--amber);
+      margin-bottom: 3px;
+    }
+
+    .rack-tab strong {
+      display: block;
+      font-size: 0.96rem;
+      line-height: 1.2;
+    }
+
+    .rack-tab span {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 2px;
     }
 
     .builder-grid {
@@ -316,7 +365,7 @@
       padding: 12px 16px;
       border-bottom: 1px solid var(--border);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       color: var(--muted);
     }
 
@@ -327,7 +376,7 @@
     .canvas-wrap {
       position: relative;
       width: 100%;
-      height: 410px;
+      height: 430px;
       cursor: grab;
       touch-action: pan-y;
     }
@@ -350,7 +399,7 @@
       gap: 10px;
       padding: 12px 16px;
       border-top: 1px solid var(--border);
-      background: rgba(11, 18, 32, 0.65);
+      background: rgba(11, 18, 32, 0.68);
     }
 
     .angle-slider-wrap {
@@ -376,7 +425,7 @@
       border-radius: 14px;
       padding: 20px;
       display: grid;
-      gap: 16px;
+      gap: 14px;
     }
 
     .ctrl-row {
@@ -384,18 +433,23 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ctrl-block {
+      padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
     }
 
     .ctrl-label strong {
       display: block;
-      font-size: 0.94rem;
+      font-size: 0.92rem;
     }
 
     .ctrl-label span {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       color: var(--muted);
     }
 
@@ -406,8 +460,8 @@
     }
 
     .step-btn {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 7px;
       border: 1px solid var(--border);
       background: var(--bp-card);
@@ -424,11 +478,46 @@
     }
 
     .step-val {
-      min-width: 28px;
+      min-width: 26px;
       text-align: center;
       font-family: 'JetBrains Mono', monospace;
       font-weight: 700;
       color: var(--amber);
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 8px;
+    }
+
+    .opt-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bp-card);
+      color: #CBD5E1;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .opt-chip.active {
+      border-color: var(--amber);
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.35);
     }
 
     .stock-readout {
@@ -443,7 +532,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.72rem;
+      font-size: 0.71rem;
       color: var(--amber);
       margin-bottom: 10px;
       text-transform: uppercase;
@@ -467,36 +556,36 @@
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-bottom: 12px;
+      gap: 9px;
+      margin-bottom: 10px;
     }
 
     .metric-box {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(148, 163, 184, 0.14);
       border-radius: 7px;
-      padding: 9px 10px;
+      padding: 8px 10px;
     }
 
     .metric-box span {
       display: block;
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       color: var(--muted);
     }
 
     .metric-box strong {
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       color: var(--ink);
     }
 
     .sku-feed {
       list-style: none;
       display: grid;
-      gap: 6px;
-      font-size: 0.73rem;
+      gap: 5px;
+      font-size: 0.71rem;
       color: #CBD5E1;
       border-top: 1px dashed rgba(148, 163, 184, 0.22);
-      padding-top: 10px;
+      padding-top: 9px;
     }
 
     .sku-feed li {
@@ -508,7 +597,7 @@
     .sku-ok { color: var(--green); }
     .sku-low { color: var(--amber); }
 
-    /* Dual Alliance Strip */
+    /* Alliance Strip */
     .alliance-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -530,19 +619,19 @@
     }
 
     .alliance-card h3 {
-      font-size: 1.28rem;
+      font-size: 1.24rem;
       margin-bottom: 8px;
     }
 
     .alliance-card p {
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.91rem;
     }
 
     /* Footer */
     .bp-footer {
       border-top: 1px solid var(--border);
-      padding: 28px 0;
+      padding: 26px 0;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
       color: var(--muted);
@@ -562,27 +651,12 @@
     }
 
     @media (min-width: 860px) {
-      .nav-links {
-        display: flex;
-      }
-
-      .hero-content {
-        grid-template-columns: 1.25fr 0.75fr;
-      }
-
-      .builder-grid {
-        grid-template-columns: 1.35fr 0.85fr;
-      }
-
-      .alliance-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .footer-inner {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-      }
+      .nav-links { display: flex; }
+      .hero-content { grid-template-columns: 1.25fr 0.75fr; }
+      .rack-type-bar { grid-template-columns: repeat(4, 1fr); }
+      .builder-grid { grid-template-columns: 1.32fr 0.88fr; }
+      .alliance-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; }
     }
   </style>
 </head>
@@ -599,12 +673,12 @@
       </a>
 
       <nav class="nav-links" aria-label="Navegación">
-        <a href="#simulador">SIMULADOR 3D</a>
+        <a href="#simulador">CONFIGURADOR 3D</a>
         <a href="#alianza">EQUIPAMIENTO + WEB</a>
         <a href="#contacto">CONTACTO</a>
       </nav>
 
-      <a class="btn btn-amber" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20el%20simulador%20de%20Estanter%C3%ADas%203D%20y%20quiero%20consultar%20por%20web%20y%20sistema%20de%20stock%20para%20mi%20local." target="_blank" rel="noopener noreferrer">
+      <a class="btn btn-amber" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20el%20configurador%203D%20de%20Estanter%C3%ADas%20y%20quiero%20consultar%20por%20web%20y%20sistema%20de%20stock%20para%20mi%20local." target="_blank" rel="noopener noreferrer">
         WhatsApp Directo
       </a>
     </div>
@@ -617,13 +691,13 @@
 
       <div class="container hero-content">
         <div>
-          <span class="spec-tag">PLANO COMERCIAL 01 // SAN RAFAEL, MENDOZA</span>
+          <span class="spec-tag">PLANO COMERCIAL // SAN RAFAEL, MENDOZA</span>
           <h1>Armás tus estanterías. <span>Nosotros conectamos tu web y tu stock.</span></h1>
           <p>
-            Pensado para supermercados, autoservicios, ferreterías y depósitos de Cuyo. Combinamos equipamiento físico con página web desde $100.000, catálogo por WhatsApp y control real por pasillo.
+            Pensado para supermercados, autoservicios, ferreterías, corralones y depósitos de Cuyo. Combinamos equipamiento físico con página web desde $100.000, catálogo por WhatsApp y control real por pasillo.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-amber" href="#simulador">Abrir Simulador 3D de Racks</a>
+            <a class="btn btn-amber" href="#simulador">Configurar Estanterías 3D</a>
             <a class="btn btn-wire" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20comercio%20en%20San%20Rafael." target="_blank" rel="noopener noreferrer">
               Pedir prototipo gratis
             </a>
@@ -640,8 +714,8 @@
             <strong>6 MESES</strong>
           </div>
           <div class="callout-cell">
-            <span>Stock</span>
-            <strong>POR PASILLO</strong>
+            <span>Sistemas</span>
+            <strong>4 TIPOS 3D</strong>
           </div>
         </div>
       </div>
@@ -650,15 +724,38 @@
     <section id="simulador" class="section">
       <div class="container">
         <div class="section-head">
-          <span class="mono">// CONFIGURADOR INTERACTIVO 3D</span>
-          <h2>Probá tu módulo de estanterías y su lectura de stock en vivo</h2>
-          <p>Sumá cuerpos, niveles y cajas. Arrastrá sobre el plano o mové el ángulo para rotar el rack en 3D y mirá cómo el sistema registra la capacidad y reposición en tiempo real.</p>
+          <span class="mono">// CONFIGURADOR INTERACTIVO 3D · 4 SISTEMAS REALES</span>
+          <h2>Elegí el tipo de estantería, acabado y profundidad</h2>
+          <p>Probá cómo se adapta cada estructura en 3D (arrastrá para rotar) y mirá cómo el sistema de stock calcula la carga máxima, posiciones y alertas de reposición en tiempo real.</p>
+        </div>
+
+        <div class="rack-type-bar" role="tablist" aria-label="Tipos de estanterías">
+          <button type="button" class="rack-tab active" data-type="selectivo">
+            <span class="tab-code">TIPO 01 · ALTA CARGA</span>
+            <strong>Rack Selectivo (Pallets)</strong>
+            <span>1.500 kg/nivel · Depósitos</span>
+          </button>
+          <button type="button" class="rack-tab" data-type="gondola">
+            <span class="tab-code">TIPO 02 · COMERCIAL</span>
+            <strong>Góndola Supermercado</strong>
+            <span>Con fondo y portaprecios</span>
+          </button>
+          <button type="button" class="rack-tab" data-type="metalica">
+            <span class="tab-code">TIPO 03 · LIVIANA / MEDIA</span>
+            <strong>Estantería Metálica</strong>
+            <span>Bandejas y cajas · Ferreterías</span>
+          </button>
+          <button type="button" class="rack-tab" data-type="cantilever">
+            <span class="tab-code">TIPO 04 · CARGAS LARGAS</span>
+            <strong>Rack Cantilever</strong>
+            <span>Brazos para caños y perfiles</span>
+          </button>
         </div>
 
         <div class="builder-grid">
           <div class="viewport-card">
             <div class="viewport-bar">
-              <span>VISTA ISOMÉTRICA // <strong id="viewSpec">2 CUERPOS · 4 NIVELES</strong></span>
+              <span>MODELO 3D // <strong id="viewSpec">RACK SELECTIVO · 2 CUERPOS · 4 NIVELES</strong></span>
               <span>ARRASTRÁ PARA ROTAR</span>
             </div>
 
@@ -681,7 +778,7 @@
             <div class="ctrl-row">
               <div class="ctrl-label">
                 <strong>Cuerpos / Módulos</strong>
-                <span>Ancho 1.80 m c/u</span>
+                <span id="bayWidthHint">Ancho 2.30 m c/u</span>
               </div>
               <div class="stepper">
                 <button type="button" class="step-btn" data-action="bays-minus" aria-label="Quitar cuerpo">−</button>
@@ -692,56 +789,84 @@
 
             <div class="ctrl-row">
               <div class="ctrl-label">
-                <strong>Niveles de Estante</strong>
-                <span>Carga media/pesada</span>
+                <strong>Niveles</strong>
+                <span id="levelLoadHint">1.500 kg por nivel</span>
               </div>
               <div class="stepper">
                 <button type="button" class="step-btn" data-action="levels-minus" aria-label="Quitar nivel">−</button>
-                <span class="step-val" id="levelsVal">4</span>
+                <span class="step-val" id="levelsVal">3</span>
                 <button type="button" class="step-btn" data-action="levels-plus" aria-label="Agregar nivel">+</button>
               </div>
             </div>
 
             <div class="ctrl-row">
               <div class="ctrl-label">
-                <strong>Cajas Cargadas</strong>
+                <strong id="loadItemLabel">Unidades Cargadas</strong>
                 <span>Simulación de ocupación</span>
               </div>
               <div class="stepper">
-                <button type="button" class="step-btn" data-action="boxes-minus" aria-label="Quitar cajas">−</button>
-                <span class="step-val" id="boxesVal">14</span>
-                <button type="button" class="step-btn" data-action="boxes-plus" aria-label="Agregar cajas">+</button>
+                <button type="button" class="step-btn" data-action="boxes-minus" aria-label="Quitar carga">−</button>
+                <span class="step-val" id="boxesVal">10</span>
+                <button type="button" class="step-btn" data-action="boxes-plus" aria-label="Agregar carga">+</button>
+              </div>
+            </div>
+
+            <div class="ctrl-block">
+              <div class="ctrl-label">
+                <strong>Acabado / Color</strong>
+              </div>
+              <div class="chip-group" id="finishGroup">
+                <button type="button" class="opt-chip active" data-finish="industrial">
+                  <span class="swatch" style="background: #F59E0B;"></span>Acero + Ámbar
+                </button>
+                <button type="button" class="opt-chip" data-finish="grafito">
+                  <span class="swatch" style="background: #475569;"></span>Gris Grafito
+                </button>
+                <button type="button" class="opt-chip" data-finish="blanco">
+                  <span class="swatch" style="background: #F1F5F9;"></span>Blanco Comercial
+                </button>
+              </div>
+            </div>
+
+            <div class="ctrl-block">
+              <div class="ctrl-label">
+                <strong>Profundidad del Módulo</strong>
+              </div>
+              <div class="chip-group" id="depthGroup">
+                <button type="button" class="opt-chip" data-depth="40">40 cm</button>
+                <button type="button" class="opt-chip active" data-depth="60">60 cm</button>
+                <button type="button" class="opt-chip" data-depth="100">100 cm</button>
               </div>
             </div>
 
             <div class="stock-readout" aria-live="polite">
               <div class="readout-head">
-                <span>Sistema de Stock · Pasillo A</span>
+                <span id="readoutTitle">Sistema de Stock · Rack Selectivo</span>
                 <span class="live-dot">EN LÍNEA</span>
               </div>
               <div class="metrics-grid">
                 <div class="metric-box">
-                  <span>CAPACIDAD MÁX.</span>
-                  <strong id="maxCapVal">24 cajas</strong>
+                  <span>POSICIONES MÁX.</span>
+                  <strong id="maxCapVal">12 pallets</strong>
                 </div>
                 <div class="metric-box">
                   <span>OCUPACIÓN</span>
-                  <strong id="occVal">58%</strong>
+                  <strong id="occVal">83%</strong>
                 </div>
                 <div class="metric-box">
                   <span>LARGO TOTAL</span>
-                  <strong id="lenVal">3.6 m</strong>
+                  <strong id="lenVal">4.6 m</strong>
                 </div>
                 <div class="metric-box">
-                  <span>CARGA EST.</span>
-                  <strong id="loadVal">1.440 kg</strong>
+                  <span>CARGA MÁX. EST.</span>
+                  <strong id="loadVal">9.000 kg</strong>
                 </div>
               </div>
               <ul class="sku-feed" id="skuFeed"></ul>
             </div>
 
             <a id="waRackBtn" class="btn btn-amber" href="#" target="_blank" rel="noopener noreferrer" style="width: 100%;">
-              Cotizar este local + Web/Stock por WhatsApp
+              Cotizar este módulo + Web/Stock por WhatsApp
             </a>
           </aside>
         </div>
@@ -783,14 +908,77 @@
 
   <script>
     (function () {
+      const RACK_TYPES = {
+        selectivo: {
+          name: 'Rack Selectivo (Pallets)',
+          short: 'RACK SELECTIVO',
+          bayWidthM: 2.3,
+          kgPerLevel: 1500,
+          slotsPerBayLevel: 2,
+          unit: 'pallets',
+          itemLabel: 'Pallets Cargados'
+        },
+        gondola: {
+          name: 'Góndola de Supermercado',
+          short: 'GÓNDOLA SUPERMERCADO',
+          bayWidthM: 1.2,
+          kgPerLevel: 180,
+          slotsPerBayLevel: 4,
+          unit: 'frentes',
+          itemLabel: 'Frentes de Mercadería'
+        },
+        metalica: {
+          name: 'Estantería Metálica de Depósito',
+          short: 'ESTANTERÍA METÁLICA',
+          bayWidthM: 1.0,
+          kgPerLevel: 120,
+          slotsPerBayLevel: 3,
+          unit: 'cajas',
+          itemLabel: 'Cajas / Gavetas'
+        },
+        cantilever: {
+          name: 'Rack Cantilever (Cargas Largas)',
+          short: 'RACK CANTILEVER',
+          bayWidthM: 1.6,
+          kgPerLevel: 950,
+          slotsPerBayLevel: 1,
+          unit: 'atados',
+          itemLabel: 'Atados de Perfiles / Caños'
+        }
+      };
+
+      const FINISHES = {
+        industrial: {
+          name: 'Acero + Ámbar Industrial',
+          post: { top: '#64748B', front: '#1E3A5F', side: '#152A47', stroke: 'rgba(248,250,252,0.18)' },
+          beam: { top: '#FBBF24', front: '#F59E0B', back: '#D97706', side: '#B45309', stroke: 'rgba(11,18,32,0.45)' },
+          panel: { top: '#475569', front: '#334155', side: '#1E293B', stroke: 'rgba(248,250,252,0.14)' }
+        },
+        grafito: {
+          name: 'Gris Grafito',
+          post: { top: '#64748B', front: '#334155', side: '#1E293B', stroke: 'rgba(248,250,252,0.16)' },
+          beam: { top: '#94A3B8', front: '#64748B', back: '#475569', side: '#334155', stroke: 'rgba(11,18,32,0.5)' },
+          panel: { top: '#475569', front: '#293548', side: '#1E293B', stroke: 'rgba(248,250,252,0.14)' }
+        },
+        blanco: {
+          name: 'Blanco Comercial',
+          post: { top: '#FFFFFF', front: '#E2E8F0', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.28)' },
+          beam: { top: '#FFFFFF', front: '#F1F5F9', back: '#E2E8F0', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.3)' },
+          panel: { top: '#F8FAFC', front: '#E2E8F0', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.2)' }
+        }
+      };
+
       const canvas = document.getElementById('rackCanvas');
       const wrap = document.getElementById('canvasWrap');
       const ctx = canvas.getContext('2d');
 
       const state = {
+        type: 'selectivo',
+        finish: 'industrial',
+        depthCm: 60,
         bays: 2,
-        levels: 4,
-        boxes: 14,
+        levels: 3,
+        boxes: 10,
         angleDeg: 32,
         autoSpin: false,
         dragging: false,
@@ -800,10 +988,14 @@
       const baysVal = document.getElementById('baysVal');
       const levelsVal = document.getElementById('levelsVal');
       const boxesVal = document.getElementById('boxesVal');
+      const bayWidthHint = document.getElementById('bayWidthHint');
+      const levelLoadHint = document.getElementById('levelLoadHint');
+      const loadItemLabel = document.getElementById('loadItemLabel');
       const angleSlider = document.getElementById('angleSlider');
       const angleVal = document.getElementById('angleVal');
       const autoSpinBtn = document.getElementById('autoSpinBtn');
       const viewSpec = document.getElementById('viewSpec');
+      const readoutTitle = document.getElementById('readoutTitle');
       const maxCapVal = document.getElementById('maxCapVal');
       const occVal = document.getElementById('occVal');
       const lenVal = document.getElementById('lenVal');
@@ -811,8 +1003,9 @@
       const skuFeed = document.getElementById('skuFeed');
       const waRackBtn = document.getElementById('waRackBtn');
 
-      function maxBoxes() {
-        return state.bays * state.levels * 3;
+      function maxItems() {
+        const cfg = RACK_TYPES[state.type];
+        return state.bays * state.levels * cfg.slotsPerBayLevel;
       }
 
       function resizeCanvas() {
@@ -834,7 +1027,7 @@
         const y2 = y * cosP - z1 * sinP;
         const z2 = y * sinP + z1 * cosP;
 
-        const persp = 620 / (620 + z2);
+        const persp = 660 / (660 + z2);
         return {
           x: cx + x1 * scale * persp,
           y: cy - y2 * scale * persp,
@@ -858,7 +1051,7 @@
         }
       }
 
-      function makePrismFaces(x0, y0, z0, dx, dy, dz, colors, proj) {
+      function makePrism(x0, y0, z0, dx, dy, dz, colors, proj) {
         const v = [
           proj(x0, y0, z0),
           proj(x0 + dx, y0, z0),
@@ -887,7 +1080,6 @@
         const h = wrap.clientHeight;
         ctx.clearRect(0, 0, w, h);
 
-        // Subtle blueprint grid inside canvas
         ctx.strokeStyle = 'rgba(148, 163, 184, 0.08)';
         ctx.lineWidth = 1;
         for (let gx = 0; gx < w; gx += 28) {
@@ -899,122 +1091,225 @@
 
         const yaw = (state.angleDeg * Math.PI) / 180;
         const pitch = 0.34;
-        const bayW = 92;
-        const depth = 46;
-        const levelH = 42;
+        const bayW = 94;
+        const depth = state.depthCm === 40 ? 34 : state.depthCm === 60 ? 48 : 66;
+        const levelH = 44;
         const totalW = state.bays * bayW;
-        const totalH = state.levels * levelH + 14;
-        const scale = Math.min(w / (totalW + 170), h / (totalH + 130), 1.35);
+        const totalH = state.levels * levelH + 18;
+        const scale = Math.min(w / (totalW + 170), h / (totalH + 135), 1.32);
         const cx = w / 2;
         const cy = h / 2 + totalH * scale * 0.36;
 
         const proj = (x, y, z) => project(x - totalW / 2, y, z - depth / 2, yaw, pitch, cx, cy, scale);
+        const fin = FINISHES[state.finish];
+        const drawList = [];
 
-        // Floor shadow plate
-        const floorPts = [
+        // Floor footprint
+        drawPoly([
           proj(-18, 0, -18),
           proj(totalW + 18, 0, -18),
           proj(totalW + 18, 0, depth + 18),
           proj(-18, 0, depth + 18)
-        ];
-        drawPoly(floorPts, 'rgba(245, 158, 11, 0.06)', 'rgba(245, 158, 11, 0.24)');
+        ], 'rgba(245, 158, 11, 0.06)', 'rgba(245, 158, 11, 0.24)');
 
-        const drawList = [];
-
-        // Uprights (steel dark posts)
-        const postColors = { top: '#64748B', front: '#334155', side: '#1E293B', stroke: 'rgba(248,250,252,0.18)' };
-        for (let b = 0; b <= state.bays; b++) {
-          const px = b * bayW;
-          drawList.push(...makePrismFaces(px - 2.5, 0, 0, 5, totalH, 5, postColors, proj));
-          drawList.push(...makePrismFaces(px - 2.5, 0, depth - 5, 5, totalH, 5, postColors, proj));
-        }
-
-        // Shelves & boxes
-        const shelfColors = { top: '#475569', front: '#F59E0B', back: '#D97706', side: '#B45309', stroke: 'rgba(11,18,32,0.4)' };
-        const boxPalette = [
-          { top: '#FCD34D', front: '#D97706', side: '#92400E', stroke: 'rgba(11,18,32,0.45)' },
-          { top: '#E2E8F0', front: '#94A3B8', side: '#475569', stroke: 'rgba(11,18,32,0.45)' },
-          { top: '#FDBA74', front: '#EA580C', side: '#9A3412', stroke: 'rgba(11,18,32,0.45)' }
+        const woodPallet = { top: '#D9A066', front: '#B87B3E', side: '#8F5B28', stroke: 'rgba(11,18,32,0.45)' };
+        const boxColors = [
+          { top: '#FCD34D', front: '#D97706', side: '#92400E', stroke: 'rgba(11,18,32,0.42)' },
+          { top: '#E2E8F0', front: '#94A3B8', side: '#475569', stroke: 'rgba(11,18,32,0.42)' },
+          { top: '#FDBA74', front: '#EA580C', side: '#9A3412', stroke: 'rgba(11,18,32,0.42)' },
+          { top: '#6EE7B7', front: '#10B981', side: '#047857', stroke: 'rgba(11,18,32,0.42)' }
         ];
 
         let placed = 0;
-        for (let l = 0; l < state.levels; l++) {
-          const sy = l * levelH + 8;
-          for (let b = 0; b < state.bays; b++) {
-            const bx = b * bayW + 2.5;
-            drawList.push(...makePrismFaces(bx, sy, 1, bayW - 5, 5, depth - 2, shelfColors, proj));
 
-            for (let slot = 0; slot < 3; slot++) {
+        if (state.type === 'selectivo') {
+          // Heavy warehouse uprights + amber load beams + Euro pallets with cartons
+          for (let b = 0; b <= state.bays; b++) {
+            const px = b * bayW;
+            drawList.push(...makePrism(px - 3, 0, 0, 6, totalH, 6, fin.post, proj));
+            drawList.push(...makePrism(px - 3, 0, depth - 6, 6, totalH, 6, fin.post, proj));
+          }
+          for (let l = 0; l < state.levels; l++) {
+            const sy = l * levelH + 8;
+            for (let b = 0; b < state.bays; b++) {
+              const bx = b * bayW + 3;
+              drawList.push(...makePrism(bx, sy, 0, bayW - 6, 6, 4, fin.beam, proj));
+              drawList.push(...makePrism(bx, sy, depth - 4, bayW - 6, 6, 4, fin.beam, proj));
+              for (let s = 0; s < 2; s++) {
+                if (placed < state.boxes) {
+                  const px = bx + 6 + s * 41;
+                  drawList.push(...makePrism(px, sy + 6, 2, 36, 4, depth - 4, woodPallet, proj));
+                  const col = boxColors[(b + l + s) % 3];
+                  drawList.push(...makePrism(px + 2, sy + 10, 5, 32, 24, depth - 10, col, proj));
+                  placed++;
+                }
+              }
+            }
+          }
+        } else if (state.type === 'gondola') {
+          // Retail commercial gondola: solid back panel, shelves, amber price rails, retail boxes
+          const priceRail = { top: '#F59E0B', front: '#F59E0B', side: '#D97706', stroke: 'rgba(11,18,32,0.3)' };
+          for (let b = 0; b < state.bays; b++) {
+            const bx = b * bayW;
+            drawList.push(...makePrism(bx + 1, 0, depth - 5, bayW - 2, totalH, 4, fin.panel, proj));
+            drawList.push(...makePrism(bx + 1, 0, 0, bayW - 2, 10, depth, fin.post, proj));
+          }
+          for (let l = 0; l < state.levels; l++) {
+            const sy = l * levelH + 14;
+            const shelfD = Math.max(20, depth - l * 4);
+            const zOff = depth - 5 - shelfD;
+            for (let b = 0; b < state.bays; b++) {
+              const bx = b * bayW + 2;
+              drawList.push(...makePrism(bx, sy, zOff, bayW - 4, 3.5, shelfD, fin.beam, proj));
+              drawList.push(...makePrism(bx, sy - 1, zOff - 1.5, bayW - 4, 4.5, 1.5, priceRail, proj));
+              for (let s = 0; s < 4; s++) {
+                if (placed < state.boxes) {
+                  const col = boxColors[(b + l + s) % boxColors.length];
+                  drawList.push(...makePrism(bx + 5 + s * 21, sy + 3.5, zOff + 3, 17, 19 + (s % 2) * 4, Math.max(12, shelfD - 6), col, proj));
+                  placed++;
+                }
+              }
+            }
+          }
+        } else if (state.type === 'metalica') {
+          // Slotted angle-steel shelving with thin steel trays & hardware bins
+          for (let b = 0; b <= state.bays; b++) {
+            const px = b * bayW;
+            drawList.push(...makePrism(px - 2, 0, 0, 3.5, totalH, 3.5, fin.post, proj));
+            drawList.push(...makePrism(px - 2, 0, depth - 3.5, 3.5, totalH, 3.5, fin.post, proj));
+          }
+          for (let l = 0; l < state.levels; l++) {
+            const sy = l * levelH + 8;
+            for (let b = 0; b < state.bays; b++) {
+              const bx = b * bayW + 1.5;
+              drawList.push(...makePrism(bx, sy, 1, bayW - 3, 3, depth - 2, fin.beam, proj));
+              for (let s = 0; s < 3; s++) {
+                if (placed < state.boxes) {
+                  const col = boxColors[(b + l + s) % 3];
+                  drawList.push(...makePrism(bx + 6 + s * 28, sy + 3, 5, 22, 16, depth - 10, col, proj));
+                  placed++;
+                }
+              }
+            }
+          }
+        } else if (state.type === 'cantilever') {
+          // Central heavy columns with wide floor bases + cantilevered arms holding long pipes/beams
+          const pipeCol = { top: '#E2E8F0', front: '#94A3B8', side: '#64748B', stroke: 'rgba(11,18,32,0.45)' };
+          const woodCol = { top: '#FDBA74', front: '#EA580C', side: '#9A3412', stroke: 'rgba(11,18,32,0.45)' };
+          for (let b = 0; b <= state.bays; b++) {
+            const px = b * bayW;
+            drawList.push(...makePrism(px - 4, 0, depth - 10, 8, totalH, 8, fin.post, proj));
+            drawList.push(...makePrism(px - 4, 0, 0, 8, 6, depth, fin.post, proj));
+            for (let l = 0; l < state.levels; l++) {
+              const sy = l * levelH + 14;
+              drawList.push(...makePrism(px - 3, sy, 2, 6, 4.5, depth - 10, fin.beam, proj));
+            }
+          }
+          for (let l = 0; l < state.levels; l++) {
+            const sy = l * levelH + 18.5;
+            for (let b = 0; b < state.bays; b++) {
               if (placed < state.boxes) {
-                const cxPos = bx + 6 + slot * 27;
-                const boxH = 22 + ((b + l + slot) % 2) * 5;
-                const col = boxPalette[(b + l + slot) % boxPalette.length];
-                drawList.push(...makePrismFaces(cxPos, sy + 5, 6, 23, boxH, depth - 12, col, proj));
+                const bx = b * bayW - 6;
+                const mat = (b + l) % 2 === 0 ? pipeCol : woodCol;
+                drawList.push(...makePrism(bx, sy, 6, bayW + 12, 8, 9, mat, proj));
+                drawList.push(...makePrism(bx, sy, 18, bayW + 12, 8, 9, mat, proj));
                 placed++;
               }
             }
           }
         }
 
-        // Painter's algorithm sort (back to front)
         drawList.sort((a, b) => b.depth - a.depth);
         for (let i = 0; i < drawList.length; i++) {
-          const f = drawList[i];
-          drawPoly(f.pts, f.fill, f.stroke);
+          drawPoly(drawList[i].pts, drawList[i].fill, drawList[i].stroke);
         }
       }
 
       function updateUI() {
-        const cap = maxBoxes();
+        const cfg = RACK_TYPES[state.type];
+        const cap = maxItems();
         if (state.boxes > cap) state.boxes = cap;
         if (state.boxes < 0) state.boxes = 0;
 
         baysVal.textContent = state.bays;
         levelsVal.textContent = state.levels;
         boxesVal.textContent = state.boxes;
+        bayWidthHint.textContent = 'Ancho ' + cfg.bayWidthM.toFixed(2) + ' m c/u';
+        levelLoadHint.textContent = cfg.kgPerLevel.toLocaleString('es-AR') + ' kg por nivel';
+        loadItemLabel.textContent = cfg.itemLabel;
         angleVal.textContent = Math.round(state.angleDeg) + '°';
         angleSlider.value = Math.round(state.angleDeg);
 
-        const occ = Math.round((state.boxes / cap) * 100);
-        const lengthM = (state.bays * 1.8).toFixed(1);
-        const loadKg = (state.bays * state.levels * 180).toLocaleString('es-AR');
+        const occ = cap > 0 ? Math.round((state.boxes / cap) * 100) : 0;
+        const lengthM = (state.bays * cfg.bayWidthM).toFixed(1);
+        const depthFactor = state.depthCm === 40 ? 0.85 : state.depthCm === 60 ? 1 : 1.25;
+        const loadKg = Math.round(state.bays * state.levels * cfg.kgPerLevel * depthFactor).toLocaleString('es-AR');
 
-        viewSpec.textContent = state.bays + (state.bays === 1 ? ' CUERPO' : ' CUERPOS') + ' · ' + state.levels + ' NIVELES';
-        maxCapVal.textContent = cap + ' cajas';
+        viewSpec.textContent = cfg.short + ' · ' + state.bays + (state.bays === 1 ? ' CUERPO' : ' CUERPOS') + ' · ' + state.levels + ' NIVELES';
+        readoutTitle.textContent = 'Stock · ' + cfg.short;
+        maxCapVal.textContent = cap + ' ' + cfg.unit;
         occVal.textContent = occ + '%';
         lenVal.textContent = lengthM + ' m';
         loadVal.textContent = loadKg + ' kg';
 
         const rows = [];
+        const bayCap = state.levels * cfg.slotsPerBayLevel;
         for (let b = 1; b <= state.bays; b++) {
-          const bayCap = state.levels * 3;
           const bayBoxes = Math.max(0, Math.min(bayCap, state.boxes - (b - 1) * bayCap));
           const low = bayBoxes < Math.ceil(bayCap * 0.35);
           rows.push(
-            '<li><span>CUERPO A-0' + b + ' (' + bayBoxes + '/' + bayCap + ' cajas)</span>' +
+            '<li><span>MÓDULO A-0' + b + ' (' + bayBoxes + '/' + bayCap + ' ' + cfg.unit + ')</span>' +
             '<span class="' + (low ? 'sku-low' : 'sku-ok') + '">' + (low ? 'REPONER' : 'OK') + '</span></li>'
           );
         }
         skuFeed.innerHTML = rows.join('');
 
         const msg =
-          'Hola José! Probé el simulador de Estanterías 3D (' +
-          state.bays + ' cuerpos, ' + state.levels + ' niveles, ' + lengthM + ' m). ' +
-          'Quiero consultar por equipamiento, página web y sistema de stock para mi local en San Rafael.';
+          'Hola José! Configuré en 3D: ' + cfg.name +
+          ' | Acabado: ' + FINISHES[state.finish].name +
+          ' | Profundidad: ' + state.depthCm + ' cm' +
+          ' | ' + state.bays + ' cuerpos x ' + state.levels + ' niveles (' + lengthM + ' m, carga est. ' + loadKg + ' kg).' +
+          ' Quiero consultar por equipamiento + web y sistema de stock para mi local en San Rafael.';
         waRackBtn.setAttribute('href', 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg));
 
         renderScene();
       }
 
+      document.querySelectorAll('.rack-tab').forEach((tab) => {
+        tab.addEventListener('click', () => {
+          state.type = tab.dataset.type;
+          document.querySelectorAll('.rack-tab').forEach((t) => t.classList.toggle('active', t === tab));
+          state.boxes = Math.max(2, Math.round(maxItems() * 0.72));
+          updateUI();
+        });
+      });
+
+      document.querySelectorAll('#finishGroup .opt-chip').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.finish = btn.dataset.finish;
+          document.querySelectorAll('#finishGroup .opt-chip').forEach((b) => b.classList.toggle('active', b === btn));
+          updateUI();
+        });
+      });
+
+      document.querySelectorAll('#depthGroup .opt-chip').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.depthCm = Number(btn.dataset.depth);
+          document.querySelectorAll('#depthGroup .opt-chip').forEach((b) => b.classList.toggle('active', b === btn));
+          updateUI();
+        });
+      });
+
       document.querySelectorAll('.step-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
           const a = btn.dataset.action;
+          const step = Math.max(1, RACK_TYPES[state.type].slotsPerBayLevel);
           if (a === 'bays-plus' && state.bays < 4) state.bays++;
           if (a === 'bays-minus' && state.bays > 1) state.bays--;
           if (a === 'levels-plus' && state.levels < 5) state.levels++;
           if (a === 'levels-minus' && state.levels > 2) state.levels--;
-          if (a === 'boxes-plus') state.boxes = Math.min(maxBoxes(), state.boxes + 3);
-          if (a === 'boxes-minus') state.boxes = Math.max(0, state.boxes - 3);
+          if (a === 'boxes-plus') state.boxes = Math.min(maxItems(), state.boxes + step);
+          if (a === 'boxes-minus') state.boxes = Math.max(0, state.boxes - step);
           updateUI();
         });
       });
