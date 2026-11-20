@@ -3,29 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sistemas de Gestión a Medida — José Román | San Rafael, Mendoza</title>
+  <title>Sistemas de Gestión a Medida — Ingeniería Real | José Román San Rafael</title>
   <meta name="description" content="Más que una página web: sistemas reales de stock por estantería, caja diaria y alertas de reposición hechos a medida en San Rafael, Mendoza." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
+      --obsidian: #0B0F17;
       --navy: #0F172A;
-      --navy-soft: #1E293B;
-      --bg: #F8FAFC;
+      --slate-bg: #F8FAFC;
       --surface: #FFFFFF;
       --ink: #0F172A;
       --muted: #475569;
       --border: #E2E8F0;
+      --amber: #F59E0B;
+      --amber-dark: #D97706;
       --emerald: #059669;
       --emerald-dark: #047857;
       --emerald-tint: #ECFDF5;
-      --amber: #D97706;
-      --amber-tint: #FFFBEB;
       --red: #DC2626;
       --red-tint: #FEF2F2;
-      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
-      --shadow-lg: 0 18px 40px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -40,226 +38,265 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
+      background: var(--slate-bg);
       color: var(--ink);
       line-height: 1.55;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    .mono {
-      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       width: 100%;
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Header */
+    /* Architectural Industrial Header (Inspired by mockup-industrial-02) */
     .topbar {
-      background: var(--navy);
-      color: #FFFFFF;
+      background: rgba(11, 15, 23, 0.92);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
       position: sticky;
       top: 0;
-      z-index: 25;
+      z-index: 35;
     }
 
     .topbar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 64px;
-      gap: 14px;
+      min-height: 68px;
+      gap: 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      font-size: 0.92rem;
     }
 
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
-      background: var(--emerald);
-      color: #FFFFFF;
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      border: 1.5px solid var(--amber);
+      color: var(--amber);
       display: grid;
       place-items: center;
-      font-weight: 800;
-      font-size: 0.86rem;
+      font-size: 0.8rem;
     }
 
-    .brand-title {
-      font-weight: 700;
-      font-size: 0.94rem;
-    }
-
-    .brand-sub {
-      display: block;
-      font-size: 0.74rem;
-      color: #94A3B8;
+    .brand span.sub {
+      color: #64748B;
+      font-weight: 600;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      gap: 24px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: #CBD5E1;
     }
 
-    .nav-links a:hover {
-      color: #FFFFFF;
-    }
+    .nav-links a:hover { color: #FFFFFF; }
 
     .nav-cta {
-      background: var(--emerald);
-      color: #FFFFFF !important;
-      padding: 8px 14px;
-      border-radius: 9px;
+      background: var(--amber);
+      color: #0B0F17 !important;
+      padding: 10px 18px;
+      border-radius: 7px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       transition: background 0.15s ease;
     }
 
-    .nav-cta:hover {
-      background: var(--emerald-dark);
-    }
+    .nav-cta:hover { background: #FBBF24; }
 
-    /* Hero */
-    .hero {
-      background: var(--navy);
+    /* Full-Bleed Architectural Control Room Hero */
+    .cmd-hero {
+      position: relative;
+      background: var(--obsidian);
       color: #FFFFFF;
-      padding: 44px 0 54px;
+      padding: 64px 0 80px;
+      overflow: hidden;
     }
 
-    .hero-grid {
+    .hero-bg {
+      position: absolute;
+      inset: -4%;
+      background-image: url('../assets/w1-06-gestion-control.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.44;
+      will-change: transform;
+      z-index: 1;
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(11, 15, 23, 0.94) 0%, rgba(11, 15, 23, 0.72) 55%, rgba(11, 15, 23, 0.86) 100%);
+      z-index: 2;
+    }
+
+    /* Subtle architectural vertical grid lines */
+    .hero-gridlines {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 140px 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 5;
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-      gap: 28px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 32px;
       align-items: center;
     }
 
-    .kicker {
+    .hero-kicker {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 700;
-      color: #6EE7B7;
-      background: rgba(5, 150, 105, 0.16);
-      border: 1px solid rgba(110, 231, 183, 0.25);
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 16px;
     }
 
-    .hero h1 {
-      font-size: clamp(1.85rem, 4vw, 2.7rem);
-      line-height: 1.12;
+    .cmd-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.1rem, 4.8vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.02;
       letter-spacing: -0.025em;
-      font-weight: 800;
-      margin-bottom: 14px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
     }
 
-    .hero p {
+    .cmd-hero p {
       font-size: 1rem;
       color: #CBD5E1;
-      max-width: 590px;
-      margin-bottom: 22px;
+      max-width: 540px;
+      margin-bottom: 26px;
     }
 
     .hero-actions {
       display: flex;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn-emerald {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--emerald);
-      color: #FFFFFF;
-      font-weight: 700;
-      font-size: 0.92rem;
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.15s ease;
-    }
-
-    .btn-emerald:hover {
-      background: var(--emerald-dark);
-    }
-
-    .btn-outline-light {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.06);
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      font-weight: 600;
-      font-size: 0.92rem;
-      padding: 12px 18px;
-      border-radius: 10px;
-    }
-
-    .btn-outline-light:hover {
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    .hero-facts {
-      background: var(--navy-soft);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
       gap: 14px;
     }
 
-    .fact-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+    .btn-amber {
+      background: var(--amber);
+      color: #0B0F17;
+      font-weight: 800;
+      font-size: 0.86rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 14px 22px;
+      border-radius: 8px;
+      transition: transform 0.14s ease, background 0.14s ease;
     }
 
-    .fact-code {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #6EE7B7;
-      background: rgba(5, 150, 105, 0.18);
-      padding: 4px 8px;
-      border-radius: 6px;
-      flex-shrink: 0;
+    .btn-amber:hover {
+      background: #FBBF24;
+      transform: translateY(-1px);
     }
 
-    .fact-row strong {
-      display: block;
-      font-size: 0.92rem;
-      color: #FFFFFF;
-    }
-
-    .fact-row span {
-      font-size: 0.82rem;
+    .hero-loc {
+      font-size: 0.78rem;
       color: #94A3B8;
+      letter-spacing: 0.06em;
     }
 
-    /* Live System Demo Section */
+    .hero-loc strong { color: var(--amber); }
+
+    /* Translucent Floating Telemetry Card (Inspired by mockup-industrial-02) */
+    .telemetry-card {
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+    }
+
+    .tel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      font-size: 0.8rem;
+      color: #CBD5E1;
+    }
+
+    .tel-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .tel-dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #334155;
+    }
+
+    .tel-dots span:first-child { background: var(--amber); }
+
+    #telemetryCanvas {
+      width: 100%;
+      height: 112px;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .tel-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 12px;
+      font-size: 0.78rem;
+    }
+
+    .tel-foot strong {
+      color: #FFFFFF;
+      letter-spacing: 0.05em;
+    }
+
+    .tel-foot span {
+      color: #6EE7B7;
+      font-weight: 700;
+    }
+
+    /* Live Management System Demo */
     .demo-section {
-      padding: 40px 0 48px;
+      padding: 48px 0 56px;
     }
 
     .section-head {
@@ -267,13 +304,14 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       flex-wrap: wrap;
     }
 
     .section-head h2 {
-      font-size: clamp(1.4rem, 2.8vw, 1.9rem);
-      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 700;
       letter-spacing: -0.02em;
     }
 
@@ -284,16 +322,16 @@
     }
 
     .app-frame {
-      background: var(--surface);
+      background: #FFFFFF;
       border: 1px solid var(--border);
       border-radius: 18px;
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 20px 44px rgba(15, 23, 42, 0.08);
       overflow: hidden;
     }
 
     .app-topbar {
-      background: #F1F5F9;
-      border-bottom: 1px solid var(--border);
+      background: #0F172A;
+      color: #FFFFFF;
       padding: 14px 20px;
       display: flex;
       align-items: center;
@@ -306,58 +344,38 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      font-size: 0.9rem;
       font-weight: 700;
-      font-size: 0.92rem;
     }
 
-    .status-dot {
+    .live-dot {
       width: 9px;
       height: 9px;
       border-radius: 50%;
-      background: var(--emerald);
+      background: #10B981;
+      box-shadow: 0 0 10px #10B981;
     }
 
-    .app-hint {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* KPI Strip */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
       padding: 18px 20px;
       border-bottom: 1px solid var(--border);
-      background: #FFFFFF;
     }
 
     .kpi-card {
-      background: var(--bg);
+      background: var(--slate-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 13px 15px;
     }
 
-    .kpi-label {
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: var(--muted);
-      display: block;
-    }
-
-    .kpi-val {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-top: 3px;
-      display: block;
-    }
-
+    .kpi-label { font-size: 0.75rem; font-weight: 600; color: var(--muted); display: block; }
+    .kpi-val { font-size: 1.3rem; font-weight: 700; margin-top: 3px; display: block; }
     .kpi-val.emerald { color: var(--emerald); }
     .kpi-val.alert { color: var(--red); }
 
-    /* Tabs */
     .tabs-bar {
       display: flex;
       gap: 6px;
@@ -381,11 +399,6 @@
       align-items: center;
       gap: 8px;
       white-space: nowrap;
-      transition: color 0.15s ease;
-    }
-
-    .tab-btn:hover {
-      color: var(--ink);
     }
 
     .tab-btn.active {
@@ -405,21 +418,11 @@
       color: var(--red);
     }
 
-    .tab-badge.ok {
-      background: var(--emerald-tint);
-      color: var(--emerald);
-    }
+    .tab-badge.ok { background: var(--emerald-tint); color: var(--emerald); }
 
-    .tab-panel {
-      display: none;
-      padding: 20px;
-    }
+    .tab-panel { display: none; padding: 20px; }
+    .tab-panel.active { display: block; }
 
-    .tab-panel.active {
-      display: block;
-    }
-
-    /* Stock Toolbar & Table */
     .toolbar {
       display: flex;
       align-items: center;
@@ -437,19 +440,12 @@
       padding: 10px 14px;
       border: 1px solid #CBD5E1;
       border-radius: 10px;
-      background: #FFFFFF;
-      color: var(--ink);
       outline: none;
     }
 
-    .search-input:focus {
-      border-color: var(--emerald);
-    }
+    .search-input:focus { border-color: var(--emerald); }
 
-    .filter-group {
-      display: flex;
-      gap: 8px;
-    }
+    .filter-group { display: flex; gap: 8px; }
 
     .filter-btn {
       font-family: inherit;
@@ -475,16 +471,10 @@
       border-radius: 12px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 680px;
-      font-size: 0.88rem;
-    }
-
+    table { width: 100%; border-collapse: collapse; min-width: 680px; font-size: 0.88rem; }
     th {
       text-align: left;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: var(--muted);
@@ -492,366 +482,115 @@
       padding: 11px 14px;
       border-bottom: 1px solid var(--border);
     }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
 
-    td {
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-    }
+    .sku-pill { font-size: 0.78rem; font-weight: 600; background: #F1F5F9; padding: 3px 8px; border-radius: 6px; display: inline-block; }
+    .prod-name { font-weight: 600; }
+    .prod-sub { display: block; font-size: 0.76rem; color: var(--muted); }
 
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    .sku-pill {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--navy);
-      background: #F1F5F9;
-      padding: 3px 8px;
-      border-radius: 6px;
-      display: inline-block;
-    }
-
-    .prod-name {
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .prod-sub {
-      display: block;
-      font-size: 0.76rem;
-      color: var(--muted);
-    }
-
-    .badge-status {
-      display: inline-block;
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 999px;
-    }
-
+    .badge-status { display: inline-block; font-size: 0.74rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; }
     .badge-ok { background: var(--emerald-tint); color: var(--emerald); }
-    .badge-low { background: var(--amber-tint); color: var(--amber); }
+    .badge-low { background: #FFFBEB; color: #D97706; }
     .badge-crit { background: var(--red-tint); color: var(--red); }
 
-    .qty-controls {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
+    .qty-controls { display: inline-flex; align-items: center; gap: 6px; }
     .qty-btn {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      border: 1px solid #CBD5E1;
-      background: #FFFFFF;
-      color: var(--ink);
-      font-weight: 800;
-      font-size: 0.95rem;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      transition: all 0.12s ease;
+      width: 30px; height: 30px; border-radius: 8px; border: 1px solid #CBD5E1;
+      background: #FFFFFF; font-weight: 800; cursor: pointer; display: grid; place-items: center;
     }
-
-    .qty-btn:hover {
-      background: var(--navy);
-      color: #FFFFFF;
-      border-color: var(--navy);
-    }
-
-    .qty-num {
-      min-width: 32px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
+    .qty-btn:hover { background: var(--navy); color: #FFFFFF; border-color: var(--navy); }
+    .qty-num { min-width: 30px; text-align: center; font-weight: 700; }
 
     .btn-quick-sell {
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 6px 10px;
-      border-radius: 8px;
-      border: 1px solid #A7F3D0;
-      background: var(--emerald-tint);
-      color: var(--emerald-dark);
-      cursor: pointer;
-      transition: background 0.14s ease;
+      font-family: inherit; font-size: 0.78rem; font-weight: 700; padding: 6px 10px;
+      border-radius: 8px; border: 1px solid #A7F3D0; background: var(--emerald-tint);
+      color: var(--emerald-dark); cursor: pointer;
     }
+    .btn-quick-sell:hover { background: var(--emerald); color: #FFFFFF; border-color: var(--emerald); }
 
-    .btn-quick-sell:hover {
-      background: var(--emerald);
-      color: #FFFFFF;
-      border-color: var(--emerald);
+    .btn-emerald {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--emerald); color: #FFFFFF; font-weight: 700; font-size: 0.88rem;
+      padding: 11px 18px; border-radius: 10px; border: none; cursor: pointer;
     }
+    .btn-emerald:hover { background: var(--emerald-dark); }
 
-    /* Caja del Día */
     .caja-form {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) 90px minmax(0, 1.2fr) auto;
-      gap: 12px;
-      align-items: end;
-      margin-bottom: 18px;
+      background: var(--slate-bg); border: 1px solid var(--border); border-radius: 12px;
+      padding: 16px; display: grid; grid-template-columns: minmax(0, 2fr) 90px minmax(0, 1.2fr) auto;
+      gap: 12px; align-items: end; margin-bottom: 18px;
     }
 
-    .caja-field label {
-      display: block;
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: var(--muted);
-      margin-bottom: 5px;
+    .caja-field label { display: block; font-size: 0.76rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; }
+    .caja-field select, .caja-field input {
+      width: 100%; font-family: inherit; font-size: 0.88rem; padding: 9px 11px;
+      border: 1px solid #CBD5E1; border-radius: 9px; background: #FFFFFF;
     }
 
-    .caja-field select,
-    .caja-field input {
-      width: 100%;
-      font-family: inherit;
-      font-size: 0.88rem;
-      padding: 9px 11px;
-      border: 1px solid #CBD5E1;
-      border-radius: 9px;
-      background: #FFFFFF;
-      color: var(--ink);
-    }
+    .caja-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+    .caja-mini { border: 1px solid var(--border); border-radius: 11px; padding: 12px 14px; background: #FFFFFF; }
+    .caja-mini span { font-size: 0.76rem; color: var(--muted); display: block; }
+    .caja-mini strong { font-size: 1.08rem; }
 
-    .caja-summary {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .caja-mini {
-      border: 1px solid var(--border);
-      border-radius: 11px;
-      padding: 12px 14px;
-      background: #FFFFFF;
-    }
-
-    .caja-mini span {
-      font-size: 0.76rem;
-      color: var(--muted);
-      display: block;
-    }
-
-    .caja-mini strong {
-      font-size: 1.08rem;
-      color: var(--ink);
-    }
-
-    /* Alertas de Reposición */
     .alerts-banner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      background: var(--amber-tint);
-      border: 1px solid #FDE68A;
-      border-radius: 12px;
-      padding: 15px 18px;
-      margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+      background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 12px; padding: 15px 18px; margin-bottom: 16px;
     }
-
-    .alerts-banner.all-ok {
-      background: var(--emerald-tint);
-      border-color: #A7F3D0;
-    }
-
-    .alerts-banner strong {
-      display: block;
-      font-size: 0.94rem;
-      color: var(--ink);
-    }
-
-    .alerts-banner span {
-      font-size: 0.84rem;
-      color: var(--muted);
-    }
+    .alerts-banner.all-ok { background: var(--emerald-tint); border-color: #A7F3D0; }
 
     .toast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--navy);
-      color: #FFFFFF;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 11px 16px;
-      border-radius: 10px;
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.25);
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      transition: all 0.2s ease;
-      z-index: 50;
+      position: fixed; bottom: 20px; right: 20px; background: var(--navy); color: #FFFFFF;
+      font-size: 0.85rem; font-weight: 600; padding: 11px 16px; border-radius: 10px;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.25); opacity: 0; transform: translateY(10px);
+      pointer-events: none; transition: all 0.2s ease; z-index: 50;
     }
+    .toast.show { opacity: 1; transform: translateY(0); }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Comparison Section */
-    .compare-section {
-      padding: 24px 0 54px;
-    }
-
-    .compare-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      margin-top: 22px;
-    }
+    /* Animated Comparison Section */
+    .compare-section { padding: 16px 0 60px; }
+    .compare-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 22px; }
 
     .compare-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
+      background: #FFFFFF; border: 1px solid var(--border); border-radius: 16px; padding: 26px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
-
-    .compare-card.featured {
-      border: 2px solid var(--navy);
-      position: relative;
-    }
+    .compare-card.visible { opacity: 1; transform: translateY(0); }
+    .compare-card.featured { border: 2px solid var(--navy); }
 
     .compare-tag {
-      display: inline-block;
-      font-size: 0.74rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: #F1F5F9;
-      color: var(--muted);
-      margin-bottom: 12px;
+      display: inline-block; font-size: 0.74rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.05em; padding: 4px 10px; border-radius: 999px; background: #F1F5F9; color: var(--muted); margin-bottom: 12px;
     }
-
-    .compare-card.featured .compare-tag {
-      background: var(--emerald-tint);
-      color: var(--emerald-dark);
-    }
-
-    .compare-card h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .compare-price {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--emerald);
-      margin-bottom: 14px;
-    }
-
-    .compare-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      font-size: 0.9rem;
-      color: var(--ink);
-    }
-
-    .compare-list li {
-      display: flex;
-      gap: 9px;
-    }
-
-    .compare-list span.mark {
-      color: var(--emerald);
-      font-weight: 800;
-    }
+    .compare-card.featured .compare-tag { background: var(--emerald-tint); color: var(--emerald-dark); }
+    .compare-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; margin-bottom: 6px; }
+    .compare-price { font-size: 0.92rem; font-weight: 700; color: var(--emerald); margin-bottom: 14px; }
+    .compare-list { list-style: none; display: flex; flex-direction: column; gap: 9px; font-size: 0.9rem; }
+    .compare-list li { display: flex; gap: 9px; }
+    .compare-list .mark { color: var(--emerald); font-weight: 800; }
 
     .bridge-note {
-      margin-top: 18px;
-      background: var(--navy);
-      color: #FFFFFF;
-      border-radius: 14px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
+      margin-top: 20px; background: var(--obsidian); color: #FFFFFF; border-radius: 16px;
+      padding: 24px 26px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
     }
+    .bridge-note p { font-size: 0.94rem; color: #CBD5E1; max-width: 680px; }
 
-    .bridge-note p {
-      font-size: 0.95rem;
-      color: #E2E8F0;
-      max-width: 680px;
-    }
+    .footer { border-top: 1px solid var(--border); background: #FFFFFF; padding: 26px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; font-size: 0.85rem; color: var(--muted); }
+    .footer-inner strong { color: var(--ink); }
+    .footer-links { display: flex; gap: 16px; font-weight: 700; color: var(--emerald-dark); }
 
-    /* Footer */
-    .footer {
-      border-top: 1px solid var(--border);
-      background: var(--surface);
-      padding: 26px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .footer-inner strong {
-      color: var(--ink);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .footer-links a:hover {
-      color: var(--emerald);
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid,
-      .compare-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .kpi-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .caja-form {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .nav-links a:not(.nav-cta) {
-        display: none;
-      }
+    @media (max-width: 920px) {
+      .hero-layout, .compare-grid { grid-template-columns: 1fr; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .caja-form { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 560px) {
-      .kpi-grid,
-      .caja-form,
-      .caja-summary {
-        grid-template-columns: 1fr;
-      }
+      .kpi-grid, .caja-form, .caja-summary { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -859,111 +598,79 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">
-        <div class="brand-mark">JR</div>
-        <div>
-          <span class="brand-title">José Román · Ingeniería &amp; Gestión</span>
-          <span class="brand-sub">San Rafael, Mendoza</span>
-        </div>
+        <div class="brand-icon mono">JR</div>
+        <span>JOSÉ ROMÁN <span class="sub">// GESTIÓN</span></span>
       </div>
-      <nav class="nav-links" aria-label="Navegación principal">
-        <a href="#demo">Demo en vivo</a>
+      <nav class="nav-links">
+        <a href="#demo">Sistema en vivo</a>
         <a href="#comparativa">Web vs. Sistema</a>
-        <a class="nav-cta" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20consultar%20por%20un%20sistema%20de%20gesti%C3%B3n%20a%20medida%20en%20San%20Rafael." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+        <a class="nav-cta" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20consultar%20por%20un%20sistema%20de%20gesti%C3%B3n%20a%20medida%20en%20San%20Rafael." target="_blank" rel="noopener noreferrer">Cotizar</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container hero-grid">
+    <section class="cmd-hero">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-scrim"></div>
+      <div class="hero-gridlines"></div>
+
+      <div class="container hero-layout">
         <div>
-          <span class="kicker">Desarrollo real en San Rafael · Sin plantillas limitadas</span>
-          <h1>Más que una página web: sistemas de gestión hechos para tu negocio real</h1>
-          <p>Hacer una landing básica hoy lo hace cualquiera. Armar un sistema que controle tu stock por estantería, tu caja diaria y tus alertas de reposición sin dolores de cabeza requiere ingeniería de software de verdad.</p>
+          <span class="hero-kicker mono">01 // INGENIERÍA DE SOFTWARE · SAN RAFAEL</span>
+          <h1>MÁS QUE UNA WEB.<br/>NÚCLEO DE GESTIÓN REAL.</h1>
+          <p>Hacer una página linda hoy lo hace cualquiera. Construir un sistema que controle tu stock por estantería, tu caja diaria y tus alertas de reposición por WhatsApp requiere ingeniería real.</p>
           <div class="hero-actions">
-            <a class="btn-emerald" href="#demo">Probar el sistema ahora</a>
-            <a class="btn-outline-light" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20interesa%20ver%20c%C3%B3mo%20ordenar%20stock%20y%20caja%20en%20mi%20negocio." target="_blank" rel="noopener noreferrer">Hablar con José (+54 9 260 405-9284)</a>
+            <a class="btn-amber" href="#demo">Probar sistema en vivo ↓</a>
+            <span class="hero-loc mono"><strong>01</strong> / SAN RAFAEL, MENDOZA</span>
           </div>
         </div>
-        <div class="hero-facts">
-          <div class="fact-row">
-            <span class="fact-code mono">01</span>
-            <div>
-              <strong>Hecho a tu operatoria</strong>
-              <span>Nada de adaptarte a programas rígidos o enlatados que cobran en dólares.</span>
-            </div>
+
+        <div class="telemetry-card">
+          <div class="tel-head">
+            <span>Telemetría de Depósito en vivo</span>
+            <div class="tel-dots"><span></span><span></span><span></span></div>
           </div>
-          <div class="fact-row">
-            <span class="fact-code mono">02</span>
-            <div>
-              <strong>Funciona en PC y celular</strong>
-              <span>Cargás en mostrador, revisás en depósito y mirás la caja desde el teléfono.</span>
-            </div>
-          </div>
-          <div class="fact-row">
-            <span class="fact-code mono">03</span>
-            <div>
-              <strong>Arrancás simple y escalás</strong>
-              <span>Podés empezar con tu web hoy y sumar módulos de gestión cuando crezcas.</span>
-            </div>
+          <canvas id="telemetryCanvas" aria-hidden="true"></canvas>
+          <div class="tel-foot mono">
+            <strong>STOCK OS v4.2</strong>
+            <span>PC + CELULAR · SIN ABONOS USD</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Live Demo -->
     <section class="demo-section" id="demo">
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Probalo vos mismo: Demo interactiva de gestión</h2>
-            <p>Buscá un producto, tocá <strong>-1 / +1</strong> para mover el stock, registrá una venta en Caja del Día y mirá cómo saltan las alertas de reposición en tiempo real.</p>
+            <h2>Probalo vos mismo: Demo interactiva en vivo</h2>
+            <p>Buscá un SKU, tocá <strong>-1 / +1</strong>, registrá una venta en Caja del Día y mirá cómo saltan las alertas de reposición en tiempo real.</p>
           </div>
         </div>
 
         <div class="app-frame">
           <div class="app-topbar">
-            <div class="app-title">
-              <span class="status-dot"></span>
-              <span>Depósito &amp; Mostrador · Ejemplo Ferretería / Distribuidora (San Rafael)</span>
-            </div>
-            <span class="app-hint">Todo funciona en vivo en tu navegador</span>
+            <div class="app-title"><span class="live-dot"></span><span>Depósito &amp; Mostrador · San Rafael</span></div>
+            <span class="mono" style="font-size:0.76rem;color:#94A3B8;">100% INTERACTIVO EN NAVEGADOR</span>
           </div>
 
-          <!-- KPIs -->
           <div class="kpi-grid">
-            <div class="kpi-card">
-              <span class="kpi-label">Productos activos</span>
-              <span class="kpi-val mono" id="kpiSkus">8</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">Alertas de stock bajo</span>
-              <span class="kpi-val mono alert" id="kpiLow">2</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">Caja del día</span>
-              <span class="kpi-val mono emerald" id="kpiCaja">$0</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">Ventas registradas hoy</span>
-              <span class="kpi-val mono" id="kpiSalesCount">0</span>
-            </div>
+            <div class="kpi-card"><span class="kpi-label">SKUs activos</span><span class="kpi-val mono" id="kpiSkus">8</span></div>
+            <div class="kpi-card"><span class="kpi-label">Alertas stock bajo</span><span class="kpi-val mono alert" id="kpiLow">2</span></div>
+            <div class="kpi-card"><span class="kpi-label">Caja del día</span><span class="kpi-val mono emerald" id="kpiCaja">$0</span></div>
+            <div class="kpi-card"><span class="kpi-label">Ventas hoy</span><span class="kpi-val mono" id="kpiSalesCount">0</span></div>
           </div>
 
-          <!-- Tabs -->
           <div class="tabs-bar" role="tablist">
-            <button type="button" class="tab-btn active" role="tab" data-tab="stock">Stock por Estantería</button>
-            <button type="button" class="tab-btn" role="tab" data-tab="caja">Caja del Día</button>
-            <button type="button" class="tab-btn" role="tab" data-tab="alertas">
-              Alertas de Reposición
-              <span class="tab-badge mono" id="alertTabCount">2</span>
-            </button>
+            <button type="button" class="tab-btn active" data-tab="stock">Stock por Estantería</button>
+            <button type="button" class="tab-btn" data-tab="caja">Caja del Día</button>
+            <button type="button" class="tab-btn" data-tab="alertas">Alertas de Reposición <span class="tab-badge mono" id="alertTabCount">2</span></button>
           </div>
 
-          <!-- TAB 1: Stock -->
           <div class="tab-panel active" id="panel-stock">
             <div class="toolbar">
-              <input type="text" id="stockSearch" class="search-input" placeholder="Buscar por SKU, producto o estantería (ej: FER-104, Pasillo A, cemento)..." />
+              <input type="text" id="stockSearch" class="search-input" placeholder="Buscar por SKU, producto o estantería (ej: FER-104, Pasillo B)..." />
               <div class="filter-group">
                 <button type="button" class="filter-btn active" data-filter="all">Todos</button>
                 <button type="button" class="filter-btn" data-filter="low">Solo stock bajo</button>
@@ -971,33 +678,16 @@
             </div>
             <div class="table-wrap">
               <table>
-                <thead>
-                  <tr>
-                    <th>SKU</th>
-                    <th>Producto / Proveedor</th>
-                    <th>Estantería</th>
-                    <th>Precio</th>
-                    <th>Stock (Mín.)</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
+                <thead><tr><th>SKU</th><th>Producto / Proveedor</th><th>Estantería</th><th>Precio</th><th>Stock (Mín.)</th><th>Estado</th><th>Acciones</th></tr></thead>
                 <tbody id="stockTbody"></tbody>
               </table>
             </div>
           </div>
 
-          <!-- TAB 2: Caja del Día -->
           <div class="tab-panel" id="panel-caja">
             <form class="caja-form" id="saleForm">
-              <div class="caja-field">
-                <label for="saleProduct">Producto</label>
-                <select id="saleProduct"></select>
-              </div>
-              <div class="caja-field">
-                <label for="saleQty">Cant.</label>
-                <input type="number" id="saleQty" min="1" max="50" value="1" />
-              </div>
+              <div class="caja-field"><label for="saleProduct">Producto</label><select id="saleProduct"></select></div>
+              <div class="caja-field"><label for="saleQty">Cant.</label><input type="number" id="saleQty" min="1" max="50" value="1" /></div>
               <div class="caja-field">
                 <label for="saleMethod">Medio de pago</label>
                 <select id="saleMethod">
@@ -1009,61 +699,27 @@
               </div>
               <button type="submit" class="btn-emerald">Registrar venta</button>
             </form>
-
             <div class="caja-summary">
-              <div class="caja-mini">
-                <span>Efectivo en caja</span>
-                <strong class="mono" id="cajaCash">$0</strong>
-              </div>
-              <div class="caja-mini">
-                <span>Transferencia y Débito</span>
-                <strong class="mono" id="cajaDigital">$0</strong>
-              </div>
-              <div class="caja-mini">
-                <span>Cuenta Corriente</span>
-                <strong class="mono" id="cajaCta">$0</strong>
-              </div>
+              <div class="caja-mini"><span>Efectivo</span><strong class="mono" id="cajaCash">$0</strong></div>
+              <div class="caja-mini"><span>Transferencia y Débito</span><strong class="mono" id="cajaDigital">$0</strong></div>
+              <div class="caja-mini"><span>Cuenta Corriente</span><strong class="mono" id="cajaCta">$0</strong></div>
             </div>
-
             <div class="table-wrap">
               <table>
-                <thead>
-                  <tr>
-                    <th>Hora</th>
-                    <th>Producto</th>
-                    <th>Cant.</th>
-                    <th>Medio de pago</th>
-                    <th>Total</th>
-                  </tr>
-                </thead>
+                <thead><tr><th>Hora</th><th>Producto</th><th>Cant.</th><th>Medio de pago</th><th>Total</th></tr></thead>
                 <tbody id="cajaTbody"></tbody>
               </table>
             </div>
           </div>
 
-          <!-- TAB 3: Alertas de Reposición -->
           <div class="tab-panel" id="panel-alertas">
             <div class="alerts-banner" id="alertsBanner">
-              <div>
-                <strong id="alertsHeadline">Tenés productos por debajo del mínimo</strong>
-                <span id="alertsSub">Podés mandar el pedido armado directo por WhatsApp con un clic.</span>
-              </div>
-              <a class="btn-emerald" id="waRestockBtn" href="#" target="_blank" rel="noopener noreferrer">
-                Enviar alerta de reposición por WhatsApp
-              </a>
+              <div><strong id="alertsHeadline"></strong><span id="alertsSub" style="display:block;font-size:0.84rem;color:#475569;"></span></div>
+              <a class="btn-emerald" id="waRestockBtn" href="#" target="_blank" rel="noopener noreferrer">Enviar alerta de reposición por WhatsApp</a>
             </div>
-
             <div class="table-wrap">
               <table>
-                <thead>
-                  <tr>
-                    <th>SKU</th>
-                    <th>Producto</th>
-                    <th>Proveedor</th>
-                    <th>Actual / Mínimo</th>
-                    <th>Sugerido pedir</th>
-                  </tr>
-                </thead>
+                <thead><tr><th>SKU</th><th>Producto</th><th>Proveedor</th><th>Actual / Mínimo</th><th>Sugerido pedir</th></tr></thead>
                 <tbody id="alertsTbody"></tbody>
               </table>
             </div>
@@ -1072,7 +728,6 @@
       </div>
     </section>
 
-    <!-- Comparison Section -->
     <section class="compare-section" id="comparativa">
       <div class="container">
         <div class="section-head">
@@ -1083,34 +738,32 @@
         </div>
 
         <div class="compare-grid">
-          <article class="compare-card">
+          <article class="compare-card" data-reveal="true">
             <span class="compare-tag">Etapa 1 · Presencia</span>
             <h3>Página Web Profesional</h3>
-            <div class="compare-price">Desde $100.000 · Entrega en 5 a 7 días</div>
+            <div class="compare-price">Desde $100.000 ARS · Entrega en 5 a 7 días</div>
             <ul class="compare-list">
               <li><span class="mark">✓</span><span>Diseño rápido pensado primero para celulares en San Rafael.</span></li>
               <li><span class="mark">✓</span><span>Catálogo o carta clara + botón directo a tu WhatsApp.</span></li>
-              <li><span class="mark">✓</span><span>Ubicación, horarios y señales reales de confianza local.</span></li>
               <li><span class="mark">✓</span><span>3 prototipos gratis antes de confirmar.</span></li>
             </ul>
           </article>
 
-          <article class="compare-card featured">
-            <span class="compare-tag">Etapa 2 · Ingeniería a medida</span>
-            <h3>Sistema de Gestión Real</h3>
+          <article class="compare-card featured" data-reveal="true" style="transition-delay:0.12s;">
+            <span class="compare-tag">Etapa 2 · Ingeniería Real</span>
+            <h3>Sistema de Gestión a Medida</h3>
             <div class="compare-price">Escalable por módulos · Sin abonos en dólares</div>
             <ul class="compare-list">
               <li><span class="mark">✓</span><span>Control de stock por estantería, depósito o sucursal.</span></li>
-              <li><span class="mark">✓</span><span>Caja diaria separada por efectivo, transferencia, débito y cta. cte.</span></li>
-              <li><span class="mark">✓</span><span>Alertas automáticas de reposición y pedidos a proveedores por WhatsApp.</span></li>
-              <li><span class="mark">✓</span><span>Presupuestos prolijos en PDF, historial de clientes y permisos por empleado.</span></li>
+              <li><span class="mark">✓</span><span>Caja diaria por medio de pago + cuenta corriente de clientes.</span></li>
+              <li><span class="mark">✓</span><span>Alertas automáticas de reposición directo a tu WhatsApp.</span></li>
             </ul>
           </article>
         </div>
 
         <div class="bridge-note">
-          <p><strong>Empezás por donde hoy más te duele:</strong> si primero necesitás una web que venda, arrancamos por ahí. Cuando quieras ordenar stock, caja o proveedores, lo construimos sobre la misma base.</p>
-          <a class="btn-emerald" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20la%20demo%20del%20sistema%20de%20gesti%C3%B3n%20y%20quiero%20contarte%20qu%C3%A9%20necesito%20ordenar%20en%20mi%20negocio." target="_blank" rel="noopener noreferrer">Contame qué necesitás ordenar</a>
+          <p><strong>Arrancás por donde hoy más te duele:</strong> empezás con tu web profesional y cuando quieras ordenar stock, caja o proveedores, lo sumamos sobre la misma base.</p>
+          <a class="btn-amber" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20prob%C3%A9%20el%20sistema%20de%20gesti%C3%B3n%20en%20vivo%20y%20quiero%20contarte%20qu%C3%A9%20necesito%20ordenar%20en%20mi%20negocio." target="_blank" rel="noopener noreferrer">Hablar con José →</a>
         </div>
       </div>
     </section>
@@ -1118,7 +771,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div><strong>José Román Fredrin</strong> · Desarrollo Web y Sistemas de Gestión · San Rafael, Mendoza</div>
+      <div><strong>José Román Fredrin</strong> · Desarrollo Web y Sistemas · San Rafael, Mendoza</div>
       <div class="footer-links">
         <a href="https://wa.me/5492604059284" target="_blank" rel="noopener noreferrer">+54 9 260 405-9284</a>
         <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
@@ -1130,8 +783,60 @@
 
   <script>
     (function () {
-      const JOSE_WA = '5492604059284';
+      // 1. Live Animated Telemetry Bars Canvas (Inspired by mockup-industrial-02)
+      const tCanvas = document.getElementById('telemetryCanvas');
+      const tCtx = tCanvas.getContext('2d');
+      function resizeTel() {
+        const r = tCanvas.getBoundingClientRect();
+        tCanvas.width = Math.max(240, Math.floor(r.width));
+        tCanvas.height = 112;
+      }
+      resizeTel();
+      window.addEventListener('resize', resizeTel);
 
+      const barCount = 24;
+      const barSeeds = Array.from({ length: barCount }, function (_, i) {
+        return { base: 0.25 + Math.random() * 0.65, speed: 0.0014 + (i % 5) * 0.00035, phase: i * 0.5 };
+      });
+
+      function drawTelemetry(now) {
+        requestAnimationFrame(drawTelemetry);
+        const w = tCanvas.width;
+        const h = tCanvas.height;
+        tCtx.clearRect(0, 0, w, h);
+        const gap = w / barCount;
+        const bw = Math.max(4, gap * 0.48);
+
+        for (let i = 0; i < barCount; i++) {
+          const s = barSeeds[i];
+          const ratio = Math.max(0.14, Math.min(0.95, s.base + Math.sin(now * s.speed + s.phase) * 0.22));
+          const x = i * gap + (gap - bw) * 0.5;
+          // Back track
+          tCtx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+          tCtx.fillRect(x, 6, bw, h - 12);
+          // Active bar
+          const bh = (h - 12) * ratio;
+          tCtx.fillStyle = ratio > 0.72 ? '#F59E0B' : '#10B981';
+          tCtx.fillRect(x, h - 6 - bh, bw, bh);
+        }
+      }
+      requestAnimationFrame(drawTelemetry);
+
+      // Scroll Reveal
+      const revealEls = document.querySelectorAll('[data-reveal="true"]');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.16 });
+        revealEls.forEach(function (el) { io.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add('visible'); });
+      }
+
+      // 2. Live Interactive Management System
+      const JOSE_WA = '5492604059284';
       const products = [
         { sku: 'FER-104', name: 'Bolsa Cemento Portland 50 kg', shelf: 'Patio A · Est. 01', supplier: 'Corralón Cuyo Mayorista', price: 11400, stock: 18, min: 15 },
         { sku: 'FER-208', name: 'Pintura Látex Interior 20 L', shelf: 'Pasillo B · Est. 03', supplier: 'Pinturas del Sur', price: 78000, stock: 4, min: 6 },
@@ -1160,250 +865,153 @@
       const saleProductEl = document.getElementById('saleProduct');
       const saleQtyEl = document.getElementById('saleQty');
       const saleMethodEl = document.getElementById('saleMethod');
-      const saleFormEl = document.getElementById('saleForm');
-
       const kpiSkusEl = document.getElementById('kpiSkus');
       const kpiLowEl = document.getElementById('kpiLow');
       const kpiCajaEl = document.getElementById('kpiCaja');
       const kpiSalesCountEl = document.getElementById('kpiSalesCount');
       const alertTabCountEl = document.getElementById('alertTabCount');
-
       const cajaCashEl = document.getElementById('cajaCash');
       const cajaDigitalEl = document.getElementById('cajaDigital');
       const cajaCtaEl = document.getElementById('cajaCta');
-
       const alertsBannerEl = document.getElementById('alertsBanner');
       const alertsHeadlineEl = document.getElementById('alertsHeadline');
       const alertsSubEl = document.getElementById('alertsSub');
       const waRestockBtn = document.getElementById('waRestockBtn');
       const toastEl = document.getElementById('toast');
 
-      function formatARS(num) {
-        return '$' + Number(num).toLocaleString('es-AR');
-      }
-
-      function nowTime() {
-        return new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
-      }
-
+      function formatARS(n) { return '$' + Number(n).toLocaleString('es-AR'); }
+      function nowTime() { return new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' }); }
+      function escapeHtml(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
       function showToast(msg) {
         toastEl.textContent = msg;
         toastEl.classList.add('show');
         clearTimeout(toastTimer);
-        toastTimer = setTimeout(function () {
-          toastEl.classList.remove('show');
-        }, 2300);
+        toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2200);
       }
 
-      function escapeHtml(str) {
-        return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      }
+      function getLow() { return products.filter(function (p) { return p.stock <= p.min; }); }
 
-      function getLowStockProducts() {
-        return products.filter(function (p) { return p.stock <= p.min; });
-      }
+      function renderAll() {
+        const low = getLow();
+        const totalCaja = sales.reduce(function (a, s) { return a + s.total; }, 0);
+        kpiSkusEl.textContent = products.length;
+        kpiLowEl.textContent = low.length;
+        kpiLowEl.className = 'kpi-val mono ' + (low.length > 0 ? 'alert' : 'emerald');
+        kpiCajaEl.textContent = formatARS(totalCaja);
+        kpiSalesCountEl.textContent = sales.length;
+        alertTabCountEl.textContent = low.length;
+        alertTabCountEl.className = 'tab-badge mono' + (low.length === 0 ? ' ok' : '');
 
-      function renderSelectOptions() {
         const prev = saleProductEl.value;
         saleProductEl.innerHTML = products.map(function (p) {
           return '<option value="' + p.sku + '">' + escapeHtml(p.sku + ' · ' + p.name + ' (' + formatARS(p.price) + ') — Disp: ' + p.stock) + '</option>';
         }).join('');
         if (prev) saleProductEl.value = prev;
-      }
 
-      function renderKPIs() {
-        const lowCount = getLowStockProducts().length;
-        const totalCaja = sales.reduce(function (acc, s) { return acc + s.total; }, 0);
-
-        kpiSkusEl.textContent = products.length;
-        kpiLowEl.textContent = lowCount;
-        kpiLowEl.className = 'kpi-val mono ' + (lowCount > 0 ? 'alert' : 'emerald');
-        kpiCajaEl.textContent = formatARS(totalCaja);
-        kpiSalesCountEl.textContent = sales.length;
-
-        alertTabCountEl.textContent = lowCount;
-        alertTabCountEl.className = 'tab-badge mono' + (lowCount === 0 ? ' ok' : '');
+        renderStock();
+        renderCaja();
+        renderAlerts(low);
       }
 
       function renderStock() {
         const q = searchQuery.trim().toLowerCase();
-        const filtered = products.filter(function (p) {
-          const matchesFilter = currentFilter === 'all' || p.stock <= p.min;
-          const matchesQuery = !q ||
-            p.sku.toLowerCase().includes(q) ||
-            p.name.toLowerCase().includes(q) ||
-            p.shelf.toLowerCase().includes(q) ||
-            p.supplier.toLowerCase().includes(q);
-          return matchesFilter && matchesQuery;
+        const list = products.filter(function (p) {
+          return (currentFilter === 'all' || p.stock <= p.min) &&
+            (!q || p.sku.toLowerCase().includes(q) || p.name.toLowerCase().includes(q) || p.shelf.toLowerCase().includes(q));
         });
-
-        if (!filtered.length) {
-          stockTbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#64748B;padding:24px;">No hay productos que coincidan con ese filtro.</td></tr>';
+        if (!list.length) {
+          stockTbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#64748B;padding:24px;">Sin resultados para ese filtro.</td></tr>';
           return;
         }
-
-        stockTbody.innerHTML = filtered.map(function (p) {
-          let badgeClass = 'badge-ok';
-          let badgeText = 'OK';
-          if (p.stock === 0 || p.stock <= Math.floor(p.min / 2)) {
-            badgeClass = 'badge-crit';
-            badgeText = 'Crítico';
-          } else if (p.stock <= p.min) {
-            badgeClass = 'badge-low';
-            badgeText = 'Bajo';
-          }
-
-          return (
-            '<tr>' +
-              '<td><span class="sku-pill mono">' + escapeHtml(p.sku) + '</span></td>' +
-              '<td><span class="prod-name">' + escapeHtml(p.name) + '</span><span class="prod-sub">' + escapeHtml(p.supplier) + '</span></td>' +
-              '<td class="mono" style="font-size:0.82rem;color:#475569;">' + escapeHtml(p.shelf) + '</td>' +
-              '<td class="mono" style="font-weight:600;">' + formatARS(p.price) + '</td>' +
-              '<td>' +
-                '<div class="qty-controls">' +
-                  '<button type="button" class="qty-btn" data-action="dec" data-sku="' + p.sku + '" aria-label="Restar 1">-</button>' +
-                  '<span class="qty-num mono">' + p.stock + '</span>' +
-                  '<button type="button" class="qty-btn" data-action="inc" data-sku="' + p.sku + '" aria-label="Sumar 1">+</button>' +
-                  '<span style="font-size:0.74rem;color:#64748B;">(mín ' + p.min + ')</span>' +
-                '</div>' +
-              '</td>' +
-              '<td><span class="badge-status ' + badgeClass + '">' + badgeText + '</span></td>' +
-              '<td><button type="button" class="btn-quick-sell" data-action="sell" data-sku="' + p.sku + '">Vender 1</button></td>' +
-            '</tr>'
-          );
+        stockTbody.innerHTML = list.map(function (p) {
+          const bc = p.stock <= Math.floor(p.min / 2) ? 'badge-crit' : (p.stock <= p.min ? 'badge-low' : 'badge-ok');
+          const bt = p.stock <= Math.floor(p.min / 2) ? 'Crítico' : (p.stock <= p.min ? 'Bajo' : 'OK');
+          return '<tr>' +
+            '<td><span class="sku-pill mono">' + escapeHtml(p.sku) + '</span></td>' +
+            '<td><span class="prod-name">' + escapeHtml(p.name) + '</span><span class="prod-sub">' + escapeHtml(p.supplier) + '</span></td>' +
+            '<td class="mono" style="font-size:0.82rem;color:#475569;">' + escapeHtml(p.shelf) + '</td>' +
+            '<td class="mono" style="font-weight:600;">' + formatARS(p.price) + '</td>' +
+            '<td><div class="qty-controls">' +
+              '<button type="button" class="qty-btn" data-action="dec" data-sku="' + p.sku + '">-</button>' +
+              '<span class="qty-num mono">' + p.stock + '</span>' +
+              '<button type="button" class="qty-btn" data-action="inc" data-sku="' + p.sku + '">+</button>' +
+              '<span style="font-size:0.74rem;color:#64748B;">(mín ' + p.min + ')</span>' +
+            '</div></td>' +
+            '<td><span class="badge-status ' + bc + '">' + bt + '</span></td>' +
+            '<td><button type="button" class="btn-quick-sell" data-action="sell" data-sku="' + p.sku + '">Vender 1</button></td>' +
+          '</tr>';
         }).join('');
       }
 
       function renderCaja() {
-        let cash = 0;
-        let digital = 0;
-        let cta = 0;
-
+        let cash = 0, dig = 0, cta = 0;
         sales.forEach(function (s) {
           if (s.method === 'Efectivo') cash += s.total;
           else if (s.method === 'Cuenta Corriente') cta += s.total;
-          else digital += s.total;
+          else dig += s.total;
         });
-
         cajaCashEl.textContent = formatARS(cash);
-        cajaDigitalEl.textContent = formatARS(digital);
+        cajaDigitalEl.textContent = formatARS(dig);
         cajaCtaEl.textContent = formatARS(cta);
-
         cajaTbody.innerHTML = sales.map(function (s) {
-          return (
-            '<tr>' +
-              '<td class="mono" style="color:#475569;">' + escapeHtml(s.time) + '</td>' +
-              '<td><span class="prod-name">' + escapeHtml(s.name) + '</span> <span class="mono" style="font-size:0.76rem;color:#64748B;">(' + escapeHtml(s.sku) + ')</span></td>' +
-              '<td class="mono">' + s.qty + '</td>' +
-              '<td>' + escapeHtml(s.method) + '</td>' +
-              '<td class="mono" style="font-weight:700;color:#059669;">' + formatARS(s.total) + '</td>' +
-            '</tr>'
-          );
+          return '<tr><td class="mono" style="color:#475569;">' + escapeHtml(s.time) + '</td>' +
+            '<td><span class="prod-name">' + escapeHtml(s.name) + '</span> <span class="mono" style="font-size:0.76rem;color:#64748B;">(' + escapeHtml(s.sku) + ')</span></td>' +
+            '<td class="mono">' + s.qty + '</td><td>' + escapeHtml(s.method) + '</td>' +
+            '<td class="mono" style="font-weight:700;color:#059669;">' + formatARS(s.total) + '</td></tr>';
         }).join('');
       }
 
-      function renderAlerts() {
-        const low = getLowStockProducts();
-
+      function renderAlerts(low) {
         if (!low.length) {
           alertsBannerEl.classList.add('all-ok');
-          alertsHeadlineEl.textContent = 'Stock al día: no tenés productos por debajo del mínimo';
-          alertsSubEl.textContent = 'Probá bajar el stock de algún producto en la pestaña "Stock por Estantería" para ver la alerta en vivo.';
-          waRestockBtn.href = 'https://wa.me/' + JOSE_WA + '?text=' + encodeURIComponent('Hola José, probé la demo del sistema de gestión en San Rafael y quiero consultarte para mi negocio.');
-          alertsTbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#059669;font-weight:600;padding:24px;">Todo el inventario está por encima del mínimo configurado.</td></tr>';
+          alertsHeadlineEl.textContent = 'Stock al día: sin faltantes por debajo del mínimo';
+          alertsSubEl.textContent = 'Bajá stock en la pestaña "Stock por Estantería" para probar la alerta en vivo.';
+          waRestockBtn.href = 'https://wa.me/' + JOSE_WA + '?text=' + encodeURIComponent('Hola José, probé el sistema de gestión en vivo en San Rafael.');
+          alertsTbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#059669;font-weight:600;padding:24px;">Todo el inventario está por encima del mínimo.</td></tr>';
           return;
         }
-
         alertsBannerEl.classList.remove('all-ok');
-        alertsHeadlineEl.textContent = 'Atención: ' + low.length + (low.length === 1 ? ' producto necesita reposición' : ' productos necesitan reposición');
-        alertsSubEl.textContent = 'El sistema calcula el faltante y te arma el mensaje listo para enviar al proveedor o al encargado.';
-
-        const waLines = ['Hola José, probé la alerta de reposición en tu demo de gestión (San Rafael):', ''];
+        alertsHeadlineEl.textContent = 'Atención: ' + low.length + ' productos necesitan reposición';
+        alertsSubEl.textContent = 'Pedido calculado automáticamente listo para mandar por WhatsApp.';
+        const lines = ['Hola José, probé la alerta de reposición en tu sistema de gestión (San Rafael):', ''];
         alertsTbody.innerHTML = low.map(function (p) {
-          const suggested = Math.max((p.min * 2) - p.stock, 5);
-          waLines.push('• ' + p.sku + ' — ' + p.name + ': queda ' + p.stock + ' (mín ' + p.min + ') → Pedir ' + suggested + ' u. a ' + p.supplier);
-          return (
-            '<tr>' +
-              '<td><span class="sku-pill mono">' + escapeHtml(p.sku) + '</span></td>' +
-              '<td><span class="prod-name">' + escapeHtml(p.name) + '</span></td>' +
-              '<td>' + escapeHtml(p.supplier) + '</td>' +
-              '<td class="mono" style="color:#DC2626;font-weight:700;">' + p.stock + ' / ' + p.min + '</td>' +
-              '<td class="mono" style="font-weight:700;color:#0F172A;">+' + suggested + ' u.</td>' +
-            '</tr>'
-          );
+          const sug = Math.max((p.min * 2) - p.stock, 5);
+          lines.push('• ' + p.sku + ' — ' + p.name + ': queda ' + p.stock + ' (mín ' + p.min + ') → Pedir ' + sug + ' u. a ' + p.supplier);
+          return '<tr><td><span class="sku-pill mono">' + escapeHtml(p.sku) + '</span></td><td><span class="prod-name">' + escapeHtml(p.name) + '</span></td><td>' + escapeHtml(p.supplier) + '</td><td class="mono" style="color:#DC2626;font-weight:700;">' + p.stock + ' / ' + p.min + '</td><td class="mono" style="font-weight:700;">+' + sug + ' u.</td></tr>';
         }).join('');
-
-        waRestockBtn.href = 'https://wa.me/' + JOSE_WA + '?text=' + encodeURIComponent(waLines.join('\n'));
-      }
-
-      function renderAll() {
-        renderKPIs();
-        renderSelectOptions();
-        renderStock();
-        renderCaja();
-        renderAlerts();
+        waRestockBtn.href = 'https://wa.me/' + JOSE_WA + '?text=' + encodeURIComponent(lines.join('\n'));
       }
 
       function registerSale(sku, qty, method) {
-        const prod = products.find(function (p) { return p.sku === sku; });
-        if (!prod) return;
-        const safeQty = Math.max(1, parseInt(qty, 10) || 1);
-        if (prod.stock < safeQty) {
-          showToast('No hay stock suficiente de ' + prod.sku + ' (quedan ' + prod.stock + ').');
-          return;
-        }
-        prod.stock -= safeQty;
-        const total = prod.price * safeQty;
-        sales.unshift({
-          time: nowTime(),
-          sku: prod.sku,
-          name: prod.name,
-          qty: safeQty,
-          method: method,
-          total: total
-        });
+        const p = products.find(function (x) { return x.sku === sku; });
+        if (!p) return;
+        const q = Math.max(1, parseInt(qty, 10) || 1);
+        if (p.stock < q) { showToast('Sin stock suficiente de ' + p.sku); return; }
+        p.stock -= q;
+        const total = p.price * q;
+        sales.unshift({ time: nowTime(), sku: p.sku, name: p.name, qty: q, method: method, total: total });
         renderAll();
-        const alertMsg = prod.stock <= prod.min ? ' · ¡Alerta de reposición activada!' : '';
-        showToast('Venta registrada: ' + formatARS(total) + ' (' + method + ')' + alertMsg);
+        showToast('Venta registrada: ' + formatARS(total) + ' (' + method + ')');
       }
 
-      // Stock Table Actions
       stockTbody.addEventListener('click', function (e) {
         const btn = e.target.closest('button[data-action]');
         if (!btn) return;
-        const action = btn.getAttribute('data-action');
+        const act = btn.getAttribute('data-action');
         const sku = btn.getAttribute('data-sku');
-        const prod = products.find(function (p) { return p.sku === sku; });
-        if (!prod) return;
-
-        if (action === 'inc') {
-          prod.stock += 1;
-          renderAll();
-          showToast(prod.sku + ': stock actualizado a ' + prod.stock);
-        } else if (action === 'dec') {
-          if (prod.stock > 0) {
-            prod.stock -= 1;
-            renderAll();
-            const warn = prod.stock <= prod.min ? ' — Pasó a Alerta de Reposición' : '';
-            showToast(prod.sku + ': stock bajó a ' + prod.stock + warn);
-          }
-        } else if (action === 'sell') {
-          registerSale(sku, 1, 'Efectivo');
-        }
+        const p = products.find(function (x) { return x.sku === sku; });
+        if (!p) return;
+        if (act === 'inc') { p.stock += 1; renderAll(); showToast(p.sku + ' → stock ' + p.stock); }
+        else if (act === 'dec' && p.stock > 0) { p.stock -= 1; renderAll(); showToast(p.sku + ' → stock ' + p.stock); }
+        else if (act === 'sell') registerSale(sku, 1, 'Efectivo');
       });
 
-      // Caja Form
-      saleFormEl.addEventListener('submit', function (e) {
+      document.getElementById('saleForm').addEventListener('submit', function (e) {
         e.preventDefault();
         registerSale(saleProductEl.value, saleQtyEl.value, saleMethodEl.value);
         saleQtyEl.value = 1;
       });
 
-      // Search & Filter
       document.getElementById('stockSearch').addEventListener('input', function (e) {
         searchQuery = e.target.value;
         renderStock();
@@ -1418,14 +1026,13 @@
         });
       });
 
-      // Tabs
       document.querySelectorAll('.tab-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          const target = btn.getAttribute('data-tab');
+          const t = btn.getAttribute('data-tab');
           document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
           document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
           btn.classList.add('active');
-          document.getElementById('panel-' + target).classList.add('active');
+          document.getElementById('panel-' + t).classList.add('active');
         });
       });
 

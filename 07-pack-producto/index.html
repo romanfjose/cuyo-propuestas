@@ -7,22 +7,21 @@
   <meta name="description" content="Tu página web profesional en San Rafael como un producto claro: prototipos gratis, entrega rápida, 6 meses con hasta 20 cambios por mes incluidos y sin ataduras." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #FFFFFF;
-      --surface: #F3F4F6;
-      --surface-warm: #FFF7ED;
-      --ink: #111827;
-      --ink-muted: #4B5563;
-      --border: #E5E7EB;
+      --bg: #FAF7F2;
+      --surface: #FFFFFF;
+      --stone: #F1ECE4;
+      --ink: #141413;
+      --muted: #57534E;
+      --border: #E6DFD5;
       --accent: #C2410C;
       --accent-hover: #9A3412;
-      --accent-soft: #FFEDD5;
+      --accent-soft: #FFF1E6;
       --green: #15803D;
       --green-soft: #DCFCE7;
-      --radius: 12px;
-      --max-w: 1120px;
+      --max-w: 1140px;
     }
 
     * {
@@ -37,10 +36,11 @@
 
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--ink);
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     a {
@@ -52,24 +52,35 @@
       width: 100%;
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 22px;
     }
 
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
+    /* Floating Glass Pill Nav */
+    .nav-shell {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      padding: 0 16px;
+      pointer-events: none;
     }
 
-    .nav-inner {
+    .nav-pill {
+      pointer-events: auto;
+      max-width: 980px;
+      margin: 0 auto;
+      height: 58px;
+      padding: 0 10px 0 20px;
+      border-radius: 999px;
+      background: rgba(255, 252, 247, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: 0 10px 30px rgba(20, 20, 19, 0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
       gap: 16px;
     }
 
@@ -78,28 +89,23 @@
       align-items: center;
       gap: 10px;
       font-weight: 800;
-      font-size: 1.05rem;
+      font-size: 0.96rem;
       letter-spacing: -0.02em;
     }
 
-    .brand-mark {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
       background: var(--accent);
-      color: #FFFFFF;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 0.95rem;
     }
 
     .nav-links {
       display: none;
-      gap: 28px;
-      font-size: 0.92rem;
+      gap: 26px;
+      font-size: 0.88rem;
       font-weight: 600;
-      color: var(--ink-muted);
+      color: var(--muted);
     }
 
     .nav-links a:hover {
@@ -111,162 +117,167 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 20px;
-      border-radius: 10px;
+      padding: 12px 22px;
+      border-radius: 999px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       border: 1px solid transparent;
       cursor: pointer;
-      transition: background-color 0.16s ease, border-color 0.16s ease, transform 0.12s ease;
+      font-family: inherit;
+      transition: transform 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
     }
 
-    .btn:active {
-      transform: translateY(1px);
+    .btn:hover {
+      transform: translateY(-1px);
     }
 
     .btn-primary {
       background: var(--accent);
       color: #FFFFFF;
+      box-shadow: 0 8px 20px -6px rgba(194, 65, 12, 0.45);
     }
 
     .btn-primary:hover {
       background: var(--accent-hover);
     }
 
-    .btn-secondary {
-      background: #FFFFFF;
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.88);
       color: var(--ink);
       border-color: var(--border);
     }
 
-    .btn-secondary:hover {
-      background: var(--surface);
-      border-color: #D1D5DB;
+    .btn-glass:hover {
+      background: #FFFFFF;
     }
 
     .btn-sm {
-      padding: 9px 15px;
-      font-size: 0.88rem;
+      padding: 9px 17px;
+      font-size: 0.84rem;
     }
 
-    /* Hero */
+    /* Apple-Keynote Studio Hero */
     .hero {
-      padding: 56px 0 64px;
-      border-bottom: 1px solid var(--border);
+      position: relative;
+      min-height: 94vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 112px 0 64px;
+      overflow: hidden;
+      background: #1C1815;
     }
 
-    .hero-grid {
+    .hero-bg {
+      position: absolute;
+      inset: -4%;
+      background-image: url('../assets/w1-07-pack-producto.jpg');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.06);
+      will-change: transform;
+      transition: transform 0.15s ease-out;
+    }
+
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 17, 15, 0.34) 0%, rgba(20, 17, 15, 0.22) 40%, rgba(20, 17, 15, 0.86) 100%),
+        linear-gradient(90deg, rgba(20, 17, 15, 0.72) 0%, rgba(20, 17, 15, 0.18) 65%);
+      z-index: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
       display: grid;
-      gap: 40px;
-      align-items: center;
+      gap: 32px;
+      align-items: end;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: var(--surface-warm);
-      color: var(--accent);
-      font-size: 0.82rem;
+      font-size: 0.76rem;
       font-weight: 700;
-      margin-bottom: 18px;
-      border: 1px solid var(--accent-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #FDBA74;
+      margin-bottom: 14px;
     }
 
     h1 {
-      font-size: clamp(2.1rem, 5vw, 3.35rem);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      font-weight: 800;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.8rem, 6.2vw, 4.9rem);
+      font-weight: 600;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
       margin-bottom: 18px;
     }
 
+    h1 em {
+      font-style: italic;
+      color: #FDE6D2;
+    }
+
     .hero-sub {
-      font-size: 1.08rem;
-      color: var(--ink-muted);
-      max-width: 580px;
-      margin-bottom: 28px;
+      font-size: 1.04rem;
+      color: rgba(255, 250, 245, 0.88);
+      max-width: 560px;
+      margin-bottom: 26px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 28px;
     }
 
-    .trust-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--ink-muted);
-    }
-
-    .trust-strip span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .trust-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    /* Product Spec Card in Hero */
-    .product-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+    /* Floating Glass Spec Card */
+    .unbox-card {
+      background: rgba(255, 252, 247, 0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 22px;
       padding: 26px;
+      color: var(--ink);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
     }
 
-    .product-box-top {
+    .unbox-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       gap: 12px;
-      padding-bottom: 18px;
+      padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
-    .product-tag {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+    .price-big {
+      font-size: 2.2rem;
       font-weight: 800;
-      color: var(--accent);
+      letter-spacing: -0.035em;
+      line-height: 1.05;
     }
 
-    .product-price {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-top: 4px;
-    }
-
-    .product-price small {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--ink-muted);
+    .price-big small {
       display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 3px;
     }
 
     .pill-free {
       background: var(--green-soft);
       color: var(--green);
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 5px 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 5px 11px;
       border-radius: 999px;
       white-space: nowrap;
     }
@@ -274,9 +285,9 @@
     .spec-list {
       list-style: none;
       display: grid;
-      gap: 11px;
-      font-size: 0.93rem;
-      margin-bottom: 20px;
+      gap: 10px;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
     }
 
     .spec-list li {
@@ -285,145 +296,167 @@
       align-items: flex-start;
     }
 
-    .check-icon {
-      width: 19px;
-      height: 19px;
+    .spec-check {
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: #FFFFFF;
-      border: 1px solid var(--border);
+      background: var(--accent-soft);
       color: var(--accent);
       display: grid;
       place-items: center;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
       flex-shrink: 0;
       margin-top: 2px;
     }
 
-    /* Section shared */
+    /* Sections & Reveal Choreography */
     section {
-      padding: 68px 0;
+      padding: 84px 0;
     }
 
-    .section-alt {
-      background: var(--surface);
+    .section-stone {
+      background: var(--stone);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
 
     .section-head {
       max-width: 680px;
-      margin-bottom: 40px;
+      margin-bottom: 44px;
     }
 
-    .section-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+    .section-kicker {
+      font-size: 0.76rem;
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
       color: var(--accent);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     h2 {
-      font-size: clamp(1.65rem, 3.6vw, 2.35rem);
-      letter-spacing: -0.025em;
-      line-height: 1.15;
-      font-weight: 800;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.1rem, 4.4vw, 3.25rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
       margin-bottom: 10px;
     }
 
     .section-desc {
-      color: var(--ink-muted);
+      color: var(--muted);
       font-size: 1rem;
     }
 
-    /* 4-stage timeline */
-    .timeline-grid {
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Scroll-Choreographed 4-Stage Unboxing Timeline */
+    .timeline-track {
+      position: relative;
       display: grid;
-      gap: 16px;
+      gap: 18px;
     }
 
     .stage-card {
-      background: #FFFFFF;
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      position: relative;
+      border-radius: 18px;
+      padding: 26px;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .stage-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 34px -16px rgba(20, 20, 19, 0.14);
+      border-color: #D6C9B8;
     }
 
     .stage-card.highlight {
       border-color: var(--accent);
-      background: var(--surface-warm);
+      background: linear-gradient(180deg, #FFF7F0 0%, #FFFFFF 100%);
     }
 
-    .stage-num {
-      display: inline-flex;
-      align-items: center;
+    .stage-top {
+      display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
+      align-items: center;
+      font-size: 0.76rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: var(--accent);
     }
 
-    .stage-badge {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
+    .stage-pill {
+      background: var(--stone);
       color: var(--ink);
-      padding: 3px 9px;
+      padding: 4px 10px;
       border-radius: 999px;
-      font-size: 0.74rem;
-      font-weight: 700;
+      font-size: 0.72rem;
     }
 
     .stage-card h3 {
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 800;
-      letter-spacing: -0.015em;
+      letter-spacing: -0.02em;
     }
 
     .stage-card p {
-      font-size: 0.93rem;
-      color: var(--ink-muted);
+      font-size: 0.92rem;
+      color: var(--muted);
     }
 
-    /* Comparison Table & Cards */
+    /* Product Spec Cards */
     .plans-grid {
       display: grid;
       gap: 20px;
     }
 
     .plan-card {
-      background: #FFFFFF;
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 26px;
+      border-radius: 20px;
+      padding: 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 22px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 22px 42px -18px rgba(20, 20, 19, 0.15);
     }
 
     .plan-card.featured {
       border: 2px solid var(--accent);
-      box-shadow: 0 10px 30px -12px rgba(194, 65, 12, 0.16);
+      box-shadow: 0 20px 44px -18px rgba(194, 65, 12, 0.22);
     }
 
     .plan-badge {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 4px 10px;
+      letter-spacing: 0.08em;
+      padding: 5px 11px;
       border-radius: 999px;
-      background: var(--surface);
-      color: var(--ink-muted);
+      background: var(--stone);
+      color: var(--muted);
       margin-bottom: 12px;
     }
 
@@ -433,90 +466,37 @@
     }
 
     .plan-title {
-      font-size: 1.25rem;
+      font-size: 1.28rem;
       font-weight: 800;
       margin-bottom: 4px;
     }
 
-    .plan-sub {
-      font-size: 0.9rem;
-      color: var(--ink-muted);
-      margin-bottom: 16px;
-    }
-
     .plan-amount {
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 800;
       letter-spacing: -0.03em;
-      padding-bottom: 16px;
+      padding: 14px 0;
       border-bottom: 1px solid var(--border);
       margin-bottom: 16px;
     }
 
     .plan-amount span {
       display: block;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      color: var(--ink-muted);
+      color: var(--muted);
       margin-top: 2px;
     }
 
-    .table-wrap {
-      margin-top: 32px;
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: #FFFFFF;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 640px;
-      font-size: 0.92rem;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    th {
+    /* Animated 2-Year Cost Simulator */
+    .sim-box {
       background: var(--surface);
-      font-weight: 800;
-      font-size: 0.84rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--ink-muted);
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    .td-feature {
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .td-yes {
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    .td-muted {
-      color: var(--ink-muted);
-    }
-
-    /* Simulator */
-    .sim-wrapper {
-      background: #FFFFFF;
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 26px;
+      border-radius: 24px;
+      padding: 28px;
       display: grid;
-      gap: 28px;
+      gap: 30px;
+      box-shadow: 0 24px 48px -24px rgba(20, 20, 19, 0.12);
     }
 
     .sim-controls {
@@ -524,46 +504,46 @@
       gap: 22px;
     }
 
-    .control-group label {
+    .control-label {
       display: block;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       margin-bottom: 10px;
     }
 
-    .segmented {
+    .seg-grid {
       display: grid;
-      gap: 8px;
+      gap: 9px;
     }
 
     .seg-btn {
       text-align: left;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: #FFFFFF;
+      padding: 13px 15px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
       font-family: inherit;
       cursor: pointer;
-      transition: border-color 0.15s ease, background-color 0.15s ease;
+      transition: border-color 0.16s ease, background-color 0.16s ease, transform 0.12s ease;
     }
 
     .seg-btn strong {
       display: block;
-      font-size: 0.93rem;
+      font-size: 0.92rem;
       color: var(--ink);
     }
 
     .seg-btn span {
-      font-size: 0.82rem;
-      color: var(--ink-muted);
+      font-size: 0.8rem;
+      color: var(--muted);
     }
 
     .seg-btn.active {
       border-color: var(--accent);
-      background: var(--surface-warm);
+      background: var(--accent-soft);
     }
 
-    .range-header {
+    .range-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -573,7 +553,6 @@
     .range-val {
       font-weight: 800;
       color: var(--accent);
-      font-size: 0.98rem;
     }
 
     input[type="range"] {
@@ -582,9 +561,10 @@
       cursor: pointer;
     }
 
-    .sim-results {
-      background: var(--surface);
-      border-radius: 14px;
+    .sim-output {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
       padding: 24px;
       display: flex;
       flex-direction: column;
@@ -592,44 +572,44 @@
       gap: 20px;
     }
 
-    .savings-banner {
+    .savings-card {
       background: var(--green-soft);
       border: 1px solid #BBF7D0;
       color: #14532D;
-      border-radius: 12px;
-      padding: 16px 18px;
+      border-radius: 14px;
+      padding: 18px 20px;
     }
 
-    .savings-banner small {
+    .savings-card small {
       display: block;
-      font-size: 0.8rem;
-      font-weight: 700;
+      font-size: 0.76rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
     }
 
-    .savings-banner strong {
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
+    .savings-card strong {
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
       font-weight: 800;
       letter-spacing: -0.03em;
     }
 
-    .bar-block {
+    .bar-group {
       display: grid;
       gap: 14px;
     }
 
-    .bar-row-head {
+    .bar-head {
       display: flex;
       justify-content: space-between;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 700;
       margin-bottom: 6px;
     }
 
     .bar-track {
       height: 14px;
-      background: #E5E7EB;
+      background: #E5DED4;
       border-radius: 999px;
       overflow: hidden;
     }
@@ -637,49 +617,42 @@
     .bar-fill {
       height: 100%;
       border-radius: 999px;
-      transition: width 0.25s ease;
+      transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .bar-ours {
-      background: var(--accent);
-    }
+    .bar-ours { background: var(--accent); }
+    .bar-agency { background: #78716C; }
 
-    .bar-agency {
-      background: #6B7280;
-    }
-
-    .sim-meta {
+    .sim-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
     }
 
-    .sim-stat {
-      background: #FFFFFF;
+    .stat-pill {
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
+      border-radius: 12px;
+      padding: 12px 14px;
     }
 
-    .sim-stat small {
+    .stat-pill small {
       display: block;
-      font-size: 0.78rem;
-      color: var(--ink-muted);
+      font-size: 0.76rem;
+      color: var(--muted);
       font-weight: 600;
     }
 
-    .sim-stat strong {
+    .stat-pill strong {
       font-size: 1.05rem;
       font-weight: 800;
     }
 
     /* Footer */
     footer {
-      background: var(--ink);
-      color: #F9FAFB;
-      padding: 48px 0;
+      background: #141413;
+      color: #FAF7F2;
+      padding: 58px 0 42px;
     }
 
     .footer-grid {
@@ -688,336 +661,217 @@
       align-items: center;
     }
 
-    .footer-title {
-      font-size: 1.35rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .footer-sub {
-      color: #D1D5DB;
-      font-size: 0.95rem;
-    }
-
-    .footer-contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
     .footer-bottom {
-      margin-top: 28px;
+      margin-top: 32px;
       padding-top: 20px;
-      border-top: 1px solid #374151;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 12px;
-      font-size: 0.85rem;
-      color: #9CA3AF;
+      font-size: 0.84rem;
+      color: #A8A29E;
     }
 
     @media (min-width: 768px) {
-      .nav-links {
-        display: flex;
-      }
-      .hero-grid {
-        grid-template-columns: 1.15fr 0.85fr;
-      }
-      .timeline-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-      .plans-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .sim-wrapper {
-        grid-template-columns: 1fr 1fr;
-        padding: 34px;
-      }
-      .segmented.two-col {
-        grid-template-columns: 1fr 1fr;
-      }
-      .footer-grid {
-        grid-template-columns: 1.2fr 0.8fr;
-      }
-      .footer-contact {
-        justify-content: flex-end;
-      }
+      .nav-links { display: flex; }
+      .hero-inner { grid-template-columns: 1.2fr 0.8fr; }
+      .timeline-track { grid-template-columns: repeat(4, 1fr); }
+      .plans-grid { grid-template-columns: repeat(3, 1fr); }
+      .sim-box { grid-template-columns: 1fr 1fr; padding: 36px; }
+      .seg-grid.two-col { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1.2fr 0.8fr; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav-inner">
+  <div class="nav-shell">
+    <header class="nav-pill">
       <a href="#" class="brand">
-        <span class="brand-mark">JR</span>
-        <span>Web Producto · San Rafael</span>
+        <span class="brand-dot"></span>
+        <span>Web Producto · SR</span>
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#planes">Planes y precios</a>
+        <a href="#etapas">Cómo funciona</a>
+        <a href="#planes">Planes</a>
         <a href="#simulador">Simulador 2 años</a>
       </nav>
       <a class="btn btn-primary btn-sm" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20ver%20prototipos%20gratis%20para%20mi%20negocio%20en%20San%20Rafael." target="_blank" rel="noopener">
-        Pedir prototipos gratis
+        Prototipos gratis
       </a>
-    </div>
-  </header>
+    </header>
+  </div>
 
   <main>
-    <section class="hero">
-      <div class="container hero-grid">
+    <section class="hero" id="hero">
+      <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="container hero-inner">
         <div>
-          <span class="eyebrow">San Rafael, Mendoza · Precio claro y cerrado</span>
-          <h1>Comprá tu web como un producto, sin letras chicas.</h1>
+          <span class="eyebrow">San Rafael, Mendoza · Sin Abonos Ocultos</span>
+          <h1>Comprá tu web como un <em>producto</em>, sin letras chicas.</h1>
           <p class="hero-sub">
-            Olvidate de los presupuestos confusos y los abonos mensuales eternos. Primero ves prototipos reales de tu negocio sin cargo, elegís el que más te gusta y salís online en días con 6 meses de cambios incluidos.
+            Como abrir una caja bien diseñada: sabés exactamente qué trae, cuánto cuesta y cuánto dura. Primero ves prototipos reales gratis y salís online en días con 6 meses de cambios incluidos.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20interesa%20el%20pack%20Web%20Producto.%20%C2%BFMe%20mostr%C3%A1s%20prototipos%20gratis%3F" target="_blank" rel="noopener">
-              Escribinos por WhatsApp
+            <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20arrancar%20el%20D%C3%ADa%201%20gratis%20con%20Web%20Producto." target="_blank" rel="noopener">
+              Pedir prototipos gratis
             </a>
-            <a class="btn btn-secondary" href="#simulador">
-              Calcular ahorro a 2 años
+            <a class="btn btn-glass" href="#simulador">
+              Simular ahorro a 2 años
             </a>
-          </div>
-          <div class="trust-strip">
-            <span><i class="trust-dot"></i>Prototipos gratis antes de pagar</span>
-            <span><i class="trust-dot"></i>Hasta 20 cambios/mes incluidos</span>
-            <span><i class="trust-dot"></i>Atención directa en San Rafael</span>
           </div>
         </div>
 
-        <aside class="product-box" aria-label="Resumen del producto Web Producto">
-          <div class="product-box-top">
+        <aside class="unbox-card" aria-label="Especificación Web Producto">
+          <div class="unbox-top">
             <div>
-              <div class="product-tag">Producto base cerrado</div>
-              <div class="product-price">
+              <div style="font-size:0.74rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);">Edición Cerrada</div>
+              <div class="price-big">
                 $100.000
                 <small>Pago único inicial · ARS</small>
               </div>
             </div>
-            <span class="pill-free">Paso 1: Gratis</span>
+            <span class="pill-free">Día 1: Gratis</span>
           </div>
           <ul class="spec-list">
-            <li><span class="check-icon">✓</span><span><strong>Prototipos reales gratis</strong> para que elijas antes de comprometerte.</span></li>
-            <li><span class="check-icon">✓</span><span><strong>Web lista en pocos días</strong>, rápida en celular y conectada a tu WhatsApp.</span></li>
-            <li><span class="check-icon">✓</span><span><strong>Meses 1 a 6 incluidos:</strong> hasta 20 cambios por mes (precios, fotos, promos).</span></li>
-            <li><span class="check-icon">✓</span><span><strong>Meses 7 a 24 sin ataduras:</strong> 5 cambios/mes opcionales o $0 fijo.</span></li>
+            <li><span class="spec-check">✓</span><span><strong>Prototipos reales gratis</strong> para probar en tu celular antes de pagar.</span></li>
+            <li><span class="spec-check">✓</span><span><strong>Entrega en días</strong> conectada directo a tu WhatsApp y Google Maps.</span></li>
+            <li><span class="spec-check">✓</span><span><strong>Meses 1 a 6 incluidos:</strong> hasta 20 cambios/mes sin costo extra.</span></li>
+            <li><span class="spec-check">✓</span><span><strong>Meses 7 a 24:</strong> 5 cambios/mes opcionales o $0 fijo.</span></li>
           </ul>
-          <a class="btn btn-primary" style="width:100%;" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20empezar%20el%20Paso%201%20gratis%20para%20la%20Web%20Producto%20de%20%24100.000." target="_blank" rel="noopener">
-            Quiero ver mi prototipo gratis
+          <a class="btn btn-primary" style="width:100%;" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20ver%20mi%20prototipo%20gratis%20de%20Web%20Producto." target="_blank" rel="noopener">
+            Escribinos por WhatsApp
           </a>
         </aside>
       </div>
     </section>
 
-    <section id="como-funciona" class="section-alt">
+    <section id="etapas">
       <div class="container">
-        <div class="section-head">
-          <div class="section-label">Transparencia de punta a punta</div>
-          <h2>Cómo funciona tu web en 4 etapas claras</h2>
-          <p class="section-desc">Sabés exactamente qué recibís hoy, qué está incluido los primeros 6 meses y qué pasa hasta el año 2. Sin sorpresas.</p>
+        <div class="section-head reveal">
+          <div class="section-kicker">01 — Hoja de ruta transparente</div>
+          <h2>Del primer mensaje a dos años de tranquilidad</h2>
+          <p class="section-desc">Cuatro etapas claras, sin sorpresas en el medio ni contratos que te aten.</p>
         </div>
 
-        <div class="timeline-grid">
-          <article class="stage-card">
-            <div class="stage-num">
-              <span>Paso 1</span>
-              <span class="stage-badge">Gratis</span>
-            </div>
-            <h3>Elegís con tus ojos</h3>
-            <p>Nos contás de tu negocio y te mostramos prototipos reales funcionando en tu celular. Si no te convence, no pagás nada.</p>
+        <div class="timeline-track">
+          <article class="stage-card reveal" style="transition-delay:0.05s;">
+            <div class="stage-top"><span>Día 1</span><span class="stage-pill">Gratis</span></div>
+            <h3>Prototipos Reales</h3>
+            <p>Te mostramos propuestas reales pensadas para tu comercio en San Rafael. Si no te convence, no pagás nada.</p>
           </article>
 
-          <article class="stage-card">
-            <div class="stage-num">
-              <span>Paso 2</span>
-              <span class="stage-badge">Entrega rápida</span>
-            </div>
-            <h3>Tu web online y vendiendo</h3>
-            <p>Ajustamos tus fotos, textos, horarios, mapa de Google y la conectamos directo a tu WhatsApp comercial.</p>
+          <article class="stage-card reveal" style="transition-delay:0.13s;">
+            <div class="stage-top"><span>Día 3</span><span class="stage-pill">Online</span></div>
+            <h3>Tu Web Publicada</h3>
+            <p>Cargamos tus fotos, horarios, mapa y botón directo a WhatsApp para que empieces a recibir consultas.</p>
           </article>
 
-          <article class="stage-card highlight">
-            <div class="stage-num">
-              <span>Meses 1 a 6</span>
-              <span class="stage-badge">Incluidos</span>
-            </div>
-            <h3>Hasta 20 cambios por mes</h3>
-            <p>Actualizás precios, subís ofertas de la semana, cambiás fotos o avisos de feriados sin pagar un peso extra.</p>
+          <article class="stage-card highlight reveal" style="transition-delay:0.21s;">
+            <div class="stage-top"><span>Meses 1 a 6</span><span class="stage-pill">Incluidos</span></div>
+            <h3>20 Cambios por Mes</h3>
+            <p>Actualizás precios, promos semanales, fotos o avisos por WhatsApp sin pagar un peso extra.</p>
           </article>
 
-          <article class="stage-card">
-            <div class="stage-num">
-              <span>Meses 7 a 24</span>
-              <span class="stage-badge">Sin ataduras</span>
-            </div>
-            <h3>5 cambios/mes o $0 fijo</h3>
-            <p>Pasado el semestre podés seguir con 5 cambios mensuales a un mantenimiento mínimo opcional, o quedarte sin abono fijo.</p>
+          <article class="stage-card reveal" style="transition-delay:0.29s;">
+            <div class="stage-top"><span>Meses 7 a 24</span><span class="stage-pill">Sin ataduras</span></div>
+            <h3>5 Cambios/Mes o $0</h3>
+            <p>Seguís con mantenimiento mínimo opcional o te quedás sin abono fijo. Tu web sigue siendo tuya.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="planes">
+    <section id="planes" class="section-stone">
       <div class="container">
-        <div class="section-head">
-          <div class="section-label">Comparativa directa</div>
-          <h2>Elegí el paquete que mejor calza con tu local</h2>
-          <p class="section-desc">Todos los packs arrancan con prototipos gratis y están pensados para comercios, distribuidoras y empresas de San Rafael.</p>
+        <div class="section-head reveal">
+          <div class="section-kicker">02 — Paquetes cerrados</div>
+          <h2>Elegí el formato exacto para tu etapa</h2>
+          <p class="section-desc">Todos arrancan con prototipos gratis y atención directa en San Rafael.</p>
         </div>
 
         <div class="plans-grid">
-          <article class="plan-card">
+          <article class="plan-card reveal">
             <div>
-              <span class="plan-badge">Esencial</span>
+              <span class="plan-badge">Base</span>
               <h3 class="plan-title">Web Producto</h3>
-              <p class="plan-sub">Para estar online rápido con presencia profesional y consultas por WhatsApp.</p>
-              <div class="plan-amount">
-                $100.000
-                <span>Pago único inicial · 6 meses de cambios incluidos</span>
-              </div>
+              <p style="font-size:0.9rem;color:var(--muted);">Presencia clara, rápida en celular y conectada a WhatsApp.</p>
+              <div class="plan-amount">$100.000<span>Pago único · 6 meses con 20 cambios/mes</span></div>
               <ul class="spec-list">
-                <li><span class="check-icon">✓</span><span>Web adaptable a celulares y PC</span></li>
-                <li><span class="check-icon">✓</span><span>Botón directo a WhatsApp + Google Maps</span></li>
-                <li><span class="check-icon">✓</span><span>Hasta 20 cambios/mes (meses 1 a 6)</span></li>
-                <li><span class="check-icon">✓</span><span>Mes 7 a 24: mantenimiento opcional sin ataduras</span></li>
+                <li><span class="spec-check">✓</span><span>Diseño a medida en días</span></li>
+                <li><span class="spec-check">✓</span><span>Botón directo a WhatsApp + Mapa</span></li>
+                <li><span class="spec-check">✓</span><span>Hasta 20 cambios/mes (6 meses)</span></li>
               </ul>
             </div>
-            <a class="btn btn-secondary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20consultar%20por%20Web%20Producto%20(%24100.000)." target="_blank" rel="noopener">
-              Elegir Web Producto
-            </a>
+            <a class="btn btn-glass" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20consultar%20por%20Web%20Producto%20(%24100.000)." target="_blank" rel="noopener">Elegir Web Producto</a>
           </article>
 
-          <article class="plan-card featured">
+          <article class="plan-card featured reveal" style="transition-delay:0.1s;">
             <div>
-              <span class="plan-badge">Más elegido para locales</span>
+              <span class="plan-badge">Más elegido</span>
               <h3 class="plan-title">Pack Comercio (Web + Redes)</h3>
-              <p class="plan-sub">Ideal si abrís, renovás tu local o querés arrancar con imagen pareja en todos lados.</p>
-              <div class="plan-amount">
-                $145.000
-                <span>Pago único inicial · Web + 6 posts listos</span>
-              </div>
+              <p style="font-size:0.9rem;color:var(--muted);">Ideal si abrís o renovás tu local y querés salir completo.</p>
+              <div class="plan-amount">$145.000<span>Pago único · Web + 6 posts listos</span></div>
               <ul class="spec-list">
-                <li><span class="check-icon">✓</span><span>Todo lo incluido en Web Producto</span></li>
-                <li><span class="check-icon">✓</span><span>6 publicaciones diseñadas para Instagram y Facebook</span></li>
-                <li><span class="check-icon">✓</span><span>Textos comerciales listos para publicar</span></li>
-                <li><span class="check-icon">✓</span><span>Bio y WhatsApp comercial ordenados</span></li>
+                <li><span class="spec-check">✓</span><span>Todo lo de Web Producto</span></li>
+                <li><span class="spec-check">✓</span><span>6 publicaciones listas para Instagram/FB</span></li>
+                <li><span class="spec-check">✓</span><span>Bio y WhatsApp comercial ordenados</span></li>
               </ul>
             </div>
-            <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20interesa%20el%20Pack%20Comercio%20(Web%20%2B%20Redes)." target="_blank" rel="noopener">
-              Elegir Pack Comercio
-            </a>
+            <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20interesa%20el%20Pack%20Comercio%20(Web%20%2B%20Redes)." target="_blank" rel="noopener">Elegir Pack Comercio</a>
           </article>
 
-          <article class="plan-card">
+          <article class="plan-card reveal" style="transition-delay:0.2s;">
             <div>
-              <span class="plan-badge">Escala operativa</span>
+              <span class="plan-badge">Escala B2B</span>
               <h3 class="plan-title">Pack Empresa (Web + Gestión)</h3>
-              <p class="plan-sub">Para distribuidoras, ferreterías y comercios que necesitan ordenar stock o pedidos.</p>
-              <div class="plan-amount">
-                Desde $220.000
-                <span>Según alcance · Ingeniería a medida</span>
-              </div>
+              <p style="font-size:0.9rem;color:var(--muted);">Para distribuidoras, ferreterías y locales con catálogo o stock.</p>
+              <div class="plan-amount">Desde $220.000<span>Ingeniería a medida · Sin techo</span></div>
               <ul class="spec-list">
-                <li><span class="check-icon">✓</span><span>Todo lo incluido en Pack Comercio</span></li>
-                <li><span class="check-icon">✓</span><span>Catálogo buscable con pedido armado por WhatsApp</span></li>
-                <li><span class="check-icon">✓</span><span>Módulo de stock, caja o gestión a medida</span></li>
-                <li><span class="check-icon">✓</span><span>Soporte técnico directo con desarrollador</span></li>
+                <li><span class="spec-check">✓</span><span>Todo lo de Pack Comercio</span></li>
+                <li><span class="spec-check">✓</span><span>Catálogo con pedido por WhatsApp</span></li>
+                <li><span class="spec-check">✓</span><span>Módulo de stock por estantería/depósito</span></li>
               </ul>
             </div>
-            <a class="btn btn-secondary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20cotizar%20el%20Pack%20Empresa%20(Web%20%2B%20Gesti%C3%B3n)." target="_blank" rel="noopener">
-              Cotizar Pack Empresa
-            </a>
+            <a class="btn btn-glass" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20cotizar%20el%20Pack%20Empresa%20(Web%20%2B%20Gesti%C3%B3n)." target="_blank" rel="noopener">Cotizar Pack Empresa</a>
           </article>
-        </div>
-
-        <div class="table-wrap" role="region" aria-label="Tabla comparativa de planes">
-          <table>
-            <thead>
-              <tr>
-                <th>Qué incluye</th>
-                <th>Web Producto ($100.000)</th>
-                <th>Pack Comercio ($145.000)</th>
-                <th>Pack Empresa (Desde $220.000)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="td-feature">Prototipos reales gratis antes de pagar</td>
-                <td class="td-yes">Sí, incluido</td>
-                <td class="td-yes">Sí, incluido</td>
-                <td class="td-yes">Sí, incluido</td>
-              </tr>
-              <tr>
-                <td class="td-feature">Web optimizada para celular + WhatsApp</td>
-                <td class="td-yes">Incluido</td>
-                <td class="td-yes">Incluido</td>
-                <td class="td-yes">Incluido</td>
-              </tr>
-              <tr>
-                <td class="td-feature">Cambios mensuales (Meses 1 a 6)</td>
-                <td>Hasta 20/mes sin cargo</td>
-                <td>Hasta 20/mes sin cargo</td>
-                <td>Hasta 20/mes sin cargo</td>
-              </tr>
-              <tr>
-                <td class="td-feature">Meses 7 a 24</td>
-                <td>5/mes opcional o $0 fijo</td>
-                <td>5/mes opcional o $0 fijo</td>
-                <td>Plan evolutivo opcional</td>
-              </tr>
-              <tr>
-                <td class="td-feature">6 publicaciones para Instagram / Facebook</td>
-                <td class="td-muted">—</td>
-                <td class="td-yes">Incluido</td>
-                <td class="td-yes">Incluido</td>
-              </tr>
-              <tr>
-                <td class="td-feature">Catálogo interactivo / Gestión de stock</td>
-                <td class="td-muted">Escalable después</td>
-                <td class="td-muted">Escalable después</td>
-                <td class="td-yes">Incluido a medida</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
 
-    <section id="simulador" class="section-alt">
+    <section id="simulador">
       <div class="container">
-        <div class="section-head">
-          <div class="section-label">Números reales en la mesa</div>
+        <div class="section-head reveal">
+          <div class="section-kicker">03 — Matemática real a 24 meses</div>
           <h2>Simulador de costo a 2 años</h2>
-          <p class="section-desc">Compará cuánto te cuesta comprar tu web como producto frente a pagar el abono mensual de una agencia tradicional durante 24 meses.</p>
+          <p class="section-desc">Mové las opciones y compará tu inversión total frente a un abono mensual tradicional de agencia.</p>
         </div>
 
-        <div class="sim-wrapper">
+        <div class="sim-box reveal">
           <div class="sim-controls">
-            <div class="control-group">
-              <label>1. Elegí tu paquete inicial</label>
-              <div class="segmented" id="planSelector">
+            <div>
+              <span class="control-label">1. Elegí tu paquete inicial</span>
+              <div class="seg-grid" id="planSelector">
                 <button type="button" class="seg-btn active" data-price="100000" data-name="Web Producto">
                   <strong>Web Producto — $100.000</strong>
                   <span>Pago único + 6 meses con 20 cambios/mes</span>
                 </button>
-                <button type="button" class="seg-btn" data-price="145000" data-name="Pack Comercio (Web + Redes)">
+                <button type="button" class="seg-btn" data-price="145000" data-name="Pack Comercio">
                   <strong>Pack Comercio — $145.000</strong>
                   <span>Web + 6 posts de redes + 6 meses de cambios</span>
                 </button>
-                <button type="button" class="seg-btn" data-price="220000" data-name="Pack Empresa (Web + Gestión)">
+                <button type="button" class="seg-btn" data-price="220000" data-name="Pack Empresa">
                   <strong>Pack Empresa — $220.000</strong>
-                  <span>Web + Redes + módulo de catálogo o gestión</span>
+                  <span>Web + Redes + catálogo o gestión</span>
                 </button>
               </div>
             </div>
 
-            <div class="control-group">
-              <label>2. ¿Cómo seguís del mes 7 al 24? (18 meses)</label>
-              <div class="segmented two-col" id="maintSelector">
-                <button type="button" class="seg-btn active" data-monthly="15000" data-label="Mantenimiento mínimo opcional ($15.000/mes)">
+            <div>
+              <span class="control-label">2. Del mes 7 al 24 (18 meses)</span>
+              <div class="seg-grid two-col" id="maintSelector">
+                <button type="button" class="seg-btn active" data-monthly="15000" data-label="5 cambios/mes opcional ($15.000/mes)">
                   <strong>5 cambios/mes</strong>
                   <span>$15.000/mes opcional</span>
                 </button>
@@ -1028,51 +882,46 @@
               </div>
             </div>
 
-            <div class="control-group">
-              <div class="range-header">
-                <label for="agencyMonthly" style="margin-bottom:0;">3. Abono mensual de agencia tradicional</label>
+            <div>
+              <div class="range-head">
+                <label class="control-label" for="agencyMonthly" style="margin:0;">3. Abono mensual agencia tradicional</label>
                 <span class="range-val" id="agencyMonthlyLabel">$85.000 / mes</span>
               </div>
               <input id="agencyMonthly" type="range" min="45000" max="180000" step="5000" value="85000" />
-              <p style="font-size:0.8rem;color:var(--ink-muted);margin-top:6px;">Incluye un costo inicial típico de armado de agencia de $180.000 + 24 cuotas mensuales.</p>
+              <p style="font-size:0.78rem;color:var(--muted);margin-top:6px;">Considera armado inicial típico de agencia ($180.000) + 24 cuotas mensuales.</p>
             </div>
           </div>
 
-          <div class="sim-results" aria-live="polite">
-            <div class="savings-banner">
+          <div class="sim-output" aria-live="polite">
+            <div class="savings-card">
               <small>Ahorro estimado en 24 meses</small>
               <strong id="savingsValue">$1.850.000</strong>
             </div>
 
-            <div class="bar-block">
+            <div class="bar-group">
               <div>
-                <div class="bar-row-head">
-                  <span id="ourPlanLabel">Tu Pack (24 meses)</span>
+                <div class="bar-head">
+                  <span id="ourPlanLabel">Web Producto (24 meses)</span>
                   <span id="ourTotal">$370.000</span>
                 </div>
-                <div class="bar-track">
-                  <div class="bar-fill bar-ours" id="ourBar" style="width:17%;"></div>
-                </div>
+                <div class="bar-track"><div class="bar-fill bar-ours" id="ourBar" style="width:17%;"></div></div>
               </div>
-
               <div>
-                <div class="bar-row-head">
+                <div class="bar-head">
                   <span>Agencia tradicional (24 meses)</span>
                   <span id="agencyTotal">$2.220.000</span>
                 </div>
-                <div class="bar-track">
-                  <div class="bar-fill bar-agency" id="agencyBar" style="width:100%;"></div>
-                </div>
+                <div class="bar-track"><div class="bar-fill bar-agency" id="agencyBar" style="width:100%;"></div></div>
               </div>
             </div>
 
-            <div class="sim-meta">
-              <div class="sim-stat">
-                <small>Tu promedio real por mes</small>
+            <div class="sim-stats">
+              <div class="stat-pill">
+                <small>Tu promedio mensual</small>
                 <strong id="ourAvg">$15.417 / mes</strong>
               </div>
-              <div class="sim-stat">
-                <small>Promedio agencia por mes</small>
+              <div class="stat-pill">
+                <small>Promedio agencia</small>
                 <strong id="agencyAvg">$92.500 / mes</strong>
               </div>
             </div>
@@ -1090,20 +939,16 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-title">¿Querés ver cómo quedaría tu negocio?</div>
-          <p class="footer-sub">Escribinos por WhatsApp, nos contás tu rubro y te mandamos prototipos reales sin cargo.</p>
+          <h2 style="color:#FFFFFF;margin-bottom:6px;">¿Vemos cómo quedaría tu negocio?</h2>
+          <p style="color:#D6D3D1;">Escribinos por WhatsApp y te preparamos prototipos reales sin cargo.</p>
         </div>
-        <div class="footer-contact">
-          <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vengo%20de%20Web%20Producto%20y%20quiero%20ver%20prototipos%20gratis." target="_blank" rel="noopener">
-            WhatsApp +54 9 260 405-9284
-          </a>
-          <a class="btn btn-secondary" href="mailto:romanfjose@gmail.com">
-            romanfjose@gmail.com
-          </a>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pedir%20prototipos%20gratis%20de%20Web%20Producto." target="_blank" rel="noopener">WhatsApp +54 9 260 405-9284</a>
+          <a class="btn btn-glass" href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>José Román Fredrin · Desarrollo Web y Sistemas</span>
+        <span>José Román Fredrin · Ingeniería Web y Sistemas</span>
         <span>San Rafael, Mendoza · Argentina</span>
       </div>
     </div>
@@ -1111,6 +956,47 @@
 
   <script>
     (function () {
+      // 1. Hero scroll zoom + mouse parallax
+      const heroBg = document.getElementById('heroBg');
+      let mouseX = 0;
+      let mouseY = 0;
+      let scrollRatio = 0;
+
+      function applyHeroTransform() {
+        const scale = 1.06 + scrollRatio * 0.08;
+        const ty = scrollRatio * 36 + mouseY * 10;
+        const tx = mouseX * 12;
+        heroBg.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0) scale(' + scale.toFixed(3) + ')';
+      }
+
+      window.addEventListener('scroll', function () {
+        scrollRatio = Math.min(1, Math.max(0, window.scrollY / 700));
+        applyHeroTransform();
+      }, { passive: true });
+
+      window.addEventListener('mousemove', function (ev) {
+        mouseX = (ev.clientX / window.innerWidth - 0.5) * -1;
+        mouseY = (ev.clientY / window.innerHeight - 0.5) * -1;
+        applyHeroTransform();
+      }, { passive: true });
+
+      // 2. Scroll reveal choreography
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14 });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+      }
+
+      // 3. Animated 2-Year Cost Simulator
       const planButtons = document.querySelectorAll('#planSelector .seg-btn');
       const maintButtons = document.querySelectorAll('#maintSelector .seg-btn');
       const agencyRange = document.getElementById('agencyMonthly');
@@ -1129,42 +1015,54 @@
       let selectedPrice = 100000;
       let selectedPlanName = 'Web Producto';
       let maintMonthly = 15000;
-      let maintLabel = 'Mantenimiento mínimo opcional ($15.000/mes)';
+      let maintLabel = '5 cambios/mes opcional ($15.000/mes)';
       const agencySetup = 180000;
+      let currentSavingsDisplay = 1850000;
+      let tweenFrame = null;
 
       function formatARS(num) {
         return '$' + Math.round(num).toLocaleString('es-AR');
+      }
+
+      function animateSavings(target) {
+        if (tweenFrame) cancelAnimationFrame(tweenFrame);
+        const start = currentSavingsDisplay;
+        const diff = target - start;
+        const startTime = performance.now();
+        const duration = 320;
+        function step(now) {
+          const t = Math.min(1, (now - startTime) / duration);
+          const ease = 1 - Math.pow(1 - t, 3);
+          currentSavingsDisplay = start + diff * ease;
+          savingsValue.textContent = formatARS(currentSavingsDisplay);
+          if (t < 1) tweenFrame = requestAnimationFrame(step);
+        }
+        tweenFrame = requestAnimationFrame(step);
       }
 
       function updateSimulation() {
         const agencyMonthly = Number(agencyRange.value);
         agencyMonthlyLabel.textContent = formatARS(agencyMonthly) + ' / mes';
 
-        const ourTotal = selectedPrice + (maintMonthly * 18);
-        const agencyTotal = agencySetup + (agencyMonthly * 24);
+        const ourTotal = selectedPrice + maintMonthly * 18;
+        const agencyTotal = agencySetup + agencyMonthly * 24;
         const savings = Math.max(0, agencyTotal - ourTotal);
 
         const maxVal = Math.max(ourTotal, agencyTotal, 1);
-        const ourPct = Math.max(6, Math.round((ourTotal / maxVal) * 100));
-        const agencyPct = Math.max(6, Math.round((agencyTotal / maxVal) * 100));
-
         ourPlanLabel.textContent = selectedPlanName + ' (24 meses)';
         ourTotalEl.textContent = formatARS(ourTotal);
         agencyTotalEl.textContent = formatARS(agencyTotal);
-        savingsValue.textContent = formatARS(savings);
+        animateSavings(savings);
 
-        ourBar.style.width = ourPct + '%';
-        agencyBar.style.width = agencyPct + '%';
+        ourBar.style.width = Math.max(6, Math.round((ourTotal / maxVal) * 100)) + '%';
+        agencyBar.style.width = Math.max(6, Math.round((agencyTotal / maxVal) * 100)) + '%';
 
         ourAvgEl.textContent = formatARS(ourTotal / 24) + ' / mes';
         agencyAvgEl.textContent = formatARS(agencyTotal / 24) + ' / mes';
 
         const msg =
           'Hola José, probé el simulador a 2 años con ' +
-          selectedPlanName +
-          ' (' +
-          maintLabel +
-          '). Quiero ver prototipos gratis para mi negocio.';
+          selectedPlanName + ' (' + maintLabel + '). Quiero ver prototipos gratis para mi negocio.';
         simWaLink.href = 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg);
       }
 

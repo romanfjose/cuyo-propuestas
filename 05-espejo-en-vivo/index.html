@@ -3,26 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mirá Cómo Queda Tu Web Ahora Mismo — José Román | San Rafael</title>
-  <meta name="description" content="Escribí los datos de tu negocio en San Rafael y mirá en vivo cómo queda tu propia página web en 10 segundos." />
+  <title>Taller Web en Vivo — Mirá Tu Sitio Ahora | José Román San Rafael</title>
+  <meta name="description" content="Escribí los datos de tu negocio en San Rafael y materializá en vivo cómo queda tu propia página web en 10 segundos." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #FAF9F6;
+      --paper: #F7F3EC;
       --surface: #FFFFFF;
       --ink: #111827;
-      --ink-muted: #4B5563;
-      --border: #E5E7EB;
-      --terracotta: #C2410C;
-      --terracotta-dark: #9A3412;
-      --terracotta-soft: #FFF7ED;
+      --muted: #52525B;
+      --border: #E5DDD0;
+      --terracotta: #B45309;
+      --terracotta-dark: #92400E;
       --cobalt: #1D4ED8;
-      --cobalt-soft: #EFF6FF;
       --green: #15803D;
-      --shadow-sm: 0 2px 8px rgba(17, 24, 39, 0.05);
-      --shadow-lg: 0 18px 40px rgba(17, 24, 39, 0.08);
     }
 
     * {
@@ -31,11 +27,16 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
+      background: var(--paper);
       color: var(--ink);
       line-height: 1.5;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -51,155 +52,185 @@
       padding: 0 20px;
     }
 
-    /* Top Bar */
-    .topbar {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 25;
+    /* Floating Glass Pill Navbar */
+    .nav-wrap {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      padding: 0 18px;
+      pointer-events: none;
     }
 
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 64px;
-      gap: 14px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-badge {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: var(--ink);
-      color: #FFFFFF;
-      display: grid;
-      place-items: center;
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .brand-title {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--ink);
-    }
-
-    .brand-sub {
-      display: block;
-      font-size: 0.75rem;
-      color: var(--ink-muted);
-      font-weight: 500;
-    }
-
-    .top-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: var(--ink);
-      padding: 8px 14px;
+    .nav-pill {
+      pointer-events: auto;
+      max-width: 1040px;
+      margin: 0 auto;
+      background: rgba(255, 252, 247, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      transition: border-color 0.15s ease;
-    }
-
-    .top-link:hover {
-      border-color: var(--terracotta);
-      color: var(--terracotta);
-    }
-
-    /* Intro */
-    .intro {
-      padding: 28px 0 22px;
-    }
-
-    .intro-row {
+      padding: 9px 10px 9px 20px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: 14px;
+      box-shadow: 0 12px 30px rgba(17, 24, 39, 0.14);
     }
 
-    .intro-kicker {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
+    .nav-brand {
+      font-size: 0.85rem;
+      font-weight: 800;
       letter-spacing: 0.06em;
-      color: var(--terracotta);
-      margin-bottom: 8px;
+      text-transform: uppercase;
     }
 
-    .intro h1 {
+    .nav-brand span {
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .nav-cta {
+      background: var(--terracotta);
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 999px;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background: var(--terracotta-dark);
+    }
+
+    /* Sunlit Artisan Studio Parallax Hero */
+    .studio-hero {
+      position: relative;
+      min-height: 440px;
+      padding: 112px 0 96px;
+      overflow: hidden;
+      background: #1C1612;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: -5%;
+      background-image: url('../assets/w1-05-espejo-studio.jpg');
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+      z-index: 1;
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(24, 17, 12, 0.62) 0%, rgba(24, 17, 12, 0.45) 55%, rgba(24, 17, 12, 0.78) 100%);
+      z-index: 2;
+    }
+
+    /* Animated warm sunbeam shimmer */
+    .hero-shimmer {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 20%, rgba(254, 243, 199, 0.14) 48%, transparent 72%);
+      background-size: 220% 100%;
+      animation: sunSweep 11s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    @keyframes sunSweep {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 5;
+      color: #FFFFFF;
+      max-width: 720px;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #FDE68A;
+      margin-bottom: 12px;
+    }
+
+    .hero-inner h1 {
       font-family: 'Fraunces', Georgia, serif;
-      font-size: clamp(1.75rem, 3.6vw, 2.5rem);
-      line-height: 1.12;
+      font-size: clamp(2.1rem, 4.8vw, 3.6rem);
+      line-height: 1.04;
       letter-spacing: -0.02em;
-      color: var(--ink);
-      max-width: 680px;
+      margin-bottom: 14px;
     }
 
-    .intro p {
-      font-size: 0.96rem;
-      color: var(--ink-muted);
-      max-width: 440px;
+    .hero-inner p {
+      font-size: 1rem;
+      color: rgba(255, 252, 247, 0.88);
+      max-width: 540px;
     }
 
-    /* Studio Split Layout */
+    /* Overlapping Live Website Materializer */
+    .materializer-wrap {
+      position: relative;
+      z-index: 10;
+      margin-top: -62px;
+      padding-bottom: 56px;
+    }
+
     .studio-grid {
       display: grid;
-      grid-template-columns: 360px minmax(0, 1fr);
+      grid-template-columns: 365px minmax(0, 1fr);
       gap: 24px;
       align-items: start;
-      padding-bottom: 36px;
     }
 
-    /* Left Controls Panel */
     .controls-card {
-      background: var(--surface);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 20px 44px rgba(17, 24, 39, 0.1);
       position: sticky;
-      top: 84px;
+      top: 86px;
     }
 
     .controls-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding-bottom: 14px;
       margin-bottom: 16px;
-      padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
     }
 
     .controls-head h2 {
-      font-size: 0.98rem;
-      font-weight: 700;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.15rem;
     }
 
     .live-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 700;
       color: var(--green);
       background: #ECFDF5;
-      padding: 4px 9px;
+      padding: 4px 10px;
       border-radius: 999px;
     }
 
@@ -217,10 +248,10 @@
 
     .field label {
       display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.78rem;
+      font-weight: 700;
       color: var(--ink);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .field input[type="text"],
@@ -229,45 +260,37 @@
       font-family: inherit;
       font-size: 0.9rem;
       padding: 10px 12px;
-      border: 1px solid #D1D5DB;
+      border: 1px solid #D6CFC3;
       border-radius: 10px;
-      background: #FFFFFF;
+      background: #FAF8F5;
       color: var(--ink);
       outline: none;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      transition: border-color 0.15s ease, background 0.15s ease;
     }
 
     .field input[type="text"]:focus,
     .field select:focus {
-      border-color: var(--cobalt);
-      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
+      border-color: var(--terracotta);
+      background: #FFFFFF;
     }
 
-    /* Style Selector Pills */
     .style-pills {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
+      gap: 7px;
     }
 
     .style-btn {
       font-family: inherit;
-      font-size: 0.77rem;
-      font-weight: 600;
+      font-size: 0.75rem;
+      font-weight: 700;
       padding: 9px 6px;
       border-radius: 10px;
-      border: 1px solid #D1D5DB;
-      background: var(--bg);
-      color: var(--ink-muted);
+      border: 1px solid #D6CFC3;
+      background: var(--paper);
+      color: var(--muted);
       cursor: pointer;
       transition: all 0.15s ease;
-      text-align: center;
-      line-height: 1.25;
-    }
-
-    .style-btn:hover {
-      border-color: var(--ink);
-      color: var(--ink);
     }
 
     .style-btn.active {
@@ -276,7 +299,6 @@
       border-color: var(--ink);
     }
 
-    /* Toggles */
     .toggles-group {
       display: flex;
       flex-direction: column;
@@ -289,21 +311,18 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      font-size: 0.84rem;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--ink);
     }
 
     .toggle-row input {
       width: 18px;
       height: 18px;
       accent-color: var(--terracotta);
-      cursor: pointer;
     }
 
-    /* Right Preview Shell */
+    /* Right Live Preview Frame */
     .preview-column {
       display: flex;
       flex-direction: column;
@@ -311,17 +330,17 @@
     }
 
     .browser-frame {
-      background: var(--surface);
+      background: #FFFFFF;
       border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow-lg);
+      border-radius: 20px;
+      box-shadow: 0 24px 52px rgba(17, 24, 39, 0.12);
       overflow: hidden;
     }
 
     .browser-bar {
-      background: #F3F4F6;
+      background: #F4F1EB;
       border-bottom: 1px solid var(--border);
-      padding: 10px 14px;
+      padding: 11px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -338,31 +357,30 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #D1D5DB;
+      background: #D6CFC3;
     }
 
     .browser-url {
       flex: 1;
       min-width: 180px;
-      max-width: 420px;
+      max-width: 400px;
       background: #FFFFFF;
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 5px 12px;
       font-size: 0.78rem;
-      color: var(--ink-muted);
+      color: var(--muted);
       text-align: center;
-      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .viewport-switch {
       display: inline-flex;
-      background: #E5E7EB;
+      background: #E5DDD0;
       padding: 3px;
       border-radius: 9px;
-      gap: 2px;
     }
 
     .vp-btn {
@@ -370,11 +388,11 @@
       background: transparent;
       font-family: inherit;
       font-size: 0.76rem;
-      font-weight: 600;
-      padding: 5px 10px;
+      font-weight: 700;
+      padding: 5px 11px;
       border-radius: 7px;
       cursor: pointer;
-      color: var(--ink-muted);
+      color: var(--muted);
     }
 
     .vp-btn.active {
@@ -384,35 +402,36 @@
     }
 
     .preview-stage {
-      background: #E5E7EB;
-      padding: 0;
-      transition: padding 0.2s ease;
+      background: #E5DDD0;
+      transition: padding 0.22s ease;
     }
 
     .preview-stage.is-mobile {
-      padding: 20px 12px;
+      padding: 22px 12px;
       display: flex;
       justify-content: center;
     }
 
-    /* Live Mini-Website Canvas */
     .mini-site {
       width: 100%;
       background: var(--ms-bg, #FFFFFF);
       color: var(--ms-ink, #111827);
       font-family: var(--ms-body-font, 'Inter', sans-serif);
-      transition: max-width 0.22s ease;
+      transition: max-width 0.26s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.18s ease;
+    }
+
+    .mini-site.morphing {
+      opacity: 0.86;
     }
 
     .preview-stage.is-mobile .mini-site {
       max-width: 375px;
-      border-radius: 22px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 14px 34px rgba(17, 24, 39, 0.16);
       border: 6px solid #1F2937;
+      box-shadow: 0 18px 36px rgba(17, 24, 39, 0.2);
     }
 
-    /* Visual Presets inside Mini-Site */
     .mini-site.style-clasico {
       --ms-bg: #FFFFFF;
       --ms-surface: #F8FAFC;
@@ -457,7 +476,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 14px 22px;
+      padding: 15px 22px;
       border-bottom: 1px solid var(--ms-border);
       background: var(--ms-bg);
     }
@@ -465,7 +484,7 @@
     .ms-logo {
       font-family: var(--ms-head-font);
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: var(--ms-ink);
     }
 
@@ -473,8 +492,8 @@
       background: var(--ms-accent);
       color: var(--ms-accent-text);
       font-size: 0.78rem;
-      font-weight: 600;
-      padding: 7px 12px;
+      font-weight: 700;
+      padding: 7px 13px;
       border-radius: 8px;
       white-space: nowrap;
     }
@@ -498,16 +517,14 @@
 
     .ms-hero h3 {
       font-family: var(--ms-head-font);
-      font-size: 1.65rem;
-      line-height: 1.15;
+      font-size: 1.7rem;
+      line-height: 1.14;
       color: var(--ms-ink);
       margin-bottom: 10px;
       max-width: 560px;
     }
 
-    .preview-stage.is-mobile .ms-hero h3 {
-      font-size: 1.38rem;
-    }
+    .preview-stage.is-mobile .ms-hero h3 { font-size: 1.38rem; }
 
     .ms-hero p {
       font-size: 0.9rem;
@@ -531,7 +548,6 @@
       border-radius: 10px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
     }
 
     .ms-btn-ghost {
@@ -544,19 +560,15 @@
       border-radius: 10px;
     }
 
-    /* Trust Strip */
     .ms-trust {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
       padding: 16px 24px;
       border-bottom: 1px solid var(--ms-border);
-      background: var(--ms-bg);
     }
 
-    .preview-stage.is-mobile .ms-trust {
-      grid-template-columns: 1fr;
-    }
+    .preview-stage.is-mobile .ms-trust { grid-template-columns: 1fr; }
 
     .ms-trust-item {
       font-size: 0.78rem;
@@ -575,7 +587,6 @@
       flex-shrink: 0;
     }
 
-    /* Catalog inside Mini-Site */
     .ms-section {
       padding: 24px;
       border-bottom: 1px solid var(--ms-border);
@@ -586,13 +597,11 @@
       align-items: baseline;
       justify-content: space-between;
       margin-bottom: 14px;
-      gap: 10px;
     }
 
     .ms-section-head h4 {
       font-family: var(--ms-head-font);
       font-size: 1.12rem;
-      color: var(--ms-ink);
     }
 
     .ms-section-head span {
@@ -606,9 +615,7 @@
       gap: 12px;
     }
 
-    .preview-stage.is-mobile .ms-catalog {
-      grid-template-columns: 1fr;
-    }
+    .preview-stage.is-mobile .ms-catalog { grid-template-columns: 1fr; }
 
     .ms-item {
       background: var(--ms-surface);
@@ -617,30 +624,13 @@
       padding: 13px 14px;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
       gap: 10px;
     }
 
-    .ms-item-name {
-      font-size: 0.86rem;
-      font-weight: 700;
-      color: var(--ms-ink);
-      margin-bottom: 3px;
-    }
+    .ms-item-name { font-size: 0.86rem; font-weight: 700; margin-bottom: 2px; }
+    .ms-item-desc { font-size: 0.76rem; color: var(--ms-muted); }
+    .ms-item-price { font-size: 0.86rem; font-weight: 800; color: var(--ms-accent); white-space: nowrap; }
 
-    .ms-item-desc {
-      font-size: 0.76rem;
-      color: var(--ms-muted);
-    }
-
-    .ms-item-price {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: var(--ms-accent);
-      white-space: nowrap;
-    }
-
-    /* Location Block */
     .ms-location {
       padding: 22px 24px;
       background: var(--ms-surface);
@@ -651,55 +641,43 @@
       flex-wrap: wrap;
     }
 
-    .ms-loc-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--ms-ink);
-    }
+    .ms-loc-title { font-size: 0.88rem; font-weight: 700; }
+    .ms-loc-sub { font-size: 0.8rem; color: var(--ms-muted); margin-top: 2px; }
 
-    .ms-loc-sub {
-      font-size: 0.8rem;
-      color: var(--ms-muted);
-      margin-top: 2px;
-    }
-
-    /* Big Conversion CTA Below Preview */
+    /* Big Conversion CTA */
     .cta-box {
-      background: var(--ink);
+      background: #1C1612;
       color: #FFFFFF;
-      border-radius: 18px;
-      padding: 24px;
+      border-radius: 20px;
+      padding: 26px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
+      box-shadow: 0 18px 36px rgba(28, 22, 18, 0.16);
     }
 
     .cta-copy h2 {
       font-family: 'Fraunces', Georgia, serif;
-      font-size: 1.35rem;
-      line-height: 1.2;
+      font-size: 1.45rem;
       margin-bottom: 6px;
     }
 
     .cta-copy p {
       font-size: 0.88rem;
-      color: #D1D5DB;
+      color: #D6CFC3;
       max-width: 470px;
     }
 
     .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       background: var(--terracotta);
       color: #FFFFFF;
       font-weight: 700;
       font-size: 0.94rem;
-      padding: 14px 20px;
+      padding: 14px 22px;
       border-radius: 12px;
-      transition: background 0.16s ease, transform 0.12s ease;
+      transition: background 0.15s ease, transform 0.12s ease;
       text-align: center;
     }
 
@@ -708,11 +686,10 @@
       transform: translateY(-1px);
     }
 
-    /* Footer */
     .footer {
       border-top: 1px solid var(--border);
-      background: var(--surface);
-      padding: 24px 0;
+      background: #FFFFFF;
+      padding: 26px 0;
     }
 
     .footer-inner {
@@ -722,82 +699,47 @@
       gap: 14px;
       flex-wrap: wrap;
       font-size: 0.85rem;
-      color: var(--ink-muted);
+      color: var(--muted);
     }
 
-    .footer-inner strong {
-      color: var(--ink);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .footer-links a:hover {
-      color: var(--terracotta);
-    }
+    .footer-inner strong { color: var(--ink); }
+    .footer-links { display: flex; gap: 14px; font-weight: 700; color: var(--terracotta); }
 
     @media (max-width: 960px) {
-      .studio-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .controls-card {
-        position: static;
-      }
+      .studio-grid { grid-template-columns: 1fr; }
+      .controls-card { position: static; }
     }
 
     @media (max-width: 600px) {
-      .ms-catalog {
-        grid-template-columns: 1fr;
-      }
-
-      .ms-trust {
-        grid-template-columns: 1fr;
-      }
-
-      .cta-btn {
-        width: 100%;
-      }
+      .ms-catalog, .ms-trust { grid-template-columns: 1fr; }
+      .cta-btn { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-badge">JR</div>
-        <div>
-          <span class="brand-title">Taller Web en Vivo</span>
-          <span class="brand-sub">José Román Fredrin · San Rafael, Mendoza</span>
-        </div>
-      </div>
-      <a class="top-link" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20estoy%20probando%20el%20generador%20en%20vivo." target="_blank" rel="noopener noreferrer">
-        WhatsApp: +54 9 260 405-9284
-      </a>
+  <div class="nav-wrap">
+    <nav class="nav-pill">
+      <div class="nav-brand">TALLER EN VIVO <span>· SAN RAFAEL</span></div>
+      <a class="nav-cta" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20estoy%20probando%20el%20Taller%20Web%20en%20Vivo." target="_blank" rel="noopener noreferrer">WhatsApp: +54 9 260 405-9284</a>
+    </nav>
+  </div>
+
+  <header class="studio-hero">
+    <div class="hero-photo" id="heroPhoto"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-shimmer"></div>
+    <div class="container hero-inner">
+      <span class="hero-kicker">Materializador en vivo · San Rafael, Mendoza</span>
+      <h1>Escribí el nombre de tu negocio y mirá tu web en 10 segundos</h1>
+      <p>Elegí tu rubro, probá estilos artesanales y alterná entre Escritorio y Celular. Todo cambia al instante frente a tus ojos.</p>
     </div>
   </header>
 
-  <main class="container">
-    <section class="intro">
-      <div class="intro-row">
-        <div>
-          <span class="intro-kicker">Vista previa instantánea</span>
-          <h1>Mirá cómo queda la web de tu negocio ahora mismo</h1>
-        </div>
-        <p>Cargá tu nombre, elegí tu rubro y probá estilos. Todo se actualiza en vivo para que veas tu propio sitio en 10 segundos.</p>
-      </div>
-    </section>
-
-    <section class="studio-grid" aria-label="Generador de vista previa en vivo">
-      <!-- Left Panel: Controls -->
+  <main class="container materializer-wrap">
+    <section class="studio-grid" aria-label="Materializador de sitio web en vivo">
       <aside class="controls-card">
         <div class="controls-head">
-          <h2>Datos de tu negocio</h2>
+          <h2>Tu mesa de trabajo</h2>
           <span class="live-pill">En vivo</span>
         </div>
 
@@ -830,7 +772,7 @@
 
         <div class="field">
           <label>Estilo visual</label>
-          <div class="style-pills" role="group" aria-label="Estilo visual">
+          <div class="style-pills">
             <button type="button" class="style-btn active" data-style="clasico">Clásico Confiable</button>
             <button type="button" class="style-btn" data-style="moderno">Moderno Limpio</button>
             <button type="button" class="style-btn" data-style="calido">Cálido Artesanal</button>
@@ -849,15 +791,12 @@
         </div>
       </aside>
 
-      <!-- Right Panel: Live Preview + CTA -->
       <div class="preview-column">
         <div class="browser-frame">
           <div class="browser-bar">
-            <div class="browser-dots" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
+            <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
             <div class="browser-url" id="previewUrl">www.autoserviciodonpedro.com.ar</div>
-            <div class="viewport-switch" role="group" aria-label="Cambiar vista">
+            <div class="viewport-switch">
               <button type="button" class="vp-btn active" data-vp="desktop">Escritorio</button>
               <button type="button" class="vp-btn" data-vp="mobile">Celular</button>
             </div>
@@ -869,46 +808,41 @@
                 <div class="ms-logo" id="msLogo">Autoservicio Don Pedro</div>
                 <a class="ms-nav-wa" id="msNavWa" href="#" target="_blank" rel="noopener noreferrer">Pedir por WhatsApp</a>
               </div>
-
               <div class="ms-hero">
-                <span class="ms-badge" id="msBadge">San Rafael · Atención todos los días</span>
-                <h3 id="msHeadline">Todo para tu mesa y tu casa, con precios de barrio y envío rápido.</h3>
-                <p id="msSub">Elegí tus productos, consultá promos de la semana y hacé tu pedido directo por WhatsApp sin vueltas.</p>
+                <span class="ms-badge" id="msBadge"></span>
+                <h3 id="msHeadline"></h3>
+                <p id="msSub"></p>
                 <div class="ms-hero-actions">
-                  <a class="ms-btn-primary" id="msHeroWa" href="#" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
-                  <span class="ms-btn-ghost" id="msHeroSec">Ver ubicación y horarios</span>
+                  <a class="ms-btn-primary" id="msHeroWa" href="#" target="_blank" rel="noopener noreferrer"></a>
+                  <span class="ms-btn-ghost" id="msHeroSec"></span>
                 </div>
               </div>
-
               <div class="ms-trust" id="msTrust"></div>
-
               <div class="ms-section" id="msCatalogSection">
                 <div class="ms-section-head">
-                  <h4 id="msCatalogTitle">Ofertas y destacados de la semana</h4>
+                  <h4 id="msCatalogTitle"></h4>
                   <span>Precios de referencia</span>
                 </div>
                 <div class="ms-catalog" id="msCatalogGrid"></div>
               </div>
-
               <div class="ms-location">
                 <div>
-                  <div class="ms-loc-title" id="msLocTitle">Av. Mitre 840, San Rafael</div>
-                  <div class="ms-loc-sub" id="msLocHours">Lunes a Sábado de 8:30 a 21:00 hs · Envíos en el día</div>
+                  <div class="ms-loc-title" id="msLocTitle"></div>
+                  <div class="ms-loc-sub" id="msLocHours"></div>
                 </div>
-                <a class="ms-btn-primary" id="msLocWa" href="#" target="_blank" rel="noopener noreferrer">WhatsApp: +54 9 260 412-3456</a>
+                <a class="ms-btn-primary" id="msLocWa" href="#" target="_blank" rel="noopener noreferrer"></a>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Conversion CTA -->
         <div class="cta-box">
           <div class="cta-copy">
             <h2>¿Te gustó cómo se ve tu negocio?</h2>
-            <p>Esto es una vista rápida. Te armo <strong>3 prototipos reales gratis</strong> con tus fotos, precios y diseño a medida antes de que decidas nada.</p>
+            <p>Esto es una vista rápida. Te armo <strong>3 prototipos reales gratis</strong> con tus fotos, precios y estilo a medida antes de decidir nada.</p>
           </div>
           <a class="cta-btn" id="mainCtaBtn" href="#" target="_blank" rel="noopener noreferrer">
-            Me gustó — Quiero que me armen 3 prototipos gratis de verdad
+            Me gustó — Quiero mis 3 prototipos gratis de verdad
           </a>
         </div>
       </div>
@@ -928,6 +862,14 @@
   <script>
     (function () {
       const JOSE_WA = '5492604059284';
+      const heroPhoto = document.getElementById('heroPhoto');
+
+      // Subtle parallax on studio hero
+      window.addEventListener('mousemove', function (e) {
+        const nx = (e.clientX / window.innerWidth - 0.5) * 12;
+        const ny = (e.clientY / window.innerHeight - 0.5) * 8;
+        heroPhoto.style.transform = 'scale(1.05) translate3d(' + (-nx).toFixed(1) + 'px,' + (-ny).toFixed(1) + 'px,0)';
+      });
 
       const RUBROS = {
         autoservicio: {
@@ -994,7 +936,7 @@
           secLabel: 'Ver degustaciones',
           catalogTitle: 'Selección destacada de la cava',
           hours: 'Lunes a Sábado 9:30 a 20:30 hs · Degustaciones con reserva',
-          trust: ['Cava climatizada y etiquetas de autor', 'Regalos empresariales armados a medida', 'Envíos cuidados a todo el país'],
+          trust: ['Cava climatizada y etiquetas de autor', 'Regalos empresariales a medida', 'Envíos cuidados a todo el país'],
           items: [
             { name: 'Malbec Single Vineyard', desc: '12 meses en roble francés · San Rafael', price: '$16.800' },
             { name: 'Cabernet Franc Gran Reserva', desc: 'Partida limitada de altura', price: '$21.500' },
@@ -1040,11 +982,7 @@
         }
       };
 
-      const STYLE_LABELS = {
-        clasico: 'Clásico Confiable',
-        moderno: 'Moderno Limpio',
-        calido: 'Cálido Artesanal'
-      };
+      const STYLE_LABELS = { clasico: 'Clásico Confiable', moderno: 'Moderno Limpio', calido: 'Cálido Artesanal' };
 
       const bizNameEl = document.getElementById('bizName');
       const bizRubroEl = document.getElementById('bizRubro');
@@ -1075,44 +1013,36 @@
       let currentStyle = 'clasico';
       let userEditedName = false;
 
-      function slugify(text) {
-        const clean = (text || 'tunegocio')
-          .toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .replace(/[^a-z0-9]+/g, '');
-        return clean || 'tunegocio';
+      function slugify(t) {
+        return (t || 'tunegocio').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '') || 'tunegocio';
       }
 
       function cleanPhone(raw) {
-        const digits = (raw || '').replace(/\D+/g, '');
-        return digits.length >= 8 ? digits : JOSE_WA;
+        const d = (raw || '').replace(/\D+/g, '');
+        return d.length >= 8 ? d : JOSE_WA;
       }
 
       function escapeHtml(str) {
-        return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
       }
 
-      function render() {
-        const rubroKey = bizRubroEl.value;
-        const data = RUBROS[rubroKey] || RUBROS.autoservicio;
+      function triggerMorph() {
+        miniSiteEl.classList.add('morphing');
+        setTimeout(function () { miniSiteEl.classList.remove('morphing'); }, 150);
+      }
+
+      function render(withMorph) {
+        if (withMorph) triggerMorph();
+        const data = RUBROS[bizRubroEl.value] || RUBROS.autoservicio;
         const name = bizNameEl.value.trim() || data.defaultName;
         const address = bizAddressEl.value.trim() || 'San Rafael, Mendoza';
         const waDisplay = bizWaEl.value.trim() || '+54 9 260 412-3456';
         const showCatalog = toggleCatalogEl.checked;
         const showWa = toggleWaEl.checked;
 
-        // URL bar
         previewUrlEl.textContent = 'www.' + slugify(name) + '.com.ar';
-
-        // Theme class
         miniSiteEl.className = 'mini-site style-' + currentStyle;
 
-        // Content
         msLogoEl.textContent = name;
         msBadgeEl.textContent = data.badge;
         msHeadlineEl.textContent = data.headline;
@@ -1122,7 +1052,6 @@
         msLocTitleEl.textContent = address;
         msLocHoursEl.textContent = data.hours;
 
-        // Business WhatsApp links inside preview
         const bizWaHref = 'https://wa.me/' + cleanPhone(waDisplay) + '?text=' + encodeURIComponent('Hola ' + name + ', te escribo desde tu página web.');
         msNavWaEl.href = bizWaHref;
         msHeroWaEl.href = bizWaHref;
@@ -1134,66 +1063,49 @@
         msHeroWaEl.style.display = showWa ? 'inline-flex' : 'none';
         msLocWaEl.style.display = showWa ? 'inline-flex' : 'none';
 
-        // Trust badges
         msTrustEl.innerHTML = data.trust.map(function (t) {
           return '<div class="ms-trust-item"><span class="ms-trust-dot"></span><span>' + escapeHtml(t) + '</span></div>';
         }).join('');
 
-        // Catalog
         msCatalogSectionEl.style.display = showCatalog ? 'block' : 'none';
         if (showCatalog) {
           msCatalogGridEl.innerHTML = data.items.map(function (item) {
-            return (
-              '<div class="ms-item">' +
-                '<div>' +
-                  '<div class="ms-item-name">' + escapeHtml(item.name) + '</div>' +
-                  '<div class="ms-item-desc">' + escapeHtml(item.desc) + '</div>' +
-                '</div>' +
-                '<div class="ms-item-price">' + escapeHtml(item.price) + '</div>' +
-              '</div>'
-            );
+            return '<div class="ms-item"><div><div class="ms-item-name">' + escapeHtml(item.name) + '</div><div class="ms-item-desc">' + escapeHtml(item.desc) + '</div></div><div class="ms-item-price">' + escapeHtml(item.price) + '</div></div>';
           }).join('');
         }
 
-        // Main conversion CTA to José's real WhatsApp
-        const summaryLines = [
-          'Hola José, probé la vista previa en vivo y quiero que me armen los 3 prototipos gratis de verdad:',
+        const lines = [
+          'Hola José, probé el Taller Web en Vivo y quiero mis 3 prototipos gratis de verdad:',
           '',
           '• Negocio: ' + name,
           '• Rubro: ' + data.label,
           '• Dirección: ' + address,
           '• WhatsApp del negocio: ' + waDisplay,
-          '• Estilo que me gustó: ' + STYLE_LABELS[currentStyle],
-          '• Catálogo de productos: ' + (showCatalog ? 'Sí' : 'No'),
-          '• Botón de WhatsApp: ' + (showWa ? 'Sí' : 'No')
+          '• Estilo: ' + STYLE_LABELS[currentStyle],
+          '• Catálogo: ' + (showCatalog ? 'Sí' : 'No') + ' | WhatsApp: ' + (showWa ? 'Sí' : 'No')
         ];
-        mainCtaBtn.href = 'https://wa.me/' + JOSE_WA + '?text=' + encodeURIComponent(summaryLines.join('\n'));
+        mainCtaBtn.href = 'https://wa.me/' + JOSE_WA + '?text=' + encodeURIComponent(lines.join('\n'));
       }
 
       bizNameEl.addEventListener('input', function () {
         userEditedName = bizNameEl.value.trim().length > 0;
-        render();
+        render(false);
       });
-
       bizRubroEl.addEventListener('change', function () {
-        const data = RUBROS[bizRubroEl.value];
-        if (!userEditedName && data) {
-          bizNameEl.value = data.defaultName;
-        }
-        render();
+        if (!userEditedName && RUBROS[bizRubroEl.value]) bizNameEl.value = RUBROS[bizRubroEl.value].defaultName;
+        render(true);
       });
-
-      bizAddressEl.addEventListener('input', render);
-      bizWaEl.addEventListener('input', render);
-      toggleCatalogEl.addEventListener('change', render);
-      toggleWaEl.addEventListener('change', render);
+      bizAddressEl.addEventListener('input', function () { render(false); });
+      bizWaEl.addEventListener('input', function () { render(false); });
+      toggleCatalogEl.addEventListener('change', function () { render(true); });
+      toggleWaEl.addEventListener('change', function () { render(true); });
 
       document.querySelectorAll('.style-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
           document.querySelectorAll('.style-btn').forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
           currentStyle = btn.getAttribute('data-style');
-          render();
+          render(true);
         });
       });
 
@@ -1201,12 +1113,11 @@
         btn.addEventListener('click', function () {
           document.querySelectorAll('.vp-btn').forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
-          const isMobile = btn.getAttribute('data-vp') === 'mobile';
-          previewStageEl.classList.toggle('is-mobile', isMobile);
+          previewStageEl.classList.toggle('is-mobile', btn.getAttribute('data-vp') === 'mobile');
         });
       });
 
-      render();
+      render(false);
     })();
   </script>
 </body>

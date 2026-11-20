@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Propuestas Web San Rafael — José &amp; Gabi</title>
-  <meta name="description" content="Catálogo interactivo de 20 propuestas web, experiencias 3D, redes y sistemas de gestión para comercios de San Rafael y Cuyo." />
+  <meta name="description" content="Catálogo interactivo de 20 propuestas web de nivel estudio, mundos 3D, redes y sistemas de gestión para comercios de San Rafael y Cuyo." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -21,8 +21,6 @@
       --accent-soft: #F9EAE6;
       --olive: #2F5A45;
       --olive-soft: #E8F2EC;
-      --gold-soft: #F8F0DF;
-      --gold-ink: #7A5413;
       --radius: 18px;
       --shadow: 0 2px 12px rgba(31, 36, 33, 0.06);
       --shadow-hover: 0 12px 28px rgba(31, 36, 33, 0.12);
@@ -123,7 +121,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -146,7 +144,7 @@
     .hero p {
       font-size: 0.98rem;
       color: var(--muted);
-      max-width: 700px;
+      max-width: 720px;
     }
 
     /* Coffee Summary Card */
@@ -304,7 +302,7 @@
       background: var(--surface);
       color: var(--ink);
       font-family: inherit;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 700;
       padding: 10px 16px;
       border-radius: 999px;
@@ -333,7 +331,7 @@
 
     /* Wave Sections */
     .wave-section {
-      margin-bottom: 42px;
+      margin-bottom: 44px;
     }
 
     .wave-section.is-hidden {
@@ -370,11 +368,11 @@
     .section-sub {
       font-size: 0.9rem;
       color: var(--muted);
-      max-width: 520px;
+      max-width: 540px;
     }
 
-    /* Wave 2 Visual Showcase Grid */
-    .wave2-grid {
+    /* Unified Visual Showcase Grid (All 20 Cards) */
+    .showcase-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 18px;
@@ -435,6 +433,19 @@
       backdrop-filter: blur(4px);
     }
 
+    .thumb-upgrade-pill {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(250, 246, 240, 0.92);
+      color: var(--ink);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 36, 33, 0.1);
+    }
+
     /* Graphic Banners for 3D / Mate / Brutalist cards */
     .graphic-banner {
       width: 100%;
@@ -448,8 +459,7 @@
     }
 
     .graphic-3d {
-      background:
-        linear-gradient(135deg, #1E3A5F 0%, #2C5E8A 55%, #D97736 100%);
+      background: linear-gradient(135deg, #1E3A5F 0%, #2C5E8A 55%, #D97736 100%);
       color: #FFFFFF;
     }
 
@@ -573,101 +583,8 @@
       white-space: nowrap;
     }
 
-    .showcase-card:hover .open-cta,
-    .proto-card:hover .open-cta {
+    .showcase-card:hover .open-cta {
       color: var(--accent-dark);
-    }
-
-    /* Wave 1 Classic Grid */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .proto-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-      box-shadow: var(--shadow);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .proto-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-hover);
-      border-color: #D2C2B0;
-    }
-
-    .card-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
-    .proto-num {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent);
-      background: var(--accent-soft);
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-    }
-
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 6px;
-    }
-
-    .tag {
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 4px 9px;
-      border-radius: 999px;
-    }
-
-    .tag-clientes {
-      background: var(--surface-warm);
-      color: var(--ink);
-    }
-
-    .tag-gestion {
-      background: var(--olive-soft);
-      color: var(--olive);
-    }
-
-    .tag-pack {
-      background: var(--gold-soft);
-      color: var(--gold-ink);
-    }
-
-    .proto-title {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 1.15rem;
-      line-height: 1.25;
-      color: var(--ink);
-      margin-bottom: 5px;
-    }
-
-    .proto-desc {
-      font-size: 0.89rem;
-      color: var(--muted);
     }
 
     /* Footer */
@@ -699,14 +616,9 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
-      .wave2-grid {
+      .showcase-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-      }
-
-      .cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
       }
     }
 
@@ -715,7 +627,7 @@
         padding: 32px 0 18px;
       }
 
-      .wave2-grid {
+      .showcase-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 22px;
       }
@@ -729,7 +641,7 @@
         <div class="brand-mark" aria-hidden="true">JG</div>
         <div class="brand-text">
           <strong>Propuestas Web San Rafael</strong>
-          <span>Alianza José &amp; Gabi · 20 demos en vivo</span>
+          <span>Alianza José &amp; Gabi · 20 vitrinas nivel estudio</span>
         </div>
       </div>
       <div class="location-pill">San Rafael · Mendoza · Cuyo</div>
@@ -739,9 +651,9 @@
   <main>
     <section class="hero">
       <div class="container">
-        <span class="hero-eyebrow">Catálogo actualizado · Ola 2 + Ola 1</span>
-        <h1>20 propuestas listas para abrir en la mesa</h1>
-        <p>Arrancá arriba con los 10 mundos radicales (cine, 3D, escritorio OS, brasas en vivo y antes/después) o bajá a los 10 clásicos comerciales directos para cerrar rápido.</p>
+        <span class="hero-eyebrow">Galería Completa · 20 Experiencias Visuales</span>
+        <h1>20 propuestas nivel estudio listas para abrir en la mesa</h1>
+        <p>Las 20 vitrinas cuentan con dirección visual propia, fotografía editorial y movimiento reactivo: arriba los 10 mundos radicales (3D, OS, cine y brasas en vivo) y abajo los 10 comerciales cinemáticos pensados para cerrar rápido.</p>
 
         <!-- Tarjeta resumen para el café -->
         <aside class="coffee-card" aria-label="Resumen para la charla del café">
@@ -785,27 +697,27 @@
     <!-- Filtros -->
     <section class="filter-section" aria-label="Filtrar propuestas">
       <div class="container filter-row">
-        <div class="filters" role="tablist" aria-label="Olas de prototipos">
+        <div class="filters" role="tablist" aria-label="Categorías de vitrinas">
           <button type="button" class="filter-btn is-active" data-filter="todos" role="tab" aria-selected="true">Todos (20)</button>
-          <button type="button" class="filter-btn" data-filter="ola2" role="tab" aria-selected="false">Ola 2: Radicales &amp; 3D (10)</button>
-          <button type="button" class="filter-btn" data-filter="ola1" role="tab" aria-selected="false">Ola 1: Clásicos (10)</button>
+          <button type="button" class="filter-btn" data-filter="ola2" role="tab" aria-selected="false">Mundos Radicales &amp; 3D (11-20)</button>
+          <button type="button" class="filter-btn" data-filter="ola1" role="tab" aria-selected="false">Comerciales Cinemáticos (01-10)</button>
         </div>
         <div class="result-count" id="resultCount">Mostrando 20 de 20 propuestas</div>
       </div>
     </section>
 
     <div class="container">
-      <!-- OLA 2: MUNDOS RADICALES / NIVEL AWWWARDS -->
-      <section class="wave-section" id="wave2Section" data-wave="ola2" aria-label="Ola 2: Mundos Radicales y 3D">
+      <!-- OLA 2: MUNDOS RADICALES & 3D (11-20) -->
+      <section class="wave-section" id="wave2Section" data-wave="ola2" aria-label="Mundos Radicales y 3D">
         <div class="section-head">
           <div>
-            <div class="section-kicker">Ola 2 · Experiencias de Alto Impacto</div>
-            <h2 class="section-title">Mundos Radicales &amp; Nivel Awwwards (11 – 20)</h2>
+            <div class="section-kicker">Colección Radical · Alto Impacto</div>
+            <h2 class="section-title">Mundos Radicales &amp; 3D (11 – 20)</h2>
           </div>
-          <p class="section-sub">Para dejar con la boca abierta a cualquier dueño de comercio, bodega, parrilla o depósito en los primeros 5 segundos.</p>
+          <p class="section-sub">Para dejar sin palabras a cualquier dueño de comercio, bodega, parrilla o depósito en los primeros 5 segundos.</p>
         </div>
 
-        <div class="wave2-grid">
+        <div class="showcase-grid">
 
           <a class="showcase-card" href="./11-atuel-cinematico/">
             <div class="thumb-wrap">
@@ -989,188 +901,195 @@
         </div>
       </section>
 
-      <!-- OLA 1: CLÁSICOS COMERCIALES -->
-      <section class="wave-section" id="wave1Section" data-wave="ola1" aria-label="Ola 1: Clásicos Comerciales">
+      <!-- OLA 1 UPGRADED: COMERCIALES CINEMÁTICOS (01-10) -->
+      <section class="wave-section" id="wave1Section" data-wave="ola1" aria-label="Comerciales Cinemáticos">
         <div class="section-head">
           <div>
-            <div class="section-kicker">Ola 1 · Venta Directa &amp; Paquetes</div>
-            <h2 class="section-title">Clásicos Comerciales (01 – 10)</h2>
+            <div class="section-kicker">Imagen-Primero · Animaciones Reactivas</div>
+            <h2 class="section-title">Comerciales Cinemáticos (01 – 10)</h2>
           </div>
-          <p class="section-sub">Formatos claros y probados para mostrar precios cerrados, demos de gestión, combos con estanterías y packs de apertura.</p>
+          <p class="section-sub">Los 10 formatos de venta directa elevados a nivel estudio: fotografía propia, parallax suave, movimiento reactivo y herramientas interactivas para cerrar en la misma charla.</p>
         </div>
 
-        <div class="cards-grid">
+        <div class="showcase-grid">
 
-          <a class="proto-card" href="./01-san-rafael-directo/">
-            <div>
-              <div class="card-top">
-                <span class="proto-num">01</span>
-                <div class="card-tags">
-                  <span class="tag tag-clientes">Para clientes</span>
-                </div>
-              </div>
-              <h3 class="proto-title">San Rafael Directo</h3>
-              <p class="proto-desc">Editorial cálido mendocino, corto y sin vueltas. Pensado para el comerciante que lee rápido desde el celular.</p>
+          <a class="showcase-card" href="./01-san-rafael-directo/">
+            <div class="thumb-wrap">
+              <img src="./assets/w1-01-san-rafael.jpg" alt="San Rafael Directo" loading="lazy" />
+              <span class="thumb-overlay-badge">01 · Editorial Mendocino</span>
+              <span class="thumb-upgrade-pill">Imagen + Motion</span>
             </div>
-            <div class="card-footer">
-              <span class="proto-fit">Presentación rápida general</span>
-              <span class="open-cta">Abrir propuesta &rarr;</span>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">01. San Rafael Directo</h3>
+                <p class="showcase-desc">Editorial cálido mendocino con fotografía de portada, parallax suave y oferta clara sin vueltas desde $100.000.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Presentación rápida general</span>
+                <span class="open-cta">Abrir propuesta &rarr;</span>
+              </div>
             </div>
           </a>
 
-          <a class="proto-card" href="./02-comercio-y-estanterias/">
-            <div>
-              <div class="card-top">
-                <span class="proto-num">02</span>
-                <div class="card-tags">
-                  <span class="tag tag-pack">Estanterías + Redes</span>
-                </div>
-              </div>
-              <h3 class="proto-title">Tu Local Equipado y Digital</h3>
-              <p class="proto-desc">Alianza Estanterías + Combo de Apertura interactivo. Conecta la entrega física del local con su salida digital.</p>
+          <a class="showcase-card" href="./02-comercio-y-estanterias/">
+            <div class="thumb-wrap">
+              <img src="./assets/w1-02-local-estanterias.jpg" alt="Tu Local Equipado y Digital" loading="lazy" />
+              <span class="thumb-overlay-badge">02 · Alianza Estanterías</span>
+              <span class="thumb-upgrade-pill">Combo Interactivo</span>
             </div>
-            <div class="card-footer">
-              <span class="proto-fit">Cross-sell directo de Gabi</span>
-              <span class="open-cta">Abrir propuesta &rarr;</span>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">02. Tu Local Equipado y Digital</h3>
+                <p class="showcase-desc">Showroom comercial-industrial con hero fotográfico y configurador interactivo de Combo de Apertura listo para WhatsApp.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Cross-sell directo de Gabi</span>
+                <span class="open-cta">Abrir propuesta &rarr;</span>
+              </div>
             </div>
           </a>
 
-          <a class="proto-card" href="./03-vitrina-gastronomica/">
-            <div>
-              <div class="card-top">
-                <span class="proto-num">03</span>
-                <div class="card-tags">
-                  <span class="tag tag-clientes">Para clientes</span>
-                </div>
-              </div>
-              <h3 class="proto-title">Vitrina San Rafael</h3>
-              <p class="proto-desc">3 ejemplos interactivos listos para cambiar con un toque: Parrilla, Autoservicio y Bodega.</p>
+          <a class="showcase-card" href="./03-vitrina-gastronomica/">
+            <div class="thumb-wrap">
+              <img src="./assets/w1-03-vitrina-gastronomica.jpg" alt="Vitrina San Rafael" loading="lazy" />
+              <span class="thumb-overlay-badge">03 · 3 Rubros en Vivo</span>
+              <span class="thumb-upgrade-pill">Vitrina Interactiva</span>
             </div>
-            <div class="card-footer">
-              <span class="proto-fit">Variedad de rubros locales</span>
-              <span class="open-cta">Abrir propuesta &rarr;</span>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">03. Vitrina San Rafael</h3>
+                <p class="showcase-desc">Galería editorial con 3 mini-sitios interactivos intercambiables al toque: Parrilla, Autoservicio y Bodega.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Variedad de rubros locales</span>
+                <span class="open-cta">Abrir propuesta &rarr;</span>
+              </div>
             </div>
           </a>
 
-          <a class="proto-card" href="./04-asistente-real/">
-            <div>
-              <div class="card-top">
-                <span class="proto-num">04</span>
-                <div class="card-tags">
-                  <span class="tag tag-clientes">Para clientes</span>
-                  <span class="tag tag-gestion">Gestión</span>
-                </div>
-              </div>
-              <h3 class="proto-title">Asistente Cotizador Real</h3>
-              <p class="proto-desc">Bot conversacional inteligente paso a paso que pregunta como un vendedor de verdad y arma el pedido para WhatsApp.</p>
+          <a class="showcase-card" href="./04-asistente-real/">
+            <div class="thumb-wrap">
+              <img src="./assets/w1-04-cafe-concierge.jpg" alt="Asistente Cotizador Real" loading="lazy" />
+              <span class="thumb-overlay-badge">04 · Concierge Real</span>
+              <span class="thumb-upgrade-pill">Bot Paso a Paso</span>
             </div>
-            <div class="card-footer">
-              <span class="proto-fit">Bot real que sí cotiza</span>
-              <span class="open-cta">Abrir propuesta &rarr;</span>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">04. Asistente Cotizador Real</h3>
+                <p class="showcase-desc">Concierge visual de café con bot conversacional paso a paso que pregunta como un vendedor real y cotiza para WhatsApp.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Bot real que sí cotiza</span>
+                <span class="open-cta">Abrir propuesta &rarr;</span>
+              </div>
             </div>
           </a>
 
-          <a class="proto-card" href="./05-espejo-en-vivo/">
-            <div>
-              <div class="card-top">
-                <span class="proto-num">05</span>
-                <div class="card-tags">
-                  <span class="tag tag-clientes">Para clientes</span>
-                </div>
-              </div>
-              <h3 class="proto-title">Mirá Tu Web En Vivo</h3>
-              <p class="proto-desc">Generador instantáneo de vista previa para escribir el nombre del local del cliente y mostrárselo armado en el momento.</p>
+          <a class="showcase-card" href="./05-espejo-en-vivo/">
+            <div class="thumb-wrap">
+              <img src="./assets/w1-05-espejo-studio.jpg" alt="Mirá Tu Web En Vivo" loading="lazy" />
+              <span class="thumb-overlay-badge">05 · Estudio En Vivo</span>
+              <span class="thumb-upgrade-pill">Generador Instantáneo</span>
             </div>
-            <div class="card-footer">
-              <span class="proto-fit">Efecto "ver para creer"</span>
-              <span class="open-cta">Abrir propuesta &rarr;</span>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">05. Mirá Tu Web En Vivo</h3>
+                <p class="showcase-desc">Estudio visual interactivo para tipear el nombre del negocio del cliente y mostrarle su web armada en tiempo real.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Efecto "ver para creer"</span>
+                <span class="open-cta">Abrir propuesta &rarr;</span>
+              </div>
             </div>
           </a>
 
-          <a class="proto-card" href="./06-gestion-a-medida/">
-            <div>
-              <div class="card-top">
-                <span class="proto-num">06</span>
-                <div class="card-tags">
-                  <span class="tag tag-gestion">Venta de Gestión</span>
-                </div>
-              </div>
-              <h3 class="proto-title">Gestión Real a Medida</h3>
-              <p class="proto-desc">Demo interactivo de stock por estantería, caja diaria y alertas de reposición. El diferencial técnico real.</p>
+          <a class="showcase-card" href="./06-gestion-a-medida/">
+            <div class="thumb-wrap">
+              <img src="./assets/w1-06-gestion-control.jpg" alt="Gestión Real a Medida" loading="lazy" />
+              <span class="thumb-overlay-badge">06 · Stock &amp; Caja</span>
+              <span class="thumb-upgrade-pill">Demo Operativo</span>
             </div>
-            <div class="card-footer">
-              <span class="proto-fit">Autoservicios y depósitos</span>
-              <span class="open-cta">Abrir propuesta &rarr;</span>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">06. Gestión Real a Medida</h3>
+                <p class="showcase-desc">Sala de control visual + demo vivo de stock por estantería, caja diaria y alertas de reposición a medida.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Autoservicios y depósitos</span>
+                <span class="open-cta">Abrir propuesta &rarr;</span>
+              </div>
             </div>
           </a>
 
-          <a class="proto-card" href="./07-pack-producto/">
-            <div>
-              <div class="card-top">
-                <span class="proto-num">07</span>
-                <div class="card-tags">
-                  <span class="tag tag-pack">Pack Producto</span>
-                </div>
-              </div>
-              <h3 class="proto-title">Web Como Producto</h3>
-              <p class="proto-desc">Paquete cerrado y transparente: 6 meses de soporte, hasta 20 cambios por mes y continuidad clara sin letras chicas.</p>
+          <a class="showcase-card" href="./07-pack-producto/">
+            <div class="thumb-wrap">
+              <img src="./assets/w1-07-pack-producto.jpg" alt="Web Como Producto" loading="lazy" />
+              <span class="thumb-overlay-badge">07 · Producto Cerrado</span>
+              <span class="thumb-upgrade-pill">Simulador 2 Años</span>
             </div>
-            <div class="card-footer">
-              <span class="proto-fit">Cerrar precio sin vueltas</span>
-              <span class="open-cta">Abrir propuesta &rarr;</span>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">07. Web Como Producto</h3>
+                <p class="showcase-desc">Estética arquitectónica clara con recorrido animado de 4 etapas, 6 meses de soporte (20 cambios/mes) y comparador a 2 años.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Cerrar precio sin vueltas</span>
+                <span class="open-cta">Abrir propuesta &rarr;</span>
+              </div>
             </div>
           </a>
 
-          <a class="proto-card" href="./08-ferreteria-y-mayorista/">
-            <div>
-              <div class="card-top">
-                <span class="proto-num">08</span>
-                <div class="card-tags">
-                  <span class="tag tag-clientes">Para clientes</span>
-                  <span class="tag tag-gestion">Gestión</span>
-                </div>
-              </div>
-              <h3 class="proto-title">Ferreterías y Mayoristas</h3>
-              <p class="proto-desc">Vertical industrial con catálogo rápido por rubro y armado de pedido directo a WhatsApp.</p>
+          <a class="showcase-card" href="./08-ferreteria-y-mayorista/">
+            <div class="thumb-wrap">
+              <img src="./assets/w1-08-ferreteria-acero.jpg" alt="Ferreterías y Mayoristas" loading="lazy" />
+              <span class="thumb-overlay-badge">08 · Acero &amp; Catálogo</span>
+              <span class="thumb-upgrade-pill">Pedidos WhatsApp</span>
             </div>
-            <div class="card-footer">
-              <span class="proto-fit">Ferreterías y corralones</span>
-              <span class="open-cta">Abrir propuesta &rarr;</span>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">08. Ferreterías y Mayoristas</h3>
+                <p class="showcase-desc">Showroom industrial de acero y ámbar con partículas sutiles, catálogo buscable de 12 SKUs y pedido rápido por WhatsApp.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Ferreterías y corralones</span>
+                <span class="open-cta">Abrir propuesta &rarr;</span>
+              </div>
             </div>
           </a>
 
-          <a class="proto-card" href="./09-estudio-jose-roman/">
-            <div>
-              <div class="card-top">
-                <span class="proto-num">09</span>
-                <div class="card-tags">
-                  <span class="tag tag-clientes">Para clientes</span>
-                  <span class="tag tag-gestion">Gestión</span>
-                </div>
-              </div>
-              <h3 class="proto-title">Estudio José Román</h3>
-              <p class="proto-desc">Marca personal de confianza en San Rafael con respaldo técnico real y respuestas claras a las dudas de siempre.</p>
+          <a class="showcase-card" href="./09-estudio-jose-roman/">
+            <div class="thumb-wrap">
+              <img src="./assets/w1-09-estudio-autor.jpg" alt="Estudio José Román" loading="lazy" />
+              <span class="thumb-overlay-badge">09 · Estudio de Autor</span>
+              <span class="thumb-upgrade-pill">Editorial Artesanal</span>
             </div>
-            <div class="card-footer">
-              <span class="proto-fit">Respaldo técnico personal</span>
-              <span class="open-cta">Abrir propuesta &rarr;</span>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">09. Estudio José Román</h3>
+                <p class="showcase-desc">Editorial de autor con textura cálida mendocina, narrativa honesta de ingeniería real y respuestas directas a cada duda.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Respaldo técnico personal</span>
+                <span class="open-cta">Abrir propuesta &rarr;</span>
+              </div>
             </div>
           </a>
 
-          <a class="proto-card" href="./10-redes-mas-web/">
-            <div>
-              <div class="card-top">
-                <span class="proto-num">10</span>
-                <div class="card-tags">
-                  <span class="tag tag-pack">Estanterías + Redes</span>
-                </div>
-              </div>
-              <h3 class="proto-title">Pack Inauguración: Web + 6 Posts</h3>
-              <p class="proto-desc">Enfoque comercial listo para lanzar el local, con vista previa de 6 posts de Instagram adaptados por rubro.</p>
+          <a class="showcase-card" href="./10-redes-mas-web/">
+            <div class="thumb-wrap">
+              <img src="./assets/w1-10-redes-social.jpg" alt="Pack Inauguración: Web + 6 Posts" loading="lazy" />
+              <span class="thumb-overlay-badge">10 · Web + 6 Posts</span>
+              <span class="thumb-upgrade-pill">Vista previa IG</span>
             </div>
-            <div class="card-footer">
-              <span class="proto-fit">Locales nuevos en apertura</span>
-              <span class="open-cta">Abrir propuesta &rarr;</span>
+            <div class="showcase-body">
+              <div>
+                <h3 class="showcase-title">10. Pack Inauguración: Web + 6 Posts</h3>
+                <p class="showcase-desc">Escenario soleado con tarjetas 3D reactivas y selector de rubro que genera 6 posts realistas de Instagram listos para lanzar.</p>
+              </div>
+              <div class="card-footer">
+                <span class="proto-fit">Locales nuevos en apertura</span>
+                <span class="open-cta">Abrir propuesta &rarr;</span>
+              </div>
             </div>
           </a>
 

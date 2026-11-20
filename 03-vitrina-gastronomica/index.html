@@ -3,26 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vitrina San Rafael · Ejemplos Reales de Páginas Web</title>
+  <title>Vitrina San Rafael · Ejemplos Reales en Vivo</title>
   <meta name="description" content="No te prometemos cómo va a quedar tu página: mirá ejemplos reales pensados para negocios de San Rafael y pedí tu prototipo gratis." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --stone: #F5F4F0;
-      --stone-deep: #EAE7DF;
-      --white: #FFFFFF;
+      --espresso: #120D0B;
+      --stone: #F5F2EC;
+      --stone-card: #FFFFFF;
       --charcoal: #18181B;
-      --zinc-600: #52525B;
-      --zinc-500: #71717A;
-      --border: #E2DFD7;
-      --wine: #7C2D12;
-      --wine-dark: #5F210D;
-      --wine-soft: #F7EAE4;
-      --radius: 14px;
-      --shadow-sm: 0 2px 10px rgba(24, 24, 27, 0.05);
-      --shadow-lg: 0 20px 48px rgba(24, 24, 27, 0.12);
+      --muted: #52525B;
+      --border: #E2DDD3;
+      --wine: #8A2C1B;
+      --wine-dark: #681F12;
+      --gold: #E4BC82;
+      --shadow-lg: 0 28px 64px rgba(18, 13, 11, 0.24);
     }
 
     * {
@@ -40,13 +37,14 @@
       background: var(--stone);
       color: var(--charcoal);
       line-height: 1.58;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
     h1, h2, .serif {
       font-family: 'DM Serif Display', Georgia, serif;
       font-weight: 400;
-      line-height: 1.15;
+      line-height: 1.12;
     }
 
     a {
@@ -61,66 +59,60 @@
       padding: 0 20px;
     }
 
+    /* Warm Candlelight Spotlight Overlay (follows pointer subtly) */
+    .candle-spotlight {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+      background: radial-gradient(460px circle at var(--cx, 50%) var(--cy, 25%), rgba(228, 188, 130, 0.12), transparent 65%);
+      transition: opacity 0.3s ease;
+    }
+
     /* Header */
     .site-header {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 40;
-      background: rgba(245, 244, 240, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(18, 13, 11, 0.72);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(228, 188, 130, 0.2);
+      color: #FAF6F0;
     }
 
     .header-inner {
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 66px;
       gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
-      background: var(--wine);
-      color: var(--white);
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
     }
 
     .brand-name {
       font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.15rem;
-      color: var(--charcoal);
+      font-size: 1.25rem;
       display: block;
-      line-height: 1.1;
+      line-height: 1.05;
     }
 
     .brand-sub {
-      font-size: 0.72rem;
-      color: var(--zinc-600);
-      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
     }
 
     .nav-links {
       display: none;
-      align-items: center;
-      gap: 24px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--zinc-600);
+      gap: 26px;
+      font-size: 0.88rem;
+      color: rgba(250, 246, 240, 0.8);
     }
 
     .nav-links a:hover {
-      color: var(--wine);
+      color: var(--gold);
     }
 
     .btn {
@@ -130,18 +122,28 @@
       gap: 8px;
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 0.9rem;
-      padding: 11px 19px;
+      font-size: 0.88rem;
+      padding: 10px 18px;
       border-radius: 999px;
       border: 1.5px solid transparent;
       cursor: pointer;
-      transition: all 0.16s ease;
+      transition: all 0.18s ease;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--espresso);
+    }
+
+    .btn-gold:hover {
+      background: #F0CFA0;
+      transform: translateY(-1px);
     }
 
     .btn-wine {
       background: var(--wine);
-      color: var(--white);
-      box-shadow: 0 6px 18px rgba(124, 45, 18, 0.22);
+      color: #FFFFFF;
+      box-shadow: 0 10px 24px rgba(138, 44, 27, 0.28);
     }
 
     .btn-wine:hover {
@@ -149,174 +151,191 @@
       transform: translateY(-1px);
     }
 
-    .btn-outline {
-      background: var(--white);
-      color: var(--charcoal);
-      border-color: var(--border);
+    /* Full-Bleed Atmospheric Candlelit Hero */
+    .atmos-hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      padding: 112px 0 96px;
+      background: var(--espresso);
+      color: #FAF6F0;
+      overflow: hidden;
     }
 
-    .btn-outline:hover {
-      border-color: var(--charcoal);
+    .hero-bg {
+      position: absolute;
+      inset: -5%;
+      background-image: url('../assets/w1-03-vitrina-gastronomica.jpg');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+      will-change: transform;
+      z-index: 0;
     }
 
-    .btn-sm {
-      padding: 8px 14px;
-      font-size: 0.83rem;
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 68% 40%, rgba(228, 188, 130, 0.18) 0%, rgba(18, 13, 11, 0.62) 55%, rgba(18, 13, 11, 0.9) 100%),
+        linear-gradient(180deg, rgba(18, 13, 11, 0.5) 0%, rgba(18, 13, 11, 0.86) 100%);
+      z-index: 1;
     }
 
-    /* Hero */
-    .hero {
-      padding: 42px 0 28px;
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 0 auto;
       text-align: center;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.76rem;
+      display: inline-block;
+      font-size: 0.74rem;
       font-weight: 700;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--wine);
-      background: var(--wine-soft);
-      padding: 5px 13px;
-      border-radius: 999px;
+      color: var(--gold);
       margin-bottom: 14px;
     }
 
-    .hero h1 {
-      font-size: clamp(2rem, 4.8vw, 3.2rem);
-      max-width: 820px;
-      margin: 0 auto 14px;
-      color: var(--charcoal);
+    .atmos-hero h1 {
+      font-size: clamp(2.25rem, 5.4vw, 3.85rem);
+      margin-bottom: 16px;
+      text-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
     }
 
-    .hero h1 em {
-      color: var(--wine);
+    .atmos-hero h1 em {
+      color: var(--gold);
       font-style: italic;
     }
 
-    .hero p {
-      max-width: 640px;
-      margin: 0 auto;
-      color: var(--zinc-600);
-      font-size: 1.02rem;
+    .atmos-hero p {
+      font-size: 1.04rem;
+      color: rgba(250, 246, 240, 0.84);
+      max-width: 610px;
+      margin: 0 auto 26px;
     }
 
-    /* Showcase Controls */
+    /* Interactive Showcase Stage */
     .showcase-section {
-      padding: 16px 0 58px;
+      position: relative;
+      z-index: 10;
+      margin-top: -54px;
+      padding-bottom: 64px;
     }
 
     .showcase-toolbar {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 10px;
+      box-shadow: 0 14px 34px rgba(18, 13, 11, 0.1);
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      align-items: stretch;
+      gap: 12px;
       justify-content: space-between;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .tabs-bar {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 8px;
-      background: var(--stone-deep);
-      padding: 6px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
+      gap: 6px;
     }
 
     .tab-btn {
       font-family: 'Inter', sans-serif;
       text-align: left;
-      padding: 10px 14px;
-      border-radius: 10px;
+      padding: 10px 16px;
+      border-radius: 12px;
       border: 1px solid transparent;
       background: transparent;
-      color: var(--zinc-600);
       cursor: pointer;
-      transition: all 0.16s ease;
+      transition: all 0.18s ease;
     }
 
     .tab-btn strong {
       display: block;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--charcoal);
     }
 
     .tab-btn span {
       display: block;
-      font-size: 0.75rem;
-      color: var(--zinc-500);
+      font-size: 0.74rem;
+      color: var(--muted);
     }
 
     .tab-btn:hover {
-      background: rgba(255, 255, 255, 0.55);
+      background: var(--stone);
     }
 
     .tab-btn.active {
-      background: var(--white);
-      border-color: var(--border);
-      box-shadow: var(--shadow-sm);
+      background: var(--espresso);
     }
 
     .tab-btn.active strong {
-      color: var(--wine);
+      color: var(--gold);
+    }
+
+    .tab-btn.active span {
+      color: rgba(250, 246, 240, 0.72);
     }
 
     .viewport-toggle {
       display: inline-flex;
       align-self: center;
-      background: var(--stone-deep);
-      padding: 5px;
+      background: var(--stone);
+      padding: 4px;
       border-radius: 999px;
       border: 1px solid var(--border);
       gap: 4px;
     }
 
     .vp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       font-family: 'Inter', sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       padding: 7px 14px;
       border-radius: 999px;
       border: none;
       background: transparent;
-      color: var(--zinc-600);
+      color: var(--muted);
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.16s ease;
     }
 
     .vp-btn.active {
-      background: var(--charcoal);
-      color: var(--white);
+      background: var(--wine);
+      color: #FFFFFF;
     }
 
-    /* Device Frame */
-    .stage {
+    /* Floating 3D-Tilting Device Stage */
+    .stage-perspective {
+      perspective: 1400px;
       display: flex;
       justify-content: center;
     }
 
     .device-frame {
       width: 100%;
-      background: var(--white);
-      border: 1px solid #D6D3CB;
-      border-radius: 18px;
+      background: #FFFFFF;
+      border: 1px solid #D6CFC4;
+      border-radius: 20px;
       box-shadow: var(--shadow-lg);
       overflow: hidden;
-      transition: max-width 0.28s ease, border-radius 0.28s ease;
+      transition: max-width 0.34s cubic-bezier(0.22, 1, 0.36, 1), border-radius 0.34s ease, transform 0.2s ease-out;
+      will-change: transform, max-width;
     }
 
     .device-frame.is-mobile {
-      max-width: 392px;
-      border-radius: 34px;
-      border: 8px solid #1E1E22;
+      max-width: 394px;
+      border-radius: 36px;
+      border: 9px solid #1B1817;
     }
 
     .browser-chrome {
@@ -325,14 +344,13 @@
       justify-content: space-between;
       gap: 12px;
       padding: 11px 16px;
-      background: #F3F2EE;
+      background: #F3EFE8;
       border-bottom: 1px solid var(--border);
     }
 
     .device-frame.is-mobile .browser-chrome {
       justify-content: center;
-      padding: 10px 14px;
-      background: #1E1E22;
+      background: #1B1817;
       border-bottom: none;
     }
 
@@ -345,7 +363,7 @@
       width: 9px;
       height: 9px;
       border-radius: 50%;
-      background: #CFCBC2;
+      background: #CFC7BA;
     }
 
     .device-frame.is-mobile .chrome-dots,
@@ -356,96 +374,70 @@
     .url-bar {
       flex: 1;
       max-width: 380px;
-      background: var(--white);
+      background: #FFFFFF;
       border: 1px solid var(--border);
-      border-radius: 7px;
+      border-radius: 8px;
       padding: 5px 12px;
       font-size: 0.78rem;
-      color: var(--zinc-600);
+      color: var(--muted);
       text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .device-frame.is-mobile .url-bar {
       background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.16);
       color: #E4E4E7;
-      max-width: 240px;
-      font-size: 0.73rem;
+      max-width: 230px;
+      font-size: 0.72rem;
     }
 
     .chrome-tag {
       font-size: 0.72rem;
       font-weight: 600;
-      color: var(--zinc-500);
+      color: var(--wine);
     }
 
     .preview-viewport {
-      max-height: 640px;
+      max-height: 620px;
       overflow-y: auto;
-      background: var(--white);
+      background: #FFFFFF;
     }
 
     .demo-panel {
       display: none;
+      animation: morphIn 0.35s ease;
     }
 
     .demo-panel.active {
       display: block;
     }
 
-    /* =========================================
-       DEMO 1: PARRILLA "EL ROBLE DEL ATUEL"
-       ========================================= */
-    .roble-wrap {
-      background: #FAF6F0;
-      color: #241C18;
+    @keyframes morphIn {
+      from { opacity: 0; transform: translateY(10px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
+    /* DEMO 1: EL ROBLE DEL ATUEL */
+    .roble-wrap { background: #FAF6F0; color: #241C18; }
     .roble-hero {
-      background: linear-gradient(135deg, #271C17 0%, #3E261B 100%);
+      background: linear-gradient(135deg, #241813 0%, #3E251A 100%);
       color: #FAF6F0;
-      padding: 32px 26px;
+      padding: 30px 26px;
     }
-
     .roble-top {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 8px;
       font-size: 0.78rem;
       color: #E7D4C3;
+      margin-bottom: 16px;
     }
-
-    .roble-pill {
-      background: rgba(255, 255, 255, 0.12);
-      padding: 4px 10px;
-      border-radius: 999px;
-    }
-
-    .roble-hero h3 {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 2rem;
-      font-weight: 400;
-      margin-bottom: 8px;
-      color: #FFFFFF;
-    }
-
-    .roble-hero p {
-      font-size: 0.92rem;
-      color: #E7D4C3;
-      max-width: 540px;
-      margin-bottom: 18px;
-    }
-
+    .roble-hero h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.95rem; font-weight: 400; margin-bottom: 8px; }
+    .roble-hero p { font-size: 0.91rem; color: #E7D4C3; max-width: 520px; margin-bottom: 16px; }
     .roble-btn {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
       background: #B93E23;
       color: #FFFFFF;
       font-weight: 600;
@@ -455,22 +447,8 @@
       border: none;
       cursor: pointer;
     }
-
-    .roble-btn:hover {
-      background: #9B311A;
-    }
-
-    .roble-body {
-      padding: 24px 26px 28px;
-    }
-
-    .demo-filter-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
-
+    .roble-body { padding: 22px 26px 26px; }
+    .demo-filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
     .demo-chip {
       font-family: 'Inter', sans-serif;
       font-size: 0.78rem;
@@ -482,27 +460,8 @@
       color: #5C4B42;
       cursor: pointer;
     }
-
-    .demo-chip.active {
-      background: #271C17;
-      color: #FFFFFF;
-      border-color: #271C17;
-    }
-
-    .roble-menu-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 22px;
-    }
-
-    .device-frame.is-mobile .roble-menu-grid,
-    .device-frame.is-mobile .esquina-grid,
-    .device-frame.is-mobile .alamos-grid,
-    .device-frame.is-mobile .roble-info-grid {
-      grid-template-columns: 1fr;
-    }
-
+    .demo-chip.active { background: #241813; color: #FFFFFF; border-color: #241813; }
+    .roble-menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 18px; }
     .roble-dish {
       background: #FFFFFF;
       border: 1px solid #EAE1D5;
@@ -510,98 +469,32 @@
       padding: 14px;
       display: flex;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
-
-    .roble-dish strong {
-      display: block;
-      font-size: 0.9rem;
-      margin-bottom: 3px;
-    }
-
-    .roble-dish span {
-      font-size: 0.79rem;
-      color: #6B5B51;
-    }
-
-    .roble-price {
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: #9B311A;
-      white-space: nowrap;
-    }
-
+    .roble-dish strong { display: block; font-size: 0.9rem; margin-bottom: 2px; }
+    .roble-dish span { font-size: 0.78rem; color: #6B5B51; }
+    .roble-price { font-weight: 700; font-size: 0.88rem; color: #9B311A; white-space: nowrap; }
     .roble-info-grid {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 14px;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 12px;
       background: #FFFFFF;
       border: 1px solid #EAE1D5;
       border-radius: 12px;
       padding: 16px;
       align-items: center;
     }
+    .roble-info-grid h4 { font-size: 0.92rem; margin-bottom: 3px; }
+    .roble-info-grid p { font-size: 0.81rem; color: #6B5B51; }
+    .reserve-feedback { margin-top: 8px; font-size: 0.8rem; color: #15803D; font-weight: 600; display: none; }
 
-    .roble-info-grid h4 {
-      font-size: 0.92rem;
-      margin-bottom: 4px;
-    }
-
-    .roble-info-grid p {
-      font-size: 0.82rem;
-      color: #6B5B51;
-    }
-
-    .reserve-feedback {
-      margin-top: 10px;
-      font-size: 0.8rem;
-      color: #15803D;
-      font-weight: 600;
-      display: none;
-    }
-
-    /* =========================================
-       DEMO 2: AUTOSERVICIO "LA ESQUINA DEL SUR"
-       ========================================= */
-    .esquina-wrap {
-      background: #F8FAFC;
-      color: #1E293B;
-    }
-
-    .esquina-hero {
-      background: #14532D;
-      color: #FFFFFF;
-      padding: 26px;
-    }
-
-    .esquina-top {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      font-size: 0.78rem;
-      color: #BBF7D0;
-    }
-
-    .esquina-hero h3 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 1.65rem;
-      margin-bottom: 6px;
-    }
-
-    .esquina-hero p {
-      font-size: 0.9rem;
-      color: #DCFCE7;
-      max-width: 540px;
-    }
-
-    .esquina-body {
-      padding: 22px 26px 26px;
-    }
-
+    /* DEMO 2: LA ESQUINA DEL SUR */
+    .esquina-wrap { background: #F8FAFC; color: #1E293B; }
+    .esquina-hero { background: #14532D; color: #FFFFFF; padding: 26px; }
+    .esquina-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 0.78rem; color: #BBF7D0; margin-bottom: 12px; }
+    .esquina-hero h3 { font-size: 1.6rem; margin-bottom: 6px; }
+    .esquina-hero p { font-size: 0.89rem; color: #DCFCE7; max-width: 540px; }
+    .esquina-body { padding: 22px 26px 26px; }
     .esquina-chip {
       font-family: 'Inter', sans-serif;
       font-size: 0.78rem;
@@ -613,20 +506,8 @@
       color: #475569;
       cursor: pointer;
     }
-
-    .esquina-chip.active {
-      background: #15803D;
-      color: #FFFFFF;
-      border-color: #15803D;
-    }
-
-    .esquina-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
+    .esquina-chip.active { background: #15803D; color: #FFFFFF; border-color: #15803D; }
+    .esquina-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
     .prod-card {
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
@@ -637,224 +518,54 @@
       justify-content: space-between;
       gap: 10px;
     }
+    .prod-badge { display: inline-block; align-self: flex-start; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; background: #FEF3C7; color: #B45309; padding: 2px 7px; border-radius: 4px; margin-bottom: 4px; }
+    .prod-card strong { display: block; font-size: 0.88rem; }
+    .prod-meta { font-size: 0.75rem; color: #64748B; }
+    .prod-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid #F1F5F9; }
+    .prod-price { font-weight: 700; font-size: 0.93rem; }
+    .add-btn { font-family: 'Inter', sans-serif; font-size: 0.76rem; font-weight: 700; padding: 6px 10px; border-radius: 7px; border: 1px solid #15803D; background: #F0FDF4; color: #15803D; cursor: pointer; }
+    .add-btn:hover { background: #15803D; color: #FFFFFF; }
+    .cart-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; background: #0F172A; color: #FFFFFF; border-radius: 11px; padding: 14px 16px; }
+    .cart-wa-btn { background: #22C55E; color: #052E16; font-weight: 700; font-size: 0.82rem; padding: 8px 14px; border-radius: 8px; }
 
-    .prod-badge {
-      display: inline-block;
-      align-self: flex-start;
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      background: #FEF3C7;
-      color: #B45309;
-      padding: 2px 7px;
-      border-radius: 4px;
-      margin-bottom: 4px;
-    }
+    /* DEMO 3: FINCA LOS ÁLAMOS */
+    .alamos-wrap { background: #FBF8F3; color: #261B1A; }
+    .alamos-hero { background: linear-gradient(135deg, #4B151D 0%, #73202A 100%); color: #FBF8F3; padding: 30px 26px; }
+    .alamos-eyebrow { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: #E7C6A2; display: block; margin-bottom: 8px; }
+    .alamos-hero h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.95rem; font-weight: 400; margin-bottom: 8px; }
+    .alamos-hero p { font-size: 0.9rem; color: #F2DFD8; max-width: 520px; }
+    .alamos-body { padding: 22px 26px 26px; }
+    .alamos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 16px; }
+    .wine-card { background: #FFFFFF; border: 1px solid #E9DFD3; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
+    .wine-tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #7C2D12; }
+    .wine-card h4 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.18rem; font-weight: 400; margin: 4px 0; }
+    .wine-card p { font-size: 0.81rem; color: #675852; }
+    .wine-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #F1EAE0; }
+    .wine-price { font-weight: 700; color: #4B151D; font-size: 0.94rem; }
+    .wine-btn { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; padding: 7px 12px; border-radius: 999px; border: 1px solid #73202A; background: transparent; color: #73202A; cursor: pointer; }
+    .wine-btn:hover, .wine-btn.picked { background: #73202A; color: #FFFFFF; }
+    .alamos-note { background: #F4ECE1; border-radius: 10px; padding: 13px 16px; font-size: 0.83rem; color: #543D37; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
 
-    .prod-card strong {
-      display: block;
-      font-size: 0.88rem;
-      line-height: 1.3;
-    }
-
-    .prod-meta {
-      font-size: 0.76rem;
-      color: #64748B;
-    }
-
-    .prod-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      padding-top: 8px;
-      border-top: 1px solid #F1F5F9;
-    }
-
-    .prod-price {
-      font-weight: 700;
-      font-size: 0.94rem;
-      color: #0F172A;
-    }
-
-    .add-btn {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.76rem;
-      font-weight: 700;
-      padding: 6px 10px;
-      border-radius: 7px;
-      border: 1px solid #15803D;
-      background: #F0FDF4;
-      color: #15803D;
-      cursor: pointer;
-    }
-
-    .add-btn:hover {
-      background: #15803D;
-      color: #FFFFFF;
-    }
-
-    .cart-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      background: #0F172A;
-      color: #FFFFFF;
-      border-radius: 11px;
-      padding: 14px 16px;
-    }
-
-    .cart-bar span {
-      font-size: 0.86rem;
-    }
-
-    .cart-wa-btn {
-      background: #22C55E;
-      color: #052E16;
-      font-weight: 700;
-      font-size: 0.82rem;
-      padding: 8px 14px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* =========================================
-       DEMO 3: VINOTECA "FINCA LOS ÁLAMOS"
-       ========================================= */
-    .alamos-wrap {
-      background: #FBF8F3;
-      color: #261B1A;
-    }
-
-    .alamos-hero {
-      background: linear-gradient(135deg, #4B151D 0%, #73202A 100%);
-      color: #FBF8F3;
-      padding: 32px 26px;
-    }
-
-    .alamos-eyebrow {
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #E7C6A2;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .alamos-hero h3 {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 2rem;
-      font-weight: 400;
-      margin-bottom: 8px;
-    }
-
-    .alamos-hero p {
-      font-size: 0.91rem;
-      color: #F2DFD8;
-      max-width: 520px;
-    }
-
-    .alamos-body {
-      padding: 24px 26px 28px;
-    }
-
-    .alamos-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .wine-card {
-      background: #FFFFFF;
-      border: 1px solid #E9DFD3;
-      border-radius: 12px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .wine-tag {
-      font-size: 0.71rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #7C2D12;
-    }
-
-    .wine-card h4 {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin: 4px 0;
-    }
-
-    .wine-card p {
-      font-size: 0.81rem;
-      color: #675852;
-    }
-
-    .wine-foot {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding-top: 10px;
-      border-top: 1px solid #F1EAE0;
-    }
-
-    .wine-price {
-      font-weight: 700;
-      color: #4B151D;
-      font-size: 0.95rem;
-    }
-
-    .wine-btn {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 7px 12px;
-      border-radius: 999px;
-      border: 1px solid #73202A;
-      background: transparent;
-      color: #73202A;
-      cursor: pointer;
-    }
-
-    .wine-btn:hover,
-    .wine-btn.picked {
-      background: #73202A;
-      color: #FFFFFF;
-    }
-
-    .alamos-note {
-      background: #F4ECE1;
-      border-radius: 10px;
-      padding: 13px 16px;
-      font-size: 0.83rem;
-      color: #543D37;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
+    .device-frame.is-mobile .roble-menu-grid,
+    .device-frame.is-mobile .esquina-grid,
+    .device-frame.is-mobile .alamos-grid,
+    .device-frame.is-mobile .roble-info-grid {
+      grid-template-columns: 1fr;
     }
 
     /* Bottom CTA */
     .cta-section {
-      padding: 10px 0 64px;
+      padding: 8px 0 64px;
+      position: relative;
+      z-index: 10;
     }
 
     .cta-card {
-      background: var(--charcoal);
-      color: var(--white);
-      border-radius: 20px;
-      padding: 38px 26px;
+      background: var(--espresso);
+      color: #FAF6F0;
+      border: 1px solid rgba(228, 188, 130, 0.25);
+      border-radius: 22px;
+      padding: 40px 26px;
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
@@ -862,13 +573,12 @@
     }
 
     .cta-card h2 {
-      font-size: clamp(1.8rem, 3.6vw, 2.45rem);
-      color: var(--white);
+      font-size: clamp(1.85rem, 3.6vw, 2.5rem);
       margin-bottom: 10px;
     }
 
     .cta-card p {
-      color: #D4D4D8;
+      color: rgba(250, 246, 240, 0.78);
       max-width: 560px;
       font-size: 0.96rem;
     }
@@ -882,21 +592,19 @@
 
     .cta-meta {
       font-size: 0.84rem;
-      color: #A1A1AA;
+      color: rgba(250, 246, 240, 0.7);
     }
 
     .cta-meta a {
-      color: #E4E4E7;
+      color: var(--gold);
       text-decoration: underline;
-      text-underline-offset: 3px;
     }
 
-    /* Footer */
     .site-footer {
       border-top: 1px solid var(--border);
       padding: 24px 0;
       font-size: 0.83rem;
-      color: var(--zinc-600);
+      color: var(--muted);
     }
 
     .footer-inner {
@@ -907,41 +615,17 @@
       text-align: center;
     }
 
-    @media (min-width: 768px) {
-      .nav-links {
-        display: flex;
-      }
-
-      .showcase-toolbar {
-        flex-direction: row;
-        align-items: center;
-      }
-
-      .tabs-bar {
-        grid-template-columns: repeat(3, auto);
-      }
-
-      .cta-card {
-        grid-template-columns: 1.3fr 0.7fr;
-        padding: 46px 42px;
-      }
-
-      .cta-actions {
-        align-items: flex-end;
-      }
-
-      .footer-inner {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-      }
+    @media (min-width: 820px) {
+      .nav-links { display: flex; }
+      .showcase-toolbar { flex-direction: row; align-items: center; }
+      .tabs-bar { grid-template-columns: repeat(3, auto); }
+      .cta-card { grid-template-columns: 1.3fr 0.7fr; padding: 48px 44px; }
+      .cta-actions { align-items: flex-end; }
+      .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; }
     }
 
     @media (max-width: 640px) {
-      .roble-menu-grid,
-      .esquina-grid,
-      .alamos-grid,
-      .roble-info-grid {
+      .roble-menu-grid, .esquina-grid, .alamos-grid, .roble-info-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -949,41 +633,35 @@
 </head>
 <body>
 
+  <div class="candle-spotlight" id="candleSpotlight" aria-hidden="true"></div>
+
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="brand">
-        <span class="brand-mark" aria-hidden="true">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-            <path d="M3 9h18"></path>
-            <path d="M9 21V9"></path>
-          </svg>
-        </span>
-        <span>
-          <span class="brand-name">Vitrina San Rafael</span>
-          <span class="brand-sub">por José Román Fredrin</span>
-        </span>
+      <a href="#">
+        <span class="brand-name">Vitrina San Rafael</span>
+        <span class="brand-sub">por José Román Fredrin</span>
       </a>
-
-      <nav class="nav-links" aria-label="Navegación principal">
+      <nav class="nav-links" aria-label="Navegación">
         <a href="#vitrina">Ejemplos en vivo</a>
         <a href="#pedir-prototipo">Pedí tu prototipo</a>
       </nav>
-
-      <a class="btn btn-wine btn-sm" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20la%20Vitrina%20San%20Rafael%20y%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
-        Pedir prototipo gratis
+      <a class="btn btn-gold" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20la%20Vitrina%20San%20Rafael%20y%20quiero%20pedir%20un%20prototipo%20gratis." target="_blank" rel="noopener noreferrer">
+        Prototipo gratis
       </a>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <span class="eyebrow">Galería interactiva · San Rafael, Mendoza</span>
+    <section class="atmos-hero">
+      <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <span class="eyebrow">Galería Interactiva · San Rafael, Mendoza</span>
         <h1>No te prometemos cómo va a quedar tu página: <em>mirá ejemplos reales</em></h1>
         <p>
-          Probá los tres demos pensados para negocios de San Rafael. Podés filtrar menús, sumar productos y alternar entre computadora y celular antes de pedir tu propio prototipo sin cargo.
+          Probá tres sitios interactivos pensados para negocios mendocinos. Filtrá platos, armá un carrito de prueba y alterná entre computadora y celular antes de pedir tu propio prototipo gratis.
         </p>
+        <a class="btn btn-gold" href="#vitrina">Probar los 3 ejemplos en vivo ↓</a>
       </div>
     </section>
 
@@ -997,7 +675,7 @@
             </button>
             <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="esquina" data-url="laesquinadelsur.com.ar">
               <strong>La Esquina del Sur</strong>
-              <span>Autoservicio</span>
+              <span>Autoservicio + Carrito</span>
             </button>
             <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="alamos" data-url="fincalosalamos.com.ar">
               <strong>Finca Los Álamos</strong>
@@ -1005,33 +683,18 @@
             </button>
           </div>
 
-          <div class="viewport-toggle" role="group" aria-label="Modo de vista previa">
-            <button type="button" class="vp-btn active" data-vp="desktop">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-              </svg>
-              Computadora
-            </button>
-            <button type="button" class="vp-btn" data-vp="mobile">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                <line x1="12" y1="18" x2="12.01" y2="18"></line>
-              </svg>
-              Celular
-            </button>
+          <div class="viewport-toggle" role="group" aria-label="Vista previa">
+            <button type="button" class="vp-btn active" data-vp="desktop">Computadora</button>
+            <button type="button" class="vp-btn" data-vp="mobile">Celular</button>
           </div>
         </div>
 
-        <div class="stage">
+        <div class="stage-perspective" id="stagePerspective">
           <div class="device-frame" id="deviceFrame">
             <div class="browser-chrome">
-              <div class="chrome-dots" aria-hidden="true">
-                <span></span><span></span><span></span>
-              </div>
+              <div class="chrome-dots" aria-hidden="true"><span></span><span></span><span></span></div>
               <div class="url-bar" id="urlBar">elrobledelatuel.com.ar</div>
-              <span class="chrome-tag">Demo interactivo</span>
+              <span class="chrome-tag">Demo en vivo</span>
             </div>
 
             <div class="preview-viewport">
@@ -1041,15 +704,12 @@
                   <div class="roble-hero">
                     <div class="roble-top">
                       <span>Av. Hipólito Yrigoyen 1420 · San Rafael</span>
-                      <span class="roble-pill">Mar a Dom · Mediodía y noche</span>
+                      <span>Mar a Dom · Mediodía y noche</span>
                     </div>
                     <h3>Parrilla &amp; Restó “El Roble del Atuel”</h3>
-                    <p>Carnes a las brasas de quebracho, pastas caseras y vinos de fincas sanrafaelinas. Reservá tu mesa sin esperas.</p>
-                    <button type="button" class="roble-btn" id="robleReserveBtn">
-                      Reservar mesa por WhatsApp
-                    </button>
+                    <p>Carnes a las brasas de quebracho, pastas caseras y vinos de fincas sanrafaelinas.</p>
+                    <button type="button" class="roble-btn" id="robleReserveBtn">Reservar mesa por WhatsApp</button>
                   </div>
-
                   <div class="roble-body">
                     <div class="demo-filter-row" id="robleFilters">
                       <button type="button" class="demo-chip active" data-cat="todos">Toda la carta</button>
@@ -1057,64 +717,40 @@
                       <button type="button" class="demo-chip" data-cat="caseros">Pastas y Entradas</button>
                       <button type="button" class="demo-chip" data-cat="postres">Postres y Vinos</button>
                     </div>
-
                     <div class="roble-menu-grid" id="robleMenu">
                       <div class="roble-dish" data-cat="parrilla">
-                        <div>
-                          <strong>Asado de tira al quebracho</strong>
-                          <span>Porción abundante con papas fritas o ensalada mixta.</span>
-                        </div>
+                        <div><strong>Asado de tira al quebracho</strong><span>Con papas fritas o ensalada mixta.</span></div>
                         <span class="roble-price">$18.500</span>
                       </div>
                       <div class="roble-dish" data-cat="parrilla">
-                        <div>
-                          <strong>Vacío a la estaca (4 hs)</strong>
-                          <span>Tierno y jugoso, acompañado de chimichurri casero.</span>
-                        </div>
+                        <div><strong>Vacío a la estaca (4 hs)</strong><span>Tierno y jugoso con chimichurri casero.</span></div>
                         <span class="roble-price">$19.400</span>
                       </div>
                       <div class="roble-dish" data-cat="caseros">
-                        <div>
-                          <strong>Provoleta a las brasas</strong>
-                          <span>Con orégano mendocino, tomates asados y oliva local.</span>
-                        </div>
+                        <div><strong>Provoleta a las brasas</strong><span>Con orégano mendocino y oliva local.</span></div>
                         <span class="roble-price">$8.600</span>
                       </div>
                       <div class="roble-dish" data-cat="caseros">
-                        <div>
-                          <strong>Empanadas mendocinas (x2)</strong>
-                          <span>Carne cortada a cuchillo, cocidas al horno de barro.</span>
-                        </div>
+                        <div><strong>Empanadas mendocinas (x2)</strong><span>Carne cortada a cuchillo al horno de barro.</span></div>
                         <span class="roble-price">$4.800</span>
                       </div>
                       <div class="roble-dish" data-cat="caseros">
-                        <div>
-                          <strong>Sorrentinos de jamón y mozzarella</strong>
-                          <span>Con salsa bolognesa o crema de hongos.</span>
-                        </div>
+                        <div><strong>Sorrentinos de jamón y mozzarella</strong><span>Salsa bolognesa o crema de hongos.</span></div>
                         <span class="roble-price">$13.900</span>
                       </div>
                       <div class="roble-dish" data-cat="postres">
-                        <div>
-                          <strong>Flan casero mixto + Malbec de la casa</strong>
-                          <span>Con dulce de leche y crema. Copa o botella 750 ml.</span>
-                        </div>
+                        <div><strong>Flan casero mixto + copa Malbec</strong><span>Dulce de leche, crema y vino de la casa.</span></div>
                         <span class="roble-price">$6.200</span>
                       </div>
                     </div>
-
                     <div class="roble-info-grid">
                       <div>
                         <h4>Horarios y ubicación en San Rafael</h4>
-                        <p>Martes a Domingo de 12:00 a 15:30 y de 20:00 a 00:30 · Estacionamiento propio.</p>
-                        <p class="reserve-feedback" id="robleFeedback">
-                          ✓ En tu página real este botón abre tu WhatsApp con el mensaje de reserva ya escrito.
-                        </p>
+                        <p>Martes a Domingo 12:00–15:30 y 20:00–00:30 · Estacionamiento propio.</p>
+                        <p class="reserve-feedback" id="robleFeedback">✓ En tu web real este botón abre tu WhatsApp con la reserva ya redactada.</p>
                       </div>
                       <div style="text-align: right;">
-                        <a class="roble-btn" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20gust%C3%B3%20el%20ejemplo%20de%20Parrilla%20%22El%20Roble%20del%20Atuel%22.%20Quiero%20un%20prototipo%20as%C3%AD%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
-                          Quiero una web así
-                        </a>
+                        <a class="roble-btn" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20gust%C3%B3%20el%20ejemplo%20de%20Parrilla%20%22El%20Roble%20del%20Atuel%22.%20Quiero%20un%20prototipo%20as%C3%AD." target="_blank" rel="noopener noreferrer">Quiero una web así</a>
                       </div>
                     </div>
                   </div>
@@ -1130,96 +766,44 @@
                       <span>Todos los días 8:30 a 21:30 hs</span>
                     </div>
                     <h3>Autoservicio “La Esquina del Sur”</h3>
-                    <p>Ofertas de la semana y compras del barrio. Sumá productos y mandanos tu pedido armado por WhatsApp para retirar sin fila o recibir en casa.</p>
+                    <p>Ofertas de la semana. Sumá productos y mandanos tu pedido por WhatsApp sin comisiones.</p>
                   </div>
-
                   <div class="esquina-body">
                     <div class="demo-filter-row" id="esquinaFilters">
-                      <button type="button" class="esquina-chip active" data-cat="todos">Ofertas de la semana</button>
+                      <button type="button" class="esquina-chip active" data-cat="todos">Ofertas</button>
                       <button type="button" class="esquina-chip" data-cat="almacen">Almacén</button>
                       <button type="button" class="esquina-chip" data-cat="bebidas">Bebidas</button>
                       <button type="button" class="esquina-chip" data-cat="limpieza">Limpieza</button>
                     </div>
-
                     <div class="esquina-grid" id="esquinaGrid">
                       <article class="prod-card" data-cat="almacen">
-                        <div>
-                          <span class="prod-badge">Oferta</span>
-                          <strong>Yerba Mate Tradicional 1 kg</strong>
-                          <span class="prod-meta">Góndola 1 · Desayuno</span>
-                        </div>
-                        <div class="prod-bottom">
-                          <span class="prod-price">$4.200</span>
-                          <button type="button" class="add-btn" data-name="Yerba Mate 1kg" data-price="4200">+ Sumar</button>
-                        </div>
+                        <div><span class="prod-badge">Oferta</span><strong>Yerba Mate Tradicional 1 kg</strong><span class="prod-meta">Góndola 1</span></div>
+                        <div class="prod-bottom"><span class="prod-price">$4.200</span><button type="button" class="add-btn" data-name="Yerba 1kg" data-price="4200">+ Sumar</button></div>
                       </article>
-
                       <article class="prod-card" data-cat="almacen">
-                        <div>
-                          <span class="prod-badge">Oferta</span>
-                          <strong>Aceite de Girasol 1.5 L</strong>
-                          <span class="prod-meta">Góndola 2 · Almacén</span>
-                        </div>
-                        <div class="prod-bottom">
-                          <span class="prod-price">$3.150</span>
-                          <button type="button" class="add-btn" data-name="Aceite Girasol 1.5L" data-price="3150">+ Sumar</button>
-                        </div>
+                        <div><span class="prod-badge">Oferta</span><strong>Aceite de Girasol 1.5 L</strong><span class="prod-meta">Góndola 2</span></div>
+                        <div class="prod-bottom"><span class="prod-price">$3.150</span><button type="button" class="add-btn" data-name="Aceite 1.5L" data-price="3150">+ Sumar</button></div>
                       </article>
-
                       <article class="prod-card" data-cat="almacen">
-                        <div>
-                          <span class="prod-badge">Pack ahorro</span>
-                          <strong>Pack x6 Leches Enteras 1 L</strong>
-                          <span class="prod-meta">Góndola 3 · Lácteos</span>
-                        </div>
-                        <div class="prod-bottom">
-                          <span class="prod-price">$7.900</span>
-                          <button type="button" class="add-btn" data-name="Pack 6 Leches" data-price="7900">+ Sumar</button>
-                        </div>
+                        <div><span class="prod-badge">Pack</span><strong>Pack x6 Leches Enteras 1 L</strong><span class="prod-meta">Góndola 3</span></div>
+                        <div class="prod-bottom"><span class="prod-price">$7.900</span><button type="button" class="add-btn" data-name="Pack 6 Leches" data-price="7900">+ Sumar</button></div>
                       </article>
-
                       <article class="prod-card" data-cat="bebidas">
-                        <div>
-                          <span class="prod-badge">Promo</span>
-                          <strong>Gaseosa Cola 2.25 L</strong>
-                          <span class="prod-meta">Pasillo Bebidas</span>
-                        </div>
-                        <div class="prod-bottom">
-                          <span class="prod-price">$2.600</span>
-                          <button type="button" class="add-btn" data-name="Gaseosa Cola 2.25L" data-price="2600">+ Sumar</button>
-                        </div>
+                        <div><span class="prod-badge">Promo</span><strong>Gaseosa Cola 2.25 L</strong><span class="prod-meta">Pasillo Bebidas</span></div>
+                        <div class="prod-bottom"><span class="prod-price">$2.600</span><button type="button" class="add-btn" data-name="Gaseosa 2.25L" data-price="2600">+ Sumar</button></div>
                       </article>
-
                       <article class="prod-card" data-cat="bebidas">
-                        <div>
-                          <span class="prod-badge">Oferta</span>
-                          <strong>Agua Mineral Bidón 6 L</strong>
-                          <span class="prod-meta">Pasillo Bebidas</span>
-                        </div>
-                        <div class="prod-bottom">
-                          <span class="prod-price">$2.350</span>
-                          <button type="button" class="add-btn" data-name="Bidón Agua 6L" data-price="2350">+ Sumar</button>
-                        </div>
+                        <div><span class="prod-badge">Oferta</span><strong>Agua Mineral Bidón 6 L</strong><span class="prod-meta">Pasillo Bebidas</span></div>
+                        <div class="prod-bottom"><span class="prod-price">$2.350</span><button type="button" class="add-btn" data-name="Bidón Agua 6L" data-price="2350">+ Sumar</button></div>
                       </article>
-
                       <article class="prod-card" data-cat="limpieza">
-                        <div>
-                          <span class="prod-badge">Oferta</span>
-                          <strong>Lavandina Concentrada 2 L</strong>
-                          <span class="prod-meta">Góndola 5 · Limpieza</span>
-                        </div>
-                        <div class="prod-bottom">
-                          <span class="prod-price">$1.850</span>
-                          <button type="button" class="add-btn" data-name="Lavandina 2L" data-price="1850">+ Sumar</button>
-                        </div>
+                        <div><span class="prod-badge">Oferta</span><strong>Lavandina Concentrada 2 L</strong><span class="prod-meta">Góndola 5</span></div>
+                        <div class="prod-bottom"><span class="prod-price">$1.850</span><button type="button" class="add-btn" data-name="Lavandina 2L" data-price="1850">+ Sumar</button></div>
                       </article>
                     </div>
-
                     <div class="cart-bar">
-                      <span id="cartStatus">Tocá “+ Sumar” en cualquier producto para probar el carrito de pedidos.</span>
-                      <a id="cartWaLink" class="cart-wa-btn" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20gust%C3%B3%20el%20ejemplo%20de%20Autoservicio%20%22La%20Esquina%20del%20Sur%22.%20Quiero%20un%20cat%C3%A1logo%20as%C3%AD%20para%20mi%20local." target="_blank" rel="noopener noreferrer">
-                        Quiero un catálogo así
-                      </a>
+                      <span id="cartStatus">Tocá “+ Sumar” para probar el carrito de pedidos por WhatsApp.</span>
+                      <a id="cartWaLink" class="cart-wa-btn" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20gust%C3%B3%20el%20ejemplo%20de%20Autoservicio%20%22La%20Esquina%20del%20Sur%22.%20Quiero%20un%20cat%C3%A1logo%20as%C3%AD." target="_blank" rel="noopener noreferrer">Quiero un catálogo así</a>
                     </div>
                   </div>
                 </div>
@@ -1231,65 +815,30 @@
                   <div class="alamos-hero">
                     <span class="alamos-eyebrow">Las Paredes · San Rafael, Mendoza</span>
                     <h3>Vinoteca &amp; Bodega “Finca Los Álamos”</h3>
-                    <p>Partidas limitadas de Malbec y Bonarda con compra directa de bodega y degustaciones guiadas entre viñedos.</p>
+                    <p>Partidas limitadas de Malbec y Bonarda con compra directa de bodega y degustaciones guiadas.</p>
                   </div>
-
                   <div class="alamos-body">
                     <div class="alamos-grid">
                       <article class="wine-card">
-                        <div>
-                          <span class="wine-tag">Malbec · Cosecha 2022</span>
-                          <h4>Los Álamos Malbec Reserva</h4>
-                          <p>12 meses en barrica de roble francés. Notas de ciruela madura, vainilla suave y final largo.</p>
-                        </div>
-                        <div class="wine-foot">
-                          <span class="wine-price">$14.500</span>
-                          <button type="button" class="wine-btn" data-wine="Malbec Reserva 2022">Consultar caja</button>
-                        </div>
+                        <div><span class="wine-tag">Malbec · 2022</span><h4>Los Álamos Malbec Reserva</h4><p>12 meses en roble francés. Ciruela madura, vainilla suave y final largo.</p></div>
+                        <div class="wine-foot"><span class="wine-price">$14.500</span><button type="button" class="wine-btn" data-wine="Malbec Reserva 2022">Consultar caja</button></div>
                       </article>
-
                       <article class="wine-card">
-                        <div>
-                          <span class="wine-tag">Bonarda · Cosecha 2023</span>
-                          <h4>Bonarda de Viñas Viejas</h4>
-                          <p>Fruta roja fresca y taninos amables. El varietal clásico de San Rafael directo de nuestra cava.</p>
-                        </div>
-                        <div class="wine-foot">
-                          <span class="wine-price">$12.800</span>
-                          <button type="button" class="wine-btn" data-wine="Bonarda Viñas Viejas 2023">Consultar caja</button>
-                        </div>
+                        <div><span class="wine-tag">Bonarda · 2023</span><h4>Bonarda de Viñas Viejas</h4><p>Fruta roja fresca y taninos amables directo de nuestra cava.</p></div>
+                        <div class="wine-foot"><span class="wine-price">$12.800</span><button type="button" class="wine-btn" data-wine="Bonarda 2023">Consultar caja</button></div>
                       </article>
-
                       <article class="wine-card">
-                        <div>
-                          <span class="wine-tag">Experiencia en bodega</span>
-                          <h4>Degustación Clásica (4 copas)</h4>
-                          <p>Recorrido por viñedos y cava + 4 etiquetas seleccionadas con tabla de quesos y aceitunas locales.</p>
-                        </div>
-                        <div class="wine-foot">
-                          <span class="wine-price">$16.000 / pers.</span>
-                          <button type="button" class="wine-btn" data-wine="Degustación Clásica">Reservar visita</button>
-                        </div>
+                        <div><span class="wine-tag">Experiencia</span><h4>Degustación Clásica (4 copas)</h4><p>Recorrido por viñedos + 4 etiquetas y tabla de quesos regionales.</p></div>
+                        <div class="wine-foot"><span class="wine-price">$16.000</span><button type="button" class="wine-btn" data-wine="Degustación Clásica">Reservar visita</button></div>
                       </article>
-
                       <article class="wine-card">
-                        <div>
-                          <span class="wine-tag">Envío directo</span>
-                          <h4>Caja Mixta San Rafael (x6)</h4>
-                          <p>3 Malbec Reserva + 3 Bonarda Viñas Viejas. Entrega sin cargo en ciudad de San Rafael.</p>
-                        </div>
-                        <div class="wine-foot">
-                          <span class="wine-price">$74.000</span>
-                          <button type="button" class="wine-btn" data-wine="Caja Mixta x6">Comprar directo</button>
-                        </div>
+                        <div><span class="wine-tag">Envío directo</span><h4>Caja Mixta San Rafael (x6)</h4><p>3 Malbec Reserva + 3 Bonarda. Entrega sin cargo en San Rafael.</p></div>
+                        <div class="wine-foot"><span class="wine-price">$74.000</span><button type="button" class="wine-btn" data-wine="Caja Mixta x6">Comprar directo</button></div>
                       </article>
                     </div>
-
                     <div class="alamos-note">
-                      <span id="alamosStatus">Tocá cualquier botón para ver cómo tus clientes reservan o compran directo por WhatsApp.</span>
-                      <a id="alamosWaBtn" class="wine-btn picked" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20gust%C3%B3%20el%20ejemplo%20de%20Vinoteca%20%22Finca%20Los%20%C3%81lamos%22.%20Quiero%20un%20prototipo%20as%C3%AD%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
-                        Pedir una web así
-                      </a>
+                      <span id="alamosStatus">Tocá cualquier botón para simular la consulta directa por WhatsApp.</span>
+                      <a id="alamosWaBtn" class="wine-btn picked" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20gust%C3%B3%20el%20ejemplo%20de%20Vinoteca%20%22Finca%20Los%20%C3%81lamos%22.%20Quiero%20un%20prototipo%20as%C3%AD." target="_blank" rel="noopener noreferrer">Pedir una web así</a>
                     </div>
                   </div>
                 </div>
@@ -1305,20 +854,13 @@
         <div class="cta-card">
           <div>
             <h2>¿Querés ver tu propio negocio así?</h2>
-            <p>
-              Escribinos por WhatsApp con el nombre de tu local y a qué te dedicás. Te armamos un prototipo real y gratuito para que lo pruebes en tu celular antes de gastar un peso. Páginas desde $100.000 con 6 meses de soporte incluidos.
-            </p>
+            <p>Mandanos el nombre de tu local y a qué te dedicás. Te armamos un prototipo real y gratuito para que lo pruebes en tu celular antes de gastar un peso. Webs desde $100.000 con 6 meses de soporte.</p>
           </div>
           <div class="cta-actions">
-            <a class="btn btn-wine" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20los%20ejemplos%20de%20Vitrina%20San%20Rafael%20y%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-              </svg>
+            <a class="btn btn-gold" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20Vitrina%20San%20Rafael%20y%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
               Pedir mi prototipo gratis
             </a>
-            <span class="cta-meta">
-              José Román Fredrin · +54 9 260 405-9284 · <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
-            </span>
+            <span class="cta-meta">José Román Fredrin · +54 9 260 405-9284 · <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a></span>
           </div>
         </div>
       </div>
@@ -1334,66 +876,82 @@
 
   <script>
     (function () {
-      // Main tabs & viewport switcher
+      const spotlight = document.getElementById('candleSpotlight');
+      const heroBg = document.getElementById('heroBg');
+      const deviceFrame = document.getElementById('deviceFrame');
+      const stagePerspective = document.getElementById('stagePerspective');
+
+      // Warm candlelight spotlight + subtle hero parallax
+      if (window.matchMedia('(pointer: fine)').matches) {
+        window.addEventListener('mousemove', (e) => {
+          spotlight.style.setProperty('--cx', e.clientX + 'px');
+          spotlight.style.setProperty('--cy', e.clientY + 'px');
+          const nx = (e.clientX / window.innerWidth - 0.5) * 10;
+          const ny = (e.clientY / window.innerHeight - 0.5) * 8;
+          heroBg.style.backgroundPosition = (50 + nx * 0.4) + '% ' + (50 + ny * 0.4) + '%';
+        });
+
+        stagePerspective.addEventListener('mousemove', (e) => {
+          const rect = deviceFrame.getBoundingClientRect();
+          const rx = ((e.clientY - rect.top) / rect.height - 0.5) * -3.5;
+          const ry = ((e.clientX - rect.left) / rect.width - 0.5) * 4.5;
+          deviceFrame.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+        });
+        stagePerspective.addEventListener('mouseleave', () => {
+          deviceFrame.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+      }
+
+      // Tabs & viewport toggle
       const tabBtns = Array.from(document.querySelectorAll('.tab-btn'));
       const panels = Array.from(document.querySelectorAll('.demo-panel'));
       const urlBar = document.getElementById('urlBar');
-      const deviceFrame = document.getElementById('deviceFrame');
       const vpBtns = Array.from(document.querySelectorAll('.vp-btn'));
 
       tabBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
           const target = btn.dataset.tab;
           tabBtns.forEach((b) => {
-            const isActive = b === btn;
-            b.classList.toggle('active', isActive);
-            b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            const active = b === btn;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-selected', active ? 'true' : 'false');
           });
-          panels.forEach((panel) => {
-            panel.classList.toggle('active', panel.id === 'panel-' + target);
-          });
+          panels.forEach((p) => p.classList.toggle('active', p.id === 'panel-' + target));
           urlBar.textContent = btn.dataset.url;
         });
       });
 
       vpBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
-          const isMobile = btn.dataset.vp === 'mobile';
           vpBtns.forEach((b) => b.classList.toggle('active', b === btn));
-          deviceFrame.classList.toggle('is-mobile', isMobile);
+          deviceFrame.classList.toggle('is-mobile', btn.dataset.vp === 'mobile');
         });
       });
 
-      // Demo 1: El Roble del Atuel menu filter & reservation feedback
+      // Demo 1: El Roble del Atuel
       const robleFilters = Array.from(document.querySelectorAll('#robleFilters .demo-chip'));
       const robleDishes = Array.from(document.querySelectorAll('#robleMenu .roble-dish'));
       robleFilters.forEach((chip) => {
         chip.addEventListener('click', () => {
           const cat = chip.dataset.cat;
           robleFilters.forEach((c) => c.classList.toggle('active', c === chip));
-          robleDishes.forEach((dish) => {
-            dish.style.display = cat === 'todos' || dish.dataset.cat === cat ? 'flex' : 'none';
-          });
+          robleDishes.forEach((d) => { d.style.display = cat === 'todos' || d.dataset.cat === cat ? 'flex' : 'none'; });
         });
       });
-
-      const robleReserveBtn = document.getElementById('robleReserveBtn');
-      const robleFeedback = document.getElementById('robleFeedback');
-      robleReserveBtn.addEventListener('click', () => {
-        robleFeedback.style.display = 'block';
-        robleFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      document.getElementById('robleReserveBtn').addEventListener('click', () => {
+        const fb = document.getElementById('robleFeedback');
+        fb.style.display = 'block';
+        fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       });
 
-      // Demo 2: La Esquina del Sur category filter & mini-cart
+      // Demo 2: La Esquina del Sur
       const esquinaFilters = Array.from(document.querySelectorAll('#esquinaFilters .esquina-chip'));
       const prodCards = Array.from(document.querySelectorAll('#esquinaGrid .prod-card'));
       esquinaFilters.forEach((chip) => {
         chip.addEventListener('click', () => {
           const cat = chip.dataset.cat;
           esquinaFilters.forEach((c) => c.classList.toggle('active', c === chip));
-          prodCards.forEach((card) => {
-            card.style.display = cat === 'todos' || card.dataset.cat === cat ? 'flex' : 'none';
-          });
+          prodCards.forEach((card) => { card.style.display = cat === 'todos' || card.dataset.cat === cat ? 'flex' : 'none'; });
         });
       });
 
@@ -1404,21 +962,13 @@
         btn.addEventListener('click', () => {
           cart.push({ name: btn.dataset.name, price: Number(btn.dataset.price) });
           const total = cart.reduce((acc, item) => acc + item.price, 0);
-          cartStatus.textContent =
-            'Pedido de prueba: ' +
-            cart.length +
-            (cart.length === 1 ? ' producto' : ' productos') +
-            ' · $' +
-            total.toLocaleString('es-AR');
-          const msg =
-            'Hola José! Probé el carrito de "La Esquina del Sur" (' +
-            cart.length +
-            ' productos) y quiero un catálogo con pedidos por WhatsApp para mi comercio.';
+          cartStatus.textContent = 'Pedido de prueba: ' + cart.length + (cart.length === 1 ? ' producto' : ' productos') + ' · $' + total.toLocaleString('es-AR');
+          const msg = 'Hola José! Probé el carrito de "La Esquina del Sur" (' + cart.length + ' productos) y quiero un catálogo por WhatsApp para mi comercio.';
           cartWaLink.setAttribute('href', 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg));
         });
       });
 
-      // Demo 3: Finca Los Álamos interactive selection
+      // Demo 3: Finca Los Álamos
       const wineBtns = Array.from(document.querySelectorAll('#panel-alamos .wine-btn[data-wine]'));
       const alamosStatus = document.getElementById('alamosStatus');
       const alamosWaBtn = document.getElementById('alamosWaBtn');
@@ -1427,12 +977,8 @@
           wineBtns.forEach((b) => b.classList.remove('picked'));
           btn.classList.add('picked');
           const item = btn.dataset.wine;
-          alamosStatus.textContent =
-            'Elegiste “' + item + '”. En tu web real este clic abre tu WhatsApp con la consulta lista.';
-          const msg =
-            'Hola José! Me gustó el ejemplo de Vinoteca "Finca Los Álamos" (probé ' +
-            item +
-            ') y quiero un prototipo gratis para mi negocio.';
+          alamosStatus.textContent = 'Elegiste “' + item + '”. En tu web real este clic abre tu WhatsApp con la consulta lista.';
+          const msg = 'Hola José! Me gustó el ejemplo de Vinoteca "Finca Los Álamos" (probé ' + item + ') y quiero un prototipo gratis.';
           alamosWaBtn.setAttribute('href', 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg));
         });
       });
