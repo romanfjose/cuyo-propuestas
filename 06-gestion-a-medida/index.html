@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistemas de Gestión a Medida — José Román | San Rafael, Mendoza</title>
+  <meta name="description" content="Más que una página web: sistemas reales de stock por estantería, caja diaria y alertas de reposición hechos a medida en San Rafael, Mendoza." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0F172A;
+      --navy-soft: #1E293B;
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --ink: #0F172A;
+      --muted: #475569;
+      --border: #E2E8F0;
+      --emerald: #059669;
+      --emerald-dark: #047857;
+      --emerald-tint: #ECFDF5;
+      --amber: #D97706;
+      --amber-tint: #FFFBEB;
+      --red: #DC2626;
+      --red-tint: #FEF2F2;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-lg: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .topbar {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 25;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--emerald);
+      color: #FFFFFF;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 0.86rem;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: 0.74rem;
+      color: #94A3B8;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #CBD5E1;
+    }
+
+    .nav-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .nav-cta {
+      background: var(--emerald);
+      color: #FFFFFF !important;
+      padding: 8px 14px;
+      border-radius: 9px;
+      transition: background 0.15s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--emerald-dark);
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--navy);
+      color: #FFFFFF;
+      padding: 44px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #6EE7B7;
+      background: rgba(5, 150, 105, 0.16);
+      border: 1px solid rgba(110, 231, 183, 0.25);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.85rem, 4vw, 2.7rem);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #CBD5E1;
+      max-width: 590px;
+      margin-bottom: 22px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-emerald {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--emerald);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .btn-emerald:hover {
+      background: var(--emerald-dark);
+    }
+
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.06);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 12px 18px;
+      border-radius: 10px;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-facts {
+      background: var(--navy-soft);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .fact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .fact-code {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #6EE7B7;
+      background: rgba(5, 150, 105, 0.18);
+      padding: 4px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .fact-row strong {
+      display: block;
+      font-size: 0.92rem;
+      color: #FFFFFF;
+    }
+
+    .fact-row span {
+      font-size: 0.82rem;
+      color: #94A3B8;
+    }
+
+    /* Live System Demo Section */
+    .demo-section {
+      padding: 40px 0 48px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      font-size: 0.94rem;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .app-frame {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .app-topbar {
+      background: #F1F5F9;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .app-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--emerald);
+    }
+
+    .app-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* KPI Strip */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      background: #FFFFFF;
+    }
+
+    .kpi-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 15px;
+    }
+
+    .kpi-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--muted);
+      display: block;
+    }
+
+    .kpi-val {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 3px;
+      display: block;
+    }
+
+    .kpi-val.emerald { color: var(--emerald); }
+    .kpi-val.alert { color: var(--red); }
+
+    /* Tabs */
+    .tabs-bar {
+      display: flex;
+      gap: 6px;
+      padding: 12px 20px 0;
+      border-bottom: 1px solid var(--border);
+      background: #F8FAFC;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 11px 16px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2.5px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: color 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--ink);
+    }
+
+    .tab-btn.active {
+      color: var(--navy);
+      border-bottom-color: var(--emerald);
+      background: #FFFFFF;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .tab-badge {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--red-tint);
+      color: var(--red);
+    }
+
+    .tab-badge.ok {
+      background: var(--emerald-tint);
+      color: var(--emerald);
+    }
+
+    .tab-panel {
+      display: none;
+      padding: 20px;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* Stock Toolbar & Table */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 220px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      padding: 10px 14px;
+      border: 1px solid #CBD5E1;
+      border-radius: 10px;
+      background: #FFFFFF;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--emerald);
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 9px 13px;
+      border-radius: 9px;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+      font-size: 0.88rem;
+    }
+
+    th {
+      text-align: left;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      background: #F8FAFC;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .sku-pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: #F1F5F9;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .prod-name {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .prod-sub {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .badge-status {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    .badge-ok { background: var(--emerald-tint); color: var(--emerald); }
+    .badge-low { background: var(--amber-tint); color: var(--amber); }
+    .badge-crit { background: var(--red-tint); color: var(--red); }
+
+    .qty-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .qty-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.12s ease;
+    }
+
+    .qty-btn:hover {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+
+    .qty-num {
+      min-width: 32px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .btn-quick-sell {
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #A7F3D0;
+      background: var(--emerald-tint);
+      color: var(--emerald-dark);
+      cursor: pointer;
+      transition: background 0.14s ease;
+    }
+
+    .btn-quick-sell:hover {
+      background: var(--emerald);
+      color: #FFFFFF;
+      border-color: var(--emerald);
+    }
+
+    /* Caja del Día */
+    .caja-form {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) 90px minmax(0, 1.2fr) auto;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .caja-field label {
+      display: block;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .caja-field select,
+    .caja-field input {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.88rem;
+      padding: 9px 11px;
+      border: 1px solid #CBD5E1;
+      border-radius: 9px;
+      background: #FFFFFF;
+      color: var(--ink);
+    }
+
+    .caja-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .caja-mini {
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 12px 14px;
+      background: #FFFFFF;
+    }
+
+    .caja-mini span {
+      font-size: 0.76rem;
+      color: var(--muted);
+      display: block;
+    }
+
+    .caja-mini strong {
+      font-size: 1.08rem;
+      color: var(--ink);
+    }
+
+    /* Alertas de Reposición */
+    .alerts-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      background: var(--amber-tint);
+      border: 1px solid #FDE68A;
+      border-radius: 12px;
+      padding: 15px 18px;
+      margin-bottom: 16px;
+    }
+
+    .alerts-banner.all-ok {
+      background: var(--emerald-tint);
+      border-color: #A7F3D0;
+    }
+
+    .alerts-banner strong {
+      display: block;
+      font-size: 0.94rem;
+      color: var(--ink);
+    }
+
+    .alerts-banner span {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--navy);
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 11px 16px;
+      border-radius: 10px;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.25);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: all 0.2s ease;
+      z-index: 50;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Comparison Section */
+    .compare-section {
+      padding: 24px 0 54px;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 22px;
+    }
+
+    .compare-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .compare-card.featured {
+      border: 2px solid var(--navy);
+      position: relative;
+    }
+
+    .compare-tag {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #F1F5F9;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .compare-card.featured .compare-tag {
+      background: var(--emerald-tint);
+      color: var(--emerald-dark);
+    }
+
+    .compare-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .compare-price {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--emerald);
+      margin-bottom: 14px;
+    }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+
+    .compare-list li {
+      display: flex;
+      gap: 9px;
+    }
+
+    .compare-list span.mark {
+      color: var(--emerald);
+      font-weight: 800;
+    }
+
+    .bridge-note {
+      margin-top: 18px;
+      background: var(--navy);
+      color: #FFFFFF;
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .bridge-note p {
+      font-size: 0.95rem;
+      color: #E2E8F0;
+      max-width: 680px;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 26px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .footer-inner strong {
+      color: var(--ink);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .footer-links a:hover {
+      color: var(--emerald);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .caja-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .kpi-grid,
+      .caja-form,
+      .caja-summary {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">JR</div>
+        <div>
+          <span class="brand-title">José Román · Ingeniería &amp; Gestión</span>
+          <span class="brand-sub">San Rafael, Mendoza</span>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#demo">Demo en vivo</a>
+        <a href="#comparativa">Web vs. Sistema</a>
+        <a class="nav-cta" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20consultar%20por%20un%20sistema%20de%20gesti%C3%B3n%20a%20medida%20en%20San%20Rafael." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="kicker">Desarrollo real en San Rafael · Sin plantillas limitadas</span>
+          <h1>Más que una página web: sistemas de gestión hechos para tu negocio real</h1>
+          <p>Hacer una landing básica hoy lo hace cualquiera. Armar un sistema que controle tu stock por estantería, tu caja diaria y tus alertas de reposición sin dolores de cabeza requiere ingeniería de software de verdad.</p>
+          <div class="hero-actions">
+            <a class="btn-emerald" href="#demo">Probar el sistema ahora</a>
+            <a class="btn-outline-light" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20interesa%20ver%20c%C3%B3mo%20ordenar%20stock%20y%20caja%20en%20mi%20negocio." target="_blank" rel="noopener noreferrer">Hablar con José (+54 9 260 405-9284)</a>
+          </div>
+        </div>
+        <div class="hero-facts">
+          <div class="fact-row">
+            <span class="fact-code mono">01</span>
+            <div>
+              <strong>Hecho a tu operatoria</strong>
+              <span>Nada de adaptarte a programas rígidos o enlatados que cobran en dólares.</span>
+            </div>
+          </div>
+          <div class="fact-row">
+            <span class="fact-code mono">02</span>
+            <div>
+              <strong>Funciona en PC y celular</strong>
+              <span>Cargás en mostrador, revisás en depósito y mirás la caja desde el teléfono.</span>
+            </div>
+          </div>
+          <div class="fact-row">
+            <span class="fact-code mono">03</span>
+            <div>
+              <strong>Arrancás simple y escalás</strong>
+              <span>Podés empezar con tu web hoy y sumar módulos de gestión cuando crezcas.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Live Demo -->
+    <section class="demo-section" id="demo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Probalo vos mismo: Demo interactiva de gestión</h2>
+            <p>Buscá un producto, tocá <strong>-1 / +1</strong> para mover el stock, registrá una venta en Caja del Día y mirá cómo saltan las alertas de reposición en tiempo real.</p>
+          </div>
+        </div>
+
+        <div class="app-frame">
+          <div class="app-topbar">
+            <div class="app-title">
+              <span class="status-dot"></span>
+              <span>Depósito &amp; Mostrador · Ejemplo Ferretería / Distribuidora (San Rafael)</span>
+            </div>
+            <span class="app-hint">Todo funciona en vivo en tu navegador</span>
+          </div>
+
+          <!-- KPIs -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-label">Productos activos</span>
+              <span class="kpi-val mono" id="kpiSkus">8</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Alertas de stock bajo</span>
+              <span class="kpi-val mono alert" id="kpiLow">2</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Caja del día</span>
+              <span class="kpi-val mono emerald" id="kpiCaja">$0</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Ventas registradas hoy</span>
+              <span class="kpi-val mono" id="kpiSalesCount">0</span>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="tabs-bar" role="tablist">
+            <button type="button" class="tab-btn active" role="tab" data-tab="stock">Stock por Estantería</button>
+            <button type="button" class="tab-btn" role="tab" data-tab="caja">Caja del Día</button>
+            <button type="button" class="tab-btn" role="tab" data-tab="alertas">
+              Alertas de Reposición
+              <span class="tab-badge mono" id="alertTabCount">2</span>
+            </button>
+          </div>
+
+          <!-- TAB 1: Stock -->
+          <div class="tab-panel active" id="panel-stock">
+            <div class="toolbar">
+              <input type="text" id="stockSearch" class="search-input" placeholder="Buscar por SKU, producto o estantería (ej: FER-104, Pasillo A, cemento)..." />
+              <div class="filter-group">
+                <button type="button" class="filter-btn active" data-filter="all">Todos</button>
+                <button type="button" class="filter-btn" data-filter="low">Solo stock bajo</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>SKU</th>
+                    <th>Producto / Proveedor</th>
+                    <th>Estantería</th>
+                    <th>Precio</th>
+                    <th>Stock (Mín.)</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="stockTbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 2: Caja del Día -->
+          <div class="tab-panel" id="panel-caja">
+            <form class="caja-form" id="saleForm">
+              <div class="caja-field">
+                <label for="saleProduct">Producto</label>
+                <select id="saleProduct"></select>
+              </div>
+              <div class="caja-field">
+                <label for="saleQty">Cant.</label>
+                <input type="number" id="saleQty" min="1" max="50" value="1" />
+              </div>
+              <div class="caja-field">
+                <label for="saleMethod">Medio de pago</label>
+                <select id="saleMethod">
+                  <option value="Efectivo">Efectivo</option>
+                  <option value="Transferencia">Transferencia</option>
+                  <option value="Débito">Débito</option>
+                  <option value="Cuenta Corriente">Cuenta Corriente</option>
+                </select>
+              </div>
+              <button type="submit" class="btn-emerald">Registrar venta</button>
+            </form>
+
+            <div class="caja-summary">
+              <div class="caja-mini">
+                <span>Efectivo en caja</span>
+                <strong class="mono" id="cajaCash">$0</strong>
+              </div>
+              <div class="caja-mini">
+                <span>Transferencia y Débito</span>
+                <strong class="mono" id="cajaDigital">$0</strong>
+              </div>
+              <div class="caja-mini">
+                <span>Cuenta Corriente</span>
+                <strong class="mono" id="cajaCta">$0</strong>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Hora</th>
+                    <th>Producto</th>
+                    <th>Cant.</th>
+                    <th>Medio de pago</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="cajaTbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 3: Alertas de Reposición -->
+          <div class="tab-panel" id="panel-alertas">
+            <div class="alerts-banner" id="alertsBanner">
+              <div>
+                <strong id="alertsHeadline">Tenés productos por debajo del mínimo</strong>
+                <span id="alertsSub">Podés mandar el pedido armado directo por WhatsApp con un clic.</span>
+              </div>
+              <a class="btn-emerald" id="waRestockBtn" href="#" target="_blank" rel="noopener noreferrer">
+                Enviar alerta de reposición por WhatsApp
+              </a>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>SKU</th>
+                    <th>Producto</th>
+                    <th>Proveedor</th>
+                    <th>Actual / Mínimo</th>
+                    <th>Sugerido pedir</th>
+                  </tr>
+                </thead>
+                <tbody id="alertsTbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="compare-section" id="comparativa">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Página básica vs. Sistema a medida</h2>
+            <p>Empezás simple y crecés sin cambiar de proveedor ni tirar trabajo a la basura.</p>
+          </div>
+        </div>
+
+        <div class="compare-grid">
+          <article class="compare-card">
+            <span class="compare-tag">Etapa 1 · Presencia</span>
+            <h3>Página Web Profesional</h3>
+            <div class="compare-price">Desde $100.000 · Entrega en 5 a 7 días</div>
+            <ul class="compare-list">
+              <li><span class="mark">✓</span><span>Diseño rápido pensado primero para celulares en San Rafael.</span></li>
+              <li><span class="mark">✓</span><span>Catálogo o carta clara + botón directo a tu WhatsApp.</span></li>
+              <li><span class="mark">✓</span><span>Ubicación, horarios y señales reales de confianza local.</span></li>
+              <li><span class="mark">✓</span><span>3 prototipos gratis antes de confirmar.</span></li>
+            </ul>
+          </article>
+
+          <article class="compare-card featured">
+            <span class="compare-tag">Etapa 2 · Ingeniería a medida</span>
+            <h3>Sistema de Gestión Real</h3>
+            <div class="compare-price">Escalable por módulos · Sin abonos en dólares</div>
+            <ul class="compare-list">
+              <li><span class="mark">✓</span><span>Control de stock por estantería, depósito o sucursal.</span></li>
+              <li><span class="mark">✓</span><span>Caja diaria separada por efectivo, transferencia, débito y cta. cte.</span></li>
+              <li><span class="mark">✓</span><span>Alertas automáticas de reposición y pedidos a proveedores por WhatsApp.</span></li>
+              <li><span class="mark">✓</span><span>Presupuestos prolijos en PDF, historial de clientes y permisos por empleado.</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="bridge-note">
+          <p><strong>Empezás por donde hoy más te duele:</strong> si primero necesitás una web que venda, arrancamos por ahí. Cuando quieras ordenar stock, caja o proveedores, lo construimos sobre la misma base.</p>
+          <a class="btn-emerald" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20la%20demo%20del%20sistema%20de%20gesti%C3%B3n%20y%20quiero%20contarte%20qu%C3%A9%20necesito%20ordenar%20en%20mi%20negocio." target="_blank" rel="noopener noreferrer">Contame qué necesitás ordenar</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>José Román Fredrin</strong> · Desarrollo Web y Sistemas de Gestión · San Rafael, Mendoza</div>
+      <div class="footer-links">
+        <a href="https://wa.me/5492604059284" target="_blank" rel="noopener noreferrer">+54 9 260 405-9284</a>
+        <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      const JOSE_WA = '5492604059284';
+
+      const products = [
+        { sku: 'FER-104', name: 'Bolsa Cemento Portland 50 kg', shelf: 'Patio A · Est. 01', supplier: 'Corralón Cuyo Mayorista', price: 11400, stock: 18, min: 15 },
+        { sku: 'FER-208', name: 'Pintura Látex Interior 20 L', shelf: 'Pasillo B · Est. 03', supplier: 'Pinturas del Sur', price: 78000, stock: 4, min: 6 },
+        { sku: 'FER-312', name: 'Taladro Percutor 750W', shelf: 'Vitrina C · Est. 02', supplier: 'Herramientas Mendoza', price: 94500, stock: 7, min: 4 },
+        { sku: 'FER-419', name: 'Disco de Corte 115 mm (Caja x10)', shelf: 'Pasillo A · Est. 05', supplier: 'Herramientas Mendoza', price: 14200, stock: 3, min: 8 },
+        { sku: 'DEP-502', name: 'Caño PVC 110 mm x 4 m', shelf: 'Depósito D · Rack 2', supplier: 'Sanitarios Atuel', price: 16800, stock: 22, min: 10 },
+        { sku: 'DEP-615', name: 'Cable Unipolar 2.5 mm (Rollo 100 m)', shelf: 'Pasillo B · Est. 06', supplier: 'Electro San Rafael', price: 52000, stock: 6, min: 5 },
+        { sku: 'FER-720', name: 'Llave Térmica Bipolar 25A', shelf: 'Mostrador · Caja 04', supplier: 'Electro San Rafael', price: 12900, stock: 14, min: 10 },
+        { sku: 'DEP-809', name: 'Adhesivo Cerámico Impermeable 30 kg', shelf: 'Patio A · Est. 04', supplier: 'Corralón Cuyo Mayorista', price: 9600, stock: 11, min: 10 }
+      ];
+
+      const sales = [
+        { time: '09:14', sku: 'FER-104', name: 'Bolsa Cemento Portland 50 kg', qty: 4, method: 'Efectivo', total: 45600 },
+        { time: '10:02', sku: 'FER-312', name: 'Taladro Percutor 750W', qty: 1, method: 'Transferencia', total: 94500 },
+        { time: '10:48', sku: 'DEP-615', name: 'Cable Unipolar 2.5 mm (Rollo 100 m)', qty: 2, method: 'Débito', total: 104000 },
+        { time: '11:25', sku: 'DEP-809', name: 'Adhesivo Cerámico Impermeable 30 kg', qty: 5, method: 'Cuenta Corriente', total: 48000 }
+      ];
+
+      let currentFilter = 'all';
+      let searchQuery = '';
+      let toastTimer = null;
+
+      const stockTbody = document.getElementById('stockTbody');
+      const cajaTbody = document.getElementById('cajaTbody');
+      const alertsTbody = document.getElementById('alertsTbody');
+      const saleProductEl = document.getElementById('saleProduct');
+      const saleQtyEl = document.getElementById('saleQty');
+      const saleMethodEl = document.getElementById('saleMethod');
+      const saleFormEl = document.getElementById('saleForm');
+
+      const kpiSkusEl = document.getElementById('kpiSkus');
+      const kpiLowEl = document.getElementById('kpiLow');
+      const kpiCajaEl = document.getElementById('kpiCaja');
+      const kpiSalesCountEl = document.getElementById('kpiSalesCount');
+      const alertTabCountEl = document.getElementById('alertTabCount');
+
+      const cajaCashEl = document.getElementById('cajaCash');
+      const cajaDigitalEl = document.getElementById('cajaDigital');
+      const cajaCtaEl = document.getElementById('cajaCta');
+
+      const alertsBannerEl = document.getElementById('alertsBanner');
+      const alertsHeadlineEl = document.getElementById('alertsHeadline');
+      const alertsSubEl = document.getElementById('alertsSub');
+      const waRestockBtn = document.getElementById('waRestockBtn');
+      const toastEl = document.getElementById('toast');
+
+      function formatARS(num) {
+        return '$' + Number(num).toLocaleString('es-AR');
+      }
+
+      function nowTime() {
+        return new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+      }
+
+      function showToast(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toastEl.classList.remove('show');
+        }, 2300);
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function getLowStockProducts() {
+        return products.filter(function (p) { return p.stock <= p.min; });
+      }
+
+      function renderSelectOptions() {
+        const prev = saleProductEl.value;
+        saleProductEl.innerHTML = products.map(function (p) {
+          return '<option value="' + p.sku + '">' + escapeHtml(p.sku + ' · ' + p.name + ' (' + formatARS(p.price) + ') — Disp: ' + p.stock) + '</option>';
+        }).join('');
+        if (prev) saleProductEl.value = prev;
+      }
+
+      function renderKPIs() {
+        const lowCount = getLowStockProducts().length;
+        const totalCaja = sales.reduce(function (acc, s) { return acc + s.total; }, 0);
+
+        kpiSkusEl.textContent = products.length;
+        kpiLowEl.textContent = lowCount;
+        kpiLowEl.className = 'kpi-val mono ' + (lowCount > 0 ? 'alert' : 'emerald');
+        kpiCajaEl.textContent = formatARS(totalCaja);
+        kpiSalesCountEl.textContent = sales.length;
+
+        alertTabCountEl.textContent = lowCount;
+        alertTabCountEl.className = 'tab-badge mono' + (lowCount === 0 ? ' ok' : '');
+      }
+
+      function renderStock() {
+        const q = searchQuery.trim().toLowerCase();
+        const filtered = products.filter(function (p) {
+          const matchesFilter = currentFilter === 'all' || p.stock <= p.min;
+          const matchesQuery = !q ||
+            p.sku.toLowerCase().includes(q) ||
+            p.name.toLowerCase().includes(q) ||
+            p.shelf.toLowerCase().includes(q) ||
+            p.supplier.toLowerCase().includes(q);
+          return matchesFilter && matchesQuery;
+        });
+
+        if (!filtered.length) {
+          stockTbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#64748B;padding:24px;">No hay productos que coincidan con ese filtro.</td></tr>';
+          return;
+        }
+
+        stockTbody.innerHTML = filtered.map(function (p) {
+          let badgeClass = 'badge-ok';
+          let badgeText = 'OK';
+          if (p.stock === 0 || p.stock <= Math.floor(p.min / 2)) {
+            badgeClass = 'badge-crit';
+            badgeText = 'Crítico';
+          } else if (p.stock <= p.min) {
+            badgeClass = 'badge-low';
+            badgeText = 'Bajo';
+          }
+
+          return (
+            '<tr>' +
+              '<td><span class="sku-pill mono">' + escapeHtml(p.sku) + '</span></td>' +
+              '<td><span class="prod-name">' + escapeHtml(p.name) + '</span><span class="prod-sub">' + escapeHtml(p.supplier) + '</span></td>' +
+              '<td class="mono" style="font-size:0.82rem;color:#475569;">' + escapeHtml(p.shelf) + '</td>' +
+              '<td class="mono" style="font-weight:600;">' + formatARS(p.price) + '</td>' +
+              '<td>' +
+                '<div class="qty-controls">' +
+                  '<button type="button" class="qty-btn" data-action="dec" data-sku="' + p.sku + '" aria-label="Restar 1">-</button>' +
+                  '<span class="qty-num mono">' + p.stock + '</span>' +
+                  '<button type="button" class="qty-btn" data-action="inc" data-sku="' + p.sku + '" aria-label="Sumar 1">+</button>' +
+                  '<span style="font-size:0.74rem;color:#64748B;">(mín ' + p.min + ')</span>' +
+                '</div>' +
+              '</td>' +
+              '<td><span class="badge-status ' + badgeClass + '">' + badgeText + '</span></td>' +
+              '<td><button type="button" class="btn-quick-sell" data-action="sell" data-sku="' + p.sku + '">Vender 1</button></td>' +
+            '</tr>'
+          );
+        }).join('');
+      }
+
+      function renderCaja() {
+        let cash = 0;
+        let digital = 0;
+        let cta = 0;
+
+        sales.forEach(function (s) {
+          if (s.method === 'Efectivo') cash += s.total;
+          else if (s.method === 'Cuenta Corriente') cta += s.total;
+          else digital += s.total;
+        });
+
+        cajaCashEl.textContent = formatARS(cash);
+        cajaDigitalEl.textContent = formatARS(digital);
+        cajaCtaEl.textContent = formatARS(cta);
+
+        cajaTbody.innerHTML = sales.map(function (s) {
+          return (
+            '<tr>' +
+              '<td class="mono" style="color:#475569;">' + escapeHtml(s.time) + '</td>' +
+              '<td><span class="prod-name">' + escapeHtml(s.name) + '</span> <span class="mono" style="font-size:0.76rem;color:#64748B;">(' + escapeHtml(s.sku) + ')</span></td>' +
+              '<td class="mono">' + s.qty + '</td>' +
+              '<td>' + escapeHtml(s.method) + '</td>' +
+              '<td class="mono" style="font-weight:700;color:#059669;">' + formatARS(s.total) + '</td>' +
+            '</tr>'
+          );
+        }).join('');
+      }
+
+      function renderAlerts() {
+        const low = getLowStockProducts();
+
+        if (!low.length) {
+          alertsBannerEl.classList.add('all-ok');
+          alertsHeadlineEl.textContent = 'Stock al día: no tenés productos por debajo del mínimo';
+          alertsSubEl.textContent = 'Probá bajar el stock de algún producto en la pestaña "Stock por Estantería" para ver la alerta en vivo.';
+          waRestockBtn.href = 'https://wa.me/' + JOSE_WA + '?text=' + encodeURIComponent('Hola José, probé la demo del sistema de gestión en San Rafael y quiero consultarte para mi negocio.');
+          alertsTbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#059669;font-weight:600;padding:24px;">Todo el inventario está por encima del mínimo configurado.</td></tr>';
+          return;
+        }
+
+        alertsBannerEl.classList.remove('all-ok');
+        alertsHeadlineEl.textContent = 'Atención: ' + low.length + (low.length === 1 ? ' producto necesita reposición' : ' productos necesitan reposición');
+        alertsSubEl.textContent = 'El sistema calcula el faltante y te arma el mensaje listo para enviar al proveedor o al encargado.';
+
+        const waLines = ['Hola José, probé la alerta de reposición en tu demo de gestión (San Rafael):', ''];
+        alertsTbody.innerHTML = low.map(function (p) {
+          const suggested = Math.max((p.min * 2) - p.stock, 5);
+          waLines.push('• ' + p.sku + ' — ' + p.name + ': queda ' + p.stock + ' (mín ' + p.min + ') → Pedir ' + suggested + ' u. a ' + p.supplier);
+          return (
+            '<tr>' +
+              '<td><span class="sku-pill mono">' + escapeHtml(p.sku) + '</span></td>' +
+              '<td><span class="prod-name">' + escapeHtml(p.name) + '</span></td>' +
+              '<td>' + escapeHtml(p.supplier) + '</td>' +
+              '<td class="mono" style="color:#DC2626;font-weight:700;">' + p.stock + ' / ' + p.min + '</td>' +
+              '<td class="mono" style="font-weight:700;color:#0F172A;">+' + suggested + ' u.</td>' +
+            '</tr>'
+          );
+        }).join('');
+
+        waRestockBtn.href = 'https://wa.me/' + JOSE_WA + '?text=' + encodeURIComponent(waLines.join('\n'));
+      }
+
+      function renderAll() {
+        renderKPIs();
+        renderSelectOptions();
+        renderStock();
+        renderCaja();
+        renderAlerts();
+      }
+
+      function registerSale(sku, qty, method) {
+        const prod = products.find(function (p) { return p.sku === sku; });
+        if (!prod) return;
+        const safeQty = Math.max(1, parseInt(qty, 10) || 1);
+        if (prod.stock < safeQty) {
+          showToast('No hay stock suficiente de ' + prod.sku + ' (quedan ' + prod.stock + ').');
+          return;
+        }
+        prod.stock -= safeQty;
+        const total = prod.price * safeQty;
+        sales.unshift({
+          time: nowTime(),
+          sku: prod.sku,
+          name: prod.name,
+          qty: safeQty,
+          method: method,
+          total: total
+        });
+        renderAll();
+        const alertMsg = prod.stock <= prod.min ? ' · ¡Alerta de reposición activada!' : '';
+        showToast('Venta registrada: ' + formatARS(total) + ' (' + method + ')' + alertMsg);
+      }
+
+      // Stock Table Actions
+      stockTbody.addEventListener('click', function (e) {
+        const btn = e.target.closest('button[data-action]');
+        if (!btn) return;
+        const action = btn.getAttribute('data-action');
+        const sku = btn.getAttribute('data-sku');
+        const prod = products.find(function (p) { return p.sku === sku; });
+        if (!prod) return;
+
+        if (action === 'inc') {
+          prod.stock += 1;
+          renderAll();
+          showToast(prod.sku + ': stock actualizado a ' + prod.stock);
+        } else if (action === 'dec') {
+          if (prod.stock > 0) {
+            prod.stock -= 1;
+            renderAll();
+            const warn = prod.stock <= prod.min ? ' — Pasó a Alerta de Reposición' : '';
+            showToast(prod.sku + ': stock bajó a ' + prod.stock + warn);
+          }
+        } else if (action === 'sell') {
+          registerSale(sku, 1, 'Efectivo');
+        }
+      });
+
+      // Caja Form
+      saleFormEl.addEventListener('submit', function (e) {
+        e.preventDefault();
+        registerSale(saleProductEl.value, saleQtyEl.value, saleMethodEl.value);
+        saleQtyEl.value = 1;
+      });
+
+      // Search & Filter
+      document.getElementById('stockSearch').addEventListener('input', function (e) {
+        searchQuery = e.target.value;
+        renderStock();
+      });
+
+      document.querySelectorAll('.filter-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          currentFilter = btn.getAttribute('data-filter');
+          renderStock();
+        });
+      });
+
+      // Tabs
+      document.querySelectorAll('.tab-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const target = btn.getAttribute('data-tab');
+          document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+          document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+          btn.classList.add('active');
+          document.getElementById('panel-' + target).classList.add('active');
+        });
+      });
+
+      renderAll();
+    })();
+  </script>
+</body>
+</html>

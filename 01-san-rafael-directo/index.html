@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>José Román · Diseño Web en San Rafael, Mendoza</title>
+  <meta name="description" content="Tu negocio en San Rafael con web profesional, sin pagar de más. Prototipos gratis antes de empezar y 6 meses de soporte incluidos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --cream-deep: #F2ECE1;
+      --white: #FFFFFF;
+      --terracotta: #B84A27;
+      --terracotta-dark: #94391C;
+      --terracotta-soft: #F7E8E2;
+      --olive: #1F2A24;
+      --olive-muted: #4A5750;
+      --border: #E4DDD1;
+      --radius: 14px;
+      --shadow-sm: 0 2px 10px rgba(31, 42, 36, 0.05);
+      --shadow-md: 0 12px 32px rgba(31, 42, 36, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--cream);
+      color: var(--olive);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--olive);
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--olive);
+      color: var(--cream);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--olive-muted);
+      line-height: 1.1;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 28px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--olive-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--terracotta);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.94rem;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: transform 0.16s ease, background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: var(--white);
+      box-shadow: 0 6px 18px rgba(184, 74, 39, 0.24);
+    }
+
+    .btn-primary:hover {
+      background: var(--terracotta-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--olive);
+      border-color: var(--olive);
+    }
+
+    .btn-secondary:hover {
+      background: var(--olive);
+      color: var(--cream);
+    }
+
+    .btn-sm {
+      padding: 9px 15px;
+      font-size: 0.84rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      background: var(--terracotta-soft);
+      padding: 6px 13px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 5vw, 3.25rem);
+      color: var(--olive);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 em {
+      color: var(--terracotta);
+      font-style: italic;
+    }
+
+    .hero-lead {
+      font-size: 1.06rem;
+      color: var(--olive-muted);
+      max-width: 540px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .hero-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.86rem;
+      color: var(--olive-muted);
+    }
+
+    .hero-note span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Editorial Card Visual */
+    .editorial-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .editorial-card::before {
+      content: "";
+      position: absolute;
+      inset: 10px -10px -10px 10px;
+      border-radius: 18px;
+      background: var(--cream-deep);
+      z-index: -1;
+      border: 1px solid var(--border);
+    }
+
+    .card-kicker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--olive-muted);
+    }
+
+    .status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--olive);
+    }
+
+    .status-dot::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2E7D4F;
+    }
+
+    .editorial-quote {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.38rem;
+      color: var(--olive);
+      margin-bottom: 18px;
+      line-height: 1.3;
+    }
+
+    .mini-checklist {
+      list-style: none;
+      display: grid;
+      gap: 11px;
+      margin-bottom: 20px;
+    }
+
+    .mini-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--olive-muted);
+    }
+
+    .mini-checklist svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--terracotta);
+    }
+
+    .card-price-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .card-price-strip strong {
+      font-size: 1.15rem;
+      color: var(--olive);
+      display: block;
+    }
+
+    .card-price-strip span {
+      font-size: 0.8rem;
+      color: var(--olive-muted);
+    }
+
+    /* Sections */
+    .section {
+      padding: 56px 0;
+    }
+
+    .section-head {
+      max-width: 620px;
+      margin-bottom: 34px;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--terracotta);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.75rem, 3.6vw, 2.35rem);
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      color: var(--olive-muted);
+      font-size: 0.98rem;
+    }
+
+    /* 3-Step Promise */
+    .steps-section {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .step-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+    }
+
+    .step-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .step-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: var(--olive);
+    }
+
+    .step-card p {
+      font-size: 0.93rem;
+      color: var(--olive-muted);
+    }
+
+    /* Packs */
+    .packs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .pack-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pack-card.featured {
+      border: 2px solid var(--terracotta);
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .pack-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--cream-deep);
+      color: var(--olive-muted);
+      margin-bottom: 14px;
+    }
+
+    .pack-card.featured .pack-badge {
+      background: var(--terracotta);
+      color: var(--white);
+    }
+
+    .pack-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .pack-price {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin: 10px 0 6px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .pack-sub {
+      font-size: 0.88rem;
+      color: var(--olive-muted);
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pack-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .pack-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 0.91rem;
+      color: var(--olive);
+    }
+
+    .pack-list svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--terracotta);
+    }
+
+    /* Trust Strip */
+    .trust-strip {
+      background: var(--olive);
+      color: var(--cream);
+      padding: 44px 0;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .trust-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(250, 247, 242, 0.1);
+      color: #E8A68E;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .trust-item h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--white);
+    }
+
+    .trust-item p {
+      font-size: 0.9rem;
+      color: rgba(250, 247, 242, 0.78);
+    }
+
+    /* Final CTA */
+    .cta-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 34px 24px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+      margin-bottom: 12px;
+    }
+
+    .cta-box p {
+      color: var(--olive-muted);
+      max-width: 540px;
+      margin: 0 auto 24px;
+      font-size: 0.98rem;
+    }
+
+    .contact-meta {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      font-size: 0.88rem;
+      color: var(--olive-muted);
+    }
+
+    .contact-meta a:hover {
+      color: var(--terracotta);
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 26px 0;
+      font-size: 0.84rem;
+      color: var(--olive-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .hero {
+        padding: 68px 0 74px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 48px;
+      }
+
+      .steps-grid,
+      .packs-grid,
+      .trust-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .cta-box {
+        padding: 48px 40px;
+      }
+
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand" aria-label="José Román Diseño Web">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </span>
+        <span>
+          José Román
+          <span class="brand-sub">Webs para San Rafael</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#planes">Planes</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20negocio%20en%20San%20Rafael." target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">San Rafael, Mendoza · Simple y sin vueltas</span>
+          <h1>Tu negocio en San Rafael con web profesional, <em>sin pagar de más</em></h1>
+          <p class="hero-lead">
+            Hacemos tu página clara, rápida y lista para que te escriban por WhatsApp desde el celular. Primero te mostramos cómo queda tu negocio en pantalla; recién si te convence, avanzamos.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
+              Pedí tu prototipo gratis
+            </a>
+            <a class="btn btn-secondary" href="#planes">Ver planes y precios</a>
+          </div>
+          <div class="hero-note">
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B84A27" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Sin adelantos para ver la muestra
+            </span>
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B84A27" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              6 meses de soporte incluidos
+            </span>
+          </div>
+        </div>
+
+        <aside class="editorial-card" aria-label="Resumen de nuestra propuesta">
+          <div class="card-kicker">
+            <span>Propuesta local</span>
+            <span class="status-dot">Trato directo en San Rafael</span>
+          </div>
+          <p class="editorial-quote">
+            “No hace falta saber de sistemas para tener una web prolija que traiga clientes.”
+          </p>
+          <ul class="mini-checklist">
+            <li>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Pensada para abrir rápido en cualquier celular.</span>
+            </li>
+            <li>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Conectada directo a tu WhatsApp, horarios y mapa.</span>
+            </li>
+            <li>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Hablás siempre con José, sin intermediarios ni letra chica.</span>
+            </li>
+          </ul>
+          <div class="card-price-strip">
+            <div>
+              <strong>Desde $100.000</strong>
+              <span>Web Presentación completa</span>
+            </div>
+            <a class="btn btn-secondary btn-sm" href="#planes">Ver detalle</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="section steps-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Cómo trabajamos</span>
+          <h2>Tres pasos claros, sin riesgos para vos</h2>
+          <p>En lugar de cobrarte por una promesa, primero ves tu propia página armada y decidís con tranquilidad.</p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-num">01</span>
+            <h3>Te armamos prototipos gratis para que elijas</h3>
+            <p>Nos contás qué hacés por WhatsApp y te preparamos opciones reales pensadas para tu rubro, sin compromiso ni seña.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-num">02</span>
+            <h3>Lo ajustamos a tu gusto</h3>
+            <p>Elegís el diseño que más te representa y pulimos fotos, textos, precios y botones hasta que quede tal cual lo querés.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-num">03</span>
+            <h3>Salís andando con 6 meses de soporte</h3>
+            <p>Dejamos la web publicada y funcionando, y durante medio año te ayudamos con cambios de horarios, promos o consultas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="planes" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Planes transparentes</span>
+          <h2>Elegí lo que hoy necesita tu negocio</h2>
+          <p>Presupuestos claros desde el primer mensaje. Sin cuotas sorpresa ni abonos en dólares.</p>
+        </div>
+
+        <div class="packs-grid">
+          <article class="pack-card">
+            <span class="pack-badge">Esencial</span>
+            <h3>Web Presentación</h3>
+            <div class="pack-price">Desde $100.000</div>
+            <p class="pack-sub">Ideal para comercios, profesionales, talleres y servicios locales.</p>
+            <ul class="pack-list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Diseño a medida adaptado a celular y computadora</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Botón directo a tu WhatsApp con mensaje armado</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Servicios, fotos, horarios y mapa en San Rafael</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>6 meses de soporte técnico incluidos</span>
+              </li>
+            </ul>
+            <a class="btn btn-secondary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20interesa%20el%20pack%20Web%20Presentaci%C3%B3n%20(desde%20%24100.000)." target="_blank" rel="noopener noreferrer">
+              Consultar Web Presentación
+            </a>
+          </article>
+
+          <article class="pack-card featured">
+            <span class="pack-badge">Más elegido</span>
+            <h3>Pack Web + 6 Posts Redes</h3>
+            <div class="pack-price">Combo lanzamiento</div>
+            <p class="pack-sub">Para salir a mostrarte en Google, Instagram y Facebook con la misma imagen.</p>
+            <ul class="pack-list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Todo lo incluido en Web Presentación</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>6 publicaciones diseñadas para Instagram y Facebook</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Textos listos para presentar tu local, promos y ubicación</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>6 meses de soporte técnico incluidos</span>
+              </li>
+            </ul>
+            <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20consultar%20por%20el%20Pack%20Web%20%2B%206%20Posts%20para%20Redes." target="_blank" rel="noopener noreferrer">
+              Pedir este combo
+            </a>
+          </article>
+
+          <article class="pack-card">
+            <span class="pack-badge">A medida</span>
+            <h3>Web + Sistema de Gestión</h3>
+            <div class="pack-price">Presupuesto a medida</div>
+            <p class="pack-sub">Para negocios que además de vender online necesitan ordenar el día a día.</p>
+            <ul class="pack-list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Página web + catálogo o toma de pedidos</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Panel interno para stock, turnos, clientes o ventas</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Hecho a medida de tu forma real de trabajar</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Acompañamiento y soporte directo en San Rafael</span>
+              </li>
+            </ul>
+            <a class="btn btn-secondary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20interesa%20hablar%20por%20una%20Web%20%2B%20Sistema%20de%20Gesti%C3%B3n%20a%20medida." target="_blank" rel="noopener noreferrer">
+              Contanos qué necesitás
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Por qué elegirnos">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div>
+            <h3>Trato directo en San Rafael</h3>
+            <p>Nos conocemos, hablamos claro y si hace falta pasamos por tu local. Nada de soporte por ticket a miles de kilómetros.</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3>Sin cuotas sorpresa</h3>
+            <p>Acordamos el precio antes de arrancar y tenés 6 meses de soporte incluidos para que no te quedes solo después de publicar.</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3>Ingeniería real detrás</h3>
+            <p>Código limpio, rápido y bien hecho. Si mañana tu negocio crece y necesita un sistema interno, podemos construirlo sobre bases firmes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <div class="container">
+        <div class="cta-box">
+          <span class="section-label">Empezá sin compromiso</span>
+          <h2>¿Querés ver cómo quedaría tu negocio online?</h2>
+          <p>
+            Escribinos por WhatsApp, contanos a qué te dedicás y te preparamos una propuesta visual gratis para que la mires desde tu celular.
+          </p>
+          <a class="btn btn-primary" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            Escribinos al +54 9 260 405-9284
+          </a>
+
+          <div class="contact-meta">
+            <span><strong>José Román Fredrin</strong></span>
+            <span>·</span>
+            <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
+            <span>·</span>
+            <span>San Rafael, Mendoza</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> José Román Fredrin · Diseño Web y Sistemas a Medida</span>
+      <span>San Rafael, Mendoza · +54 9 260 405-9284</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

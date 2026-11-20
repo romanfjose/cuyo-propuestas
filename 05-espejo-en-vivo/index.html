@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mirá Cómo Queda Tu Web Ahora Mismo — José Román | San Rafael</title>
+  <meta name="description" content="Escribí los datos de tu negocio en San Rafael y mirá en vivo cómo queda tu propia página web en 10 segundos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FAF9F6;
+      --surface: #FFFFFF;
+      --ink: #111827;
+      --ink-muted: #4B5563;
+      --border: #E5E7EB;
+      --terracotta: #C2410C;
+      --terracotta-dark: #9A3412;
+      --terracotta-soft: #FFF7ED;
+      --cobalt: #1D4ED8;
+      --cobalt-soft: #EFF6FF;
+      --green: #15803D;
+      --shadow-sm: 0 2px 8px rgba(17, 24, 39, 0.05);
+      --shadow-lg: 0 18px 40px rgba(17, 24, 39, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Bar */
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 25;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--ink);
+      color: #FFFFFF;
+      display: grid;
+      place-items: center;
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      font-weight: 500;
+    }
+
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--ink);
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      transition: border-color 0.15s ease;
+    }
+
+    .top-link:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+    }
+
+    /* Intro */
+    .intro {
+      padding: 28px 0 22px;
+    }
+
+    .intro-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .intro-kicker {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--terracotta);
+      margin-bottom: 8px;
+    }
+
+    .intro h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 680px;
+    }
+
+    .intro p {
+      font-size: 0.96rem;
+      color: var(--ink-muted);
+      max-width: 440px;
+    }
+
+    /* Studio Split Layout */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 36px;
+    }
+
+    /* Left Controls Panel */
+    .controls-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 84px;
+    }
+
+    .controls-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .controls-head h2 {
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--green);
+      background: #ECFDF5;
+      padding: 4px 9px;
+      border-radius: 999px;
+    }
+
+    .live-pill::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #16A34A;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .field input[type="text"],
+    .field select {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.9rem;
+      padding: 10px 12px;
+      border: 1px solid #D1D5DB;
+      border-radius: 10px;
+      background: #FFFFFF;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .field input[type="text"]:focus,
+    .field select:focus {
+      border-color: var(--cobalt);
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
+    }
+
+    /* Style Selector Pills */
+    .style-pills {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .style-btn {
+      font-family: inherit;
+      font-size: 0.77rem;
+      font-weight: 600;
+      padding: 9px 6px;
+      border-radius: 10px;
+      border: 1px solid #D1D5DB;
+      background: var(--bg);
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .style-btn:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .style-btn.active {
+      background: var(--ink);
+      color: #FFFFFF;
+      border-color: var(--ink);
+    }
+
+    /* Toggles */
+    .toggles-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .toggle-row input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--terracotta);
+      cursor: pointer;
+    }
+
+    /* Right Preview Shell */
+    .preview-column {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .browser-frame {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .browser-bar {
+      background: #F3F4F6;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .browser-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #D1D5DB;
+    }
+
+    .browser-url {
+      flex: 1;
+      min-width: 180px;
+      max-width: 420px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .viewport-switch {
+      display: inline-flex;
+      background: #E5E7EB;
+      padding: 3px;
+      border-radius: 9px;
+      gap: 2px;
+    }
+
+    .vp-btn {
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 7px;
+      cursor: pointer;
+      color: var(--ink-muted);
+    }
+
+    .vp-btn.active {
+      background: #FFFFFF;
+      color: var(--ink);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .preview-stage {
+      background: #E5E7EB;
+      padding: 0;
+      transition: padding 0.2s ease;
+    }
+
+    .preview-stage.is-mobile {
+      padding: 20px 12px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Live Mini-Website Canvas */
+    .mini-site {
+      width: 100%;
+      background: var(--ms-bg, #FFFFFF);
+      color: var(--ms-ink, #111827);
+      font-family: var(--ms-body-font, 'Inter', sans-serif);
+      transition: max-width 0.22s ease;
+    }
+
+    .preview-stage.is-mobile .mini-site {
+      max-width: 375px;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(17, 24, 39, 0.16);
+      border: 6px solid #1F2937;
+    }
+
+    /* Visual Presets inside Mini-Site */
+    .mini-site.style-clasico {
+      --ms-bg: #FFFFFF;
+      --ms-surface: #F8FAFC;
+      --ms-ink: #0F172A;
+      --ms-muted: #475569;
+      --ms-accent: #14532D;
+      --ms-accent-text: #FFFFFF;
+      --ms-accent-soft: #ECFDF5;
+      --ms-border: #E2E8F0;
+      --ms-head-font: 'Fraunces', Georgia, serif;
+      --ms-body-font: 'Inter', sans-serif;
+    }
+
+    .mini-site.style-moderno {
+      --ms-bg: #FFFFFF;
+      --ms-surface: #F3F6FA;
+      --ms-ink: #111827;
+      --ms-muted: #4B5563;
+      --ms-accent: #1D4ED8;
+      --ms-accent-text: #FFFFFF;
+      --ms-accent-soft: #EFF6FF;
+      --ms-border: #E5E7EB;
+      --ms-head-font: 'Inter', sans-serif;
+      --ms-body-font: 'Inter', sans-serif;
+    }
+
+    .mini-site.style-calido {
+      --ms-bg: #FDFBF7;
+      --ms-surface: #F6EFE6;
+      --ms-ink: #291D16;
+      --ms-muted: #6B5549;
+      --ms-accent: #B45309;
+      --ms-accent-text: #FFFFFF;
+      --ms-accent-soft: #FEF3C7;
+      --ms-border: #E8DCCE;
+      --ms-head-font: 'Fraunces', Georgia, serif;
+      --ms-body-font: 'Inter', sans-serif;
+    }
+
+    .ms-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 22px;
+      border-bottom: 1px solid var(--ms-border);
+      background: var(--ms-bg);
+    }
+
+    .ms-logo {
+      font-family: var(--ms-head-font);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ms-ink);
+    }
+
+    .ms-nav-wa {
+      background: var(--ms-accent);
+      color: var(--ms-accent-text);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+
+    .ms-hero {
+      padding: 34px 24px 28px;
+      background: var(--ms-surface);
+      border-bottom: 1px solid var(--ms-border);
+    }
+
+    .ms-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--ms-accent);
+      background: var(--ms-accent-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .ms-hero h3 {
+      font-family: var(--ms-head-font);
+      font-size: 1.65rem;
+      line-height: 1.15;
+      color: var(--ms-ink);
+      margin-bottom: 10px;
+      max-width: 560px;
+    }
+
+    .preview-stage.is-mobile .ms-hero h3 {
+      font-size: 1.38rem;
+    }
+
+    .ms-hero p {
+      font-size: 0.9rem;
+      color: var(--ms-muted);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .ms-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .ms-btn-primary {
+      background: var(--ms-accent);
+      color: var(--ms-accent-text);
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ms-btn-ghost {
+      background: var(--ms-bg);
+      color: var(--ms-ink);
+      border: 1px solid var(--ms-border);
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 10px;
+    }
+
+    /* Trust Strip */
+    .ms-trust {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--ms-border);
+      background: var(--ms-bg);
+    }
+
+    .preview-stage.is-mobile .ms-trust {
+      grid-template-columns: 1fr;
+    }
+
+    .ms-trust-item {
+      font-size: 0.78rem;
+      color: var(--ms-muted);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 600;
+    }
+
+    .ms-trust-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ms-accent);
+      flex-shrink: 0;
+    }
+
+    /* Catalog inside Mini-Site */
+    .ms-section {
+      padding: 24px;
+      border-bottom: 1px solid var(--ms-border);
+    }
+
+    .ms-section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+
+    .ms-section-head h4 {
+      font-family: var(--ms-head-font);
+      font-size: 1.12rem;
+      color: var(--ms-ink);
+    }
+
+    .ms-section-head span {
+      font-size: 0.76rem;
+      color: var(--ms-muted);
+    }
+
+    .ms-catalog {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .preview-stage.is-mobile .ms-catalog {
+      grid-template-columns: 1fr;
+    }
+
+    .ms-item {
+      background: var(--ms-surface);
+      border: 1px solid var(--ms-border);
+      border-radius: 12px;
+      padding: 13px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .ms-item-name {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--ms-ink);
+      margin-bottom: 3px;
+    }
+
+    .ms-item-desc {
+      font-size: 0.76rem;
+      color: var(--ms-muted);
+    }
+
+    .ms-item-price {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--ms-accent);
+      white-space: nowrap;
+    }
+
+    /* Location Block */
+    .ms-location {
+      padding: 22px 24px;
+      background: var(--ms-surface);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .ms-loc-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ms-ink);
+    }
+
+    .ms-loc-sub {
+      font-size: 0.8rem;
+      color: var(--ms-muted);
+      margin-top: 2px;
+    }
+
+    /* Big Conversion CTA Below Preview */
+    .cta-box {
+      background: var(--ink);
+      color: #FFFFFF;
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta-copy h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.35rem;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .cta-copy p {
+      font-size: 0.88rem;
+      color: #D1D5DB;
+      max-width: 470px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--terracotta);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.94rem;
+      padding: 14px 20px;
+      border-radius: 12px;
+      transition: background 0.16s ease, transform 0.12s ease;
+      text-align: center;
+    }
+
+    .cta-btn:hover {
+      background: var(--terracotta-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 24px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    .footer-inner strong {
+      color: var(--ink);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .footer-links a:hover {
+      color: var(--terracotta);
+    }
+
+    @media (max-width: 960px) {
+      .studio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .controls-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .ms-catalog {
+        grid-template-columns: 1fr;
+      }
+
+      .ms-trust {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-badge">JR</div>
+        <div>
+          <span class="brand-title">Taller Web en Vivo</span>
+          <span class="brand-sub">José Román Fredrin · San Rafael, Mendoza</span>
+        </div>
+      </div>
+      <a class="top-link" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20estoy%20probando%20el%20generador%20en%20vivo." target="_blank" rel="noopener noreferrer">
+        WhatsApp: +54 9 260 405-9284
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <div class="intro-row">
+        <div>
+          <span class="intro-kicker">Vista previa instantánea</span>
+          <h1>Mirá cómo queda la web de tu negocio ahora mismo</h1>
+        </div>
+        <p>Cargá tu nombre, elegí tu rubro y probá estilos. Todo se actualiza en vivo para que veas tu propio sitio en 10 segundos.</p>
+      </div>
+    </section>
+
+    <section class="studio-grid" aria-label="Generador de vista previa en vivo">
+      <!-- Left Panel: Controls -->
+      <aside class="controls-card">
+        <div class="controls-head">
+          <h2>Datos de tu negocio</h2>
+          <span class="live-pill">En vivo</span>
+        </div>
+
+        <div class="field">
+          <label for="bizName">Nombre del negocio</label>
+          <input type="text" id="bizName" value="Autoservicio Don Pedro" maxlength="50" />
+        </div>
+
+        <div class="field">
+          <label for="bizRubro">Rubro</label>
+          <select id="bizRubro">
+            <option value="autoservicio">Supermercado / Autoservicio</option>
+            <option value="parrilla">Parrilla / Restaurante</option>
+            <option value="ferreteria">Ferretería / Corralón</option>
+            <option value="bodega">Bodega / Vinoteca</option>
+            <option value="taller">Taller / Repuestos</option>
+            <option value="panaderia">Panadería / Café</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="bizAddress">Zona / Dirección</label>
+          <input type="text" id="bizAddress" value="Av. Mitre 840, San Rafael" maxlength="65" />
+        </div>
+
+        <div class="field">
+          <label for="bizWa">WhatsApp del negocio</label>
+          <input type="text" id="bizWa" value="+54 9 260 412-3456" maxlength="30" />
+        </div>
+
+        <div class="field">
+          <label>Estilo visual</label>
+          <div class="style-pills" role="group" aria-label="Estilo visual">
+            <button type="button" class="style-btn active" data-style="clasico">Clásico Confiable</button>
+            <button type="button" class="style-btn" data-style="moderno">Moderno Limpio</button>
+            <button type="button" class="style-btn" data-style="calido">Cálido Artesanal</button>
+          </div>
+        </div>
+
+        <div class="toggles-group">
+          <label class="toggle-row">
+            <span>Incluir catálogo de productos</span>
+            <input type="checkbox" id="toggleCatalog" checked />
+          </label>
+          <label class="toggle-row">
+            <span>Incluir botón de WhatsApp</span>
+            <input type="checkbox" id="toggleWa" checked />
+          </label>
+        </div>
+      </aside>
+
+      <!-- Right Panel: Live Preview + CTA -->
+      <div class="preview-column">
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <div class="browser-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-url" id="previewUrl">www.autoserviciodonpedro.com.ar</div>
+            <div class="viewport-switch" role="group" aria-label="Cambiar vista">
+              <button type="button" class="vp-btn active" data-vp="desktop">Escritorio</button>
+              <button type="button" class="vp-btn" data-vp="mobile">Celular</button>
+            </div>
+          </div>
+
+          <div class="preview-stage" id="previewStage">
+            <div class="mini-site style-clasico" id="miniSite">
+              <div class="ms-nav">
+                <div class="ms-logo" id="msLogo">Autoservicio Don Pedro</div>
+                <a class="ms-nav-wa" id="msNavWa" href="#" target="_blank" rel="noopener noreferrer">Pedir por WhatsApp</a>
+              </div>
+
+              <div class="ms-hero">
+                <span class="ms-badge" id="msBadge">San Rafael · Atención todos los días</span>
+                <h3 id="msHeadline">Todo para tu mesa y tu casa, con precios de barrio y envío rápido.</h3>
+                <p id="msSub">Elegí tus productos, consultá promos de la semana y hacé tu pedido directo por WhatsApp sin vueltas.</p>
+                <div class="ms-hero-actions">
+                  <a class="ms-btn-primary" id="msHeroWa" href="#" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+                  <span class="ms-btn-ghost" id="msHeroSec">Ver ubicación y horarios</span>
+                </div>
+              </div>
+
+              <div class="ms-trust" id="msTrust"></div>
+
+              <div class="ms-section" id="msCatalogSection">
+                <div class="ms-section-head">
+                  <h4 id="msCatalogTitle">Ofertas y destacados de la semana</h4>
+                  <span>Precios de referencia</span>
+                </div>
+                <div class="ms-catalog" id="msCatalogGrid"></div>
+              </div>
+
+              <div class="ms-location">
+                <div>
+                  <div class="ms-loc-title" id="msLocTitle">Av. Mitre 840, San Rafael</div>
+                  <div class="ms-loc-sub" id="msLocHours">Lunes a Sábado de 8:30 a 21:00 hs · Envíos en el día</div>
+                </div>
+                <a class="ms-btn-primary" id="msLocWa" href="#" target="_blank" rel="noopener noreferrer">WhatsApp: +54 9 260 412-3456</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conversion CTA -->
+        <div class="cta-box">
+          <div class="cta-copy">
+            <h2>¿Te gustó cómo se ve tu negocio?</h2>
+            <p>Esto es una vista rápida. Te armo <strong>3 prototipos reales gratis</strong> con tus fotos, precios y diseño a medida antes de que decidas nada.</p>
+          </div>
+          <a class="cta-btn" id="mainCtaBtn" href="#" target="_blank" rel="noopener noreferrer">
+            Me gustó — Quiero que me armen 3 prototipos gratis de verdad
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>José Román Fredrin</strong> · San Rafael, Mendoza</div>
+      <div class="footer-links">
+        <a href="https://wa.me/5492604059284" target="_blank" rel="noopener noreferrer">+54 9 260 405-9284</a>
+        <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const JOSE_WA = '5492604059284';
+
+      const RUBROS = {
+        autoservicio: {
+          label: 'Supermercado / Autoservicio',
+          defaultName: 'Autoservicio Don Pedro',
+          badge: 'San Rafael · Precios claros todos los días',
+          headline: 'Todo para tu mesa y tu casa, con precios de barrio y envío rápido.',
+          sub: 'Consultá las ofertas de la semana, armá tu lista y recibí el pedido en tu puerta o pasá a retirar sin hacer fila.',
+          ctaLabel: 'Hacer pedido por WhatsApp',
+          secLabel: 'Ver promos de hoy',
+          catalogTitle: 'Destacados y ofertas de la semana',
+          hours: 'Lunes a Sábado 8:30 a 21:00 hs · Domingos 9:30 a 13:30 hs',
+          trust: ['Envíos a domicilio en San Rafael', 'Aceptamos todas las tarjetas y QR', 'Frutas, verduras y carnes frescas'],
+          items: [
+            { name: 'Bolsón Frutas y Verduras', desc: 'Selección fresca de estación (6 kg)', price: '$9.800' },
+            { name: 'Asado de Novillo Especial', desc: 'Corte tierno seleccionado por kg', price: '$11.900' },
+            { name: 'Yerba Mate Tradicional 1 kg', desc: 'Promo llevando 2 unidades', price: '$4.200' },
+            { name: 'Aceite Girasol Puro 1.5 L', desc: 'Primera marca · Stock permanente', price: '$3.450' }
+          ]
+        },
+        parrilla: {
+          label: 'Parrilla / Restaurante',
+          defaultName: 'Parrilla El Nevado',
+          badge: 'Brasas y cocina mendocina · San Rafael',
+          headline: 'Carnes a las brasas, pastas caseras y los mejores vinos de nuestra tierra.',
+          sub: 'Reservá tu mesa en segundos o pedí para llevar. Atención cálida para familias, amigos y viajeros.',
+          ctaLabel: 'Reservar mesa por WhatsApp',
+          secLabel: 'Ver carta completa',
+          catalogTitle: 'Clásicos de nuestra carta',
+          hours: 'Martes a Domingo · Mediodía y noche · Reservas por WhatsApp',
+          trust: ['Fuego a leña de algarrobo', 'Cava con bodegas de San Rafael', 'Salón climatizado y patio'],
+          items: [
+            { name: 'Bife de Chorizo a las Brasas', desc: '400 g con papas rústicas o ensalada', price: '$18.500' },
+            { name: 'Parrillada para 2 Personas', desc: 'Asado, vacío, chorizo, morcilla y guarnición', price: '$34.000' },
+            { name: 'Empanadas Mendocinas x6', desc: 'Cortadas a cuchillo, horno de barro', price: '$8.400' },
+            { name: 'Malbec Reserva San Rafael', desc: 'Botella 750 ml · Selección de la casa', price: '$12.600' }
+          ]
+        },
+        ferreteria: {
+          label: 'Ferretería / Corralón',
+          defaultName: 'Ferretería y Corralón del Sur',
+          badge: 'Stock real y asesoramiento · San Rafael',
+          headline: 'Materiales, herramientas y repuestos con presupuesto rápido en el día.',
+          sub: 'Mandanos tu lista por WhatsApp, te pasamos cotización clara y coordinamos entrega en obra o retiro en mostrador.',
+          ctaLabel: 'Pedir presupuesto por WhatsApp',
+          secLabel: 'Consultar stock',
+          catalogTitle: 'Productos con entrega inmediata',
+          hours: 'Lunes a Viernes 8:00 a 18:30 hs · Sábados 8:30 a 13:00 hs',
+          trust: ['Presupuestos en el día por WhatsApp', 'Envíos a obra en todo San Rafael', 'Cuenta corriente para constructores'],
+          items: [
+            { name: 'Taladro Percutor 750W', desc: 'Mandril 13 mm · Garantía oficial', price: '$94.500' },
+            { name: 'Pintura Látex Interior 20 L', desc: 'Alto poder cubritivo · Blanco mate', price: '$78.000' },
+            { name: 'Cemento Portland 50 kg', desc: 'Precio por bolsa · Descuento por pallet', price: '$11.400' },
+            { name: 'Juego Llaves Combinadas x12', desc: 'Acero cromo vanadio (8 a 22 mm)', price: '$46.900' }
+          ]
+        },
+        bodega: {
+          label: 'Bodega / Vinoteca',
+          defaultName: 'Vinoteca Raíces del Atuel',
+          badge: 'Vinos de San Rafael · Envíos a todo el país',
+          headline: 'Etiquetas seleccionadas de San Rafael y el Valle de Uco, directo a tu copa.',
+          sub: 'Degustaciones guiadas, estuches empresariales y asesoramiento personalizado para cada ocasión.',
+          ctaLabel: 'Consultar por WhatsApp',
+          secLabel: 'Ver degustaciones',
+          catalogTitle: 'Selección destacada de la cava',
+          hours: 'Lunes a Sábado 9:30 a 20:30 hs · Degustaciones con reserva',
+          trust: ['Cava climatizada y etiquetas de autor', 'Regalos empresariales armados a medida', 'Envíos cuidados a todo el país'],
+          items: [
+            { name: 'Malbec Single Vineyard', desc: '12 meses en roble francés · San Rafael', price: '$16.800' },
+            { name: 'Cabernet Franc Gran Reserva', desc: 'Partida limitada de altura', price: '$21.500' },
+            { name: 'Caja Degustación x3 Botellas', desc: 'Malbec, Bonarda y Cabernet Sauvignon', price: '$42.000' },
+            { name: 'Aceite de Oliva Extra Virgen', desc: 'Primera prensada en frío · 500 ml', price: '$11.200' }
+          ]
+        },
+        taller: {
+          label: 'Taller / Repuestos',
+          defaultName: 'Taller Mecánico Los Andes',
+          badge: 'Mecánica integral y diagnóstico · San Rafael',
+          headline: 'Cuidamos tu vehículo con diagnóstico honesto y presupuesto antes de tocar nada.',
+          sub: 'Turnos rápidos por WhatsApp, repuestos originales y garantía escrita en cada trabajo.',
+          ctaLabel: 'Pedir turno por WhatsApp',
+          secLabel: 'Ver servicios',
+          catalogTitle: 'Servicios más solicitados',
+          hours: 'Lunes a Viernes 8:30 a 18:00 hs · Sábados 9:00 a 13:00 hs',
+          trust: ['Diagnóstico computarizado multimarca', 'Presupuesto previo sin sorpresas', 'Repuestos originales y garantía'],
+          items: [
+            { name: 'Service Completo de 10.000 km', desc: 'Aceite sintético + filtros + chequeo general', price: '$89.000' },
+            { name: 'Alineación y Balanceo 3D', desc: 'Control de tren delantero incluido', price: '$36.000' },
+            { name: 'Cambio de Pastillas de Freno', desc: 'Delanteras + revisión de discos', price: '$54.000' },
+            { name: 'Escaneo Computarizado', desc: 'Lectura de fallas y reporte impreso', price: '$22.000' }
+          ]
+        },
+        panaderia: {
+          label: 'Panadería / Café',
+          defaultName: 'Panadería y Café La Espiga',
+          badge: 'Horneado cada mañana · San Rafael',
+          headline: 'Pan artesanal, tortitas mendocinas recién salidas y café de especialidad.',
+          sub: 'Pasá a desayunar o encargá tus cajas dulces y saladas para reuniones, oficinas y cumpleaños.',
+          ctaLabel: 'Encargar por WhatsApp',
+          secLabel: 'Ver boxes y tortas',
+          catalogTitle: 'Recién salidos del horno',
+          hours: 'Todos los días de 7:30 a 20:30 hs · Pedidos para eventos',
+          trust: ['Masa madre y fermentación lenta', 'Tortitas pinchadas y raspaditas del día', 'Pedidos para eventos con 24 hs'],
+          items: [
+            { name: 'Docena de Facturas Artesanales', desc: 'Medialunas de manteca y surtidas', price: '$7.200' },
+            { name: 'Tortitas Mendocinas x6', desc: 'Raspaditas, de hoja o pinchadas', price: '$3.600' },
+            { name: 'Pan de Campo Masa Madre', desc: 'Pieza de 750 g · Corteza crocante', price: '$4.500' },
+            { name: 'Box Desayuno para Regalar', desc: 'Infusión, medialunas, budín y jugo', price: '$15.900' }
+          ]
+        }
+      };
+
+      const STYLE_LABELS = {
+        clasico: 'Clásico Confiable',
+        moderno: 'Moderno Limpio',
+        calido: 'Cálido Artesanal'
+      };
+
+      const bizNameEl = document.getElementById('bizName');
+      const bizRubroEl = document.getElementById('bizRubro');
+      const bizAddressEl = document.getElementById('bizAddress');
+      const bizWaEl = document.getElementById('bizWa');
+      const toggleCatalogEl = document.getElementById('toggleCatalog');
+      const toggleWaEl = document.getElementById('toggleWa');
+
+      const previewUrlEl = document.getElementById('previewUrl');
+      const previewStageEl = document.getElementById('previewStage');
+      const miniSiteEl = document.getElementById('miniSite');
+      const msLogoEl = document.getElementById('msLogo');
+      const msNavWaEl = document.getElementById('msNavWa');
+      const msBadgeEl = document.getElementById('msBadge');
+      const msHeadlineEl = document.getElementById('msHeadline');
+      const msSubEl = document.getElementById('msSub');
+      const msHeroWaEl = document.getElementById('msHeroWa');
+      const msHeroSecEl = document.getElementById('msHeroSec');
+      const msTrustEl = document.getElementById('msTrust');
+      const msCatalogSectionEl = document.getElementById('msCatalogSection');
+      const msCatalogTitleEl = document.getElementById('msCatalogTitle');
+      const msCatalogGridEl = document.getElementById('msCatalogGrid');
+      const msLocTitleEl = document.getElementById('msLocTitle');
+      const msLocHoursEl = document.getElementById('msLocHours');
+      const msLocWaEl = document.getElementById('msLocWa');
+      const mainCtaBtn = document.getElementById('mainCtaBtn');
+
+      let currentStyle = 'clasico';
+      let userEditedName = false;
+
+      function slugify(text) {
+        const clean = (text || 'tunegocio')
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-z0-9]+/g, '');
+        return clean || 'tunegocio';
+      }
+
+      function cleanPhone(raw) {
+        const digits = (raw || '').replace(/\D+/g, '');
+        return digits.length >= 8 ? digits : JOSE_WA;
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function render() {
+        const rubroKey = bizRubroEl.value;
+        const data = RUBROS[rubroKey] || RUBROS.autoservicio;
+        const name = bizNameEl.value.trim() || data.defaultName;
+        const address = bizAddressEl.value.trim() || 'San Rafael, Mendoza';
+        const waDisplay = bizWaEl.value.trim() || '+54 9 260 412-3456';
+        const showCatalog = toggleCatalogEl.checked;
+        const showWa = toggleWaEl.checked;
+
+        // URL bar
+        previewUrlEl.textContent = 'www.' + slugify(name) + '.com.ar';
+
+        // Theme class
+        miniSiteEl.className = 'mini-site style-' + currentStyle;
+
+        // Content
+        msLogoEl.textContent = name;
+        msBadgeEl.textContent = data.badge;
+        msHeadlineEl.textContent = data.headline;
+        msSubEl.textContent = data.sub;
+        msHeroSecEl.textContent = data.secLabel;
+        msCatalogTitleEl.textContent = data.catalogTitle;
+        msLocTitleEl.textContent = address;
+        msLocHoursEl.textContent = data.hours;
+
+        // Business WhatsApp links inside preview
+        const bizWaHref = 'https://wa.me/' + cleanPhone(waDisplay) + '?text=' + encodeURIComponent('Hola ' + name + ', te escribo desde tu página web.');
+        msNavWaEl.href = bizWaHref;
+        msHeroWaEl.href = bizWaHref;
+        msHeroWaEl.textContent = data.ctaLabel;
+        msLocWaEl.href = bizWaHref;
+        msLocWaEl.textContent = 'WhatsApp: ' + waDisplay;
+
+        msNavWaEl.style.display = showWa ? 'inline-block' : 'none';
+        msHeroWaEl.style.display = showWa ? 'inline-flex' : 'none';
+        msLocWaEl.style.display = showWa ? 'inline-flex' : 'none';
+
+        // Trust badges
+        msTrustEl.innerHTML = data.trust.map(function (t) {
+          return '<div class="ms-trust-item"><span class="ms-trust-dot"></span><span>' + escapeHtml(t) + '</span></div>';
+        }).join('');
+
+        // Catalog
+        msCatalogSectionEl.style.display = showCatalog ? 'block' : 'none';
+        if (showCatalog) {
+          msCatalogGridEl.innerHTML = data.items.map(function (item) {
+            return (
+              '<div class="ms-item">' +
+                '<div>' +
+                  '<div class="ms-item-name">' + escapeHtml(item.name) + '</div>' +
+                  '<div class="ms-item-desc">' + escapeHtml(item.desc) + '</div>' +
+                '</div>' +
+                '<div class="ms-item-price">' + escapeHtml(item.price) + '</div>' +
+              '</div>'
+            );
+          }).join('');
+        }
+
+        // Main conversion CTA to José's real WhatsApp
+        const summaryLines = [
+          'Hola José, probé la vista previa en vivo y quiero que me armen los 3 prototipos gratis de verdad:',
+          '',
+          '• Negocio: ' + name,
+          '• Rubro: ' + data.label,
+          '• Dirección: ' + address,
+          '• WhatsApp del negocio: ' + waDisplay,
+          '• Estilo que me gustó: ' + STYLE_LABELS[currentStyle],
+          '• Catálogo de productos: ' + (showCatalog ? 'Sí' : 'No'),
+          '• Botón de WhatsApp: ' + (showWa ? 'Sí' : 'No')
+        ];
+        mainCtaBtn.href = 'https://wa.me/' + JOSE_WA + '?text=' + encodeURIComponent(summaryLines.join('\n'));
+      }
+
+      bizNameEl.addEventListener('input', function () {
+        userEditedName = bizNameEl.value.trim().length > 0;
+        render();
+      });
+
+      bizRubroEl.addEventListener('change', function () {
+        const data = RUBROS[bizRubroEl.value];
+        if (!userEditedName && data) {
+          bizNameEl.value = data.defaultName;
+        }
+        render();
+      });
+
+      bizAddressEl.addEventListener('input', render);
+      bizWaEl.addEventListener('input', render);
+      toggleCatalogEl.addEventListener('change', render);
+      toggleWaEl.addEventListener('change', render);
+
+      document.querySelectorAll('.style-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('.style-btn').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          currentStyle = btn.getAttribute('data-style');
+          render();
+        });
+      });
+
+      document.querySelectorAll('.vp-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('.vp-btn').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          const isMobile = btn.getAttribute('data-vp') === 'mobile';
+          previewStageEl.classList.toggle('is-mobile', isMobile);
+        });
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>

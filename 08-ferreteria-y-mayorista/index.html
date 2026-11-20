@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo Web Mayorista para Ferreterías, Corralones y Distribuidoras — San Rafael</title>
+  <meta name="description" content="Web con catálogo buscable y pedido armado por WhatsApp las 24 hs para ferreterías, corralones, distribuidoras y depósitos de San Rafael, Mendoza." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --surface: #F5F5F4;
+      --charcoal: #1C1917;
+      --steel: #44403C;
+      --muted: #57534E;
+      --border: #D6D3D1;
+      --amber: #EAB308;
+      --amber-deep: #CA8A04;
+      --amber-soft: #FEF9C3;
+      --radius: 8px;
+      --max-w: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--charcoal);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .font-display {
+      font-family: 'Barlow', sans-serif;
+      letter-spacing: -0.015em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* Top utility strip */
+    .top-strip {
+      background: var(--charcoal);
+      color: #E7E5E4;
+      font-size: 0.82rem;
+      padding: 8px 0;
+    }
+
+    .top-strip-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .top-strip a {
+      color: var(--amber);
+      font-weight: 600;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: #FFFFFF;
+      border-bottom: 2px solid var(--charcoal);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 66px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-sq {
+      width: 30px;
+      height: 30px;
+      background: var(--amber);
+      color: var(--charcoal);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      border: 2px solid var(--charcoal);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 24px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--steel);
+    }
+
+    .nav-links a:hover {
+      color: var(--charcoal);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.92rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-amber {
+      background: var(--amber);
+      color: var(--charcoal);
+      border-color: var(--charcoal);
+    }
+
+    .btn-amber:hover {
+      background: var(--amber-deep);
+    }
+
+    .btn-solid {
+      background: var(--charcoal);
+      color: #FFFFFF;
+      border-color: var(--charcoal);
+    }
+
+    .btn-solid:hover {
+      background: #292524;
+    }
+
+    .btn-outline {
+      background: #FFFFFF;
+      color: var(--charcoal);
+      border-color: var(--charcoal);
+    }
+
+    .btn-outline:hover {
+      background: var(--surface);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 54px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--charcoal);
+      color: var(--amber);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 5px 12px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.06;
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .hero-sub {
+      font-size: 1.04rem;
+      color: var(--steel);
+      max-width: 600px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+    }
+
+    .kpi-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--amber-deep);
+      padding: 12px 14px;
+    }
+
+    .kpi-box strong {
+      display: block;
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .kpi-box span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Demo Catalog Section */
+    section {
+      padding: 60px 0;
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+      max-width: 720px;
+    }
+
+    .section-eyebrow {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber-deep);
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3.6vw, 2.35rem);
+      font-weight: 800;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .catalog-layout {
+      display: grid;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .toolbar {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.94rem;
+      background: #FFFFFF;
+      color: var(--charcoal);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--charcoal);
+    }
+
+    .cat-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cat-tab {
+      padding: 8px 13px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--steel);
+      cursor: pointer;
+    }
+
+    .cat-tab.active {
+      background: var(--charcoal);
+      color: var(--amber);
+      border-color: var(--charcoal);
+    }
+
+    .products-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .prod-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .prod-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .prod-sku {
+      background: var(--surface);
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--steel);
+      font-family: monospace;
+    }
+
+    .prod-cat {
+      color: var(--amber-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .prod-name {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-top: 6px;
+    }
+
+    .prod-unit {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .prod-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--surface);
+    }
+
+    .prod-price {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.28rem;
+      font-weight: 800;
+    }
+
+    .qty-control {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--charcoal);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: var(--surface);
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--charcoal);
+    }
+
+    .qty-btn:hover {
+      background: var(--amber);
+    }
+
+    .qty-num {
+      min-width: 30px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* Order Cart Panel */
+    .cart-panel {
+      border: 2px solid var(--charcoal);
+      border-radius: var(--radius);
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    .cart-head {
+      background: var(--charcoal);
+      color: #FFFFFF;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-head h3 {
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .cart-count {
+      background: var(--amber);
+      color: var(--charcoal);
+      padding: 2px 9px;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+
+    .cart-body {
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .cart-empty {
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding: 16px 0;
+      text-align: center;
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+    }
+
+    .cart-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      max-height: 290px;
+      overflow-y: auto;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.86rem;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--surface);
+    }
+
+    .cart-item strong {
+      display: block;
+      font-size: 0.88rem;
+    }
+
+    .cart-item small {
+      color: var(--muted);
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: 12px;
+      border-top: 2px solid var(--charcoal);
+      font-weight: 800;
+    }
+
+    .cart-total-val {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.55rem;
+    }
+
+    .client-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.88rem;
+    }
+
+    /* Simulated WhatsApp Preview Box */
+    .wa-preview {
+      display: none;
+      margin-top: 10px;
+      border: 2px solid var(--amber-deep);
+      background: var(--amber-soft);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+
+    .wa-preview.open {
+      display: block;
+    }
+
+    .wa-preview-title {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.86rem;
+      margin-bottom: 8px;
+      color: var(--charcoal);
+    }
+
+    .wa-message-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      white-space: pre-wrap;
+      line-height: 1.45;
+      max-height: 220px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+
+    .wa-preview-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Benefits */
+    .section-industrial {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .benefits-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .benefit-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--charcoal);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--charcoal);
+      color: #F5F5F4;
+      padding: 48px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .footer-grid h2 {
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+
+    .footer-grid p {
+      color: #D6D3D1;
+      font-size: 0.95rem;
+    }
+
+    .footer-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid #44403C;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.84rem;
+      color: #A8A29E;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+      .footer-btns {
+        justify-content: flex-end;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .catalog-layout {
+        grid-template-columns: 1.55fr 0.85fr;
+      }
+      .cart-panel {
+        position: sticky;
+        top: 84px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">
+    <div class="container top-strip-inner">
+      <span>San Rafael, Mendoza · Web y Catálogo B2B para Comercio Industrial</span>
+      <a href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20tengo%20una%20ferreter%C3%ADa%2Fdistribuidora%20y%20quiero%20ver%20c%C3%B3mo%20funciona%20el%20cat%C3%A1logo%20web." target="_blank" rel="noopener">
+        WhatsApp directo: +54 9 260 405-9284
+      </a>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <span class="brand-sq">JR</span>
+        <span>Catálogo Industrial · SR</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#demo-catalogo">Demo en vivo</a>
+        <a href="#beneficios">Por qué sirve</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="btn btn-amber" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20un%20prototipo%20gratis%20de%20cat%C3%A1logo%20mayorista%20para%20mi%20negocio." target="_blank" rel="noopener">
+        Pedir prototipo gratis
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="hero-tag">Para Ferreterías, Corralones, Distribuidoras y Depósitos</span>
+          <h1>Que tus clientes vean tu catálogo y te pasen el pedido armado por WhatsApp las 24 hs.</h1>
+          <p class="hero-sub">
+            Dejá de perder horas pasando precios sueltos por audio o foto borrosa. Con tu catálogo web en San Rafael, contratistas, comercios y clientes mayoristas buscan por código, arman su lista y te envían el pedido prolijo a tu WhatsApp.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-amber" href="#demo-catalogo">Probar demo de catálogo ahora</a>
+            <a class="btn btn-outline" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20armar%20un%20cat%C3%A1logo%20para%20mi%20ferreter%C3%ADa%20o%20mayorista." target="_blank" rel="noopener">
+              Hablar por WhatsApp
+            </a>
+          </div>
+          <div class="kpi-strip">
+            <div class="kpi-box">
+              <strong>Pedidos 24/7</strong>
+              <span>Tu catálogo trabaja incluso con el local cerrado</span>
+            </div>
+            <div class="kpi-box">
+              <strong>Cero errores de código</strong>
+              <span>El pedido llega con SKU, cantidades y total</span>
+            </div>
+            <div class="kpi-box">
+              <strong>Escalable a gestión</strong>
+              <span>Base lista para sumar control de stock y depósito</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo-catalogo">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Probá cómo comprarían tus clientes</div>
+          <h2>Demo de Catálogo Mayorista + Pedido por WhatsApp</h2>
+          <p class="section-desc">Filtrá por rubro, buscá por nombre o código, sumá cantidades y tocá <strong>"Simular envío de pedido por WhatsApp"</strong> para ver el mensaje exacto que recibirías en tu mostrador.</p>
+        </div>
+
+        <div class="catalog-layout">
+          <div>
+            <div class="toolbar">
+              <input id="searchBox" class="search-input" type="search" placeholder="Buscar por producto o código (ej: estantería, amoladora, EST-01)..." aria-label="Buscar producto en catálogo" />
+              <div class="cat-tabs" id="catTabs" role="tablist" aria-label="Categorías de catálogo">
+                <button type="button" class="cat-tab active" data-cat="Todos">Todos</button>
+                <button type="button" class="cat-tab" data-cat="Estanterías/Depósito">Estanterías/Depósito</button>
+                <button type="button" class="cat-tab" data-cat="Herramientas">Herramientas</button>
+                <button type="button" class="cat-tab" data-cat="Fijaciones">Fijaciones</button>
+                <button type="button" class="cat-tab" data-cat="Iluminación">Iluminación</button>
+              </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid"></div>
+          </div>
+
+          <aside class="cart-panel" aria-label="Pedido mayorista en curso">
+            <div class="cart-head">
+              <h3>Pedido Armado</h3>
+              <span class="cart-count" id="cartCount">0 ítems</span>
+            </div>
+            <div class="cart-body">
+              <div id="cartItemsContainer"></div>
+
+              <div class="cart-total-row">
+                <span>Total estimado</span>
+                <span class="cart-total-val" id="cartTotal">$0</span>
+              </div>
+
+              <div>
+                <label for="clientName" style="display:block;font-size:0.82rem;font-weight:700;margin-bottom:6px;">Nombre o razón social (opcional)</label>
+                <input id="clientName" class="client-input" type="text" placeholder="Ej: Corralón Los Andes / Obra Ruta 143" />
+              </div>
+
+              <button type="button" id="simulateBtn" class="btn btn-amber" style="width:100%;">
+                Simular envío de pedido por WhatsApp
+              </button>
+              <button type="button" id="clearCartBtn" class="btn btn-outline" style="width:100%;padding:9px 14px;font-size:0.84rem;">
+                Vaciar pedido
+              </button>
+
+              <div id="waPreview" class="wa-preview" aria-live="polite">
+                <div class="wa-preview-title">Así llega el pedido a tu WhatsApp:</div>
+                <div id="waMessageBox" class="wa-message-box"></div>
+                <div class="wa-preview-actions">
+                  <button type="button" id="copyMsgBtn" class="btn btn-solid" style="padding:8px 12px;font-size:0.8rem;">Copiar mensaje</button>
+                  <a id="askForCatalogLink" class="btn btn-amber" style="padding:8px 12px;font-size:0.8rem;" href="https://wa.me/5492604059284" target="_blank" rel="noopener">
+                    Quiero esto para mi local
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios" class="section-industrial">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Hecho para el ritmo del mostrador</div>
+          <h2>Pensado para vender más y atender mejor</h2>
+          <p class="section-desc">Sin vueltas ni adornos innecesarios: una herramienta concreta para ferreterías, corralones, repuesteras y distribuidoras de Cuyo.</p>
+        </div>
+
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <h3>1. Precios y listas al día</h3>
+            <p>Cuando cambia una lista de proveedores, actualizamos los precios rápido o te dejamos un panel simple para que los ajustes sin depender de nadie.</p>
+          </article>
+          <article class="benefit-card">
+            <h3>2. Ideal para vendedores y viajantes</h3>
+            <p>Tus clientes o viajantes abren el link desde el celular, arman el pedido con cantidades exactas y lo mandan directo al WhatsApp de ventas.</p>
+          </article>
+          <article class="benefit-card">
+            <h3>3. Listo para crecer a stock real</h3>
+            <p>Como soy desarrollador, el día que quieras conectar esto a un control de stock por estantería o depósito, lo construimos sobre la misma base.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h2>¿Armamos un prototipo con tus productos?</h2>
+          <p>Te preparamos una demo gratis con tus rubros y artículos reales para que lo pruebes en tu teléfono antes de decidir.</p>
+        </div>
+        <div class="footer-btns">
+          <a class="btn btn-amber" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20prob%C3%A9%20la%20demo%20de%20Ferreter%C3%ADas%20y%20Mayoristas%20y%20quiero%20ver%20un%20prototipo%20para%20mi%20negocio." target="_blank" rel="noopener">
+            WhatsApp +54 9 260 405-9284
+          </a>
+          <a class="btn btn-outline" href="mailto:romanfjose@gmail.com">
+            romanfjose@gmail.com
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>José Román Fredrin · Ingeniería Web y Sistemas</span>
+        <span>San Rafael, Mendoza · Argentina</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const PRODUCTS = [
+        { sku: 'EST-101', cat: 'Estanterías/Depósito', name: 'Estantería Metálica Reforzada 5 Estantes (90x40x200cm)', unit: 'Por unidad · Carga 80kg/estante', price: 78500 },
+        { sku: 'EST-204', cat: 'Estanterías/Depósito', name: 'Rack Industrial Pesado 3 Niveles (200x60x200cm)', unit: 'Por módulo · Carga 600kg/nivel', price: 245000 },
+        { sku: 'EST-309', cat: 'Estanterías/Depósito', name: 'Cajón Apilable Plástico N°4 para Depósito (Pack x10)', unit: 'Pack x10 unidades', price: 42000 },
+        { sku: 'HER-115', cat: 'Herramientas', name: 'Amoladora Angular 115mm 850W Uso Industrial', unit: 'Por unidad · Garantía 12 meses', price: 69900 },
+        { sku: 'HER-213', cat: 'Herramientas', name: 'Taladro Percutor 13mm 750W Mandril Metálico', unit: 'Por unidad · Velocidad variable', price: 84500 },
+        { sku: 'HER-408', cat: 'Herramientas', name: 'Juego de Llaves Combinadas 8 a 22mm (12 piezas)', unit: 'Set Cromo Vanadio con estuche', price: 51200 },
+        { sku: 'FIJ-010', cat: 'Fijaciones', name: 'Tornillo Autoperforante T2 Aguja (Caja x1000 u.)', unit: 'Caja cerrada x1000 unidades', price: 18900 },
+        { sku: 'FIJ-038', cat: 'Fijaciones', name: 'Bulón Hexagonal 3/8 x 2" con Tuerca y Arandela (x100)', unit: 'Bolsa mayorista x100 juegos', price: 27400 },
+        { sku: 'FIJ-080', cat: 'Fijaciones', name: 'Tarugo Nylon N°8 con Tope (Caja x500 u.)', unit: 'Caja x500 unidades', price: 14600 },
+        { sku: 'ILU-100', cat: 'Iluminación', name: 'Reflector LED Galpón 100W IP65 Luz Fría', unit: 'Por unidad · Exterior / Depósito', price: 23800 },
+        { sku: 'ILU-120', cat: 'Iluminación', name: 'Tubo LED Vidrio 18W 120cm (Caja x10 u.)', unit: 'Caja mayorista x10 tubos', price: 39500 },
+        { sku: 'ILU-150', cat: 'Iluminación', name: 'Campana Industrial High Bay LED 150W', unit: 'Por unidad · Alta eficiencia', price: 64000 }
+      ];
+
+      let activeCat = 'Todos';
+      let searchTerm = '';
+      const cart = {
+        'EST-101': 2,
+        'FIJ-010': 1
+      };
+
+      const productsGrid = document.getElementById('productsGrid');
+      const catTabs = document.querySelectorAll('#catTabs .cat-tab');
+      const searchBox = document.getElementById('searchBox');
+      const cartItemsContainer = document.getElementById('cartItemsContainer');
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+      const clientNameInput = document.getElementById('clientName');
+      const simulateBtn = document.getElementById('simulateBtn');
+      const clearCartBtn = document.getElementById('clearCartBtn');
+      const waPreview = document.getElementById('waPreview');
+      const waMessageBox = document.getElementById('waMessageBox');
+      const copyMsgBtn = document.getElementById('copyMsgBtn');
+      const askForCatalogLink = document.getElementById('askForCatalogLink');
+
+      function formatARS(n) {
+        return '$' + Math.round(n).toLocaleString('es-AR');
+      }
+
+      function getFilteredProducts() {
+        const q = searchTerm.trim().toLowerCase();
+        return PRODUCTS.filter(function (p) {
+          const matchCat = activeCat === 'Todos' || p.cat === activeCat;
+          const matchSearch =
+            !q ||
+            p.name.toLowerCase().indexOf(q) !== -1 ||
+            p.sku.toLowerCase().indexOf(q) !== -1 ||
+            p.cat.toLowerCase().indexOf(q) !== -1;
+          return matchCat && matchSearch;
+        });
+      }
+
+      function renderProducts() {
+        const list = getFilteredProducts();
+        if (list.length === 0) {
+          productsGrid.innerHTML = '<div class="cart-empty" style="grid-column:1/-1;">No encontramos artículos con esa búsqueda. Probá otro código o categoría.</div>';
+          return;
+        }
+
+        productsGrid.innerHTML = list.map(function (p) {
+          const qty = cart[p.sku] || 0;
+          return (
+            '<article class="prod-card">' +
+              '<div>' +
+                '<div class="prod-top">' +
+                  '<span class="prod-sku">' + p.sku + '</span>' +
+                  '<span class="prod-cat">' + p.cat + '</span>' +
+                '</div>' +
+                '<h3 class="prod-name">' + p.name + '</h3>' +
+                '<div class="prod-unit">' + p.unit + '</div>' +
+              '</div>' +
+              '<div class="prod-bottom">' +
+                '<span class="prod-price">' + formatARS(p.price) + '</span>' +
+                '<div class="qty-control" aria-label="Cantidad para ' + p.name + '">' +
+                  '<button type="button" class="qty-btn" data-action="dec" data-sku="' + p.sku + '">−</button>' +
+                  '<span class="qty-num">' + qty + '</span>' +
+                  '<button type="button" class="qty-btn" data-action="inc" data-sku="' + p.sku + '">+</button>' +
+                '</div>' +
+              '</div>' +
+            '</article>'
+          );
+        }).join('');
+      }
+
+      function getCartEntries() {
+        return Object.keys(cart)
+          .filter(function (sku) { return cart[sku] > 0; })
+          .map(function (sku) {
+            const prod = PRODUCTS.find(function (p) { return p.sku === sku; });
+            return { product: prod, qty: cart[sku] };
+          })
+          .filter(function (entry) { return Boolean(entry.product); });
+      }
+
+      function renderCart() {
+        const entries = getCartEntries();
+        let totalItems = 0;
+        let totalAmount = 0;
+
+        entries.forEach(function (e) {
+          totalItems += e.qty;
+          totalAmount += e.qty * e.product.price;
+        });
+
+        cartCount.textContent = totalItems + (totalItems === 1 ? ' ítem' : ' ítems');
+        cartTotal.textContent = formatARS(totalAmount);
+
+        if (entries.length === 0) {
+          cartItemsContainer.innerHTML = '<div class="cart-empty">Sumá artículos con el botón <strong>+</strong> para armar un pedido de prueba.</div>';
+          waPreview.classList.remove('open');
+          return;
+        }
+
+        cartItemsContainer.innerHTML =
+          '<ul class="cart-list">' +
+          entries.map(function (e) {
+            return (
+              '<li class="cart-item">' +
+                '<div>' +
+                  '<strong>' + e.qty + 'x ' + e.product.name + '</strong>' +
+                  '<small>' + e.product.sku + ' · ' + formatARS(e.product.price) + ' c/u</small>' +
+                '</div>' +
+                '<strong>' + formatARS(e.qty * e.product.price) + '</strong>' +
+              '</li>'
+            );
+          }).join('') +
+          '</ul>';
+      }
+
+      function buildOrderMessage() {
+        const entries = getCartEntries();
+        if (entries.length === 0) return '';
+        const client = clientNameInput.value.trim() || 'Cliente Mayorista (San Rafael)';
+        let total = 0;
+        const lines = [
+          'Hola! Te paso un pedido armado desde el Catálogo Web:',
+          'Cliente: ' + client,
+          '--------------------------------',
+        ];
+        entries.forEach(function (e) {
+          const sub = e.qty * e.product.price;
+          total += sub;
+          lines.push('• [' + e.product.sku + '] ' + e.qty + ' u. — ' + e.product.name + ' (' + formatARS(sub) + ')');
+        });
+        lines.push('--------------------------------');
+        lines.push('TOTAL ESTIMADO: ' + formatARS(total));
+        lines.push('¿Me confirmás stock y horario de retiro/envío?');
+        return lines.join('\n');
+      }
+
+      productsGrid.addEventListener('click', function (ev) {
+        const btn = ev.target.closest('.qty-btn');
+        if (!btn) return;
+        const sku = btn.getAttribute('data-sku');
+        const action = btn.getAttribute('data-action');
+        const current = cart[sku] || 0;
+        if (action === 'inc') {
+          cart[sku] = current + 1;
+        } else if (action === 'dec' && current > 0) {
+          cart[sku] = current - 1;
+          if (cart[sku] === 0) delete cart[sku];
+        }
+        renderProducts();
+        renderCart();
+        if (waPreview.classList.contains('open')) {
+          waMessageBox.textContent = buildOrderMessage();
+        }
+      });
+
+      catTabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          catTabs.forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          activeCat = tab.getAttribute('data-cat');
+          renderProducts();
+        });
+      });
+
+      searchBox.addEventListener('input', function () {
+        searchTerm = searchBox.value;
+        renderProducts();
+      });
+
+      simulateBtn.addEventListener('click', function () {
+        const msg = buildOrderMessage();
+        if (!msg) {
+          alert('Agregá al menos un producto al pedido para simular el mensaje de WhatsApp.');
+          return;
+        }
+        waMessageBox.textContent = msg;
+        waPreview.classList.add('open');
+        const pitch = 'Hola José, probé la demo de Catálogo Mayorista y me gustaría algo así para mi negocio en San Rafael.';
+        askForCatalogLink.href = 'https://wa.me/5492604059284?text=' + encodeURIComponent(pitch);
+      });
+
+      clearCartBtn.addEventListener('click', function () {
+        Object.keys(cart).forEach(function (k) { delete cart[k]; });
+        renderProducts();
+        renderCart();
+      });
+
+      copyMsgBtn.addEventListener('click', function () {
+        const text = waMessageBox.textContent;
+        if (!text) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            copyMsgBtn.textContent = '¡Copiado!';
+            setTimeout(function () { copyMsgBtn.textContent = 'Copiar mensaje'; }, 1800);
+          });
+        }
+      });
+
+      renderProducts();
+      renderCart();
+    })();
+  </script>
+</body>
+</html>

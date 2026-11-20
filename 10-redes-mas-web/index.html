@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pack Inauguración: Web + 6 Posts + WhatsApp Listo — San Rafael, Mendoza</title>
+  <meta name="description" content="¿Abrís o renovás tu local en San Rafael? Lanzá con tu página web + 6 publicaciones listas para Instagram y Facebook + tu WhatsApp conectado." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FFFDF9;
+      --surface: #FFFFFF;
+      --sand: #F7EFE6;
+      --border: #ECDCCF;
+      --ink: #1F2937;
+      --ink-muted: #525B66;
+      --coral: #EA580C;
+      --coral-hover: #C2410C;
+      --teal: #0F4C5C;
+      --teal-soft: #E6F2F5;
+      --radius: 14px;
+      --max-w: 1140px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .font-display {
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 253, 249, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 68px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--teal);
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 24px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--teal);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.94rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background-color 0.16s ease, transform 0.12s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-coral {
+      background: var(--coral);
+      color: #FFFFFF;
+    }
+
+    .btn-coral:hover {
+      background: var(--coral-hover);
+    }
+
+    .btn-teal {
+      background: var(--teal);
+      color: #FFFFFF;
+    }
+
+    .btn-teal:hover {
+      background: #0B3A47;
+    }
+
+    .btn-outline {
+      background: #FFFFFF;
+      color: var(--teal);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--sand);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 56px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 0.82rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 5vw, 3.35rem);
+      line-height: 1.08;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+
+    h1 span {
+      color: var(--coral);
+    }
+
+    .hero-sub {
+      font-size: 1.06rem;
+      color: var(--ink-muted);
+      max-width: 600px;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-card {
+      background: var(--teal);
+      color: #FFFFFF;
+      border-radius: 18px;
+      padding: 26px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-card h2 {
+      font-size: 1.35rem;
+      color: #FFFFFF;
+    }
+
+    .pack-checklist {
+      list-style: none;
+      display: grid;
+      gap: 11px;
+      font-size: 0.94rem;
+    }
+
+    .pack-checklist li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .pack-bullet {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: #FFFFFF;
+      display: grid;
+      place-items: center;
+      font-size: 0.76rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Sections */
+    section {
+      padding: 64px 0;
+    }
+
+    .section-sand {
+      background: var(--sand);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-head {
+      max-width: 700px;
+      margin-bottom: 32px;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      color: var(--coral);
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3.6vw, 2.35rem);
+      line-height: 1.14;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+
+    .section-desc {
+      color: var(--ink-muted);
+      font-size: 0.98rem;
+    }
+
+    /* 3 pillars */
+    .pillars-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pillar-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .pillar-num {
+      display: inline-block;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      color: var(--coral);
+      background: #FFF1E7;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.2rem;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+
+    .pillar-card p {
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+    }
+
+    /* Rubro Switcher + 6 Instagram Posts */
+    .rubro-switcher {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .rubro-btn {
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 2px solid var(--border);
+      background: #FFFFFF;
+      color: var(--ink);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .rubro-btn.active {
+      background: var(--teal);
+      color: #FFFFFF;
+      border-color: var(--teal);
+    }
+
+    .posts-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .ig-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ig-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 14px;
+      border-bottom: 1px solid #F3F4F6;
+    }
+
+    .ig-user {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .ig-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #FFFFFF;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .ig-handle {
+      font-size: 0.84rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .ig-loc {
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+
+    .ig-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--coral);
+      background: #FFF1E7;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    /* Post Visual Square */
+    .ig-visual {
+      aspect-ratio: 1 / 1;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .ig-visual.v-teal {
+      background: #0F4C5C;
+      color: #FFFFFF;
+    }
+
+    .ig-visual.v-coral {
+      background: #EA580C;
+      color: #FFFFFF;
+    }
+
+    .ig-visual.v-cream {
+      background: #FDF6EC;
+      color: #0F4C5C;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ig-visual.v-ink {
+      background: #1E293B;
+      color: #FFFFFF;
+    }
+
+    .ig-vis-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .ig-visual.v-cream .ig-vis-tag {
+      background: var(--coral);
+      color: #FFFFFF;
+    }
+
+    .ig-vis-headline {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.48rem;
+      line-height: 1.12;
+      font-weight: 800;
+      margin: 12px 0 8px;
+    }
+
+    .ig-vis-sub {
+      font-size: 0.88rem;
+      opacity: 0.92;
+      line-height: 1.38;
+    }
+
+    .ig-vis-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.22);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .ig-visual.v-cream .ig-vis-foot {
+      border-top-color: rgba(15, 76, 92, 0.18);
+    }
+
+    .ig-body {
+      padding: 13px 14px 16px;
+      display: grid;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .ig-icons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      font-weight: 600;
+    }
+
+    .ig-caption {
+      font-size: 0.84rem;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+
+    .ig-caption strong {
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    .ig-tags {
+      font-size: 0.78rem;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* CTA Banner */
+    .cta-box {
+      background: var(--teal);
+      color: #FFFFFF;
+      border-radius: 18px;
+      padding: 36px 26px;
+      display: grid;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .cta-box h2 {
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+
+    .cta-box p {
+      color: #DCEEF2;
+      font-size: 0.98rem;
+    }
+
+    footer {
+      padding: 34px 0 46px;
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem;
+      color: var(--ink-muted);
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+      .pillars-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .posts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .cta-box {
+        grid-template-columns: 1.25fr 0.75fr;
+        padding: 42px 40px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .posts-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <span class="brand-dot"></span>
+        <span>Pack Inauguración · San Rafael</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#incluye">Qué incluye</a>
+        <a href="#seis-posts">Mirá tus 6 posts</a>
+        <a href="#contacto">Empezar</a>
+      </nav>
+      <a class="btn btn-coral" style="padding:9px 16px;font-size:0.88rem;" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20estoy%20por%20abrir%20o%20renovar%20mi%20local%20y%20quiero%20el%20Pack%20Inauguraci%C3%B3n%20(Web%20%2B%206%20Posts)." target="_blank" rel="noopener">
+        Quiero mi Pack
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="pill">¿Abrís o renovás tu local en San Rafael?</span>
+          <h1>Lanzá con <span>Web + 6 Posts</span> + WhatsApp listo desde el Día 1.</h1>
+          <p class="hero-sub">
+            Mientras acomodás estanterías, mercadería y cartelería, nosotros dejamos lista tu página web y tus primeras 6 publicaciones para Instagram y Facebook. Así abrís las puertas con el local lleno y las redes en marcha.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-coral" href="#seis-posts">Mirá los 6 posts de ejemplo</a>
+            <a class="btn btn-outline" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20consultar%20por%20el%20Pack%20Inauguraci%C3%B3n%20para%20mi%20local." target="_blank" rel="noopener">
+              Escribinos por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Resumen Pack Inauguración">
+          <h2>Todo listo para abrir y vender</h2>
+          <ul class="pack-checklist">
+            <li><span class="pack-bullet">1</span><span><strong>Tu página web profesional</strong> adaptada a celular con mapa, horarios y fotos de tu local.</span></li>
+            <li><span class="pack-bullet">2</span><span><strong>6 publicaciones diseñadas</strong> con textos listos para Instagram y Facebook.</span></li>
+            <li><span class="pack-bullet">3</span><span><strong>WhatsApp conectado</strong> desde la web y desde tus redes para recibir pedidos al instante.</span></li>
+            <li><span class="pack-bullet">4</span><span><strong>Prototipos gratis antes de pagar:</strong> elegís cómo se ve todo antes de arrancar.</span></li>
+          </ul>
+          <a class="btn btn-coral" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20ver%20prototipos%20gratis%20del%20Pack%20Inauguraci%C3%B3n." target="_blank" rel="noopener">
+            Pedir prototipo gratis
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="incluye">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Un solo paquete, cero dolores de cabeza</div>
+          <h2>Qué te entregamos con el Pack Inauguración</h2>
+          <p class="section-desc">Sin tener que coordinar con tres personas distintas. Resolvés tu vidriera digital y tus primeras semanas en redes de una sola vez.</p>
+        </div>
+        <div class="pillars-grid">
+          <article class="pillar-card">
+            <span class="pillar-num">Parte 1</span>
+            <h3>Página Web Comercial</h3>
+            <p>Rápida en cualquier celular, pensada para que los vecinos de San Rafael encuentren tu dirección, horarios, productos y te escriban en un toque.</p>
+          </article>
+          <article class="pillar-card">
+            <span class="pillar-num">Parte 2</span>
+            <h3>6 Posts Listos para Subir</h3>
+            <p>Te entregamos 6 placas gráficas con tu identidad y sus textos comerciales redactados para anunciar apertura, ofertas y pedidos por WhatsApp.</p>
+          </article>
+          <article class="pillar-card">
+            <span class="pillar-num">Parte 3</span>
+            <h3>WhatsApp + 6 Meses de Cambios</h3>
+            <p>Dejamos tu link comercial conectado y te acompañamos 6 meses con hasta 20 cambios mensuales en tu web (precios, promos, horarios).</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="seis-posts" class="section-sand">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Vista previa interactiva</div>
+          <h2>Mirá tus 6 Posts de Inauguración</h2>
+          <p class="section-desc">Elegí un rubro parecido al tuyo para ver exactamente cómo quedan las 6 publicaciones con sus textos listos para Instagram y Facebook.</p>
+        </div>
+
+        <div class="rubro-switcher" id="rubroSwitcher" role="tablist" aria-label="Elegir rubro">
+          <button type="button" class="rubro-btn active" data-rubro="super">Supermercado / Autoservicio</button>
+          <button type="button" class="rubro-btn" data-rubro="resto">Restaurante / Parrilla</button>
+          <button type="button" class="rubro-btn" data-rubro="ferre">Ferretería / Local Comercial</button>
+        </div>
+
+        <div class="posts-grid" id="postsGrid"></div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>¿Querés ver estos 6 posts y tu web con el nombre de tu local?</h2>
+            <p>Mandanos un WhatsApp con tu rubro y te armamos una muestra gratis para que lo veas con tus propios ojos.</p>
+          </div>
+          <div style="display:grid;gap:10px;">
+            <a id="ctaWaBtn" class="btn btn-coral" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20me%20gust%C3%B3%20el%20Pack%20Inauguraci%C3%B3n%20(Web%20%2B%206%20Posts).%20Quiero%20ver%20una%20muestra%20para%20mi%20local." target="_blank" rel="noopener">
+              WhatsApp +54 9 260 405-9284
+            </a>
+            <a class="btn btn-outline" href="mailto:romanfjose@gmail.com">
+              romanfjose@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>José Román Fredrin · Desarrollo Web y Sistemas</span>
+      <span>San Rafael, Mendoza · +54 9 260 405-9284</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const DATA = {
+        super: {
+          handle: '@autoservicio.elsol.sr',
+          initials: 'AS',
+          label: 'Supermercado / Autoservicio',
+          posts: [
+            {
+              num: 'Post 1 · Apertura',
+              theme: 'v-teal',
+              tag: '¡Gran Apertura!',
+              headline: 'Abrimos nuestras puertas en San Rafael',
+              sub: 'Góndolas completas, precios claros y atención de barrio todos los días.',
+              footLeft: 'Av. Hipólito Yrigoyen',
+              footRight: 'Te esperamos hoy',
+              caption: '¡Llegó el día! Abrimos Autoservicio El Sol con todo renovado para tus compras diarias: almacén, bebidas, limpieza y fiambrería fresca. Pasá a conocernos.',
+              tags: '#SanRafael #Mendoza #Autoservicio #Apertura'
+            },
+            {
+              num: 'Post 2 · Oferta destacada',
+              theme: 'v-coral',
+              tag: 'Oferta de lanzamiento',
+              headline: 'Combo Despensa Semanal con 15% OFF',
+              sub: 'Llevando aceites, fideos, arroz y puré de tomate pagás menos desde la primera compra.',
+              footLeft: 'Válido toda la semana',
+              footRight: 'Efectivo y transferencia',
+              caption: 'Arrancamos fuerte para cuidar tu bolsillo. Aprovechá nuestro Combo Despensa Semanal con 15% de descuento llevando en el local o pidiendo por WhatsApp.',
+              tags: '#OfertasSanRafael #Ahorro #ComprasDiarias'
+            },
+            {
+              num: 'Post 3 · Horarios y Ubicación',
+              theme: 'v-cream',
+              tag: 'Horarios de corrido',
+              headline: 'Lunes a Sábados de 8:30 a 21:30 hs',
+              sub: 'Domingos de 9:30 a 13:30 hs. Estacionamiento cómodo en la puerta.',
+              footLeft: 'San Rafael, Mendoza',
+              footRight: 'Ver mapa en la web',
+              caption: 'Guardá este post para tener siempre a mano nuestros horarios. Abrimos de corrido para que puedas pasar cuando salís del trabajo sin apuros.',
+              tags: '#SanRafaelMendoza #Horarios #TuBarrio'
+            },
+            {
+              num: 'Post 4 · Catálogo / Secciones',
+              theme: 'v-ink',
+              tag: 'Todo en un solo lugar',
+              headline: 'Almacén, Bebidas, Limpieza y Fiambrería',
+              sub: 'Marcas líderes y segundas marcas seleccionadas para que elijas a tu medida.',
+              footLeft: 'Stock renovado',
+              footRight: 'Consultá tu producto',
+              caption: '¿Qué encontrás en nuestras góndolas? Desde el pan fresco de la mañana hasta bebidas frías y artículos de limpieza por mayor y menor.',
+              tags: '#Almacen #Fiambreria #SanRafael'
+            },
+            {
+              num: 'Post 5 · Pedido por WhatsApp',
+              theme: 'v-teal',
+              tag: 'Sin hacer fila',
+              headline: 'Mandanos tu lista por WhatsApp y retirá listo',
+              sub: 'Te preparamos el pedido mientras venís o te lo enviamos a domicilio en la zona.',
+              footLeft: 'Link directo en bio',
+              footRight: 'Respuesta rápida',
+              caption: '¿Sin tiempo para recorrer pasillos? Escribinos por WhatsApp desde nuestra web, nos pasás tu lista y te avisamos apenas esté lista para retirar.',
+              tags: '#PedidosWhatsApp #DeliverySanRafael'
+            },
+            {
+              num: 'Post 6 · Promo fin de semana',
+              theme: 'v-coral',
+              tag: 'Especial Finde',
+              headline: 'Previas y Asado: Bebidas frías + Picada lista',
+              sub: 'Vinos mendocinos, cervezas heladas, quesos y fiambres cortados en el momento.',
+              footLeft: 'Viernes, Sábado y Domingo',
+              footRight: 'Pedilo por WhatsApp',
+              caption: 'El fin de semana se disfruta sin corridas. Pasá por tu picada recién cortada y bebidas bien frías. ¡Consultá las promos de viernes a domingo!',
+              tags: '#FindeEnSanRafael #Picada #Mendoza'
+            }
+          ]
+        },
+        resto: {
+          handle: '@parrilla.elcruce.sr',
+          initials: 'PC',
+          label: 'Restaurante / Parrilla',
+          posts: [
+            {
+              num: 'Post 1 · Apertura',
+              theme: 'v-ink',
+              tag: 'Inauguración',
+              headline: 'Prendimos los fuegos en San Rafael',
+              sub: 'Cortes a las brasas, empanadas mendocinas y vinos locales en un ambiente cálido.',
+              footLeft: 'Reservas abiertas',
+              footRight: 'San Rafael, Mendoza',
+              caption: '¡Abrimos Parrilla El Cruce! Te esperamos con el fuego encendido, cortes seleccionados a punto y la mejor atención para compartir en familia o con amigos.',
+              tags: '#GastronomiaSanRafael #Parrilla #Mendoza'
+            },
+            {
+              num: 'Post 2 · Oferta destacada',
+              theme: 'v-coral',
+              tag: 'Menú de Mediodía',
+              headline: 'Parrillada para 2 + Guarnición + Bebida',
+              sub: 'Porciones abundantes listas en minutos para disfrutar en el salón o retirar.',
+              footLeft: 'Martes a Viernes',
+              footRight: 'Consultá precio hoy',
+              caption: 'Cortá la semana con un buen almuerzo. Nuestro Menú de Mediodía incluye parrillada completa para dos, papas o ensalada y bebida a elección.',
+              tags: '#AlmuerzoSanRafael #Parrillada #MenuDelDia'
+            },
+            {
+              num: 'Post 3 · Horarios y Ubicación',
+              theme: 'v-cream',
+              tag: 'Cuándo venir',
+              headline: 'Mediodías de 12 a 15 hs · Noches de 20 a 00 hs',
+              sub: 'Salón climatizado y patio al aire libre. Fácil estacionamiento en la cuadra.',
+              footLeft: 'Mapa en nuestra web',
+              footRight: 'Martes a Domingo',
+              caption: 'Agendá nuestros días y horarios. Te esperamos tanto para almorzar tranquilo como para cenar a las brasas con amigos.',
+              tags: '#DondeComerSanRafael #Mendoza'
+            },
+            {
+              num: 'Post 4 · Carta / Especialidades',
+              theme: 'v-teal',
+              tag: 'Nuestra Carta',
+              headline: 'Asado banderita, vacío, pastas caseras y minutas',
+              sub: 'Opciones para toda la mesa, postres clásicos y cava de bodegas sanrafaelinas.',
+              footLeft: 'Ver carta completa',
+              footRight: 'Link en el perfil',
+              caption: 'Mirá nuestra carta completa directo desde el celular en nuestra página web: carnes a las brasas, empanadas al horno de barro y vinos de San Rafael.',
+              tags: '#VinosDeSanRafael #CartaDigital #Asado'
+            },
+            {
+              num: 'Post 5 · Pedido por WhatsApp',
+              theme: 'v-coral',
+              tag: 'Reservas y Delivery',
+              headline: 'Reservá tu mesa o pedí para llevar por WhatsApp',
+              sub: 'En dos mensajes confirmás tu lugar o encargás la cena para retirar sin espera.',
+              footLeft: 'Botón directo en web',
+              footRight: 'Atención inmediata',
+              caption: '¿Venís esta noche? Mandanos un WhatsApp con la cantidad de personas y te guardamos la mesa. También podés pedir para llevar y retirar calentito.',
+              tags: '#Reservas #TakeAwaySanRafael'
+            },
+            {
+              num: 'Post 6 · Promo fin de semana',
+              theme: 'v-ink',
+              tag: 'Noche de Finde',
+              headline: 'Sábado de Brasas + Copa de Malbec de cortesía',
+              sub: 'Reservando tu mesa antes de las 19 hs te recibimos con una copa de bienvenida.',
+              footLeft: 'Cupos limitados',
+              footRight: 'Reservá ahora',
+              caption: 'Planazo de sábado en San Rafael: reservá tu mesa por WhatsApp antes de las 19 hs y brindamos con una copa de Malbec sanrafaelino de bienvenida.',
+              tags: '#SabadoEnSanRafael #Malbec #Parrilla'
+            }
+          ]
+        },
+        ferre: {
+          handle: '@ferreteria.cuyo.sr',
+          initials: 'FC',
+          label: 'Ferretería / Local Comercial',
+          posts: [
+            {
+              num: 'Post 1 · Apertura',
+              theme: 'v-teal',
+              tag: 'Nuevo Local',
+              headline: 'Abrimos Ferretería Industrial Cuyo en San Rafael',
+              sub: 'Herramientas, fijaciones, electricidad y equipamiento para obra y hogar.',
+              footLeft: 'Atención a gremios',
+              footRight: 'San Rafael, Mendoza',
+              caption: '¡Inauguramos nuestro nuevo espacio! Estanterías completas, asesoramiento real en mostrador y stock permanente para tu casa, taller u obra.',
+              tags: '#FerreteriaSanRafael #Construccion #Mendoza'
+            },
+            {
+              num: 'Post 2 · Oferta destacada',
+              theme: 'v-coral',
+              tag: 'Promo Apertura',
+              headline: '10% OFF en Herramientas Eléctricas y Estanterías',
+              sub: 'Descuento especial lanzamiento para clientes particulares, talleres y contratistas.',
+              footLeft: 'Stock disponible',
+              footRight: 'Consultá por WhatsApp',
+              caption: 'Aprovechá nuestra semana de apertura: 10% de descuento en herramientas eléctricas seleccionadas y estanterías metálicas reforzadas.',
+              tags: '#Herramientas #Estanterias #SanRafael'
+            },
+            {
+              num: 'Post 3 · Horarios y Ubicación',
+              theme: 'v-cream',
+              tag: 'Horarios de atención',
+              headline: 'Lunes a Viernes 8:30 a 13 y 16:30 a 20:30 hs',
+              sub: 'Sábados de 9 a 13:30 hs. Carga cómoda para camionetas en la puerta.',
+              footLeft: 'Ver ubicación en web',
+              footRight: 'San Rafael, Mendoza',
+              caption: 'Te esperamos en horario comercial y sábados por la mañana para que nunca te frenes en medio de un arreglo o una obra.',
+              tags: '#Obra #Taller #SanRafaelMendoza'
+            },
+            {
+              num: 'Post 4 · Catálogo / Rubros',
+              theme: 'v-ink',
+              tag: 'Rubros completos',
+              headline: 'Fijaciones, Pinturería, Sanitario e Iluminación LED',
+              sub: 'Venta por menor y precios diferenciados por caja cerrada para empresas.',
+              footLeft: 'Catálogo online',
+              footRight: 'Presupuestos en el día',
+              caption: 'Desde un tornillo puntual hasta el pedido completo para tu depósito o local comercial. Mirá nuestros rubros en la web y pedí cotización sin cargo.',
+              tags: '#Mayorista #FerreteriaIndustrial #Cuyo'
+            },
+            {
+              num: 'Post 5 · Pedido por WhatsApp',
+              theme: 'v-teal',
+              tag: 'Presupuesto rápido',
+              headline: 'Mandanos foto o lista por WhatsApp y te cotizamos',
+              sub: 'Te confirmamos stock y te dejamos el pedido separado en mostrador.',
+              footLeft: 'Sin perder tiempo',
+              footRight: 'Link directo en bio',
+              caption: '¿Necesitás un repuesto o presupuesto de materiales? Sacale foto, mandanos un WhatsApp y te respondemos rápido con precio y disponibilidad.',
+              tags: '#Presupuestos #WhatsAppComercial #SanRafael'
+            },
+            {
+              num: 'Post 6 · Promo fin de semana',
+              theme: 'v-coral',
+              tag: 'Sábado de Arreglos',
+              headline: 'Combo Pintura + Rodillo + Cinta listo para renovar',
+              sub: 'Todo lo que te hace falta para pintar y ordenar tu casa este fin de semana.',
+              footLeft: 'Solo viernes y sábado',
+              footRight: 'Consultá colores',
+              caption: '¿Este sábado toca renovar ambientes? Llevate nuestro Combo Pintura con accesorios incluidos y arrancá sin que te falte nada.',
+              tags: '#HogarSanRafael #Pintureria #Finde'
+            }
+          ]
+        }
+      };
+
+      const postsGrid = document.getElementById('postsGrid');
+      const buttons = document.querySelectorAll('#rubroSwitcher .rubro-btn');
+      const ctaWaBtn = document.getElementById('ctaWaBtn');
+
+      function renderRubro(key) {
+        const rubro = DATA[key];
+        if (!rubro) return;
+
+        postsGrid.innerHTML = rubro.posts.map(function (p) {
+          return (
+            '<article class="ig-card">' +
+              '<div class="ig-top">' +
+                '<div class="ig-user">' +
+                  '<span class="ig-avatar">' + rubro.initials + '</span>' +
+                  '<div>' +
+                    '<div class="ig-handle">' + rubro.handle + '</div>' +
+                    '<div class="ig-loc">San Rafael, Mendoza</div>' +
+                  '</div>' +
+                '</div>' +
+                '<span class="ig-num">' + p.num + '</span>' +
+              '</div>' +
+              '<div class="ig-visual ' + p.theme + '">' +
+                '<div>' +
+                  '<span class="ig-vis-tag">' + p.tag + '</span>' +
+                  '<h3 class="ig-vis-headline">' + p.headline + '</h3>' +
+                  '<p class="ig-vis-sub">' + p.sub + '</p>' +
+                '</div>' +
+                '<div class="ig-vis-foot">' +
+                  '<span>' + p.footLeft + '</span>' +
+                  '<span>' + p.footRight + '</span>' +
+                '</div>' +
+              '</div>' +
+              '<div class="ig-body">' +
+                '<div class="ig-icons">' +
+                  '<span>♡ Me gusta · 💬 Comentar · ↗ Compartir</span>' +
+                  '<span>Guardar</span>' +
+                '</div>' +
+                '<p class="ig-caption"><strong>' + rubro.handle + '</strong>' + p.caption + '</p>' +
+                '<div class="ig-tags">' + p.tags + '</div>' +
+              '</div>' +
+            '</article>'
+          );
+        }).join('');
+
+        const msg =
+          'Hola José, estuve viendo el Pack Inauguración (Web + 6 Posts) para el rubro ' +
+          rubro.label +
+          '. Quiero ver una muestra gratis para mi local.';
+        ctaWaBtn.href = 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg);
+      }
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          buttons.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          renderRubro(btn.getAttribute('data-rubro'));
+        });
+      });
+
+      renderRubro('super');
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuestas Web San Rafael — José &amp; Gabi</title>
+  <meta name="description" content="Catálogo interactivo de 10 propuestas web, redes y sistemas de gestión para comercios de San Rafael y Cuyo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FAF6F0;
+      --surface: #FFFFFF;
+      --surface-warm: #F4ECE1;
+      --ink: #1F2421;
+      --muted: #5C5B55;
+      --border: #E5DBD0;
+      --accent: #9E3F2A;
+      --accent-dark: #7F301F;
+      --accent-soft: #F9EAE6;
+      --olive: #2F5A45;
+      --olive-soft: #E8F2EC;
+      --gold-soft: #F8F0DF;
+      --gold-ink: #7A5413;
+      --radius: 16px;
+      --shadow: 0 2px 10px rgba(31, 36, 33, 0.05);
+      --shadow-hover: 0 10px 26px rgba(31, 36, 33, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Header */
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #FFF;
+      display: grid;
+      place-items: center;
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-warm);
+      color: var(--ink);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 28px 0 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.75rem, 5vw, 2.55rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 660px;
+    }
+
+    /* Coffee Summary Card */
+    .coffee-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin: 20px 0 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .coffee-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .coffee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .coffee-toggle {
+      background: var(--surface-warm);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .coffee-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .coffee-stat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .coffee-stat-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .coffee-stat-value {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .coffee-stat-note {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .coffee-checklist {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
+      display: grid;
+      gap: 8px;
+    }
+
+    .coffee-checklist-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .checklist-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .check-pill {
+      background: var(--olive-soft);
+      color: var(--olive);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 11px;
+      border-radius: 10px;
+    }
+
+    .coffee-body.is-collapsed {
+      display: none;
+    }
+
+    /* Filter Bar */
+    .filter-section {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(250, 246, 240, 0.94);
+      backdrop-filter: blur(8px);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(229, 219, 208, 0.7);
+      margin-bottom: 20px;
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .filters::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .filter-btn.is-active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .result-count {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding-bottom: 40px;
+    }
+
+    .proto-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .proto-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      border-color: #D2C2B0;
+    }
+
+    .proto-card.is-hidden {
+      display: none;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .proto-num {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 999px;
+    }
+
+    .tag-clientes {
+      background: var(--surface-warm);
+      color: var(--ink);
+    }
+
+    .tag-gestion {
+      background: var(--olive-soft);
+      color: var(--olive);
+    }
+
+    .tag-pack {
+      background: var(--gold-soft);
+      color: var(--gold-ink);
+    }
+
+    .proto-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.24rem;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .proto-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid #F0E8DE;
+      gap: 10px;
+    }
+
+    .proto-fit {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .open-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .proto-card:hover .open-cta {
+      color: var(--accent-dark);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer strong {
+      color: var(--ink);
+    }
+
+    /* Responsive */
+    @media (min-width: 680px) {
+      .container {
+        padding: 0 24px;
+      }
+
+      .coffee-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .hero {
+        padding: 36px 0 22px;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">JG</div>
+        <div class="brand-text">
+          <strong>Propuestas Web San Rafael</strong>
+          <span>Alianza José &amp; Gabi · Catálogo en vivo</span>
+        </div>
+      </div>
+      <div class="location-pill">San Rafael · Mendoza · Cuyo</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>10 propuestas listas para mostrar en la mesa</h1>
+        <p>Elegí un estilo según el comercio que visitás. Todo pensado para verse claro en el celular, sin vueltas y con foco en vender más y ordenar el negocio.</p>
+
+        <!-- Tarjeta resumen para el café -->
+        <aside class="coffee-card" aria-label="Resumen para la charla del café">
+          <div class="coffee-header">
+            <span class="coffee-badge">Resumen para el café</span>
+            <button type="button" class="coffee-toggle" id="coffeeToggle" aria-expanded="true">Ocultar resumen</button>
+          </div>
+
+          <div class="coffee-body" id="coffeeBody">
+            <div class="coffee-grid">
+              <div class="coffee-stat">
+                <div class="coffee-stat-label">Número simple</div>
+                <div class="coffee-stat-value">$100.000 base / comercio</div>
+                <div class="coffee-stat-note">10 clientes al mes = $1.000.000/mes con costo operativo mínimo.</div>
+              </div>
+              <div class="coffee-stat">
+                <div class="coffee-stat-label">Formato Producto</div>
+                <div class="coffee-stat-value">Web + 6 posts + 6 meses soporte</div>
+                <div class="coffee-stat-note">Hasta 20 cambios/mes al inicio; luego 5 cambios/mes o mantenimiento bajo opcional (horizonte 2 años).</div>
+              </div>
+              <div class="coffee-stat">
+                <div class="coffee-stat-label">Diferencial real</div>
+                <div class="coffee-stat-value">Prototipo GRATIS + Gestión real</div>
+                <div class="coffee-stat-note">El cliente ve su web antes de pagar. Y cuando crece, le armamos stock, caja y pedidos a medida.</div>
+              </div>
+            </div>
+
+            <div class="coffee-checklist">
+              <div class="coffee-checklist-title">3 definiciones rápidas para salir andando hoy:</div>
+              <div class="checklist-items">
+                <span class="check-pill">1. Comisión / reparto por venta</span>
+                <span class="check-pill">2. Elegir 2 o 3 modelos bandera</span>
+                <span class="check-pill">3. Primeros 3 clientes piloto</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="filter-section" aria-label="Filtrar propuestas">
+      <div class="container filter-row">
+        <div class="filters" role="tablist" aria-label="Categorías de prototipos">
+          <button type="button" class="filter-btn is-active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
+          <button type="button" class="filter-btn" data-filter="clientes" role="tab" aria-selected="false">Para mostrar a clientes</button>
+          <button type="button" class="filter-btn" data-filter="gestion" role="tab" aria-selected="false">Venta de Gestión</button>
+          <button type="button" class="filter-btn" data-filter="pack" role="tab" aria-selected="false">Pack Estanterías + Redes</button>
+        </div>
+        <div class="result-count" id="resultCount">Mostrando 10 de 10 propuestas</div>
+      </div>
+    </section>
+
+    <!-- Grilla de los 10 prototipos -->
+    <section class="container" aria-label="Listado de 10 propuestas">
+      <div class="cards-grid" id="cardsGrid">
+
+        <a class="proto-card" href="./01-san-rafael-directo/" data-tags="clientes">
+          <div>
+            <div class="card-top">
+              <span class="proto-num">01</span>
+              <div class="card-tags">
+                <span class="tag tag-clientes">Para clientes</span>
+              </div>
+            </div>
+            <h2 class="proto-title">San Rafael Directo</h2>
+            <p class="proto-desc">Editorial cálido mendocino, corto y sin vueltas. Pensado para el comerciante que lee rápido desde el celular.</p>
+          </div>
+          <div class="card-footer">
+            <span class="proto-fit">Ideal: presentación rápida general</span>
+            <span class="open-cta">Abrir propuesta &rarr;</span>
+          </div>
+        </a>
+
+        <a class="proto-card" href="./02-comercio-y-estanterias/" data-tags="pack clientes">
+          <div>
+            <div class="card-top">
+              <span class="proto-num">02</span>
+              <div class="card-tags">
+                <span class="tag tag-pack">Estanterías + Redes</span>
+              </div>
+            </div>
+            <h2 class="proto-title">Tu Local Equipado y Digital</h2>
+            <p class="proto-desc">Alianza Estanterías + Combo de Apertura interactivo. Conecta la entrega física del local con su salida digital.</p>
+          </div>
+          <div class="card-footer">
+            <span class="proto-fit">Ideal: cross-sell directo de Gabi</span>
+            <span class="open-cta">Abrir propuesta &rarr;</span>
+          </div>
+        </a>
+
+        <a class="proto-card" href="./03-vitrina-gastronomica/" data-tags="clientes">
+          <div>
+            <div class="card-top">
+              <span class="proto-num">03</span>
+              <div class="card-tags">
+                <span class="tag tag-clientes">Para clientes</span>
+              </div>
+            </div>
+            <h2 class="proto-title">Vitrina San Rafael</h2>
+            <p class="proto-desc">3 ejemplos interactivos listos para cambiar con un toque: Parrilla, Autoservicio y Bodega.</p>
+          </div>
+          <div class="card-footer">
+            <span class="proto-fit">Ideal: mostrar variedad de rubros</span>
+            <span class="open-cta">Abrir propuesta &rarr;</span>
+          </div>
+        </a>
+
+        <a class="proto-card" href="./04-asistente-real/" data-tags="clientes gestion">
+          <div>
+            <div class="card-top">
+              <span class="proto-num">04</span>
+              <div class="card-tags">
+                <span class="tag tag-clientes">Para clientes</span>
+                <span class="tag tag-gestion">Gestión</span>
+              </div>
+            </div>
+            <h2 class="proto-title">Asistente Cotizador Real</h2>
+            <p class="proto-desc">Bot conversacional inteligente paso a paso que pregunta como un vendedor de verdad y arma el pedido para WhatsApp.</p>
+          </div>
+          <div class="card-footer">
+            <span class="proto-fit">Ideal: superar el feedback del bot</span>
+            <span class="open-cta">Abrir propuesta &rarr;</span>
+          </div>
+        </a>
+
+        <a class="proto-card" href="./05-espejo-en-vivo/" data-tags="clientes">
+          <div>
+            <div class="card-top">
+              <span class="proto-num">05</span>
+              <div class="card-tags">
+                <span class="tag tag-clientes">Para clientes</span>
+              </div>
+            </div>
+            <h2 class="proto-title">Mirá Tu Web En Vivo</h2>
+            <p class="proto-desc">Generador instantáneo de vista previa para escribir el nombre del local del cliente y mostrárselo armado en el momento.</p>
+          </div>
+          <div class="card-footer">
+            <span class="proto-fit">Ideal: efecto "ver para creer"</span>
+            <span class="open-cta">Abrir propuesta &rarr;</span>
+          </div>
+        </a>
+
+        <a class="proto-card" href="./06-gestion-a-medida/" data-tags="gestion">
+          <div>
+            <div class="card-top">
+              <span class="proto-num">06</span>
+              <div class="card-tags">
+                <span class="tag tag-gestion">Venta de Gestión</span>
+              </div>
+            </div>
+            <h2 class="proto-title">Gestión Real a Medida</h2>
+            <p class="proto-desc">Demo interactivo de stock por estantería, caja diaria y alertas de reposición. El diferencial técnico real.</p>
+          </div>
+          <div class="card-footer">
+            <span class="proto-fit">Ideal: autoservicios y depósitos</span>
+            <span class="open-cta">Abrir propuesta &rarr;</span>
+          </div>
+        </a>
+
+        <a class="proto-card" href="./07-pack-producto/" data-tags="pack">
+          <div>
+            <div class="card-top">
+              <span class="proto-num">07</span>
+              <div class="card-tags">
+                <span class="tag tag-pack">Pack Producto</span>
+              </div>
+            </div>
+            <h2 class="proto-title">Web Como Producto</h2>
+            <p class="proto-desc">Paquete cerrado y transparente: 6 meses de soporte, hasta 20 cambios por mes y continuidad clara sin letras chicas.</p>
+          </div>
+          <div class="card-footer">
+            <span class="proto-fit">Ideal: cerrar precio sin vueltas</span>
+            <span class="open-cta">Abrir propuesta &rarr;</span>
+          </div>
+        </a>
+
+        <a class="proto-card" href="./08-ferreteria-y-mayorista/" data-tags="clientes gestion">
+          <div>
+            <div class="card-top">
+              <span class="proto-num">08</span>
+              <div class="card-tags">
+                <span class="tag tag-clientes">Para clientes</span>
+                <span class="tag tag-gestion">Gestión</span>
+              </div>
+            </div>
+            <h2 class="proto-title">Ferreterías y Mayoristas</h2>
+            <p class="proto-desc">Vertical industrial con catálogo rápido por rubro y armado de pedido directo a WhatsApp.</p>
+          </div>
+          <div class="card-footer">
+            <span class="proto-fit">Ideal: ferreterías y corralones</span>
+            <span class="open-cta">Abrir propuesta &rarr;</span>
+          </div>
+        </a>
+
+        <a class="proto-card" href="./09-estudio-jose-roman/" data-tags="clientes gestion">
+          <div>
+            <div class="card-top">
+              <span class="proto-num">09</span>
+              <div class="card-tags">
+                <span class="tag tag-clientes">Para clientes</span>
+                <span class="tag tag-gestion">Gestión</span>
+              </div>
+            </div>
+            <h2 class="proto-title">Estudio José Román</h2>
+            <p class="proto-desc">Marca personal de confianza en San Rafael con respaldo técnico real y respuestas claras a las dudas de siempre.</p>
+          </div>
+          <div class="card-footer">
+            <span class="proto-fit">Ideal: dar respaldo personal</span>
+            <span class="open-cta">Abrir propuesta &rarr;</span>
+          </div>
+        </a>
+
+        <a class="proto-card" href="./10-redes-mas-web/" data-tags="pack">
+          <div>
+            <div class="card-top">
+              <span class="proto-num">10</span>
+              <div class="card-tags">
+                <span class="tag tag-pack">Estanterías + Redes</span>
+              </div>
+            </div>
+            <h2 class="proto-title">Pack Inauguración: Web + 6 Posts</h2>
+            <p class="proto-desc">Enfoque comercial listo para lanzar el local, con vista previa de 6 posts de Instagram adaptados por rubro.</p>
+          </div>
+          <div class="card-footer">
+            <span class="proto-fit">Ideal: locales nuevos en apertura</span>
+            <span class="open-cta">Abrir propuesta &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>Propuestas Web San Rafael — José &amp; Gabi</strong></div>
+      <div>Herramienta comercial interna para mostrar en vivo desde el celular. Prototipos gratuitos antes de contratar y desarrollo real a medida cuando el negocio crece.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.proto-card');
+      const resultCount = document.getElementById('resultCount');
+      const coffeeToggle = document.getElementById('coffeeToggle');
+      const coffeeBody = document.getElementById('coffeeBody');
+
+      function applyFilter(filterKey) {
+        let visible = 0;
+        cards.forEach((card) => {
+          const tags = (card.getAttribute('data-tags') || '').split(/\s+/);
+          const match = filterKey === 'todos' || tags.includes(filterKey);
+          card.classList.toggle('is-hidden', !match);
+          if (match) visible += 1;
+        });
+
+        resultCount.textContent =
+          visible === 1
+            ? 'Mostrando 1 de 10 propuestas'
+            : `Mostrando ${visible} de 10 propuestas`;
+      }
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach((b) => {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-selected', 'true');
+          applyFilter(btn.getAttribute('data-filter'));
+        });
+      });
+
+      coffeeToggle.addEventListener('click', () => {
+        const collapsed = coffeeBody.classList.toggle('is-collapsed');
+        coffeeToggle.setAttribute('aria-expanded', String(!collapsed));
+        coffeeToggle.textContent = collapsed ? 'Mostrar resumen' : 'Ocultar resumen';
+      });
+    })();
+  </script>
+</body>
+</html>
