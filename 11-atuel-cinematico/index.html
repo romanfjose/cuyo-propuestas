@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cañón del Atuel Cinemático · Artesanía Web en San Rafael</title>
-  <meta name="description" content="Diseño web y sistemas a medida en San Rafael, Mendoza. Prototipos gratis antes de pagar, desde $100.000, con trato directo." />
+  <meta name="description" content="Diseño web y sistemas a medida en San Rafael, Mendoza. Prototipos gratis antes de decidir, con trato directo y presupuesto a medida." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -27,8 +27,6 @@
     }
 
     html {
-      scroll-behavior: smooth;
-      scroll-snap-type: y mandatory;
       background: var(--ink);
     }
 
@@ -256,7 +254,6 @@
 
     .chapter {
       min-height: 100vh;
-      scroll-snap-align: start;
       display: flex;
       align-items: center;
       padding: 96px 24px 64px;
@@ -267,6 +264,20 @@
       width: 100%;
       max-width: 1060px;
       margin: 0 auto;
+      opacity: 0.22;
+      transform: translate3d(0, 42px, 0) scale(0.985);
+      filter: blur(2px);
+      transition:
+        opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    .chapter.is-active .chapter-inner {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
     }
 
     .chapter-num {
@@ -616,7 +627,7 @@
 
   <main>
     <!-- CAPÍTULO 1 -->
-    <section id="cap-1" class="chapter">
+    <section id="cap-1" class="chapter is-active">
       <div class="chapter-inner">
         <span class="chapter-num">Capítulo 01 · El Oficio en San Rafael</span>
         <h1 class="display-title">
@@ -655,14 +666,14 @@
 
         <aside class="atelier-glass">
           <div class="price-callout">
-            <strong>$100.000</strong>
-            <span>Web Presentación<br />desde · pago claro</span>
+            <strong>Sin cargo</strong>
+            <span>Prototipo previo<br />presupuesto a medida</span>
           </div>
           <ul class="atelier-list">
             <li>Diseño a medida para celular y computadora, listo para Google.</li>
             <li>Botón directo a tu WhatsApp, horarios y mapa en San Rafael.</li>
-            <li>6 meses de soporte técnico real incluidos, sin cuotas sorpresa.</li>
-            <li>Hablás siempre directo con José Román Fredrin.</li>
+            <li>Acompañamiento y soporte técnico real, sin letras chicas.</li>
+            <li>Trato directo en San Rafael, adaptado a tu rubro.</li>
           </ul>
         </aside>
       </div>
@@ -683,7 +694,7 @@
         </div>
 
         <div class="pillar-stage" id="pillarStage" aria-live="polite">
-          <span class="pillar-kicker" id="pillarKicker">Presencia profesional · Desde $100.000</span>
+          <span class="pillar-kicker" id="pillarKicker">Presencia profesional · A medida</span>
           <h3 id="pillarHeading">Tu vidriera abierta las 24 horas</h3>
           <p id="pillarText">
             Una página rápida, cuidada y pensada para convertir visitas en mensajes de WhatsApp. Ideal para comercios, bodegas, cabañas, gastronomía y profesionales de San Rafael que quieren diferenciarse de verdad.
@@ -810,31 +821,139 @@
         });
       }
 
-      // 3. Chapter Rail Active State
-      const chapters = document.querySelectorAll('.chapter');
-      const railDots = document.querySelectorAll('.rail-dot');
+      // 3. Silky-Smooth Slow Modern Chapter Scroll Glide + Active State
+      const chapters = Array.from(document.querySelectorAll('.chapter'));
+      const railDots = Array.from(document.querySelectorAll('.rail-dot'));
+      let activeIndex = 0;
+      let isGliding = false;
+      let glideRaf = null;
+      let wheelDeltaAcc = 0;
+      let wheelResetTimer = null;
+
+      function setActiveChapter(idx) {
+        activeIndex = Math.max(0, Math.min(chapters.length - 1, idx));
+        chapters.forEach((ch, i) => {
+          ch.classList.toggle('is-active', i === activeIndex);
+        });
+        const id = chapters[activeIndex].id;
+        railDots.forEach((dot) => {
+          dot.classList.toggle('active', dot.dataset.cap === id);
+        });
+      }
+
+      function easeInOutQuint(t) {
+        return t < 0.5
+          ? 16 * t * t * t * t * t
+          : 1 - Math.pow(-2 * t + 2, 5) / 2;
+      }
+
+      function glideToChapter(targetIdx, duration) {
+        const clamped = Math.max(0, Math.min(chapters.length - 1, targetIdx));
+        const targetEl = chapters[clamped];
+        if (!targetEl) return;
+
+        if (glideRaf) cancelAnimationFrame(glideRaf);
+        const startY = window.scrollY;
+        const targetY = targetEl.offsetTop;
+        const distance = targetY - startY;
+
+        setActiveChapter(clamped);
+
+        if (Math.abs(distance) < 2) {
+          isGliding = false;
+          return;
+        }
+
+        isGliding = true;
+        const glideMs = duration || 1150;
+        const startTime = performance.now();
+
+        function step(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(1, elapsed / glideMs);
+          const eased = easeInOutQuint(progress);
+          window.scrollTo(0, startY + distance * eased);
+
+          if (progress < 1) {
+            glideRaf = requestAnimationFrame(step);
+          } else {
+            isGliding = false;
+            glideRaf = null;
+          }
+        }
+
+        glideRaf = requestAnimationFrame(step);
+      }
+
+      // Observe natural scroll (mobile / scrollbar drag) to keep active chapter synced
       const observer = new IntersectionObserver(
         (entries) => {
+          if (isGliding) return;
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              const id = entry.target.id;
-              railDots.forEach((dot) => {
-                dot.classList.toggle('active', dot.dataset.cap === id);
-              });
+              const idx = chapters.indexOf(entry.target);
+              if (idx !== -1) setActiveChapter(idx);
             }
           });
         },
-        { threshold: 0.55 }
+        { threshold: 0.45 }
       );
       chapters.forEach((ch) => observer.observe(ch));
+
+      // Smooth eased glide for all internal #cap-N links
+      document.querySelectorAll('a[href^="#cap-"]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const id = link.getAttribute('href').slice(1);
+          const idx = chapters.findIndex((c) => c.id === id);
+          if (idx !== -1) {
+            e.preventDefault();
+            glideToChapter(idx, 1150);
+          }
+        });
+      });
+
+      // Desktop mouse wheel / trackpad silky chapter glide (only when chapter fits viewport)
+      window.addEventListener('wheel', (e) => {
+        if (window.innerWidth < 820) return;
+        const current = chapters[activeIndex];
+        if (current && current.scrollHeight > window.innerHeight + 24) return;
+
+        e.preventDefault();
+        if (isGliding) return;
+
+        wheelDeltaAcc += e.deltaY;
+        clearTimeout(wheelResetTimer);
+        wheelResetTimer = setTimeout(() => { wheelDeltaAcc = 0; }, 160);
+
+        if (Math.abs(wheelDeltaAcc) >= 38) {
+          const dir = wheelDeltaAcc > 0 ? 1 : -1;
+          wheelDeltaAcc = 0;
+          const next = activeIndex + dir;
+          if (next >= 0 && next < chapters.length) {
+            glideToChapter(next, 1150);
+          }
+        }
+      }, { passive: false });
+
+      // Smooth keyboard navigation
+      window.addEventListener('keydown', (e) => {
+        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+        if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+          e.preventDefault();
+          glideToChapter(activeIndex + 1, 1150);
+        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+          e.preventDefault();
+          glideToChapter(activeIndex - 1, 1150);
+        }
+      });
 
       // 4. Interactive Pillar Switcher in Chapter 3
       const PILLARS = {
         web: {
-          kicker: 'Presencia profesional · Desde $100.000',
+          kicker: 'Presencia profesional · A medida',
           heading: 'Tu vidriera abierta las 24 horas',
           text: 'Una página rápida, cuidada y pensada para convertir visitas en mensajes de WhatsApp. Ideal para comercios, bodegas, cabañas, gastronomía y profesionales de San Rafael que quieren diferenciarse de verdad.',
-          meta: ['Prototipo sin cargo', '6 meses de soporte', 'Entrega en días']
+          meta: ['Prototipo sin cargo', 'Soporte técnico real', 'Entrega ágil']
         },
         redes: {
           kicker: 'Lanzamiento integral · Web + 6 Posts',
