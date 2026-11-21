@@ -15,8 +15,8 @@
       --bp-card: #132038;
       --grid-line: rgba(148, 163, 184, 0.09);
       --border: rgba(148, 163, 184, 0.22);
-      --amber: #F59E0B;
-      --amber-soft: rgba(245, 158, 11, 0.14);
+      --amber: #E04324;
+      --amber-soft: rgba(224, 67, 36, 0.16);
       --ink: #F8FAFC;
       --muted: #94A3B8;
       --green: #34D399;
@@ -694,7 +694,7 @@
           <span class="spec-tag">PLANO COMERCIAL // SAN RAFAEL, MENDOZA</span>
           <h1>Armás tus estanterías. <span>Nosotros conectamos tu web y tu stock.</span></h1>
           <p>
-            Pensado para supermercados, autoservicios, ferreterías, corralones y depósitos de Cuyo. Combinamos equipamiento físico con página web desde $100.000, catálogo por WhatsApp y control real por pasillo.
+            Pensado para supermercados, autoservicios, ferreterías, corralones y depósitos de Cuyo. Combinamos equipamiento físico con página web a medida, catálogo por WhatsApp y control real por pasillo.
           </p>
           <div class="hero-actions">
             <a class="btn btn-amber" href="#simulador">Configurar Estanterías 3D</a>
@@ -706,12 +706,12 @@
 
         <div class="callout-grid" aria-label="Especificaciones clave">
           <div class="callout-cell">
-            <span>Web Base</span>
-            <strong>$100.000</strong>
+            <span>Prototipo</span>
+            <strong>SIN CARGO</strong>
           </div>
           <div class="callout-cell">
-            <span>Soporte</span>
-            <strong>6 MESES</strong>
+            <span>Línea Real</span>
+            <strong>GALV + ROJO</strong>
           </div>
           <div class="callout-cell">
             <span>Sistemas</span>
@@ -817,13 +817,13 @@
               </div>
               <div class="chip-group" id="finishGroup">
                 <button type="button" class="opt-chip active" data-finish="industrial">
-                  <span class="swatch" style="background: #F59E0B;"></span>Acero + Ámbar
+                  <span class="swatch" style="background: linear-gradient(135deg, #B8C4D0 50%, #DC3B1E 50%);"></span>Galvanizado + Rojo-Naranja
                 </button>
                 <button type="button" class="opt-chip" data-finish="grafito">
-                  <span class="swatch" style="background: #475569;"></span>Gris Grafito
+                  <span class="swatch" style="background: linear-gradient(135deg, #334155 50%, #DC3B1E 50%);"></span>Grafito + Rojo-Naranja
                 </button>
                 <button type="button" class="opt-chip" data-finish="blanco">
-                  <span class="swatch" style="background: #F1F5F9;"></span>Blanco Comercial
+                  <span class="swatch" style="background: #F1F5F9;"></span>Blanco Epoxi Comercial
                 </button>
               </div>
             </div>
@@ -949,22 +949,25 @@
 
       const FINISHES = {
         industrial: {
-          name: 'Acero + Ámbar Industrial',
-          post: { top: '#64748B', front: '#1E3A5F', side: '#152A47', stroke: 'rgba(248,250,252,0.18)' },
-          beam: { top: '#FBBF24', front: '#F59E0B', back: '#D97706', side: '#B45309', stroke: 'rgba(11,18,32,0.45)' },
-          panel: { top: '#475569', front: '#334155', side: '#1E293B', stroke: 'rgba(248,250,252,0.14)' }
+          name: 'Galvanizado + Vigas Rojo-Naranja',
+          post: { top: '#DCE4EC', front: '#B4C0CC', side: '#7E8D9E', stroke: 'rgba(15,23,42,0.32)' },
+          beam: { top: '#F05336', front: '#DC3B1E', back: '#C22D14', side: '#991B0C', stroke: 'rgba(11,18,32,0.45)' },
+          panel: { top: '#E2E8F0', front: '#CBD5E1', side: '#94A3B8', stroke: 'rgba(15,23,42,0.22)' },
+          brace: '#9AA8B8'
         },
         grafito: {
-          name: 'Gris Grafito',
-          post: { top: '#64748B', front: '#334155', side: '#1E293B', stroke: 'rgba(248,250,252,0.16)' },
-          beam: { top: '#94A3B8', front: '#64748B', back: '#475569', side: '#334155', stroke: 'rgba(11,18,32,0.5)' },
-          panel: { top: '#475569', front: '#293548', side: '#1E293B', stroke: 'rgba(248,250,252,0.14)' }
+          name: 'Grafito + Vigas Rojo-Naranja',
+          post: { top: '#64748B', front: '#334155', side: '#1E293B', stroke: 'rgba(248,250,252,0.18)' },
+          beam: { top: '#F05336', front: '#DC3B1E', back: '#B92C14', side: '#991B0C', stroke: 'rgba(11,18,32,0.48)' },
+          panel: { top: '#64748B', front: '#475569', side: '#334155', stroke: 'rgba(248,250,252,0.14)' },
+          brace: '#475569'
         },
         blanco: {
-          name: 'Blanco Comercial',
-          post: { top: '#FFFFFF', front: '#E2E8F0', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.28)' },
-          beam: { top: '#FFFFFF', front: '#F1F5F9', back: '#E2E8F0', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.3)' },
-          panel: { top: '#F8FAFC', front: '#E2E8F0', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.2)' }
+          name: 'Blanco Epoxi Comercial',
+          post: { top: '#FFFFFF', front: '#E8EEF5', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.26)' },
+          beam: { top: '#FFFFFF', front: '#F1F5F9', back: '#E2E8F0', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.28)' },
+          panel: { top: '#FFFFFF', front: '#F1F5F9', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.2)' },
+          brace: '#CBD5E1'
         }
       };
 
@@ -1110,24 +1113,36 @@
           proj(totalW + 18, 0, -18),
           proj(totalW + 18, 0, depth + 18),
           proj(-18, 0, depth + 18)
-        ], 'rgba(245, 158, 11, 0.06)', 'rgba(245, 158, 11, 0.24)');
+        ], 'rgba(224, 67, 36, 0.07)', 'rgba(224, 67, 36, 0.28)');
 
         const woodPallet = { top: '#D9A066', front: '#B87B3E', side: '#8F5B28', stroke: 'rgba(11,18,32,0.45)' };
         const boxColors = [
-          { top: '#FCD34D', front: '#D97706', side: '#92400E', stroke: 'rgba(11,18,32,0.42)' },
-          { top: '#E2E8F0', front: '#94A3B8', side: '#475569', stroke: 'rgba(11,18,32,0.42)' },
-          { top: '#FDBA74', front: '#EA580C', side: '#9A3412', stroke: 'rgba(11,18,32,0.42)' },
-          { top: '#6EE7B7', front: '#10B981', side: '#047857', stroke: 'rgba(11,18,32,0.42)' }
+          { top: '#D4A874', front: '#B58450', side: '#8A6034', stroke: 'rgba(11,18,32,0.42)' },
+          { top: '#E8EEF4', front: '#CBD5E1', side: '#94A3B8', stroke: 'rgba(11,18,32,0.35)' },
+          { top: '#C99B68', front: '#A47544', side: '#7A522B', stroke: 'rgba(11,18,32,0.42)' },
+          { top: '#F1F5F9', front: '#DCE4EC', side: '#94A3B8', stroke: 'rgba(11,18,32,0.35)' }
         ];
 
         let placed = 0;
+        const braceLines = [];
 
         if (state.type === 'selectivo') {
-          // Heavy warehouse uprights + amber load beams + Euro pallets with cartons
+          // Heavy warehouse galvanized perforated uprights + Z-bracing + red-orange load beams + pallets
           for (let b = 0; b <= state.bays; b++) {
             const px = b * bayW;
             drawList.push(...makePrism(px - 3, 0, 0, 6, totalH, 6, fin.post, proj));
             drawList.push(...makePrism(px - 3, 0, depth - 6, 6, totalH, 6, fin.post, proj));
+            // Real galvanized Z-diagonal bracing between front & back uprights
+            const steps = Math.max(3, state.levels + 1);
+            const stepH = (totalH - 12) / steps;
+            for (let k = 0; k < steps; k++) {
+              const yA = 8 + k * stepH;
+              const yB = yA + stepH;
+              const zStart = k % 2 === 0 ? 3 : depth - 3;
+              const zEnd = k % 2 === 0 ? depth - 3 : 3;
+              braceLines.push([proj(px, yA, zStart), proj(px, yB, zEnd)]);
+              braceLines.push([proj(px, yA, 3), proj(px, yA, depth - 3)]);
+            }
           }
           for (let l = 0; l < state.levels; l++) {
             const sy = l * levelH + 8;
@@ -1222,6 +1237,19 @@
         drawList.sort((a, b) => b.depth - a.depth);
         for (let i = 0; i < drawList.length; i++) {
           drawPoly(drawList[i].pts, drawList[i].fill, drawList[i].stroke);
+        }
+
+        if (braceLines.length > 0) {
+          ctx.strokeStyle = fin.brace || '#9AA8B8';
+          ctx.lineWidth = 2.1;
+          ctx.lineCap = 'round';
+          for (let i = 0; i < braceLines.length; i++) {
+            const seg = braceLines[i];
+            ctx.beginPath();
+            ctx.moveTo(seg[0].x, seg[0].y);
+            ctx.lineTo(seg[1].x, seg[1].y);
+            ctx.stroke();
+          }
         }
       }
 
