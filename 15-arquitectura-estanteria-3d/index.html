@@ -756,20 +756,23 @@
           <div class="viewport-card">
             <div class="viewport-bar">
               <span>MODELO 3D // <strong id="viewSpec">RACK SELECTIVO · 2 CUERPOS · 4 NIVELES</strong></span>
-              <span>ARRASTRÁ PARA ROTAR</span>
+              <span>ARRASTRÁ EN 360° (H + V) · RUEDA ZOOM</span>
             </div>
 
-            <div class="canvas-wrap" id="canvasWrap">
+            <div class="canvas-wrap" id="canvasWrap" style="touch-action: none; cursor: grab;">
               <canvas id="rackCanvas"></canvas>
             </div>
 
             <div class="angle-controls">
               <label class="angle-slider-wrap">
-                <span>ÁNGULO <strong id="angleVal" style="color: var(--amber);">32°</strong></span>
-                <input type="range" id="angleSlider" min="-65" max="65" value="32" />
+                <span>ÓRBITA 3D <strong id="angleVal" style="color: var(--amber);">32° · 22°</strong></span>
+                <input type="range" id="angleSlider" min="-180" max="180" value="32" />
               </label>
+              <button type="button" class="btn btn-wire" id="resetViewBtn" style="padding: 7px 11px; font-size: 0.78rem;">
+                Centrar
+              </button>
               <button type="button" class="btn btn-wire" id="autoSpinBtn" style="padding: 7px 12px; font-size: 0.78rem;">
-                Rotar automático
+                Rotar 360°
               </button>
             </div>
           </div>
@@ -983,9 +986,12 @@
         levels: 3,
         boxes: 10,
         angleDeg: 32,
+        pitchDeg: 22,
+        zoom: 1,
         autoSpin: false,
         dragging: false,
-        lastX: 0
+        lastX: 0,
+        lastY: 0
       };
 
       const baysVal = document.getElementById('baysVal');
@@ -996,6 +1002,7 @@
       const loadItemLabel = document.getElementById('loadItemLabel');
       const angleSlider = document.getElementById('angleSlider');
       const angleVal = document.getElementById('angleVal');
+      const resetViewBtn = document.getElementById('resetViewBtn');
       const autoSpinBtn = document.getElementById('autoSpinBtn');
       const viewSpec = document.getElementById('viewSpec');
       const readoutTitle = document.getElementById('readoutTitle');
@@ -1067,6 +1074,7 @@
         ];
         const faces = [
           { pts: [v[3], v[2], v[6], v[7]], fill: colors.top, stroke: colors.stroke },
+          { pts: [v[0], v[1], v[5], v[4]], fill: colors.side, stroke: colors.stroke },
           { pts: [v[0], v[1], v[2], v[3]], fill: colors.front, stroke: colors.stroke },
           { pts: [v[4], v[5], v[6], v[7]], fill: colors.back || colors.front, stroke: colors.stroke },
           { pts: [v[1], v[5], v[6], v[2]], fill: colors.side, stroke: colors.stroke },
@@ -1093,17 +1101,17 @@
         }
 
         const yaw = (state.angleDeg * Math.PI) / 180;
-        const pitch = 0.34;
+        const pitch = (state.pitchDeg * Math.PI) / 180;
         const bayW = 94;
         const depth = state.depthCm === 40 ? 34 : state.depthCm === 60 ? 48 : 66;
         const levelH = 44;
         const totalW = state.bays * bayW;
         const totalH = state.levels * levelH + 18;
-        const scale = Math.min(w / (totalW + 170), h / (totalH + 135), 1.32);
+        const scale = Math.min(w / (totalW + 170), h / (totalH + 135), 1.32) * state.zoom;
         const cx = w / 2;
-        const cy = h / 2 + totalH * scale * 0.36;
+        const cy = h / 2 + totalH * scale * 0.12;
 
-        const proj = (x, y, z) => project(x - totalW / 2, y, z - depth / 2, yaw, pitch, cx, cy, scale);
+        const proj = (x, y, z) => project(x - totalW / 2, y - totalH * 0.42, z - depth / 2, yaw, pitch, cx, cy, scale);
         const fin = FINISHES[state.finish];
         const drawList = [];
 
@@ -1265,7 +1273,7 @@
         bayWidthHint.textContent = 'Ancho ' + cfg.bayWidthM.toFixed(2) + ' m c/u';
         levelLoadHint.textContent = cfg.kgPerLevel.toLocaleString('es-AR') + ' kg por nivel';
         loadItemLabel.textContent = cfg.itemLabel;
-        angleVal.textContent = Math.round(state.angleDeg) + '°';
+        angleVal.textContent = Math.round(state.angleDeg) + '° · ' + Math.round(state.pitchDeg) + '°';
         angleSlider.value = Math.round(state.angleDeg);
 
         const occ = cap > 0 ? Math.round((state.boxes / cap) * 100) : 0;
@@ -1344,40 +1352,64 @@
 
       angleSlider.addEventListener('input', () => {
         state.autoSpin = false;
-        autoSpinBtn.textContent = 'Rotar automático';
+        autoSpinBtn.textContent = 'Rotar 360°';
         state.angleDeg = Number(angleSlider.value);
+        updateUI();
+      });
+
+      resetViewBtn.addEventListener('click', () => {
+        state.autoSpin = false;
+        autoSpinBtn.textContent = 'Rotar 360°';
+        state.angleDeg = 32;
+        state.pitchDeg = 22;
+        state.zoom = 1;
         updateUI();
       });
 
       autoSpinBtn.addEventListener('click', () => {
         state.autoSpin = !state.autoSpin;
-        autoSpinBtn.textContent = state.autoSpin ? 'Pausar rotación' : 'Rotar automático';
+        autoSpinBtn.textContent = state.autoSpin ? 'Pausar rotación' : 'Rotar 360°';
       });
 
       wrap.addEventListener('pointerdown', (e) => {
         state.dragging = true;
         state.autoSpin = false;
-        autoSpinBtn.textContent = 'Rotar automático';
+        autoSpinBtn.textContent = 'Rotar 360°';
         state.lastX = e.clientX;
+        state.lastY = e.clientY;
+        wrap.style.cursor = 'grabbing';
+        if (wrap.setPointerCapture) wrap.setPointerCapture(e.pointerId);
       });
       window.addEventListener('pointermove', (e) => {
         if (!state.dragging) return;
         const dx = e.clientX - state.lastX;
+        const dy = e.clientY - state.lastY;
         state.lastX = e.clientX;
-        state.angleDeg = Math.max(-65, Math.min(65, state.angleDeg + dx * 0.45));
+        state.lastY = e.clientY;
+        let nextAngle = state.angleDeg + dx * 0.55;
+        if (nextAngle > 180) nextAngle -= 360;
+        if (nextAngle < -180) nextAngle += 360;
+        state.angleDeg = nextAngle;
+        state.pitchDeg = Math.max(-14, Math.min(72, state.pitchDeg + dy * 0.4));
         updateUI();
       });
       window.addEventListener('pointerup', () => {
         state.dragging = false;
+        wrap.style.cursor = 'grab';
       });
 
-      let spinDir = 1;
+      wrap.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const factor = e.deltaY > 0 ? 0.94 : 1.06;
+        state.zoom = Math.max(0.7, Math.min(1.65, state.zoom * factor));
+        renderScene();
+      }, { passive: false });
+
       function loop() {
         if (state.autoSpin) {
-          state.angleDeg += 0.35 * spinDir;
-          if (state.angleDeg >= 55) spinDir = -1;
-          if (state.angleDeg <= -55) spinDir = 1;
-          angleVal.textContent = Math.round(state.angleDeg) + '°';
+          state.angleDeg += 0.55;
+          if (state.angleDeg > 180) state.angleDeg -= 360;
+          angleVal.textContent = Math.round(state.angleDeg) + '° · ' + Math.round(state.pitchDeg) + '°';
           angleSlider.value = Math.round(state.angleDeg);
           renderScene();
         }
