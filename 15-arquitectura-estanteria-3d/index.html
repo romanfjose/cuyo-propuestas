@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Estanterías &amp; Depósito 3D · Arquitectura Comercial + Gestión</title>
-  <meta name="description" content="Configurá 4 tipos reales de estanterías industriales en 3D y conectá tu local con página web y sistema de stock por pasillo en San Rafael, Mendoza." />
+  <meta name="description" content="Configurá 4 tipos reales de estanterías industriales en 3D WebGL 360° y conectá tu local con página web y sistema de stock por pasillo en San Rafael, Mendoza." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -15,8 +15,10 @@
       --bp-card: #132038;
       --grid-line: rgba(148, 163, 184, 0.09);
       --border: rgba(148, 163, 184, 0.22);
-      --amber: #E04324;
-      --amber-soft: rgba(224, 67, 36, 0.16);
+      --vermilion: #DC3B1E;
+      --vermilion-soft: rgba(220, 59, 30, 0.16);
+      --amber: #F59E0B;
+      --amber-soft: rgba(245, 158, 11, 0.14);
       --ink: #F8FAFC;
       --muted: #94A3B8;
       --green: #34D399;
@@ -84,11 +86,11 @@
     .brand-box {
       width: 34px;
       height: 34px;
-      border: 1.5px solid var(--amber);
+      border: 1.5px solid var(--vermilion);
       border-radius: 6px;
       display: grid;
       place-items: center;
-      color: var(--amber);
+      color: #FF6B4A;
       font-family: 'JetBrains Mono', monospace;
       font-weight: 700;
       font-size: 0.85rem;
@@ -151,7 +153,7 @@
     }
 
     .btn-wire {
-      background: rgba(16, 26, 46, 0.72);
+      background: rgba(16, 26, 46, 0.76);
       color: var(--ink);
       border-color: var(--border);
     }
@@ -164,7 +166,7 @@
     /* Architectural Hero */
     .arch-hero {
       position: relative;
-      min-height: 70vh;
+      min-height: 68vh;
       display: flex;
       align-items: flex-end;
       padding: 56px 0 44px;
@@ -207,7 +209,7 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.74rem;
       color: var(--amber);
-      background: rgba(11, 18, 32, 0.78);
+      background: rgba(11, 18, 32, 0.82);
       border: 1px solid rgba(245, 158, 11, 0.4);
       padding: 5px 11px;
       border-radius: 5px;
@@ -242,7 +244,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      background: rgba(11, 18, 32, 0.84);
+      background: rgba(11, 18, 32, 0.86);
       border: 1px solid var(--border);
       backdrop-filter: blur(10px);
       border-radius: 10px;
@@ -259,7 +261,7 @@
 
     .callout-cell strong {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       color: var(--amber);
     }
 
@@ -313,19 +315,19 @@
     }
 
     .rack-tab:hover {
-      border-color: rgba(245, 158, 11, 0.55);
+      border-color: rgba(220, 59, 30, 0.65);
     }
 
     .rack-tab.active {
-      background: var(--amber-soft);
-      border-color: var(--amber);
+      background: var(--vermilion-soft);
+      border-color: var(--vermilion);
     }
 
     .rack-tab .tab-code {
       display: block;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.68rem;
-      color: var(--amber);
+      color: #FF785A;
       margin-bottom: 3px;
     }
 
@@ -365,7 +367,7 @@
       padding: 12px 16px;
       border-bottom: 1px solid var(--border);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: var(--muted);
     }
 
@@ -376,19 +378,46 @@
     .canvas-wrap {
       position: relative;
       width: 100%;
-      height: 430px;
+      height: 460px;
       cursor: grab;
-      touch-action: pan-y;
+      touch-action: none;
+      background: radial-gradient(circle at 50% 35%, #162338 0%, #09101C 100%);
     }
 
     .canvas-wrap:active {
       cursor: grabbing;
     }
 
-    #rackCanvas {
+    .canvas-wrap canvas {
       width: 100%;
       height: 100%;
       display: block;
+    }
+
+    .webgl-hint {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      pointer-events: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.69rem;
+      color: rgba(203, 213, 225, 0.75);
+      background: rgba(11, 18, 32, 0.68);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      padding: 4px 9px;
+      border-radius: 5px;
+    }
+
+    .webgl-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+      color: #CBD5E1;
+      font-size: 0.92rem;
     }
 
     .angle-controls {
@@ -399,7 +428,7 @@
       gap: 10px;
       padding: 12px 16px;
       border-top: 1px solid var(--border);
-      background: rgba(11, 18, 32, 0.68);
+      background: rgba(11, 18, 32, 0.72);
     }
 
     .angle-slider-wrap {
@@ -407,15 +436,27 @@
       align-items: center;
       gap: 10px;
       flex: 1;
-      min-width: 200px;
+      min-width: 180px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       color: var(--muted);
     }
 
     .angle-slider-wrap input[type="range"] {
       flex: 1;
       accent-color: var(--amber);
+    }
+
+    .cam-btns {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cam-btn {
+      padding: 7px 12px;
+      font-size: 0.76rem;
+      border-radius: 7px;
     }
 
     /* Controls & Live Stock Readout */
@@ -502,7 +543,7 @@
       background: var(--bp-card);
       color: #CBD5E1;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.71rem;
       cursor: pointer;
       transition: all 0.15s ease;
     }
@@ -673,7 +714,7 @@
       </a>
 
       <nav class="nav-links" aria-label="Navegación">
-        <a href="#simulador">CONFIGURADOR 3D</a>
+        <a href="#simulador">VISOR 3D 360°</a>
         <a href="#alianza">EQUIPAMIENTO + WEB</a>
         <a href="#contacto">CONTACTO</a>
       </nav>
@@ -691,27 +732,27 @@
 
       <div class="container hero-content">
         <div>
-          <span class="spec-tag">PLANO COMERCIAL // SAN RAFAEL, MENDOZA</span>
+          <span class="spec-tag">PLANO COMERCIAL 3D // SAN RAFAEL, MENDOZA</span>
           <h1>Armás tus estanterías. <span>Nosotros conectamos tu web y tu stock.</span></h1>
           <p>
             Pensado para supermercados, autoservicios, ferreterías, corralones y depósitos de Cuyo. Combinamos equipamiento físico con página web a medida, catálogo por WhatsApp y control real por pasillo.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-amber" href="#simulador">Configurar Estanterías 3D</a>
-            <a class="btn btn-wire" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pedir%20un%20prototipo%20gratis%20para%20mi%20comercio%20en%20San%20Rafael." target="_blank" rel="noopener noreferrer">
-              Pedir prototipo gratis
+            <a class="btn btn-amber" href="#simulador">Configurar Estanterías en 3D</a>
+            <a class="btn btn-wire" href="https://wa.me/5492604059284?text=Hola%20Jos%C3%A9%2C%20quiero%20pedir%20un%20prototipo%20sin%20cargo%20para%20mi%20comercio%20en%20San%20Rafael." target="_blank" rel="noopener noreferrer">
+              Pedir prototipo sin cargo
             </a>
           </div>
         </div>
 
         <div class="callout-grid" aria-label="Especificaciones clave">
           <div class="callout-cell">
-            <span>Prototipo</span>
+            <span>Prototipos</span>
             <strong>SIN CARGO</strong>
           </div>
           <div class="callout-cell">
-            <span>Línea Real</span>
-            <strong>GALV + ROJO</strong>
+            <span>Motor 3D</span>
+            <strong>WEBGL 360°</strong>
           </div>
           <div class="callout-cell">
             <span>Sistemas</span>
@@ -724,26 +765,26 @@
     <section id="simulador" class="section">
       <div class="container">
         <div class="section-head">
-          <span class="mono">// CONFIGURADOR INTERACTIVO 3D · 4 SISTEMAS REALES</span>
-          <h2>Elegí el tipo de estantería, acabado y profundidad</h2>
-          <p>Probá cómo se adapta cada estructura en 3D (arrastrá para rotar) y mirá cómo el sistema de stock calcula la carga máxima, posiciones y alertas de reposición en tiempo real.</p>
+          <span class="mono">// VISOR 3D REAL EN THREE.JS · 4 SISTEMAS DE DEPÓSITO</span>
+          <h2>Giralo 360° y configurá tu módulo con colores reales</h2>
+          <p>Elegí el sistema de estantería, terminación y profundidad. Arrastrá en cualquier dirección para inspeccionar la estructura por arriba, de frente o por detrás, y usá la rueda del mouse para hacer zoom.</p>
         </div>
 
         <div class="rack-type-bar" role="tablist" aria-label="Tipos de estanterías">
           <button type="button" class="rack-tab active" data-type="selectivo">
             <span class="tab-code">TIPO 01 · ALTA CARGA</span>
             <strong>Rack Selectivo (Pallets)</strong>
-            <span>1.500 kg/nivel · Depósitos</span>
+            <span>Galvanizado + largueros rojo-naranja</span>
           </button>
           <button type="button" class="rack-tab" data-type="gondola">
             <span class="tab-code">TIPO 02 · COMERCIAL</span>
             <strong>Góndola Supermercado</strong>
-            <span>Con fondo y portaprecios</span>
+            <span>Doble faz con fondo y portaprecios</span>
           </button>
           <button type="button" class="rack-tab" data-type="metalica">
             <span class="tab-code">TIPO 03 · LIVIANA / MEDIA</span>
             <strong>Estantería Metálica</strong>
-            <span>Bandejas y cajas · Ferreterías</span>
+            <span>Bandejas y gavetas · Ferreterías</span>
           </button>
           <button type="button" class="rack-tab" data-type="cantilever">
             <span class="tab-code">TIPO 04 · CARGAS LARGAS</span>
@@ -755,25 +796,26 @@
         <div class="builder-grid">
           <div class="viewport-card">
             <div class="viewport-bar">
-              <span>MODELO 3D // <strong id="viewSpec">RACK SELECTIVO · 2 CUERPOS · 4 NIVELES</strong></span>
-              <span>ARRASTRÁ EN 360° (H + V) · RUEDA ZOOM</span>
+              <span>THREE.JS WEBGL // <strong id="viewSpec">RACK SELECTIVO · 2 CUERPOS · 3 NIVELES</strong></span>
+              <span>ÓRBITA 360° + ZOOM</span>
             </div>
 
-            <div class="canvas-wrap" id="canvasWrap" style="touch-action: none; cursor: grab;">
-              <canvas id="rackCanvas"></canvas>
+            <div class="canvas-wrap" id="canvasWrap">
+              <div class="webgl-hint">Arrastrá para orbitar 360° · Rueda para zoom</div>
+              <div class="webgl-fallback" id="webglFallback">
+                Tu navegador no tiene aceleración WebGL activa en este momento. Podés seguir configurando tu módulo a la derecha y enviarnos la cotización directa por WhatsApp.
+              </div>
             </div>
 
             <div class="angle-controls">
               <label class="angle-slider-wrap">
-                <span>ÓRBITA 3D <strong id="angleVal" style="color: var(--amber);">32° · 22°</strong></span>
-                <input type="range" id="angleSlider" min="-180" max="180" value="32" />
+                <span>ÁNGULO <strong id="angleVal" style="color: var(--amber);">35°</strong></span>
+                <input type="range" id="angleSlider" min="0" max="360" value="35" />
               </label>
-              <button type="button" class="btn btn-wire" id="resetViewBtn" style="padding: 7px 11px; font-size: 0.78rem;">
-                Centrar
-              </button>
-              <button type="button" class="btn btn-wire" id="autoSpinBtn" style="padding: 7px 12px; font-size: 0.78rem;">
-                Rotar 360°
-              </button>
+              <div class="cam-btns">
+                <button type="button" class="btn btn-wire cam-btn" id="centerCamBtn">Centrar</button>
+                <button type="button" class="btn btn-wire cam-btn" id="autoSpinBtn">Rotar 360°</button>
+              </div>
             </div>
           </div>
 
@@ -804,7 +846,7 @@
 
             <div class="ctrl-row">
               <div class="ctrl-label">
-                <strong id="loadItemLabel">Unidades Cargadas</strong>
+                <strong id="loadItemLabel">Pallets Cargados</strong>
                 <span>Simulación de ocupación</span>
               </div>
               <div class="stepper">
@@ -816,7 +858,7 @@
 
             <div class="ctrl-block">
               <div class="ctrl-label">
-                <strong>Acabado / Color</strong>
+                <strong>Acabado Real de Depósito</strong>
               </div>
               <div class="chip-group" id="finishGroup">
                 <button type="button" class="opt-chip active" data-finish="industrial">
@@ -844,7 +886,7 @@
 
             <div class="stock-readout" aria-live="polite">
               <div class="readout-head">
-                <span id="readoutTitle">Sistema de Stock · Rack Selectivo</span>
+                <span id="readoutTitle">Stock · Rack Selectivo</span>
                 <span class="live-dot">EN LÍNEA</span>
               </div>
               <div class="metrics-grid">
@@ -882,7 +924,7 @@
           <article class="alliance-card">
             <span class="mono">01 // LOCAL FÍSICO</span>
             <h3>Listo para abrir sin perder semanas</h3>
-            <p>Mientras terminás de armar góndolas y estanterías, dejamos lista tu página web, tu mapa en Google y tus 6 placas de inauguración.</p>
+            <p>Mientras terminás de armar góndolas y estanterías, dejamos lista tu página web, tu mapa en Google y tus placas de inauguración.</p>
           </article>
           <article class="alliance-card">
             <span class="mono">02 // VENTAS DIRECTAS</span>
@@ -909,6 +951,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
   <script>
     (function () {
       const RACK_TYPES = {
@@ -952,31 +995,30 @@
 
       const FINISHES = {
         industrial: {
-          name: 'Galvanizado + Vigas Rojo-Naranja',
-          post: { top: '#DCE4EC', front: '#B4C0CC', side: '#7E8D9E', stroke: 'rgba(15,23,42,0.32)' },
-          beam: { top: '#F05336', front: '#DC3B1E', back: '#C22D14', side: '#991B0C', stroke: 'rgba(11,18,32,0.45)' },
-          panel: { top: '#E2E8F0', front: '#CBD5E1', side: '#94A3B8', stroke: 'rgba(15,23,42,0.22)' },
-          brace: '#9AA8B8'
+          name: 'Galvanizado + Rojo-Naranja',
+          postColor: 0xB8C4D0, postMetal: 0.72, postRough: 0.34,
+          beamColor: 0xDC3B1E, beamMetal: 0.25, beamRough: 0.42,
+          shelfColor: 0xC4CFD9, shelfMetal: 0.66, shelfRough: 0.38,
+          panelColor: 0x94A3B8, panelMetal: 0.52, panelRough: 0.45,
+          railColor: 0xDC3B1E
         },
         grafito: {
-          name: 'Grafito + Vigas Rojo-Naranja',
-          post: { top: '#64748B', front: '#334155', side: '#1E293B', stroke: 'rgba(248,250,252,0.18)' },
-          beam: { top: '#F05336', front: '#DC3B1E', back: '#B92C14', side: '#991B0C', stroke: 'rgba(11,18,32,0.48)' },
-          panel: { top: '#64748B', front: '#475569', side: '#334155', stroke: 'rgba(248,250,252,0.14)' },
-          brace: '#475569'
+          name: 'Grafito + Rojo-Naranja',
+          postColor: 0x334155, postMetal: 0.55, postRough: 0.42,
+          beamColor: 0xDC3B1E, beamMetal: 0.25, beamRough: 0.42,
+          shelfColor: 0x475569, shelfMetal: 0.45, shelfRough: 0.48,
+          panelColor: 0x1E293B, panelMetal: 0.38, panelRough: 0.52,
+          railColor: 0xDC3B1E
         },
         blanco: {
           name: 'Blanco Epoxi Comercial',
-          post: { top: '#FFFFFF', front: '#E8EEF5', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.26)' },
-          beam: { top: '#FFFFFF', front: '#F1F5F9', back: '#E2E8F0', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.28)' },
-          panel: { top: '#FFFFFF', front: '#F1F5F9', side: '#CBD5E1', stroke: 'rgba(15,23,42,0.2)' },
-          brace: '#CBD5E1'
+          postColor: 0xF1F5F9, postMetal: 0.14, postRough: 0.36,
+          beamColor: 0xE2E8F0, beamMetal: 0.14, beamRough: 0.38,
+          shelfColor: 0xF8FAFC, shelfMetal: 0.12, shelfRough: 0.34,
+          panelColor: 0xE2E8F0, panelMetal: 0.12, panelRough: 0.4,
+          railColor: 0xDC3B1E
         }
       };
-
-      const canvas = document.getElementById('rackCanvas');
-      const wrap = document.getElementById('canvasWrap');
-      const ctx = canvas.getContext('2d');
 
       const state = {
         type: 'selectivo',
@@ -985,15 +1027,11 @@
         bays: 2,
         levels: 3,
         boxes: 10,
-        angleDeg: 32,
-        pitchDeg: 22,
-        zoom: 1,
-        autoSpin: false,
-        dragging: false,
-        lastX: 0,
-        lastY: 0
+        autoSpin: false
       };
 
+      const wrap = document.getElementById('canvasWrap');
+      const fallbackEl = document.getElementById('webglFallback');
       const baysVal = document.getElementById('baysVal');
       const levelsVal = document.getElementById('levelsVal');
       const boxesVal = document.getElementById('boxesVal');
@@ -1002,7 +1040,7 @@
       const loadItemLabel = document.getElementById('loadItemLabel');
       const angleSlider = document.getElementById('angleSlider');
       const angleVal = document.getElementById('angleVal');
-      const resetViewBtn = document.getElementById('resetViewBtn');
+      const centerCamBtn = document.getElementById('centerCamBtn');
       const autoSpinBtn = document.getElementById('autoSpinBtn');
       const viewSpec = document.getElementById('viewSpec');
       const readoutTitle = document.getElementById('readoutTitle');
@@ -1014,249 +1052,344 @@
       const waRackBtn = document.getElementById('waRackBtn');
 
       function maxItems() {
-        const cfg = RACK_TYPES[state.type];
-        return state.bays * state.levels * cfg.slotsPerBayLevel;
+        return state.bays * state.levels * RACK_TYPES[state.type].slotsPerBayLevel;
       }
 
-      function resizeCanvas() {
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        const rect = wrap.getBoundingClientRect();
-        canvas.width = Math.max(300, Math.floor(rect.width * dpr));
-        canvas.height = Math.max(300, Math.floor(rect.height * dpr));
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
+      // Three.js WebGL Setup
+      let renderer = null;
+      let scene = null;
+      let camera = null;
+      let rackGroup = null;
+      let hasWebGL = false;
 
-      function project(x, y, z, yaw, pitch, cx, cy, scale) {
-        const cosY = Math.cos(yaw);
-        const sinY = Math.sin(yaw);
-        const x1 = x * cosY - z * sinY;
-        const z1 = x * sinY + z * cosY;
+      const orbit = {
+        theta: 0.61,
+        phi: 0.42,
+        radius: 9.2,
+        targetTheta: 0.61,
+        targetPhi: 0.42,
+        targetRadius: 9.2,
+        lookY: 1.7,
+        dragging: false,
+        lastX: 0,
+        lastY: 0
+      };
 
-        const cosP = Math.cos(pitch);
-        const sinP = Math.sin(pitch);
-        const y2 = y * cosP - z1 * sinP;
-        const z2 = y * sinP + z1 * cosP;
-
-        const persp = 660 / (660 + z2);
-        return {
-          x: cx + x1 * scale * persp,
-          y: cy - y2 * scale * persp,
-          z: z2
-        };
-      }
-
-      function drawPoly(pts, fill, stroke) {
-        ctx.beginPath();
-        ctx.moveTo(pts[0].x, pts[0].y);
-        for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
-        ctx.closePath();
-        if (fill) {
-          ctx.fillStyle = fill;
-          ctx.fill();
+      function initThree() {
+        if (typeof THREE === 'undefined') {
+          fallbackEl.style.display = 'flex';
+          return;
         }
-        if (stroke) {
-          ctx.strokeStyle = stroke;
-          ctx.lineWidth = 1;
-          ctx.stroke();
+        try {
+          renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+        } catch (err) {
+          fallbackEl.style.display = 'flex';
+          return;
         }
-      }
 
-      function makePrism(x0, y0, z0, dx, dy, dz, colors, proj) {
-        const v = [
-          proj(x0, y0, z0),
-          proj(x0 + dx, y0, z0),
-          proj(x0 + dx, y0 + dy, z0),
-          proj(x0, y0 + dy, z0),
-          proj(x0, y0, z0 + dz),
-          proj(x0 + dx, y0, z0 + dz),
-          proj(x0 + dx, y0 + dy, z0 + dz),
-          proj(x0, y0 + dy, z0 + dz)
-        ];
-        const faces = [
-          { pts: [v[3], v[2], v[6], v[7]], fill: colors.top, stroke: colors.stroke },
-          { pts: [v[0], v[1], v[5], v[4]], fill: colors.side, stroke: colors.stroke },
-          { pts: [v[0], v[1], v[2], v[3]], fill: colors.front, stroke: colors.stroke },
-          { pts: [v[4], v[5], v[6], v[7]], fill: colors.back || colors.front, stroke: colors.stroke },
-          { pts: [v[1], v[5], v[6], v[2]], fill: colors.side, stroke: colors.stroke },
-          { pts: [v[0], v[4], v[7], v[3]], fill: colors.side, stroke: colors.stroke }
-        ];
-        faces.forEach((f) => {
-          f.depth = (f.pts[0].z + f.pts[1].z + f.pts[2].z + f.pts[3].z) / 4;
+        hasWebGL = true;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.12;
+        wrap.appendChild(renderer.domElement);
+
+        scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x0B1220, 0.024);
+
+        camera = new THREE.PerspectiveCamera(40, wrap.clientWidth / wrap.clientHeight, 0.1, 100);
+
+        // 3-Point Studio Lighting
+        const ambient = new THREE.AmbientLight(0xDCE7F5, 0.55);
+        scene.add(ambient);
+
+        const hemi = new THREE.HemisphereLight(0xE8F1FF, 0x162235, 0.65);
+        scene.add(hemi);
+
+        const keyLight = new THREE.DirectionalLight(0xFFF6E8, 1.55);
+        keyLight.position.set(7.5, 11.5, 8.5);
+        keyLight.castShadow = true;
+        keyLight.shadow.mapSize.width = 1024;
+        keyLight.shadow.mapSize.height = 1024;
+        keyLight.shadow.camera.near = 1;
+        keyLight.shadow.camera.far = 32;
+        keyLight.shadow.camera.left = -9;
+        keyLight.shadow.camera.right = 9;
+        keyLight.shadow.camera.top = 9;
+        keyLight.shadow.camera.bottom = -9;
+        keyLight.shadow.bias = -0.0005;
+        scene.add(keyLight);
+
+        const rimLight = new THREE.DirectionalLight(0x7CB4FF, 0.65);
+        rimLight.position.set(-8, 6, -7);
+        scene.add(rimLight);
+
+        // Blueprint Floor + Subtle Grid
+        const floorGeo = new THREE.PlaneGeometry(40, 40);
+        const floorMat = new THREE.MeshStandardMaterial({
+          color: 0x0D1626,
+          metalness: 0.25,
+          roughness: 0.78
         });
-        return faces;
+        const floor = new THREE.Mesh(floorGeo, floorMat);
+        floor.rotation.x = -Math.PI / 2;
+        floor.receiveShadow = true;
+        scene.add(floor);
+
+        const grid = new THREE.GridHelper(26, 26, 0x3B5278, 0x1A2942);
+        grid.position.y = 0.004;
+        scene.add(grid);
+
+        rackGroup = new THREE.Group();
+        scene.add(rackGroup);
+
+        onResize();
       }
 
-      function renderScene() {
-        const w = wrap.clientWidth;
-        const h = wrap.clientHeight;
-        ctx.clearRect(0, 0, w, h);
+      function onResize() {
+        if (!hasWebGL) return;
+        const w = Math.max(280, wrap.clientWidth);
+        const h = Math.max(280, wrap.clientHeight);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h, false);
+      }
 
-        ctx.strokeStyle = 'rgba(148, 163, 184, 0.08)';
-        ctx.lineWidth = 1;
-        for (let gx = 0; gx < w; gx += 28) {
-          ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, h); ctx.stroke();
+      function disposeGroup(group) {
+        while (group.children.length > 0) {
+          const child = group.children[0];
+          group.remove(child);
+          if (child.geometry) child.geometry.dispose();
+          if (child.material) {
+            if (Array.isArray(child.material)) child.material.forEach((m) => m.dispose());
+            else child.material.dispose();
+          }
         }
-        for (let gy = 0; gy < h; gy += 28) {
-          ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(w, gy); ctx.stroke();
-        }
+      }
 
-        const yaw = (state.angleDeg * Math.PI) / 180;
-        const pitch = (state.pitchDeg * Math.PI) / 180;
-        const bayW = 94;
-        const depth = state.depthCm === 40 ? 34 : state.depthCm === 60 ? 48 : 66;
-        const levelH = 44;
-        const totalW = state.bays * bayW;
-        const totalH = state.levels * levelH + 18;
-        const scale = Math.min(w / (totalW + 170), h / (totalH + 135), 1.32) * state.zoom;
-        const cx = w / 2;
-        const cy = h / 2 + totalH * scale * 0.12;
+      function addBox(w, h, d, x, y, z, mat) {
+        const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+        mesh.position.set(x, y, z);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        rackGroup.add(mesh);
+        return mesh;
+      }
 
-        const proj = (x, y, z) => project(x - totalW / 2, y - totalH * 0.42, z - depth / 2, yaw, pitch, cx, cy, scale);
+      function addStrut(p1, p2, radius, mat) {
+        const dir = new THREE.Vector3().subVectors(p2, p1);
+        const len = dir.length();
+        const geo = new THREE.CylinderGeometry(radius, radius, len, 6);
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.copy(p1).add(p2).multiplyScalar(0.5);
+        mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.normalize());
+        mesh.castShadow = true;
+        rackGroup.add(mesh);
+      }
+
+      function rebuildRack3D() {
+        if (!hasWebGL) return;
+        disposeGroup(rackGroup);
+
         const fin = FINISHES[state.finish];
-        const drawList = [];
+        const postMat = new THREE.MeshStandardMaterial({ color: fin.postColor, metalness: fin.postMetal, roughness: fin.postRough });
+        const beamMat = new THREE.MeshStandardMaterial({ color: fin.beamColor, metalness: fin.beamMetal, roughness: fin.beamRough });
+        const shelfMat = new THREE.MeshStandardMaterial({ color: fin.shelfColor, metalness: fin.shelfMetal, roughness: fin.shelfRough });
+        const panelMat = new THREE.MeshStandardMaterial({ color: fin.panelColor, metalness: fin.panelMetal, roughness: fin.panelRough });
+        const railMat = new THREE.MeshStandardMaterial({ color: fin.railColor, metalness: 0.2, roughness: 0.45 });
+        const footMat = new THREE.MeshStandardMaterial({ color: 0x1E293B, metalness: 0.6, roughness: 0.5 });
 
-        // Floor footprint
-        drawPoly([
-          proj(-18, 0, -18),
-          proj(totalW + 18, 0, -18),
-          proj(totalW + 18, 0, depth + 18),
-          proj(-18, 0, depth + 18)
-        ], 'rgba(224, 67, 36, 0.07)', 'rgba(224, 67, 36, 0.28)');
-
-        const woodPallet = { top: '#D9A066', front: '#B87B3E', side: '#8F5B28', stroke: 'rgba(11,18,32,0.45)' };
-        const boxColors = [
-          { top: '#D4A874', front: '#B58450', side: '#8A6034', stroke: 'rgba(11,18,32,0.42)' },
-          { top: '#E8EEF4', front: '#CBD5E1', side: '#94A3B8', stroke: 'rgba(11,18,32,0.35)' },
-          { top: '#C99B68', front: '#A47544', side: '#7A522B', stroke: 'rgba(11,18,32,0.42)' },
-          { top: '#F1F5F9', front: '#DCE4EC', side: '#94A3B8', stroke: 'rgba(11,18,32,0.35)' }
+        const woodMat = new THREE.MeshStandardMaterial({ color: 0xC8965A, metalness: 0.04, roughness: 0.85 });
+        const cargoMats = [
+          new THREE.MeshStandardMaterial({ color: 0xC6935B, metalness: 0.05, roughness: 0.82 }),
+          new THREE.MeshStandardMaterial({ color: 0xD9A971, metalness: 0.05, roughness: 0.78 }),
+          new THREE.MeshStandardMaterial({ color: 0xE2E8F0, metalness: 0.08, roughness: 0.55 }),
+          new THREE.MeshStandardMaterial({ color: 0x3B82F6, metalness: 0.12, roughness: 0.5 }),
+          new THREE.MeshStandardMaterial({ color: 0x10B981, metalness: 0.1, roughness: 0.52 })
         ];
+
+        const bayW = state.type === 'selectivo' ? 2.2 : state.type === 'cantilever' ? 1.85 : 1.45;
+        const depth = state.depthCm === 40 ? 0.65 : state.depthCm === 60 ? 0.92 : 1.22;
+        const levelH = state.type === 'selectivo' ? 1.15 : 0.78;
+        const totalW = state.bays * bayW;
+        const totalH = state.levels * levelH + 0.5;
+        const xStart = -totalW / 2;
+
+        orbit.lookY = totalH * 0.46;
 
         let placed = 0;
-        const braceLines = [];
 
         if (state.type === 'selectivo') {
-          // Heavy warehouse galvanized perforated uprights + Z-bracing + red-orange load beams + pallets
+          // Galvanized uprights + real 3D diagonal Z-bracing + red-orange load beams + Euro pallets + cartons
           for (let b = 0; b <= state.bays; b++) {
-            const px = b * bayW;
-            drawList.push(...makePrism(px - 3, 0, 0, 6, totalH, 6, fin.post, proj));
-            drawList.push(...makePrism(px - 3, 0, depth - 6, 6, totalH, 6, fin.post, proj));
-            // Real galvanized Z-diagonal bracing between front & back uprights
-            const steps = Math.max(3, state.levels + 1);
-            const stepH = (totalH - 12) / steps;
-            for (let k = 0; k < steps; k++) {
-              const yA = 8 + k * stepH;
-              const yB = yA + stepH;
-              const zStart = k % 2 === 0 ? 3 : depth - 3;
-              const zEnd = k % 2 === 0 ? depth - 3 : 3;
-              braceLines.push([proj(px, yA, zStart), proj(px, yB, zEnd)]);
-              braceLines.push([proj(px, yA, 3), proj(px, yA, depth - 3)]);
+            const px = xStart + b * bayW;
+            addBox(0.08, totalH, 0.08, px, totalH / 2, depth / 2, postMat);
+            addBox(0.08, totalH, 0.08, px, totalH / 2, -depth / 2, postMat);
+            // Footplates
+            addBox(0.16, 0.03, 0.16, px, 0.015, depth / 2, footMat);
+            addBox(0.16, 0.03, 0.16, px, 0.015, -depth / 2, footMat);
+            // Horizontal & diagonal Z-bracing along side frame
+            const segs = state.levels + 1;
+            const segH = (totalH - 0.25) / segs;
+            for (let s = 0; s < segs; s++) {
+              const y0 = 0.18 + s * segH;
+              const y1 = y0 + segH;
+              addStrut(new THREE.Vector3(px, y0, -depth / 2), new THREE.Vector3(px, y0, depth / 2), 0.018, postMat);
+              if (s % 2 === 0) {
+                addStrut(new THREE.Vector3(px, y0, -depth / 2), new THREE.Vector3(px, y1, depth / 2), 0.018, postMat);
+              } else {
+                addStrut(new THREE.Vector3(px, y0, depth / 2), new THREE.Vector3(px, y1, -depth / 2), 0.018, postMat);
+              }
             }
           }
+
           for (let l = 0; l < state.levels; l++) {
-            const sy = l * levelH + 8;
+            const sy = 0.28 + l * levelH;
             for (let b = 0; b < state.bays; b++) {
-              const bx = b * bayW + 3;
-              drawList.push(...makePrism(bx, sy, 0, bayW - 6, 6, 4, fin.beam, proj));
-              drawList.push(...makePrism(bx, sy, depth - 4, bayW - 6, 6, 4, fin.beam, proj));
+              const cx = xStart + (b + 0.5) * bayW;
+              // Front & rear vermilion beams
+              addBox(bayW - 0.08, 0.11, 0.06, cx, sy, depth / 2 - 0.01, beamMat);
+              addBox(bayW - 0.08, 0.11, 0.06, cx, sy, -depth / 2 + 0.01, beamMat);
+              // Subtle galvanized decking wire/bars
+              addBox(bayW - 0.16, 0.02, depth - 0.12, cx, sy + 0.045, 0, shelfMat);
+
               for (let s = 0; s < 2; s++) {
                 if (placed < state.boxes) {
-                  const px = bx + 6 + s * 41;
-                  drawList.push(...makePrism(px, sy + 6, 2, 36, 4, depth - 4, woodPallet, proj));
-                  const col = boxColors[(b + l + s) % 3];
-                  drawList.push(...makePrism(px + 2, sy + 10, 5, 32, 24, depth - 10, col, proj));
+                  const px = cx + (s === 0 ? -bayW * 0.23 : bayW * 0.23);
+                  const pw = bayW * 0.41;
+                  const pd = depth * 0.9;
+                  // Euro pallet: 3 bottom runners + top deck
+                  addBox(pw, 0.06, 0.1, px, sy + 0.085, pd * 0.36, woodMat);
+                  addBox(pw, 0.06, 0.1, px, sy + 0.085, 0, woodMat);
+                  addBox(pw, 0.06, 0.1, px, sy + 0.085, -pd * 0.36, woodMat);
+                  addBox(pw, 0.03, pd, px, sy + 0.13, 0, woodMat);
+                  // Wrapped/cardboard cargo box
+                  const bh = 0.58 + ((b + l + s) % 2) * 0.14;
+                  const mat = cargoMats[(b + l + s) % 3];
+                  addBox(pw * 0.9, bh, pd * 0.86, px, sy + 0.145 + bh / 2, 0, mat);
                   placed++;
                 }
               }
             }
           }
         } else if (state.type === 'gondola') {
-          // Retail commercial gondola: solid back panel, shelves, amber price rails, retail boxes
-          const priceRail = { top: '#F59E0B', front: '#F59E0B', side: '#D97706', stroke: 'rgba(11,18,32,0.3)' };
-          for (let b = 0; b < state.bays; b++) {
-            const bx = b * bayW;
-            drawList.push(...makePrism(bx + 1, 0, depth - 5, bayW - 2, totalH, 4, fin.panel, proj));
-            drawList.push(...makePrism(bx + 1, 0, 0, bayW - 2, 10, depth, fin.post, proj));
+          // Double-sided commercial supermarket gondola
+          const gDepth = Math.max(0.88, depth);
+          for (let b = 0; b <= state.bays; b++) {
+            const px = xStart + b * bayW;
+            addBox(0.06, totalH, 0.1, px, totalH / 2, 0, postMat);
           }
+          for (let b = 0; b < state.bays; b++) {
+            const cx = xStart + (b + 0.5) * bayW;
+            // Solid central back panel + sturdy base plinth
+            addBox(bayW - 0.04, totalH - 0.08, 0.04, cx, totalH / 2, 0, panelMat);
+            addBox(bayW - 0.02, 0.18, gDepth, cx, 0.09, 0, postMat);
+            addBox(bayW - 0.02, 0.04, gDepth + 0.02, cx, 0.18, 0, railMat);
+          }
+
           for (let l = 0; l < state.levels; l++) {
-            const sy = l * levelH + 14;
-            const shelfD = Math.max(20, depth - l * 4);
-            const zOff = depth - 5 - shelfD;
+            const sy = 0.24 + l * levelH;
+            const sideD = Math.max(0.24, (gDepth / 2 - 0.04) * (1 - l * 0.08));
             for (let b = 0; b < state.bays; b++) {
-              const bx = b * bayW + 2;
-              drawList.push(...makePrism(bx, sy, zOff, bayW - 4, 3.5, shelfD, fin.beam, proj));
-              drawList.push(...makePrism(bx, sy - 1, zOff - 1.5, bayW - 4, 4.5, 1.5, priceRail, proj));
+              const cx = xStart + (b + 0.5) * bayW;
+              // Front & Back shelves + price-rail strips
+              [-1, 1].forEach((dir) => {
+                const sz = dir * (0.02 + sideD / 2);
+                addBox(bayW - 0.06, 0.03, sideD, cx, sy, sz, shelfMat);
+                addBox(bayW - 0.06, 0.045, 0.018, cx, sy - 0.005, dir * (0.02 + sideD + 0.005), railMat);
+              });
+
               for (let s = 0; s < 4; s++) {
                 if (placed < state.boxes) {
-                  const col = boxColors[(b + l + s) % boxColors.length];
-                  drawList.push(...makePrism(bx + 5 + s * 21, sy + 3.5, zOff + 3, 17, 19 + (s % 2) * 4, Math.max(12, shelfD - 6), col, proj));
+                  const slotX = cx - bayW * 0.34 + s * (bayW * 0.225);
+                  const bh = 0.26 + ((s + l) % 3) * 0.07;
+                  const mat = cargoMats[(b + l + s) % cargoMats.length];
+                  addBox(0.22, bh, sideD * 0.72, slotX, sy + 0.015 + bh / 2, 0.02 + sideD * 0.5, mat);
+                  addBox(0.22, bh * 0.9, sideD * 0.72, slotX, sy + 0.015 + (bh * 0.9) / 2, -(0.02 + sideD * 0.5), cargoMats[(b + l + s + 2) % cargoMats.length]);
                   placed++;
                 }
               }
             }
           }
         } else if (state.type === 'metalica') {
-          // Slotted angle-steel shelving with thin steel trays & hardware bins
+          // Slotted angle-steel warehouse shelving with flat trays & hardware bins
           for (let b = 0; b <= state.bays; b++) {
-            const px = b * bayW;
-            drawList.push(...makePrism(px - 2, 0, 0, 3.5, totalH, 3.5, fin.post, proj));
-            drawList.push(...makePrism(px - 2, 0, depth - 3.5, 3.5, totalH, 3.5, fin.post, proj));
+            const px = xStart + b * bayW;
+            addBox(0.045, totalH, 0.045, px, totalH / 2, depth / 2, postMat);
+            addBox(0.045, totalH, 0.045, px, totalH / 2, -depth / 2, postMat);
+            addStrut(new THREE.Vector3(px, 0.2, -depth / 2), new THREE.Vector3(px, totalH - 0.2, depth / 2), 0.012, postMat);
+            addStrut(new THREE.Vector3(px, 0.2, depth / 2), new THREE.Vector3(px, totalH - 0.2, -depth / 2), 0.012, postMat);
           }
+
           for (let l = 0; l < state.levels; l++) {
-            const sy = l * levelH + 8;
+            const sy = 0.22 + l * levelH;
             for (let b = 0; b < state.bays; b++) {
-              const bx = b * bayW + 1.5;
-              drawList.push(...makePrism(bx, sy, 1, bayW - 3, 3, depth - 2, fin.beam, proj));
+              const cx = xStart + (b + 0.5) * bayW;
+              addBox(bayW - 0.05, 0.035, depth - 0.02, cx, sy, 0, shelfMat);
+              addBox(bayW - 0.05, 0.04, 0.015, cx, sy, depth / 2, beamMat);
+
               for (let s = 0; s < 3; s++) {
                 if (placed < state.boxes) {
-                  const col = boxColors[(b + l + s) % 3];
-                  drawList.push(...makePrism(bx + 6 + s * 28, sy + 3, 5, 22, 16, depth - 10, col, proj));
+                  const slotX = cx + (s - 1) * (bayW * 0.3);
+                  const bh = 0.28 + ((b + s) % 2) * 0.08;
+                  const mat = cargoMats[(b + l + s) % cargoMats.length];
+                  addBox(bayW * 0.25, bh, depth * 0.76, slotX, sy + 0.018 + bh / 2, 0, mat);
                   placed++;
                 }
               }
             }
           }
         } else if (state.type === 'cantilever') {
-          // Central heavy columns with wide floor bases + cantilevered arms holding long pipes/beams
-          const pipeCol = { top: '#E2E8F0', front: '#94A3B8', side: '#64748B', stroke: 'rgba(11,18,32,0.45)' };
-          const woodCol = { top: '#FDBA74', front: '#EA580C', side: '#9A3412', stroke: 'rgba(11,18,32,0.45)' };
+          // Central vertical steel H-columns + heavy welded feet + cantilevered arms + pipe/profile bundles
+          const pipeMat = new THREE.MeshStandardMaterial({ color: 0xCBD5E1, metalness: 0.8, roughness: 0.26 });
+          const timberMat = new THREE.MeshStandardMaterial({ color: 0xD98236, metalness: 0.08, roughness: 0.72 });
+
           for (let b = 0; b <= state.bays; b++) {
-            const px = b * bayW;
-            drawList.push(...makePrism(px - 4, 0, depth - 10, 8, totalH, 8, fin.post, proj));
-            drawList.push(...makePrism(px - 4, 0, 0, 8, 6, depth, fin.post, proj));
+            const px = xStart + b * bayW;
+            // Central heavy column + wide base foot
+            addBox(0.14, totalH, 0.16, px, totalH / 2, -depth * 0.28, postMat);
+            addBox(0.18, 0.12, depth * 1.15, px, 0.06, 0.06, postMat);
             for (let l = 0; l < state.levels; l++) {
-              const sy = l * levelH + 14;
-              drawList.push(...makePrism(px - 3, sy, 2, 6, 4.5, depth - 10, fin.beam, proj));
+              const sy = 0.38 + l * levelH;
+              // Cantilever arm extending forward
+              addBox(0.08, 0.08, depth * 0.92, px, sy, depth * 0.18, beamMat);
+              // End stopper lip
+              addBox(0.08, 0.12, 0.04, px, sy + 0.04, depth * 0.62, beamMat);
             }
           }
+
+          // Cross-bracing between columns at the rear
+          for (let b = 0; b < state.bays; b++) {
+            const x1 = xStart + b * bayW;
+            const x2 = xStart + (b + 1) * bayW;
+            addStrut(new THREE.Vector3(x1, 0.3, -depth * 0.28), new THREE.Vector3(x2, totalH - 0.3, -depth * 0.28), 0.022, postMat);
+            addStrut(new THREE.Vector3(x2, 0.3, -depth * 0.28), new THREE.Vector3(x1, totalH - 0.3, -depth * 0.28), 0.022, postMat);
+          }
+
           for (let l = 0; l < state.levels; l++) {
-            const sy = l * levelH + 18.5;
+            const sy = 0.42 + l * levelH;
             for (let b = 0; b < state.bays; b++) {
               if (placed < state.boxes) {
-                const bx = b * bayW - 6;
-                const mat = (b + l) % 2 === 0 ? pipeCol : woodCol;
-                drawList.push(...makePrism(bx, sy, 6, bayW + 12, 8, 9, mat, proj));
-                drawList.push(...makePrism(bx, sy, 18, bayW + 12, 8, 9, mat, proj));
+                const cx = xStart + (b + 0.5) * bayW;
+                const bundleLen = bayW + 0.35;
+                if ((b + l) % 2 === 0) {
+                  // Steel pipe bundle (CylinderGeometry rotated horizontally)
+                  for (let p = 0; p < 3; p++) {
+                    const cyl = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, bundleLen, 14), pipeMat);
+                    cyl.rotation.z = Math.PI / 2;
+                    cyl.position.set(cx, sy + 0.07 + (p === 2 ? 0.11 : 0), depth * 0.1 + (p === 0 ? -0.08 : p === 1 ? 0.08 : 0));
+                    cyl.castShadow = true;
+                    rackGroup.add(cyl);
+                  }
+                } else {
+                  // Long timber / structural beams
+                  addBox(bundleLen, 0.14, 0.28, cx, sy + 0.07, depth * 0.18, timberMat);
+                  addBox(bundleLen * 0.96, 0.12, 0.24, cx, sy + 0.2, depth * 0.18, woodMat);
+                }
                 placed++;
               }
             }
-          }
-        }
-
-        drawList.sort((a, b) => b.depth - a.depth);
-        for (let i = 0; i < drawList.length; i++) {
-          drawPoly(drawList[i].pts, drawList[i].fill, drawList[i].stroke);
-        }
-
-        if (braceLines.length > 0) {
-          ctx.strokeStyle = fin.brace || '#9AA8B8';
-          ctx.lineWidth = 2.1;
-          ctx.lineCap = 'round';
-          for (let i = 0; i < braceLines.length; i++) {
-            const seg = braceLines[i];
-            ctx.beginPath();
-            ctx.moveTo(seg[0].x, seg[0].y);
-            ctx.lineTo(seg[1].x, seg[1].y);
-            ctx.stroke();
           }
         }
       }
@@ -1273,8 +1406,6 @@
         bayWidthHint.textContent = 'Ancho ' + cfg.bayWidthM.toFixed(2) + ' m c/u';
         levelLoadHint.textContent = cfg.kgPerLevel.toLocaleString('es-AR') + ' kg por nivel';
         loadItemLabel.textContent = cfg.itemLabel;
-        angleVal.textContent = Math.round(state.angleDeg) + '° · ' + Math.round(state.pitchDeg) + '°';
-        angleSlider.value = Math.round(state.angleDeg);
 
         const occ = cap > 0 ? Math.round((state.boxes / cap) * 100) : 0;
         const lengthM = (state.bays * cfg.bayWidthM).toFixed(1);
@@ -1308,9 +1439,10 @@
           ' Quiero consultar por equipamiento + web y sistema de stock para mi local en San Rafael.';
         waRackBtn.setAttribute('href', 'https://wa.me/5492604059284?text=' + encodeURIComponent(msg));
 
-        renderScene();
+        rebuildRack3D();
       }
 
+      // Controls wiring
       document.querySelectorAll('.rack-tab').forEach((tab) => {
         tab.addEventListener('click', () => {
           state.type = tab.dataset.type;
@@ -1353,77 +1485,86 @@
       angleSlider.addEventListener('input', () => {
         state.autoSpin = false;
         autoSpinBtn.textContent = 'Rotar 360°';
-        state.angleDeg = Number(angleSlider.value);
-        updateUI();
+        orbit.targetTheta = (Number(angleSlider.value) * Math.PI) / 180;
       });
 
-      resetViewBtn.addEventListener('click', () => {
+      centerCamBtn.addEventListener('click', () => {
         state.autoSpin = false;
         autoSpinBtn.textContent = 'Rotar 360°';
-        state.angleDeg = 32;
-        state.pitchDeg = 22;
-        state.zoom = 1;
-        updateUI();
+        orbit.targetTheta = 0.61;
+        orbit.targetPhi = 0.42;
+        orbit.targetRadius = 9.2;
       });
 
       autoSpinBtn.addEventListener('click', () => {
         state.autoSpin = !state.autoSpin;
-        autoSpinBtn.textContent = state.autoSpin ? 'Pausar rotación' : 'Rotar 360°';
+        autoSpinBtn.textContent = state.autoSpin ? 'Pausar 360°' : 'Rotar 360°';
       });
 
+      // Spherical Orbit Pointer + Wheel
+      const minPhi = (-12 * Math.PI) / 180;
+      const maxPhi = (78 * Math.PI) / 180;
+
       wrap.addEventListener('pointerdown', (e) => {
-        state.dragging = true;
+        orbit.dragging = true;
         state.autoSpin = false;
         autoSpinBtn.textContent = 'Rotar 360°';
-        state.lastX = e.clientX;
-        state.lastY = e.clientY;
-        wrap.style.cursor = 'grabbing';
-        if (wrap.setPointerCapture) wrap.setPointerCapture(e.pointerId);
+        orbit.lastX = e.clientX;
+        orbit.lastY = e.clientY;
+        wrap.setPointerCapture(e.pointerId);
       });
-      window.addEventListener('pointermove', (e) => {
-        if (!state.dragging) return;
-        const dx = e.clientX - state.lastX;
-        const dy = e.clientY - state.lastY;
-        state.lastX = e.clientX;
-        state.lastY = e.clientY;
-        let nextAngle = state.angleDeg + dx * 0.55;
-        if (nextAngle > 180) nextAngle -= 360;
-        if (nextAngle < -180) nextAngle += 360;
-        state.angleDeg = nextAngle;
-        state.pitchDeg = Math.max(-14, Math.min(72, state.pitchDeg + dy * 0.4));
-        updateUI();
+
+      wrap.addEventListener('pointermove', (e) => {
+        if (!orbit.dragging) return;
+        const dx = e.clientX - orbit.lastX;
+        const dy = e.clientY - orbit.lastY;
+        orbit.lastX = e.clientX;
+        orbit.lastY = e.clientY;
+        orbit.targetTheta -= dx * 0.0085;
+        orbit.targetPhi = Math.max(minPhi, Math.min(maxPhi, orbit.targetPhi + dy * 0.0065));
       });
-      window.addEventListener('pointerup', () => {
-        state.dragging = false;
-        wrap.style.cursor = 'grab';
+
+      wrap.addEventListener('pointerup', () => {
+        orbit.dragging = false;
       });
 
       wrap.addEventListener('wheel', (e) => {
+        if (!hasWebGL) return;
         e.preventDefault();
-        const factor = e.deltaY > 0 ? 0.94 : 1.06;
-        state.zoom = Math.max(0.7, Math.min(1.65, state.zoom * factor));
-        renderScene();
+        orbit.targetRadius = Math.max(4.4, Math.min(16, orbit.targetRadius + e.deltaY * 0.006));
       }, { passive: false });
 
-      function loop() {
-        if (state.autoSpin) {
-          state.angleDeg += 0.55;
-          if (state.angleDeg > 180) state.angleDeg -= 360;
-          angleVal.textContent = Math.round(state.angleDeg) + '° · ' + Math.round(state.pitchDeg) + '°';
-          angleSlider.value = Math.round(state.angleDeg);
-          renderScene();
+      function animate() {
+        if (hasWebGL) {
+          if (state.autoSpin) {
+            orbit.targetTheta += 0.0075;
+          }
+          orbit.theta += (orbit.targetTheta - orbit.theta) * 0.12;
+          orbit.phi += (orbit.targetPhi - orbit.phi) * 0.12;
+          orbit.radius += (orbit.targetRadius - orbit.radius) * 0.12;
+
+          const cosP = Math.cos(orbit.phi);
+          const camX = orbit.radius * cosP * Math.sin(orbit.theta);
+          const camY = Math.max(0.35, orbit.lookY + orbit.radius * Math.sin(orbit.phi));
+          const camZ = orbit.radius * cosP * Math.cos(orbit.theta);
+
+          camera.position.set(camX, camY, camZ);
+          camera.lookAt(0, orbit.lookY, 0);
+          renderer.render(scene, camera);
+
+          const deg = ((Math.round((orbit.theta * 180) / Math.PI) % 360) + 360) % 360;
+          angleVal.textContent = deg + '°';
+          if (document.activeElement !== angleSlider) {
+            angleSlider.value = deg;
+          }
         }
-        requestAnimationFrame(loop);
+        requestAnimationFrame(animate);
       }
 
-      window.addEventListener('resize', () => {
-        resizeCanvas();
-        renderScene();
-      });
-
-      resizeCanvas();
+      window.addEventListener('resize', onResize);
+      initThree();
       updateUI();
-      loop();
+      animate();
     })();
   </script>
 </body>

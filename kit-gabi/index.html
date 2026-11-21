@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kit Comercial Nexo Cuyo — Video, Carta Ejecutiva y WhatsApp | San Rafael</title>
+  <meta name="description" content="Kit comercial oficial de Nexo Cuyo en San Rafael, Mendoza: video de presentación listo para WhatsApp, carta de presentación imprimible en PDF y mensajes listos para enviar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark: #141210;
+      --dark-card: #1D1916;
+      --cream: #F8F4ED;
+      --surface: #FFFFFF;
+      --ink: #1C1917;
+      --muted: #57534E;
+      --border: #E6DDD0;
+      --gold: #E5B973;
+      --bronze: #9A5B25;
+      --bronze-dark: #7A461B;
+      --forest: #14532D;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Executive Header */
+    .topbar {
+      background: var(--dark);
+      color: #F8F4ED;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #D6CFC3;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .nav-link:hover { color: #FFFFFF; border-color: var(--gold); }
+
+    .nav-link.gold {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+      font-weight: 800;
+    }
+
+    /* Hero + Video Stage */
+    .hero {
+      background: var(--dark);
+      color: #F8F4ED;
+      padding: 52px 0 60px;
+    }
+
+    .kicker {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.04;
+      margin-bottom: 14px;
+      max-width: 780px;
+    }
+
+    .hero p.lead {
+      font-size: 0.98rem;
+      color: #D6CFC3;
+      max-width: 640px;
+      margin-bottom: 28px;
+    }
+
+    .video-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(229, 185, 115, 0.25);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.45);
+    }
+
+    .video-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      background: #0A0908;
+      display: block;
+    }
+
+    .video-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.12s ease;
+    }
+
+    .btn-gold:hover { background: #F0CA8B; transform: translateY(-1px); }
+
+    .btn-outline-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #F8F4ED;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-weight: 700;
+      font-size: 0.86rem;
+      padding: 12px 18px;
+      border-radius: 10px;
+    }
+
+    .btn-outline-dark:hover { background: rgba(255, 255, 255, 0.14); }
+
+    .video-note {
+      font-size: 0.8rem;
+      color: #A8A29E;
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .section-head h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.9rem, 3.8vw, 2.75rem);
+      line-height: 1.06;
+      color: var(--ink);
+    }
+
+    .section-head p {
+      font-size: 0.94rem;
+      color: var(--muted);
+      max-width: 480px;
+    }
+
+    .btn-print {
+      background: var(--dark);
+      color: #F8F4ED;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .btn-print:hover { background: var(--bronze-dark); }
+
+    /* Official A4 Executive Letter */
+    .letter-sheet {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 46px 52px;
+      box-shadow: 0 18px 42px rgba(28, 25, 23, 0.07);
+    }
+
+    .letter-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 22px;
+      margin-bottom: 26px;
+      border-bottom: 2px solid var(--dark);
+      flex-wrap: wrap;
+    }
+
+    .letter-brand {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--dark);
+    }
+
+    .letter-brand small {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-top: 6px;
+    }
+
+    .letter-meta {
+      text-align: right;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .letter-meta strong { color: var(--ink); }
+
+    .letter-body h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.65rem;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .letter-body p {
+      font-size: 0.94rem;
+      color: #292524;
+      margin-bottom: 14px;
+    }
+
+    .letter-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .lp-box {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 15px 16px;
+    }
+
+    .lp-box strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--bronze-dark);
+      margin-bottom: 5px;
+    }
+
+    .lp-box span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: block;
+      line-height: 1.45;
+    }
+
+    .letter-sign {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.86rem;
+    }
+
+    .letter-sign strong { display: block; color: var(--ink); font-size: 0.96rem; }
+    .letter-sign span { color: var(--muted); }
+
+    /* 3 Ready-to-Copy WhatsApp Scripts */
+    .scripts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .script-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 8px 24px rgba(28, 25, 23, 0.05);
+    }
+
+    .script-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--bronze-dark);
+      background: #F4E9D8;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .script-card h3 {
+      font-size: 1.02rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .script-text {
+      font-size: 0.85rem;
+      color: #292524;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px;
+      white-space: pre-line;
+      line-height: 1.5;
+    }
+
+    .btn-copy {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--forest);
+      background: var(--forest);
+      color: #FFFFFF;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-copy:hover { background: #0E3B20; }
+    .btn-copy.copied { background: var(--bronze); border-color: var(--bronze); }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 26px 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner strong { color: var(--ink); }
+    .footer-links { display: flex; gap: 16px; font-weight: 700; color: var(--bronze-dark); }
+
+    @media (max-width: 860px) {
+      .letter-sheet { padding: 28px 22px; }
+      .letter-pillars, .scripts-grid { grid-template-columns: 1fr; }
+      .letter-meta { text-align: left; }
+    }
+
+    /* Clean A4 Print Layout — Prints ONLY the Official Letter */
+    @media print {
+      body { background: #FFFFFF !important; }
+      .no-print { display: none !important; }
+      .container { max-width: 100% !important; padding: 0 !important; }
+      .section { padding: 0 !important; }
+      .letter-sheet {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 12mm 14mm !important;
+        border-radius: 0 !important;
+      }
+      .letter-pillars {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+      @page {
+        size: A4;
+        margin: 10mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar no-print">
+    <div class="container topbar-inner">
+      <div class="brand">NEXO CUYO <span>· Kit Comercial San Rafael</span></div>
+      <div class="nav-actions">
+        <a class="nav-link" href="#video">Video</a>
+        <a class="nav-link" href="#carta">Carta PDF</a>
+        <a class="nav-link" href="#mensajes">Mensajes WhatsApp</a>
+        <a class="nav-link gold" href="https://romanfjose.github.io/nexocuyo/" target="_blank" rel="noopener noreferrer">Ver Nexo Cuyo Original →</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero no-print" id="video">
+    <div class="container">
+      <span class="kicker">Herramienta comercial oficial · San Rafael, Mendoza</span>
+      <h1>Kit de Presentación Nexo Cuyo</h1>
+      <p class="lead">Todo listo para presentar y vender el servicio de Web, Redes y Sistemas de Gestión a medida en San Rafael: video de presentación listo para reenviar por WhatsApp, carta ejecutiva imprimible en PDF y textos listos para copiar.</p>
+
+      <div class="video-card">
+        <video class="video-player" controls playsinline preload="metadata">
+          <source src="./NexoCuyo-Presentacion-Gabi.mp4" type="video/mp4" />
+          Tu navegador no soporta la reproducción de video MP4. Podés descargarlo con el botón de abajo.
+        </video>
+
+        <div class="video-actions">
+          <div class="btn-row">
+            <a class="btn-gold" href="./NexoCuyo-Presentacion-Gabi.mp4" download="NexoCuyo-Presentacion-Gabi.mp4">
+              Descargar Video para WhatsApp (.mp4)
+            </a>
+            <a class="btn-outline-dark" href="https://romanfjose.github.io/nexocuyo/" target="_blank" rel="noopener noreferrer">
+              Abrir Sitio Nexo Cuyo →
+            </a>
+          </div>
+          <span class="video-note">Formato 1280×720 H.264/AAC · Ideal para enviar por WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Official Printable A4 Letter -->
+  <section class="section" id="carta">
+    <div class="container">
+      <div class="section-head no-print">
+        <div>
+          <span class="kicker" style="color:var(--bronze);">01 — Documento formal para empresas y comercios</span>
+          <h2>Carta de Presentación Oficial</h2>
+          <p>Pensada para entregar impresa o guardar en PDF y enviar por WhatsApp o mail a supermercados, ferreterías, depósitos, gastronomía y empresas.</p>
+        </div>
+        <button type="button" class="btn-print" id="printBtn">Imprimir / Guardar en PDF</button>
+      </div>
+
+      <article class="letter-sheet" aria-label="Carta de Presentación Oficial de Nexo Cuyo">
+        <header class="letter-header">
+          <div class="letter-brand">
+            Nexo Cuyo
+            <small>Web · Redes · Sistemas de Gestión a Medida</small>
+          </div>
+          <div class="letter-meta">
+            <strong>San Rafael, Mendoza</strong><br/>
+            Web: romanfjose.github.io/nexocuyo<br/>
+            WhatsApp: +54 9 260 405-9284 · romanfjose@gmail.com
+          </div>
+        </header>
+
+        <div class="letter-body">
+          <h3>Estimado titular / responsable comercial:</h3>
+          <p>Nos dirigimos a usted desde <strong>Nexo Cuyo</strong>, estudio local de desarrollo web y software de gestión en San Rafael, Mendoza, para acercarle una propuesta concreta pensada para comercios, depósitos, gastronomía y empresas de la región que buscan profesionalizar su presencia digital y ordenar su operatoria diaria.</p>
+          <p>Hoy, cuando un cliente busca un comercio o proveedor en San Rafael, decide en pocos segundos según lo que encuentra en Google, en Instagram y en la rapidez con la que puede consultar por WhatsApp. Al mismo tiempo, muchos negocios en crecimiento pierden horas valiosas cada semana lidiando con planillas sueltas, stock desactualizado o pedidos desordenados.</p>
+
+          <div class="letter-pillars">
+            <div class="lp-box">
+              <strong>01 · Presencia Web Profesional</strong>
+              <span>Sitios rápidos pensados para celular, con catálogo o carta clara, ubicación verificada y conexión directa a tu WhatsApp comercial, sin comisiones por venta.</span>
+            </div>
+            <div class="lp-box">
+              <strong>02 · Redes + Lanzamiento</strong>
+              <span>Integración con Instagram y piezas visuales de presentación alineadas con la identidad de tu local para atraer consultas reales desde el primer día.</span>
+            </div>
+            <div class="lp-box">
+              <strong>03 · Gestión a Medida</strong>
+              <span>Sistemas propios para control de stock por estantería o depósito, caja diaria por medio de pago, presupuestos y alertas automáticas de reposición.</span>
+            </div>
+          </div>
+
+          <p><strong>Nuestra modalidad de trabajo sin riesgo:</strong> antes de tomar cualquier decisión, escuchamos cómo trabaja tu negocio y te preparamos <strong>prototipos visuales sin cargo</strong> con el nombre y la identidad de tu empresa. Así podés ver y evaluar el resultado real antes de avanzar, con presupuestos a medida según las necesidades de cada proyecto.</p>
+          <p>Quedamos a total disposición para coordinar una breve reunión presencial en San Rafael o conversar por WhatsApp y preparar una propuesta adaptada a tu negocio.</p>
+        </div>
+
+        <footer class="letter-sign">
+          <div>
+            <strong>Equipo Nexo Cuyo</strong>
+            <span>Desarrollo Web, Redes y Sistemas de Gestión · San Rafael, Mendoza</span>
+          </div>
+          <div>
+            <strong>Contacto Directo</strong>
+            <span>WhatsApp +54 9 260 405-9284 · romanfjose.github.io/nexocuyo</span>
+          </div>
+        </footer>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3 Ready-to-Copy WhatsApp Scripts -->
+  <section class="section no-print" id="mensajes" style="padding-top:10px;">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="kicker" style="color:var(--bronze);">02 — Listos para pegar y enviar</span>
+          <h2>3 Mensajes de WhatsApp</h2>
+          <p>Elegí el que mejor calza con el cliente, tocá copiar y envialo directo junto al video o el link de Nexo Cuyo.</p>
+        </div>
+      </div>
+
+      <div class="scripts-grid">
+        <article class="script-card">
+          <div>
+            <span class="script-tag">Caso 01 · Cross-sell</span>
+            <h3>Cliente de estanterías / local nuevo</h3>
+            <div class="script-text" id="msg1">Hola [Nombre], ¿cómo estás? Ahora que ya estás armando y dejando impecable el local con las estanterías, te cuento que también estamos trabajando con Nexo Cuyo acá en San Rafael haciendo páginas web, presencia para redes y sistemas de control de stock y caja a medida.
+
+Si querés, antes de que decidas nada te armamos unos prototipos visuales sin cargo con el nombre de tu negocio para que veas cómo quedaría. ¿Te paso un video cortito de 40 segundos para que lo chusmees?</div>
+          </div>
+          <button type="button" class="btn-copy" data-copy="msg1">Copiar mensaje</button>
+        </article>
+
+        <article class="script-card">
+          <div>
+            <span class="script-tag">Caso 02 · Empresa en marcha</span>
+            <h3>Comercio o empresa ya funcionando</h3>
+            <div class="script-text" id="msg2">Hola [Nombre], ¿todo bien? Te escribo porque con Nexo Cuyo estamos ayudando a comercios y empresas de San Rafael a renovar su presencia web conectada directo a WhatsApp y a ordenar stock, caja y pedidos con sistemas propios hechos a medida (sin comisiones ni plantillas genéricas).
+
+Para que no tengas que imaginar nada, primero preparamos prototipos visuales sin cargo con la marca de tu negocio. Si te interesa, te comparto el enlace de presentación: https://romanfjose.github.io/nexocuyo/</div>
+          </div>
+          <button type="button" class="btn-copy" data-copy="msg2">Copiar mensaje</button>
+        </article>
+
+        <article class="script-card">
+          <div>
+            <span class="script-tag">Caso 03 · Con el video</span>
+            <h3>Mensaje corto para acompañar el video</h3>
+            <div class="script-text" id="msg3">Hola [Nombre], te dejo este video cortito (menos de 1 minuto) de Nexo Cuyo acá en San Rafael. Hacemos páginas web profesionales, integración con redes y sistemas de gestión a medida (stock, caja y pedidos).
+
+Si te copa la idea, te armamos un prototipo visual sin cargo con el nombre de tu negocio para que lo veas sin compromiso. ¡Avisame y lo charlamos!</div>
+          </div>
+          <button type="button" class="btn-copy" data-copy="msg3">Copiar mensaje</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer no-print">
+    <div class="container footer-inner">
+      <div><strong>Nexo Cuyo · José Román Fredrin</strong> · San Rafael, Mendoza</div>
+      <div class="footer-links">
+        <a href="https://romanfjose.github.io/nexocuyo/" target="_blank" rel="noopener noreferrer">Sitio Nexo Cuyo</a>
+        <a href="https://wa.me/5492604059284" target="_blank" rel="noopener noreferrer">+54 9 260 405-9284</a>
+        <a href="mailto:romanfjose@gmail.com">romanfjose@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      document.getElementById('printBtn').addEventListener('click', function () {
+        window.print();
+      });
+
+      document.querySelectorAll('.btn-copy').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const targetId = btn.getAttribute('data-copy');
+          const el = document.getElementById(targetId);
+          if (!el) return;
+          const text = el.textContent.trim();
+
+          function markCopied() {
+            const orig = btn.textContent;
+            btn.textContent = '✓ Copiado al portapapeles';
+            btn.classList.add('copied');
+            setTimeout(function () {
+              btn.textContent = orig;
+              btn.classList.remove('copied');
+            }, 2000);
+          }
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+              fallbackCopy(text);
+              markCopied();
+            });
+          } else {
+            fallbackCopy(text);
+            markCopied();
+          }
+        });
+      });
+
+      function fallbackCopy(text) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+    })();
+  </script>
+</body>
+</html>
